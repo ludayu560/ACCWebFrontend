@@ -1,0 +1,156 @@
+:root {
+    --background-light-blue: #b3dfffa1;
+    --font-blue: #0045f1;
+    --font-red: #f83e7d;
+    --font-black: #323232;
+    --font-light-blue: #42acf9;
+
+    --info-pink: #f96496;
+    --info-dark-blue: #405a8c;
+    --info-light-blue: #5ecefc;
+    --info-blue: #326af3;
+
+}
+
+p {
+    color: var(--font-black);
+    font-size: 20px;
+}
+
+.large-text {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.small-text {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+button {
+    color: white;
+    cursor: pointer;
+    border-radius: 100vmax;
+    font-size: 20px;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-1 {
+    background: linear-gradient(135deg,rgb(55,194,252) 17%,rgb(201,235,248) 79%);
+    display: flex;
+    flex-direction: row;
+    height: fit-content;    
+}
+
+.img-placeholder {
+    padding: 5vmin;
+    width: 90%;
+}
+
+.description {
+    padding: 2vw;
+}
+.panel-1 img {
+    width: 100vw;
+
+}
+
+.panel-1 h1 {
+    text-align: left;
+    color: var(--font-blue);
+    font-size: 55px;
+    font-weight: 800;
+}
+
+.panel-1 h2 {
+    text-align: left;
+    color: var(--font-red);
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.homeowner-button {
+    margin: 3vmin;
+    background-color: var(--font-blue);
+    border-color: var(--font-blue);
+    width: 15vmin;
+    height: 4vmin;
+}
+
+.tenant-button {
+    margin: 3vmin;
+    background-color: var(--font-red);
+    border-color: var(--font-red);
+    box-shadow: rgb(248 62 125 / 35%) 0px 5px 21px;
+    width: 15vmin;
+    height: 4vmin;
+}
+
+.banner  {
+    height: fit-content;
+    padding: 5vh;
+}
+
+.blue-background {
+    background-color: var(--background-light-blue);
+}
+
+.blue-font {
+    color: var(--font-blue);
+}
+
+.infographic {
+    display: flex;
+    flex-direction: row;
+    margin-right: 5vw;
+    margin-left: 5vw;
+}
+
+.infobox {
+    border-radius: 2vmin;
+    width: 22vw;
+    margin: 1vw;
+    height: 23vw;
+    text-align: center;
+}
+
+.colour-info-pink {
+    background-color: var(--info-pink);
+}
+.colour-info-dark-blue {
+    background-color: var(--info-dark-blue);
+}
+.colour-info-light-blue {
+    background-color: var(--info-light-blue);
+}
+.colour-info-blue {
+    background-color: var(--info-blue);
+}
+
+.video-caption {
+    margin-top: 5vmin;
+    margin-left: 10vmin;
+    margin-right: 10vmin;
+    color: var(--font-light-blue);
+}
+.video-caption b {
+    color: var(--font-blue);
+}
+.img-placeholder {
+    height: 40vh;
+}
+.video-box {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
