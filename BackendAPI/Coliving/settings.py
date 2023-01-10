@@ -83,6 +83,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'production',
+        'USER': 'admin',
+        'PASSWORD': 'Work2003',
+        'HOST': 'coliving-db.ckmvyermclnj.us-west-2.rds.amazonaws.com',
+        'PORT': 3306
     }
 }
 
