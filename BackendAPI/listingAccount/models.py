@@ -12,9 +12,9 @@ class ListingAccount(models.Model):
     created = models.DateTimeField(auto_now_add=True) # unsure if needed
 
 class PersonalTraits(models.Model):
-    
+    traits = models.CharField(max_length=200)
     listing_account = models.ForeignKey(ListingAccount, on_delete=models.CASCADE)
 
 class Interests(models.Model):
-
+    interests = models.CharField(max_length=200)
     listing_account = models.ForeignKey(ListingAccount, on_delete=models.CASCADE)
