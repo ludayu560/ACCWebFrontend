@@ -1,156 +1,221 @@
 :root {
-    --background-light-blue: #b3dfffa1;
-    --font-blue: #0045f1;
-    --font-red: #f83e7d;
-    --font-black: #323232;
-    --font-light-blue: #42acf9;
+    --background-light-blue: #cfebff;
+    --background-blue: #42acf9;
+    --background-pink: #f86496;
+    --background-light-pink: #ffb7cf;
+    --background-red: #af1a4d;
+    --background-dark-blue: #0045f1;
 
-    --info-pink: #f96496;
-    --info-dark-blue: #405a8c;
-    --info-light-blue: #5ecefc;
-    --info-blue: #326af3;
+    --infographic-pink: #f96496;
+    --infographic-navy: #405a8c;
+    --infographic-light-blue: #5ecefc;
+    --infographic-blue: #326af3;
+
+    --text-light-blue: #55b4f9;
+    --text-dark-blue: #0045f1;
+    --text-pink: #f83e7d;
+    --text-red: #af1a4d;
+    --text-dark: #323232;
+
+    --dark-blue: #0045f1;
 
 }
+/* Boilerplate */
+* {
+    margin: 0;
+    padding: 0;
+}
+/* Colours */
+.blue-gradient {
+    background: linear-gradient(135deg,rgb(55,194,252) 17%,rgb(201,235,248) 79%);   
+}
+.background-light-blue {
+    background-color: var(--background-light-blue);
+}
+.background-blue {
+    background-color: var(--background-blue);
+}
+.background-pink {
+    background-color: var(--background-pink);
+}
+.background-light-pink {
+    background-color: var(--background-light-pink);
+}
+.background-red {
+    background-color: var(--background-red);
+}
+.background-dark-blue {
+    background-color: var(--background-dark-blue);
+}
+.infographic-pink {
+    background-color: var(--infographic-pink);
+}
+.infographic-navy {
+    background-color: var(--infographic-navy);
+}
+.infographic-light-blue {
+    background-color: var(--infographic-light-blue);
+}
+.infographic-blue {
+    background-color: var(--infographic-blue);
+}
+.text-light-blue {
+    color: var(--text-light-blue);
+}
+.text-dark-blue {
+    color: var(--text-dark-blue);
+}
+.text-pink {
+    color: var(--text-pink);
+}
+.text-red {
+    color: var(--text-red);
+}
+.text-white {
+    color: white;
+}
+.text-dark {
+    color: var(--text-dark);
+}
+.dark-blue {
+    color: var(--dark-blue);
+    background-color: var(--dark-blue);
+}
 
+/* Text Styling*/
 p {
-    color: var(--font-black);
+    color: var(--text-dark);
     font-size: 20px;
+    line-height: 37.5px;
 }
-
-.large-text {
-    text-align: center;
+h1 {
+    font-size: 55px;
+    font-weight: 700;
+}
+h2 {
     font-size: 50px;
     font-weight: 700;
 }
-
-.small-text {
-    text-align: center;
+h3 {
     font-size: 35px;
     font-weight: 600;
 }
+h4 {
+    font-size: 25px;
+    font-weight: 600;
+}
+h5 {
+    font-size: 20px;
+    font-weight: 500;
+}
+h6 {
+    font-size: 16px;
+    font-weight: 300; 
+}
+.align-left {
+    text-align: left;
+}
+.align-center {
+    text-align: center;
+}
 
+/* Flex Layouts */
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Margin Layouts */
+
+
+/* Components */
 button {
     color: white;
     cursor: pointer;
     border-radius: 100vmax;
     font-size: 20px;
+
+    width: 75%;
+    height: 3.5vmin;
+    margin: 3vmin;
 }
 
-.home-container {
-    display: flex;
-    flex-direction: column;
+.margin-width-256 {
+    width: 256vw;
+}
+.margin-width-16 {
+    width: 16vw;
+}
+.margin-width-12 {
+    width: 12vw;
+}
+.margin-width-8 {
+    width: 8vw;
+}
+.margin-width-10 {
+    width: 10vw;
+}
+.margin-width-4 {
+    width: 4vw;
+}
+.margin-width-2 {
+    width: 2vw;
 }
 
-.panel-1 {
-    background: linear-gradient(135deg,rgb(55,194,252) 17%,rgb(201,235,248) 79%);
-    display: flex;
-    flex-direction: row;
-    height: fit-content;    
+.margin-height-8 {
+    height: 8vh;
 }
 
-.img-placeholder {
+.margin-height-4 {
+    height: 4vh;
+}
+
+.banner {
+    margin-top: 3vmin;
     padding: 5vmin;
-    width: 90%;
-}
-
-.description {
-    padding: 2vw;
-}
-.panel-1 img {
-    width: 100vw;
-
-}
-
-.panel-1 h1 {
-    text-align: left;
-    color: var(--font-blue);
-    font-size: 55px;
-    font-weight: 800;
-}
-
-.panel-1 h2 {
-    text-align: left;
-    color: var(--font-red);
-}
-
-.button-container {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-.homeowner-button {
-    margin: 3vmin;
-    background-color: var(--font-blue);
-    border-color: var(--font-blue);
-    width: 15vmin;
-    height: 4vmin;
-}
-
-.tenant-button {
-    margin: 3vmin;
-    background-color: var(--font-red);
-    border-color: var(--font-red);
-    box-shadow: rgb(248 62 125 / 35%) 0px 5px 21px;
-    width: 15vmin;
-    height: 4vmin;
-}
-
-.banner  {
-    height: fit-content;
-    padding: 5vh;
-}
-
-.blue-background {
-    background-color: var(--background-light-blue);
-}
-
-.blue-font {
-    color: var(--font-blue);
-}
-
-.infographic {
-    display: flex;
-    flex-direction: row;
-    margin-right: 5vw;
-    margin-left: 5vw;
 }
 
 .infobox {
+    width: 20vw;
+    height: 23vh;
     border-radius: 2vmin;
-    width: 22vw;
-    margin: 1vw;
-    height: 23vw;
+    margin: .5vmin;
     text-align: center;
 }
 
-.colour-info-pink {
-    background-color: var(--info-pink);
-}
-.colour-info-dark-blue {
-    background-color: var(--info-dark-blue);
-}
-.colour-info-light-blue {
-    background-color: var(--info-light-blue);
-}
-.colour-info-blue {
-    background-color: var(--info-blue);
+.infobox_wide {
+    width: 24vw;
+    height: 23vh;
+    border-radius: 2vmin;
+    margin: 3vmin;
+    text-align: center;
 }
 
-.video-caption {
-    margin-top: 5vmin;
-    margin-left: 10vmin;
-    margin-right: 10vmin;
-    color: var(--font-light-blue);
+.title-panel {
+    padding-left: 15vw;
 }
-.video-caption b {
-    color: var(--font-blue);
+
+.video1-explanation {
+    padding-top: 4vmin;
+    padding-bottom: 2vmin;
+    padding-left: 8vw;
+    padding-right: 8vw;
 }
-.img-placeholder {
-    height: 40vh;
+
+.video1-explanation b {
+    color: var(--text-dark-blue);
 }
-.video-box {
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
+
+.testimonial {
+    padding-left: 13vw;
+    padding-right: 13vw;
+    padding-top: 8vh;
+}
+.testimonial b {
+    color: var(--text-red);
 }
