@@ -5,20 +5,19 @@ import { useNavigate } from 'react-router';
 import { FlexSection } from './globalStyles';
 
 function MyAccount(props) {
-    const [form, setForm] = useState({
-        username:'',
-        name:'',
-        email:'',
-        phone:'',
-        location:'',
-        age:''
-    })
+
+    const [username, setUsername] = useState('')
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [location, setLocation] = useState('')
+    const [age, setAge] = useState('')
 
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
     let navigate = useNavigate();
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
 
         const resultError = null
@@ -28,69 +27,38 @@ function MyAccount(props) {
             return
         }
 
-        setForm('','','','','','');
+        setUsername('')
+        setName('')
+        setEmail('')
+        setPhone('')
+        setLocation('')
+        setAge('')  
+
+        console.log(username,name,email,phone,location,age);
+
         setError(null);
         setSuccess('Submitted Succesfully');
 
         setTimeout(() => {
-            navigate('/');
+            navigate(`/account-${props.name}`);
         });
     };
-
-    const formData = [
-        {
-            label: "Username",
-            value: form,
-            onChange: e=> setForm(''),
-            type: 'text'
-        },        
-        {
-            label: "Name",
-            value: form,
-            onChange: e=> setForm(''),
-            type: 'text'
-        },        
-        {
-            label: "Email",
-            value: form,
-            onChange: e=> setForm(''),
-            type: 'email'
-        },
-        {
-            label: "Phone",
-            value: form,
-            onChange: e=> setForm(''),
-            type: 'text'
-        },        
-        {
-            label: "Location",
-            value: form,
-            onChange: e=> setForm(''),
-            type: 'text'
-        },        
-        {
-            label: "Age",
-            value: form,
-            onChange: e=> setForm(''),
-            type: 'text'
-        }
-    ] 
 
     return (
         <FlexSection>
             <AccountNav />
             <FlexSection fd='column'>
-                <form>
+                <form onSubmit={handleSubmit}>
                 <h1> Hello, {props.name} </h1> <br />
 
                 <h3>Personal Details</h3>
 
-                <input placeholder='Username*' type="text" />
-                <input placeholder='Full Name*' type="text" />
-                <input placeholder='Email Address*' type="text" />
-                <input placeholder='Phone Number' type="text" />
-                <input placeholder='Location*' type="text" />
-                <input placeholder='Age Range*' type="text" />
+                <input onChange={(e) => setUsername(e.target.value)} placeholder='Username*' type="text" />
+                <input onChange={(e) => setName(e.target.value)} placeholder='Full Name*' type="text" />
+                <input onChange={(e) => setEmail(e.target.value)} placeholder='Email Address*' type="text" />
+                <input onChange={(e) => setPhone(e.target.value)} placeholder='Phone Number' type="text" />
+                <input onChange={(e) => setLocation(e.target.value)} placeholder='Location*' type="text" />
+                <input onChange={(e) => setAge(e.target.value)} placeholder='Age Range*' type="text" />
 
                 <h3>Personality Traits</h3>
 
