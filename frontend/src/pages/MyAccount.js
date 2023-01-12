@@ -80,6 +80,7 @@ function MyAccount(props) {
         <FlexSection>
             <AccountNav />
             <FlexSection fd='column'>
+                <form>
                 <h1> Hello, {props.name} </h1> <br />
 
                 <h3>Personal Details</h3>
@@ -176,10 +177,15 @@ function MyAccount(props) {
                     <input type="checkbox" id="cars" name="cars"/>
                     <label for="cars">cars</label>
                 </div>
-                
+
                 <h3>Tell us about yourself</h3>
 
-                <input placeholder='Provide a brief description about yourself...' type="text" />
+                <input placeholder='Provide a brief description about yourself...' type="text" /> <br />
+
+                <button> Submit </button> 
+
+                </form>
+
             </FlexSection>
         </FlexSection>
     );
