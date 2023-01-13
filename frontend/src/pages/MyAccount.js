@@ -40,13 +40,13 @@ function MyAccount(props) {
         setSuccess('Submitted Succesfully');
 
         setTimeout(() => {
-            navigate(`/account-${props.name}`);
+            // navigate(`/account-${props.name}`);
         });
     };
 
     return (
         <FlexSection>
-            <AccountNav />
+            <AccountNav name={`${props.name}`}/>
             <FlexSection fd='column'>
                 <form onSubmit={handleSubmit}>
                 <h1> Hello, {props.name} </h1> <br />
