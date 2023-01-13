@@ -12,9 +12,20 @@ def getData(request):
     serializer = ListingAccountSerializer(listingAccount, many=True)
     return Response(serializer.data)
 
-@api_view(['Post'])
+@api_view(['POST'])
 def addListingAccount(request):
     serializer = ListingAccountSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
     return Response(serializer)
+
+@api_view(['PUT'])
+def updateListingAccount(request):
+    listingAccount = ListingAccount.objects.all()
+    serializer = ListingAccountSerializer(listingAccount, data = request.data, many=True)
+    data = {}
+    if serializer.is_valid():
+        serializer.save()
+        data["success"] = "update successful"
+        return Response(data=data)
+
