@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import { ShadowBox } from './globalStyles';
+import { ShadowBox } from '../globalStyles';
 
 function AccountNav(props) {
     return (

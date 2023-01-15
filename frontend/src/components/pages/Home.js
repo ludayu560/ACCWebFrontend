@@ -1,8 +1,10 @@
 import "./Home.css";
-import ImagePlaceholder from "../assets/ImagePlaceholder";
+import ImagePlaceholder from "../../assets/ImagePlaceholder";
+import NavBar from "../NavBar";
 function Home() {
 	return (
 		<div className="home-container">
+      		<NavBar></NavBar>
 			<div className="flex-row blue-gradient">
 				<ImagePlaceholder width="100%" />
 				<div className="flex-column title-panel">

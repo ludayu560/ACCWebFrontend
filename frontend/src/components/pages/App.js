@@ -1,8 +1,9 @@
 import './App.css';
 import {BrowserRouter as Router, Routes, Route, Link, createBrowserRouter, RouterProvider} from 'react-router-dom';
-import Home from '../pages/Home'
-import MyAccount from '../pages/MyAccount';
-import Login from '../pages/Login';
+import Home from './Home'
+import MyAccount from './MyAccount';
+import Login from './Login';
+import NavBar from '../NavBar';
 
 const router = createBrowserRouter([
   {
@@ -13,8 +14,7 @@ const router = createBrowserRouter([
       <Link to="/account-homeowner">Homeowner Account</Link><br />
       <Link to="/account-tenant">Tenant Account</Link><br />
       <Link to="/login">Login</Link><br />
-
-
+      
     </div>,
   },
   {

@@ -2,7 +2,7 @@ import './MyAccount.css'
 import React, { useState } from 'react';
 import AccountNav from './AccountNav';
 import { useNavigate } from 'react-router';
-import { FlexSection } from './globalStyles';
+import { FlexSection } from '../globalStyles';
 
 function MyAccount(props) {
 
