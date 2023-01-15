@@ -4,6 +4,7 @@ import Home from './Home'
 import MyAccount from './MyAccount';
 import Login from './Login';
 import NavBar from '../NavBar';
+import Footer from '../Footer';
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
       <Link to="/account-homeowner">Homeowner Account</Link><br />
       <Link to="/account-tenant">Tenant Account</Link><br />
       <Link to="/login">Login</Link><br />
-      
+      <Footer></Footer>
     </div>,
   },
   {
