@@ -1,10 +1,8 @@
 from django.urls import path
 from . import views
 from .views import AccountList
-
+from .views import updateAccountList
 urlpatterns = [
-    # path('', views.getData),
-    # path('add/', views.addListingAccount),
-    # path('update/', views.updateListingAccount),
-    path('list/', AccountList.as_view())
+    path('list/', AccountList.as_view()),
+    path('<pk>/update',  updateAccountList.as_view())
 ]
