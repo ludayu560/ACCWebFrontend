@@ -1,8 +1,15 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 from . import views
-from .views import AccountList
-from .views import updateAccountList
+from rest_framework.routers import DefaultRouter
+
+router=DefaultRouter()
+router.register("ListingAccount", views.ListingAccountViewSet)
+router.register("PersonalTraits", views.PersonalTraitsViewSet)
+router.register("Interests", views.InterestsViewSet)
+
+
 urlpatterns = [
-    path('list/', AccountList.as_view()),
-    path('<pk>/update',  updateAccountList.as_view())
+    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
 ]

@@ -1,22 +1,17 @@
-from django.shortcuts import render
-
 # Create your views here.
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from listingAccount.models import ListingAccount
-from .serializers import ListingAccountSerializer
-from rest_framework import generics
+from .models import ListingAccount, Interests, PersonalTraits
+from .serializers import ListingAccountSerializer, InterestsSerializer, PersonalTraitsSerializer
+from rest_framework import viewsets
 
-from rest_framework import generics
-from rest_framework.views import APIView
-
-from django.views.generic.edit import UpdateView
-
-class AccountList(generics.ListCreateAPIView):
+class ListingAccountViewSet(viewsets.ModelViewSet):
     queryset = ListingAccount.objects.all()
     serializer_class = ListingAccountSerializer
 
-class updateAccountList(UpdateView):
-    model = ListingAccount
-    fields = '__all__'
-    success_url = "/lel"
+class InterestsViewSet(viewsets.ModelViewSet):
+    queryset = Interests.objects.all()
+    serializer_class = InterestsSerializer
+
+class PersonalTraitsViewSet(viewsets.ModelViewSet):
+    queryset = PersonalTraits.objects.all()
+    serializer_class = PersonalTraitsSerializer
+

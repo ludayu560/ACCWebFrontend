@@ -13,8 +13,8 @@ class InterestsSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ListingAccountSerializer(serializers.ModelSerializer):
-    personalTraits = PersonalTraitsSerializer(many=True)
-    interests = InterestsSerializer(many=True)
+    personalTraits = PersonalTraitsSerializer(read_only=True,many=True)
+    interests = InterestsSerializer(read_only=True,many=True)
 
     # def create(self, validated_data):
     #     personalTraits_data = validated_data.pop("personalTraits")
