@@ -25,7 +25,7 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         personal_traits_data = validated_data.pop('personal_traits')
         listing_account = ListingAccount.objects.create(**validated_data)
         for interest_data in interests_data:
-            Interests.objects.create(album=album, **interest_data)
+            Interest.objects.create(listing_account = listing_account, **interest_data)
         for personal_trait_data in personal_traits_data:
-            PersonalTraits.objects.create(album=album, **personal_trait_data)
+            PersonalTrait.objects.create(listing_account = listing_account, **personal_trait_data)
         return listing_account
