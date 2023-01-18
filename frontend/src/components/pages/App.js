@@ -4,6 +4,7 @@ import Home from './Home'
 import MyAccount from './MyAccount';
 import Login from './Login';
 import NavBar from '../NavBar';
+import { Toolbar } from '@mui/material';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home />,
+    element: 
+    <>
+      <Toolbar sx={{ height: 168 }}/>
+      <Home />
+    </>,
   },
   {
     path: "/account-homeowner",

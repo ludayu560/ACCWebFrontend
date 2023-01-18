@@ -8,17 +8,17 @@ import {
   Link,
   Box,
   Slide,
-  useScrollTrigger
+  useScrollTrigger,
 } from "@mui/material";
 import AishaLogo from "../assets/Final Logo Transparent 3.svg";
 
 // import "./Navbar.css";
 
-function NavBar() {
-  const trigger = useScrollTrigger();
+function Navbar() {
+  const trigger = useScrollTrigger(); 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
-      <AppBar positon="static">
+      <AppBar positon="static" elevation={4}>
         <Toolbar sx={{ height: 168, background: "white" }}>
           <Link href="/">
             <Box
@@ -47,4 +47,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default Navbar;
