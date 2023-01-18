@@ -7,9 +7,7 @@ router=DefaultRouter()
 router.register("ListingAccount", views.ListingAccountViewSet)
 router.register("PersonalTraits", views.PersonalTraitsViewSet)
 router.register("Interests", views.InterestsViewSet)
-
-
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('get/<int:id>/', views.ListAccountGetView.as_view()),
     path('', include(router.urls)),
 ]

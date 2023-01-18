@@ -1,27 +1,31 @@
 from rest_framework import serializers
-from listingAccount.models import ListingAccount, PersonalTraits, Interests
+from listingAccount.models import ListingAccount, PersonalTrait, Interest
 
 
 class PersonalTraitsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PersonalTraits    
-        fields = "__all__"
+        model = PersonalTrait
+        fields = ['trait']
 
 class InterestsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Interests
-        fields = "__all__"
+        model = Interest
+        fields = ['interest']
 
 class ListingAccountSerializer(serializers.ModelSerializer):
-    personalTraits = PersonalTraitsSerializer(read_only=True,many=True)
-    interests = InterestsSerializer(read_only=True,many=True)
-
-    # def create(self, validated_data):
-    #     personalTraits_data = validated_data.pop("personalTraits")
-    #     listingAccount = ListingAccount.objects.create(**validated_data)
-    #     for personalTrait_data in personalTraits_data:
-    #         PersonalTraits.objects.create(listingAccount=listingAccount, personalTrait = **personalTrait_data)
-    #     return listingAccount    
+    personal_traits = PersonalTraitsSerializer(many=True)
+    interests = InterestsSerializer(many=True)
     class Meta:
         model = ListingAccount
-        fields = "__all__"
+        fields = ['id', 'first_name', 'last_name', 'email', 'date_of_birth',
+                  'occupation', 'age_range', 'tell_us_about_yourself', 'created',
+                  'personal_traits', 'interests']
+    def create(self, validated_data):
+        interests_data = validated_data.pop('interests') 
+        personal_traits_data = validated_data.pop('personal_traits')
+        listing_account = ListingAccount.objects.create(**validated_data)
+        for interest_data in interests_data:
+            Interests.objects.create(album=album, **interest_data)
+        for personal_trait_data in personal_traits_data:
+            PersonalTraits.objects.create(album=album, **personal_trait_data)
+        return listing_account

@@ -11,10 +11,10 @@ class ListingAccount(models.Model):
     tell_us_about_yourself = models.TextField(null=True)
     created = models.DateTimeField(auto_now_add=True) # unsure if needed
 
-class PersonalTraits(models.Model):
-    traits = models.CharField(max_length=200, null = True)
-    listing_account = models.ForeignKey(ListingAccount, on_delete=models.CASCADE, null=True)
+class PersonalTrait(models.Model):
+    trait = models.CharField(max_length=200, null = True)
+    listing_account = models.ForeignKey(ListingAccount, related_name='personal_traits', on_delete=models.CASCADE, null=True)
 
-class Interests(models.Model):
-    interests = models.CharField(max_length=200, null=True)
-    listing_account = models.ForeignKey(ListingAccount, on_delete=models.CASCADE, null=True)
+class Interest(models.Model):
+    interest = models.CharField(max_length=200, null=True)
+    listing_account = models.ForeignKey(ListingAccount, related_name='interests', on_delete=models.CASCADE, null=True)
