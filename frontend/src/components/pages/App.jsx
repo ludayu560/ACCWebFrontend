@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Routes, Route, Link, createBrowserRouter, Route
 import Home from './Home'
 import MyAccount from './MyAccount';
 import Login from './Login';
+import NavBar from '../NavBar';
 import Footer from '../Footer';
 import { Toolbar } from '@mui/material';
 
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
     path: "/home",
     element: 
     <>
+<<<<<<< HEAD:frontend/src/components/pages/App.js
+      <Toolbar sx={{ height: 168 }}/>
+=======
       <Toolbar sx={{ height: 168}}/>
+>>>>>>> frontend-issues:frontend/src/components/pages/App.jsx
       <Home />
     </>,
   },
