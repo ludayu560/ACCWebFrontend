@@ -23,11 +23,7 @@ const router = createBrowserRouter([
     path: "/home",
     element: 
     <>
-<<<<<<< HEAD:frontend/src/components/pages/App.js
-      <Toolbar sx={{ height: 168 }}/>
-=======
       <Toolbar sx={{ height: 168}}/>
->>>>>>> frontend-issues:frontend/src/components/pages/App.jsx
       <Home />
     </>,
   },

@@ -5,8 +5,9 @@ class ListingAccount(models.Model):
     first_name = models.CharField(max_length=30, null=True)
     last_name = models.CharField(max_length=30, null=True)
     email = models.EmailField(max_length=254, null=True)
-    date_of_birth = models.DateField(max_length=8, null=True)
-    occupation = models.CharField(max_length=30, null=True)
+    phone_number = models.CharField(max_length=254, null=True)
+    date_of_birth = models.DateField(null=True)
+    location = models.CharField(max_length=30, null=True)
     age_range = models.CharField(max_length=7, null=True)
     tell_us_about_yourself = models.TextField(null=True)
     created = models.DateTimeField(auto_now_add=True) # unsure if needed

@@ -17,8 +17,8 @@ class ListingAccountSerializer(serializers.ModelSerializer):
     interests = InterestsSerializer(many=True)
     class Meta:
         model = ListingAccount
-        fields = ['id', 'first_name', 'last_name', 'email', 'date_of_birth',
-                  'occupation', 'age_range', 'tell_us_about_yourself', 'created',
+        fields = ['id', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
+                  'location', 'age_range', 'tell_us_about_yourself', 'created',
                   'personal_traits', 'interests']
     def create(self, validated_data):
         interests_data = validated_data.pop('interests') 

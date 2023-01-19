@@ -82,6 +82,19 @@ function MyAccount(props) {
     };
 
     const handleSubmit = () => {
+
+        const returnTraits = [];
+        for (let i = 0; i <= personalityTraits.length; i++) {
+            if (traitsCheckedState[i]) {
+                returnTraits.append(personalityTraits[i]);
+            }
+        }
+        const returnInterests = [];
+        for (let i = 0; i <= interests.length; i++) {
+            if (interestsCheckedState[i]) {
+                returnInterests.append(interests[i]);
+            }
+        }
         // Submit here
         const accountFields = {
             "username": field_1,
@@ -91,26 +104,20 @@ function MyAccount(props) {
             "location": field_5,
             "ageRange": field_6,
             "about": field_7,
-            "personalityTraits": traitsCheckedState,
-            "interests": interestsCheckedState
+            "personalityTraits": returnTraits,
+            "interests": returnInterests
         }
 
-        // {
-        //     "first_name": "WEW",
-        //     "last_name": "WWEEEEEEE",
-        //     "email": "fgWEGEEWGWEG@gmail.com",
-        //     "date_of_birth": null,
-        //     "occupation": "typical enjoyer",
-        //     "age_range": "18-20",
-        //     "tell_us_about_yourself": "k",
-        //     "personal_traits": [{"trait": "happy"}, {"trait": "few"}, {"trait": "few"}],
-        //     "interests": [{"interest": "skateboarding"}]
-        // }
-        console.log(accountFields)
-
-        axios.get('/user', {
+        axios.get('http://127.0.0.1:8000/ListingAccount/', {
             params: {
-              ID: 12345
+                ID: 12,
+                first_name: field_2,
+                last_name: '',
+                email: field_3,
+                phone_number: field_4,
+                location: '',
+                age_range: '',
+                tell_us_about_yourself: field_7,
             }
           })
           .then(function (response) {
