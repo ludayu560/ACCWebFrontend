@@ -5,23 +5,24 @@ import { Box, Stack } from "@mui/system";
 import { Button, Card, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import AishaLogo from "../../assets/Final Logo Transparent 3.svg";
-import HomePhoto from "../../assets/HomePhoto.png"
+import HomePhoto from "../../assets/HomePhoto.png";
+import Mainbar from "../MainBar";
 
-
-function Home() {
+function Home(props) {
+	
   return (
     <>
-      <NavBar></NavBar>
+	  <NavBar></NavBar>
       <Stack>
         <Stack direction="row" m={10} spacing={1}>
           <Stack pr={20}>
-            <Typography variant="h1" color="primary" sx={{fontSize: 120}}>
+            <Typography variant="h1" color="primary" sx={{ fontSize: 120 }}>
               Want To Colive
             </Typography>
-            <Typography variant="h1" color="primary" sx={{fontSize: 120}}>
+            <Typography variant="h1" color="primary" sx={{ fontSize: 120 }}>
               With Other
             </Typography>
-            <Typography variant="h1" color="#F83E7D" sx={{fontSize: 120}}>
+            <Typography variant="h1" color="#F83E7D" sx={{ fontSize: 120 }}>
               Women?
             </Typography>
             <Typography variant="h5" py={10} color="#113170">
@@ -43,12 +44,16 @@ function Home() {
             </Box>
           </Stack>
           <Box
-		  	component='img'
+            component="img"
             bgcolor="gray"
-            sx={{ width: 687, height: 753, textAlign: "center", borderRadius: 5}}
-			src={HomePhoto}
-          >
-          </Box>
+            sx={{
+              width: 687,
+              height: 753,
+              textAlign: "center",
+              borderRadius: 5,
+            }}
+            src={HomePhoto}
+          ></Box>
         </Stack>
         {/*Blue Bar*/}
         <Stack bgcolor="#EAF5FD" p={6}>
