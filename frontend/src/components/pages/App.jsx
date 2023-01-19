@@ -3,32 +3,44 @@ import {BrowserRouter as Router, Routes, Route, Link, createBrowserRouter, Route
 import Home from './Home'
 import MyAccount from './MyAccount';
 import Login from './Login';
-import NavBar from '../NavBar';
 import Footer from '../Footer';
+import { Toolbar } from '@mui/material';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: 
-    <div>
+    <>
       <Link to="/home">Home</Link><br />
       <Link to="/account-homeowner">Homeowner Account</Link><br />
       <Link to="/account-tenant">Tenant Account</Link><br />
       <Link to="/login">Login</Link><br />
       <Footer></Footer>
-    </div>,
+    </>,
   },
   {
     path: "/home",
-    element: <Home />,
+    element: 
+    <>
+      <Toolbar sx={{ height: 168}}/>
+      <Home />
+    </>,
   },
   {
     path: "/account-homeowner",
-    element: <MyAccount name='homeowner'/>,
+    element: 
+    <>
+    <Toolbar sx={{ height: 168}}/>
+    <MyAccount name='Homeowner'/>
+    </>,
   },
   {
     path: "/account-tenant",
-    element: <MyAccount name='tenant'/>,
+    element: 
+    <>
+    <Toolbar sx={{ height: 168}}/>
+    <MyAccount name='Tenant'/>
+    </>,
   },
   {
     path: "/login",
@@ -39,8 +51,6 @@ const router = createBrowserRouter([
 function App() {
   return (
     <RouterProvider router={router} />
-
-    
   );
 }
 

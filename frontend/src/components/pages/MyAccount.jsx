@@ -10,26 +10,31 @@ import {
     Typography,
     Stack,
     Paper,
-    TextField
+    TextField,
+    ImageListItem,
+    Divider
 } from '@mui/material';
 import {Link} from 'react-router-dom';
 import React, { useState } from "react";
-
+import RectangleOne from "../../assets/Rectangle1.svg"
+import AccountContent from "../../assets/AccountContent.svg"
+import NavBar from '../NavBar';
+import axios from 'axios'
 
 function MyAccount(props) {
     const ranges = [
         {
-            value: 'placeholder1',
-            key: 'placeholder1'
+            value: '18 - 23',
+            key: '18 - 23'
         },{
-            value: 'placeholder2',
-            key: 'placeholder2'
+            value: '23 - 28',
+            key: '23 - 28'
         },{
-            value: 'placeholder3',
-            key: 'placeholder3'
+            value: '28 - 33',
+            key: '28 - 33'
         },{
-            value: 'placeholder4',
-            key: 'placeholder4'
+            value: '33 - 38',
+            key: '33 - 38'
         }
     ];
 
@@ -74,25 +79,73 @@ function MyAccount(props) {
         setField_7('')
         // setTraitsCheckedState(new Array(personalityTraits.length).fill(false))
         // setInterestsCheckedState(new Array(interests.length).fill(false))
-
     };
 
     const handleSubmit = () => {
-
         // Submit here
-        console.log(field_1, field_2, field_3, field_4, field_5, field_6, field_7);
-        console.log(traitsCheckedState)
-        console.log(interestsCheckedState)
+        const accountFields = {
+            "username": field_1,
+            "first_name": field_2,
+            "email": field_3,
+            "phone": field_4,
+            "location": field_5,
+            "ageRange": field_6,
+            "about": field_7,
+            "personalityTraits": traitsCheckedState,
+            "interests": interestsCheckedState
+        }
 
+        // {
+        //     "first_name": "WEW",
+        //     "last_name": "WWEEEEEEE",
+        //     "email": "fgWEGEEWGWEG@gmail.com",
+        //     "date_of_birth": null,
+        //     "occupation": "typical enjoyer",
+        //     "age_range": "18-20",
+        //     "tell_us_about_yourself": "k",
+        //     "personal_traits": [{"trait": "happy"}, {"trait": "few"}, {"trait": "few"}],
+        //     "interests": [{"interest": "skateboarding"}]
+        // }
+        console.log(accountFields)
+
+        axios.get('/user', {
+            params: {
+              ID: 12345
+            }
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+          .finally(function () {
+            console.log('request executed')
+          });
 
         handleReset();
     };
 
+
+    const styleTextField = {
+        background: '#E3E7EF',
+        borderRadius: '25px',
+    };
+    const styleInput = {
+        style: {
+            color: '#737373FA',
+            borderRadius: '25px',
+            minWidth: '20vw'
+        }
+    }
     return (
+        <>
+        <NavBar></NavBar>
         <Grid container spacing={8}>
         <Grid item xs={12}>
-            <Typography variant='h2' padding={'3vw'} >
+            <Typography variant='h2' padding={'3vw'} fontWeight={700}>
                 <b>My Account</b>
+                <Divider variant='middle' sx={{width:'15vw', border: '2px solid #F83E7D' , opacity: 100}}/>
             </Typography>
         </Grid>
         <Grid item xs={3}>
@@ -112,19 +165,20 @@ function MyAccount(props) {
         </Grid>
         <Grid item xs={9}>
             <Grid item xs={9}>
-                <Paper sx={{backgroundColor: '#E3E7EF'}}>
-                    This is content
-                </Paper>
+                <ImageListItem>
+                    <img src={RectangleOne} />
+                </ImageListItem>
             </Grid>
             <Grid item xs={9}>
-                <Typography variant='h3' align='center'>
-                    Tenant
+                <Typography variant='h3' align='center' color='#F83E7D' fontWeight={700} marginTop={'2vmin'}>
+                    {props.name}
                 </Typography>
             </Grid>
             <Grid container xs={9} spacing={2}>
                 <Grid item xs={12}>
-                    <Typography variant='h4'>
+                    <Typography variant='h4' fontWeight={600} fontSize={40} marginTop={'2vmin'}>
                         Personal Details*
+                        <Divider variant='left' sx={{width:'7vw', border: '2px solid #F83E7D', opacity: 100, marginY: '2vmin'}}/>
                     </Typography>
                 </Grid>
 
@@ -133,31 +187,41 @@ function MyAccount(props) {
                     <TextField onChange={e => setField_1(e.target.value)} 
                         required
                         value={field_1} 
-                        placeholder="Username" />
+                        placeholder="Username" 
+                        style={styleTextField}
+                        InputProps={styleInput} />
                     </Grid>
                     <Grid item xs={12}>
                     <TextField onChange={e => setField_2(e.target.value)} 
                         required
                         value={field_2} 
-                        placeholder="Full Name" />
+                        placeholder="Full Name"
+                        style={styleTextField}
+                        InputProps={styleInput} />
                     </Grid>
                     <Grid item xs={12}>
                     <TextField onChange={e => setField_3(e.target.value)} 
                         required
                         value={field_3} 
-                        placeholder="Email" />
+                        placeholder="Email"
+                        style={styleTextField}
+                        InputProps={styleInput} />
                     </Grid>
                     <Grid item xs={12}>
                     <TextField onChange={e => setField_4(e.target.value)} 
                         required
                         value={field_4} 
-                        placeholder="Phone" />
+                        placeholder="Phone" 
+                        style={styleTextField}
+                        InputProps={styleInput} />
                     </Grid>
                     <Grid item xs={12}>
                     <TextField onChange={e => setField_5(e.target.value)} 
                         required
                         value={field_5} 
-                        placeholder="Location" />
+                        placeholder="Location" 
+                        style={styleTextField}
+                        InputProps={styleInput} />
                     </Grid>
                     <Grid item xs={12}>
                     <TextField onChange={e => setField_6(e.target.value)} 
@@ -165,7 +229,8 @@ function MyAccount(props) {
                         select
                         value={field_6} 
                         placeholder="Age Range" 
-                        helperText="please select your age range">
+                        style={styleTextField}
+                        InputProps={styleInput}>
 
                         {ranges.map((option) => (
                             <MenuItem key={option.value} value={option.value}>
@@ -176,13 +241,14 @@ function MyAccount(props) {
                     </Grid>
                 </Grid>
 
-                <Grid item xs={6} sx={{backgroundColor: '#E3E7EF', marginY: '4vh', minHeight: '40vh'}}>
-                    Content
+                <Grid item xs={6} sx={{minHeight: '40vh'}}>
+                    <img src={AccountContent}/>
                 </Grid>
 
                 <Grid container xs={12}>
-                    <Typography variant='h4'>
+                    <Typography variant='h4' fontWeight={600} fontSize={40} marginTop={'2vmin'}>
                         About Yourself
+                        <Divider variant='left' sx={{width:'7vw', border: '2px solid #F83E7D', opacity: 100, marginY: '2vmin'}}/>
                     </Typography>
                 </Grid>
 
@@ -191,42 +257,62 @@ function MyAccount(props) {
                         required
                         value={field_7}
                         fullWidth="50vw"
-                        placeholder="Provide a brief description about yourself..." />
+                        placeholder="Provide a brief description about yourself..."
+                        style={{
+                            background: '#E3E7EF',
+                            borderRadius: '10px',
+                        }}
+                        InputProps={{
+                            style: {
+                                color: '#737373FA',
+                                borderRadius: '10px',
+                                minWidth: '20vw',
+                                minHeight: '20vh',
+                            }
+                        }}/>
                 </Grid>
                 
-                <Grid item container>
+                <Grid item container marginTop={'2vmin'} spacing={1}>
                     <Grid item xs={6}>
                         <Grid container xs={12}>
-                        <Typography variant='h4'>
+                        <Typography variant='h4' fontWeight={600} fontSize={30}>
                             Personality Traits
+                            <Divider variant='left' sx={{width:'7vw', border: '2px solid #F83E7D', opacity: 100, marginY: '2vmin'}}/>
                         </Typography>
                         </Grid>
 
-                        <Grid item xs={6}>
+                        <Grid item xs={12}>
                         <FormGroup>
-                            {personalityTraits.map((name, index) => {
-                            return (
-                                <FormControlLabel control={<Checkbox  onChange={()=>handleTraitOnChange(index)}/>} label={name} />
-                            );
-                            })}
+                            <Grid item container xs={12}>
+                                {personalityTraits.map((name, index) => {
+                                return (
+                                    <FormControlLabel item control={
+                                        <Checkbox onChange={()=>handleTraitOnChange(index)} sx={{'&.Mui-checked': {color: '#F83E7D'}}}/>} 
+                                        label={<Typography width='8vw'>{name}</Typography>} />
+                                );
+                                })}
+                            </Grid>
                         </FormGroup>
                         </Grid>
                     </Grid>
                     <Grid item xs={6}>
                         <Grid container xs={12}>
-                        <Typography variant='h4'>
+                        <Typography variant='h4' fontWeight={600} fontSize={30}>
                             Interests
+                            <Divider variant='left' sx={{width:'7vw', border: '2px solid #F83E7D', opacity: 100, marginY: '2vmin'}}/>
                         </Typography>
                         </Grid>
 
-
-                        <Grid item xs={6}>
+                        <Grid item xs={12}>
                         <FormGroup>
-                            {interests.map((name, index) => {
-                            return (
-                                <FormControlLabel control={<Checkbox  onChange={()=>handleInterestOnChange(index)}/>} label={name} />
-                            );
-                            })}
+                            <Grid item container xs={12}>
+                                {interests.map((name, index) => {
+                                return (
+                                    <FormControlLabel item control={<Checkbox onChange={()=>handleTraitOnChange(index)}/>} 
+                                        label={<Typography width='8vw'>{name}</Typography>} />
+                                );
+                                })}
+                            </Grid>
                         </FormGroup>
                         </Grid>
                     </Grid>
@@ -234,11 +320,11 @@ function MyAccount(props) {
             </Grid>
 
 
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button backgroundColor='#F9568D' onClick={handleSubmit}>Submit</Button>
 
         </Grid>
         </Grid> 
-
+        </>
     );
   }
   
