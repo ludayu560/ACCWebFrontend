@@ -6,15 +6,15 @@ class PersonalTraitsSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalTrait
         fields = ['trait']
-    # def to_internal_value(self, data):
-    #     return data
+    def to_internal_value(self, data):
+        return data
 
 class InterestsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Interest
         fields = ['interest']
-    # def to_internal_value(self, data):
-    #     return data
+    def to_internal_value(self, data):
+        return data
 
 class ListingAccountSerializer(serializers.ModelSerializer):
     personal_traits = serializers.StringRelatedField(many=True)
@@ -24,8 +24,8 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         fields = ['id', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
                   'location', 'age_range', 'tell_us_about_yourself', 'created',
                   'personal_traits', 'interests']
-    # def to_internal_value(self, data):
-    #     return data
+    def to_internal_value(self, data):
+        return data
     def create(self, validated_data):
         interests_data = validated_data.pop('interests') 
         personal_traits_data = validated_data.pop('personal_traits')
