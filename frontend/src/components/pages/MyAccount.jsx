@@ -21,6 +21,10 @@ import AccountContent from "../../assets/AccountContent.svg"
 import NavBar from '../NavBar';
 import axios from 'axios'
 
+const api = axios.create({
+    baseURL: `http://127.0.0.1:8000/ListingAccount/`
+})
+
 function MyAccount(props) {
     const ranges = [
         {
@@ -86,17 +90,18 @@ function MyAccount(props) {
         const returnTraits = [];
         for (let i = 0; i <= personalityTraits.length; i++) {
             if (traitsCheckedState[i]) {
-                returnTraits.append(personalityTraits[i]);
+                returnTraits.push(personalityTraits[i]);
             }
         }
         const returnInterests = [];
         for (let i = 0; i <= interests.length; i++) {
             if (interestsCheckedState[i]) {
-                returnInterests.append(interests[i]);
+                returnInterests.push(interests[i]);
             }
         }
         // Submit here
         const accountFields = {
+            ID: 12,
             "username": field_1,
             "first_name": field_2,
             "email": field_3,
@@ -104,21 +109,16 @@ function MyAccount(props) {
             "location": field_5,
             "ageRange": field_6,
             "about": field_7,
-            "personalityTraits": returnTraits,
-            "interests": returnInterests
+            "personalityTraits": '',
+            "interests": '',
+            // "personalityTraits": returnTraits,
+            // "interests": returnInterests
+            'personal_traits': [],
+            'interests': []
         }
 
-        axios.get('http://127.0.0.1:8000/ListingAccount/', {
-            params: {
-                ID: 12,
-                first_name: field_2,
-                last_name: '',
-                email: field_3,
-                phone_number: field_4,
-                location: '',
-                age_range: '',
-                tell_us_about_yourself: field_7,
-            }
+        api.post('/', {
+            params: {accountFields}
           })
           .then(function (response) {
             console.log(response);
