@@ -26,7 +26,7 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import Mainbar from "../MainBar";
 import ECard from "../ECard";
 
-function MyAccountEvents(props) {
+function MyAccountSettings(props) {
   return (
     <>
       <Mainbar></Mainbar>
@@ -62,7 +62,7 @@ function MyAccountEvents(props) {
               variant="text"
               to={`/account-${props.name}`}
               size="large"
-              sx={{ color: "#F83E7D", padding: 3 }}
+              sx={{ color: "black", padding: 3 }}
             >
               Events
             </Button>
@@ -87,7 +87,7 @@ function MyAccountEvents(props) {
               variant="text"
               to={`/account-${props.name}`}
               size="large"
-              sx={{ color: "black", padding: 3 }}
+              sx={{ color: "#F83E7D", padding: 3 }}
             >
               Settings
             </Button>
@@ -117,11 +117,11 @@ function MyAccountEvents(props) {
             </Button>
           </Stack>
         </Grid>
-        <Grid container xs={9} px={6}>
+        <Grid container xs={9} px={6} bgcolor="gray">
           <Grid item spacing={5} xs={12}>
             <Grid item xs={12} align="center">
-              <Typography variant="h3" color="#000" fontWeight={700}>
-                Events I’m Attending
+              <Typography variant="h3" color="#000" fontWeight={700} mb={10}>
+                Account Settings
                 <Divider
                   variant="fullWidth"
                   sx={{
@@ -134,64 +134,11 @@ function MyAccountEvents(props) {
               </Typography>
             </Grid>
             <Grid container spacing={2} pb={5}>
-              <Grid item xs={6}>
-                <ECard></ECard>
+              <Grid item xs={12}>
+                <Typography variant="h4" color="#000" fontWeight={700}>Push Notifications</Typography>
               </Grid>
-              <Grid item xs={6}>
-                <ECard></ECard>
-              </Grid>
-              <Grid item xs={6}>
-                <ECard></ECard>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item spacing={5} xs={12}>
-            <Grid item xs={12} align="center">
-              <Typography variant="h3" color="#000" fontWeight={700}>
-                Events I’m Interested In
-                <Divider
-                  variant="fullWidth"
-                  sx={{
-                    m: 2,
-                    width: "18vw",
-                    border: "2px solid #F83E7D",
-                    opacity: 100,
-                  }}
-                />
-              </Typography>
-            </Grid>
-            <Grid container spacing={2} pb={5}>
-              <Grid item xs={6}>
-                <ECard></ECard>
-              </Grid>
-              <Grid item xs={6}>
-                <ECard></ECard>
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item spacing={5} xs={12}>
-            <Grid item xs={12} align="center">
-              <Typography variant="h3" color="#000" fontWeight={700}>
-                Events I’m Creating
-                <Divider
-                  variant="fullWidth"
-                  sx={{
-                    m: 2,
-                    width: "18vw",
-                    border: "2px solid #F83E7D",
-                    opacity: 100,
-                  }}
-                />
-              </Typography>
-            </Grid>
-            <Grid container spacing={2} pb={5}>
-              <Grid item xs={6}>
-                <ECard></ECard>
-              </Grid>
-              <Grid item xs={6}>
-                <ECard></ECard>
+              <Grid item xs={12}>
+                <Typography variant="h4" color="#000" fontWeight={700}>Privacy and Security</Typography>
               </Grid>
             </Grid>
           </Grid>
@@ -201,4 +148,4 @@ function MyAccountEvents(props) {
   );
 }
 
-export default MyAccountEvents;
+export default MyAccountSettings;

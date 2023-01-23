@@ -8,6 +8,7 @@ import NavBar from '../NavBar';
 import Footer from '../Footer';
 import { Toolbar } from '@mui/material';
 import MyAccountEvents from './MyAccountEvents';
+import MyAccountSettings from './MyAccountSettings';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       <Link to="/account-tenant">Tenant Account</Link><br />
       <Link to="/account-events">Events</Link><br />
       <Link to="/account-notifications">Notifications</Link><br />
+      <Link to="/account-settings">settings</Link><br />
       <Link to="/login">Login</Link><br />
       <Footer></Footer>
     </>,
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
     <>
     <Toolbar sx={{ height: 168}}/>
     <MyAccountEvents/>
+    </>,
+  },
+  {
+    path: "/account-settings",
+    element: 
+    <>
+    <Toolbar sx={{ height: 168}}/>
+    <MyAccountSettings/>
     </>,
   },
   {
