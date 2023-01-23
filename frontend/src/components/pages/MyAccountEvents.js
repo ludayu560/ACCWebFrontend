@@ -25,7 +25,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import Mainbar from "../MainBar";
 
-function MyAccountNotifications(props) {
+function MyAccountEvents(props) {
   return (
     <>
       <Mainbar></Mainbar>
@@ -59,10 +59,9 @@ function MyAccountNotifications(props) {
             </Button>
             <Button
               variant="text"
-              
               to={`/account-${props.name}`}
               size="large"
-              sx={{ color: "black", padding: 3}}
+              sx={{ color: "#F83E7D", padding: 3 }}
             >
               Events
             </Button>
@@ -70,7 +69,7 @@ function MyAccountNotifications(props) {
               variant="text"
               to={`/account-${props.name}`}
               size="large"
-              sx={{ color: "#F83E7D", padding: 3 }}
+              sx={{ color: "black", padding: 3 }}
               endIcon={<NotificationsActiveIcon />}
             >
               Notifications
@@ -117,138 +116,28 @@ function MyAccountNotifications(props) {
             </Button>
           </Stack>
         </Grid>
-        <Grid item xs={9} align="center">
-          <Grid item xs={9}>
+        <Grid item xs={9}>
+          <Grid item xs={12} align="center">
             <Typography variant="h3" color="#000" fontWeight={700}>
-              Notifications
+              Events I’m Attending
               <Divider
                 variant="fullWidth"
                 sx={{
-                  width: "15vw",
+                  m: 2,
+                  width: "18vw",
                   border: "2px solid #F83E7D",
                   opacity: 100,
                 }}
               />
             </Typography>
-            <Stack spacing={4} mt={4}>
-              <Box
-                bgcolor="white"
-                p={3}
-                sx={{
-                  border: 1,
-                  borderRadius: 5,
-                  textAlign: "left",
-                  boxShadow: 3,
-                }}
-              >
-                {" "}
-                Testing{" "}
-              </Box>
-              <Box
-                bgcolor="white"
-                p={3}
-                sx={{
-                  border: 1,
-                  borderRadius: 5,
-                  textAlign: "left",
-                  boxShadow: 3,
-                }}
-              >
-                {" "}
-                Testing{" "}
-              </Box>
-              <Box
-                bgcolor="white"
-                p={3}
-                sx={{
-                  border: 1,
-                  borderRadius: 5,
-                  textAlign: "left",
-                  boxShadow: 3,
-                }}
-              >
-                {" "}
-                Testing{" "}
-              </Box>
-              <Box
-                bgcolor="white"
-                p={3}
-                sx={{
-                  border: 1,
-                  borderRadius: 5,
-                  textAlign: "left",
-                  boxShadow: 3,
-                }}
-              >
-                {" "}
-                Testing{" "}
-              </Box>
-              <Box
-                bgcolor="white"
-                p={3}
-                sx={{
-                  border: 1,
-                  borderRadius: 5,
-                  textAlign: "left",
-                  boxShadow: 3,
-                }}
-              >
-                {" "}
-                Testing{" "}
-              </Box>
-              <Box
-                bgcolor="white"
-                p={3}
-                sx={{
-                  border: 1,
-                  borderRadius: 5,
-                  textAlign: "left",
-                  boxShadow: 3,
-                }}
-              >
-                {" "}
-                Testing{" "}
-              </Box>
-              <Box
-                bgcolor="white"
-                p={3}
-                sx={{
-                  border: 1,
-                  borderRadius: 5,
-                  textAlign: "left",
-                  boxShadow: 3,
-                }}
-              >
-                {" "}
-                Testing{" "}
-              </Box>
-              <Box
-                bgcolor="white"
-                p={3}
-                sx={{
-                  border: 1,
-                  borderRadius: 5,
-                  textAlign: "left",
-                  boxShadow: 3,
-                }}
-              >
-                {" "}
-                Testing{" "}
-              </Box>
-              <Box
-                bgcolor="white"
-                p={3}
-                sx={{
-                  border: 1,
-                  borderRadius: 5,
-                  textAlign: "left",
-                  boxShadow: 3,
-                }}
-              >
-                {" "}
-                Testing{" "}
-              </Box>
-            </Stack>
+          </Grid>
+          <Grid container spacing={5}>
+            <Grid item xs={2}>
+              <Box bgcolor="blue">Testing</Box>
+            </Grid>
+            <Grid item xs={2}>
+              <Box bgcolor="blue">Testing</Box>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
@@ -256,4 +145,4 @@ function MyAccountNotifications(props) {
   );
 }
 
-export default MyAccountNotifications;
+export default MyAccountEvents;
