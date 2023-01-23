@@ -2,6 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Routes, Route, Link, createBrowserRouter, RouterProvider} from 'react-router-dom';
 import Home from './Home'
 import MyAccount from './MyAccount';
+import MyAccountNotifications from './MyAccountNotifications';
 import Login from './Login';
 import NavBar from '../NavBar';
 import Footer from '../Footer';
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       <Link to="/home">Home</Link><br />
       <Link to="/account-homeowner">Homeowner Account</Link><br />
       <Link to="/account-tenant">Tenant Account</Link><br />
+      <Link to="/account-notifications">Notifications</Link><br />
       <Link to="/login">Login</Link><br />
       <Footer></Footer>
     </>,
@@ -23,11 +25,7 @@ const router = createBrowserRouter([
     path: "/home",
     element: 
     <>
-<<<<<<< HEAD:frontend/src/components/pages/App.js
-      <Toolbar sx={{ height: 168 }}/>
-=======
       <Toolbar sx={{ height: 168}}/>
->>>>>>> frontend-issues:frontend/src/components/pages/App.jsx
       <Home />
     </>,
   },
@@ -45,6 +43,14 @@ const router = createBrowserRouter([
     <>
     <Toolbar sx={{ height: 168}}/>
     <MyAccount name='Tenant'/>
+    </>,
+  },
+  {
+    path: "/account-notifications",
+    element: 
+    <>
+    <Toolbar sx={{ height: 168}}/>
+    <MyAccountNotifications/>
     </>,
   },
   {
