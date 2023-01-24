@@ -1,24 +1,24 @@
 from rest_framework import serializers
-from listingAccount.models import ListingAccount, PersonalTrait, Interest
+from listingAccount.models import ListingAccount
 
 
-class PersonalTraitsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PersonalTrait
-        fields = ['trait']
-    def to_internal_value(self, data):
-        return data
+# class PersonalTraitsSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = PersonalTrait
+#         fields = ['trait']
+#     def to_internal_value(self, data):
+#         return data
 
-class InterestsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Interest
-        fields = ['interest']
-    def to_internal_value(self, data):
-        return data
+# class InterestsSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Interest
+#         fields = ['interest']
+#     def to_internal_value(self, data):
+#         return data
 
 class ListingAccountSerializer(serializers.ModelSerializer):
-    personal_traits = serializers.StringRelatedField(many=True)
-    interests = serializers.StringRelatedField(many=True)
+    # personal_traits = serializers.StringRelatedField(many=True)
+    # interests = serializers.StringRelatedField(many=True)
     class Meta:
         model = ListingAccount
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
@@ -27,27 +27,27 @@ class ListingAccountSerializer(serializers.ModelSerializer):
     def to_internal_value(self, data):
         return data
 
-    def create(self, validated_data):
-        interests_data = validated_data.pop('interests') 
-        personal_traits_data = validated_data.pop('personal_traits')
-        listing_account = ListingAccount.objects.create(**validated_data)
-        for interest_data in interests_data:
-            Interest.objects.create(listing_account = listing_account, **interest_data)
-        for personal_trait_data in personal_traits_data:
-            PersonalTrait.objects.create(listing_account = listing_account, **personal_trait_data)
-        return listing_account
+    # def create(self, validated_data):
+    #     interests_data = validated_data.pop('interests') 
+    #     personal_traits_data = validated_data.pop('personal_traits')
+    #     listing_account = ListingAccount.objects.create(**validated_data)
+    #     for interest_data in interests_data:
+    #         Interest.objects.create(listing_account = listing_account, **interest_data)
+    #     for personal_trait_data in personal_traits_data:
+    #         PersonalTrait.objects.create(listing_account = listing_account, **personal_trait_data)
+    #     return listing_account
 
-    def update(self, instance, validated_data):
-        interests = validated_data.pop('interests') 
-        personal_traits = validated_data.pop('personal_traits')
+    # def update(self, instance, validated_data):
+    #     interests = validated_data.pop('interests') 
+    #     personal_traits = validated_data.pop('personal_traits')
 
-        instance.first_name = validated_data.get("first_name", instance.first_name)
-        instance.last_name = validated_data.get("last_name", instance.last_name)
-        instance.email = validated_data.get("email", instance.email)
-        instance.phone_number = validated_data.get("data_of_birth", instance.phone_number)
-        instance.location = validated_data.get("location", instance.location)
-        instance.age_range = validated_data.get("age_range", instance.age_range)
-        instance.tell_us_about_yourself = validated_data.get("tell_us_about_yourself", instance.tell_us_about_yourself)
+    #     instance.first_name = validated_data.get("first_name", instance.first_name)
+    #     instance.last_name = validated_data.get("last_name", instance.last_name)
+    #     instance.email = validated_data.get("email", instance.email)
+    #     instance.phone_number = validated_data.get("data_of_birth", instance.phone_number)
+    #     instance.location = validated_data.get("location", instance.location)
+    #     instance.age_range = validated_data.get("age_range", instance.age_range)
+    #     instance.tell_us_about_yourself = validated_data.get("tell_us_about_yourself", instance.tell_us_about_yourself)
 
         # # keep_personal_traits = []
         # # existing_ids = [c.id for c in instance.personal_traits]
@@ -57,6 +57,6 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         # #             c = PersonalTrait.objects.get(id=personal_trait["id"])
         # #             c.text = personal_trait.get()
 
-        instance.save()
-        return instance
+        # instance.save()
+        # return instance
 
