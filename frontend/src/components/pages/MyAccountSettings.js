@@ -13,6 +13,7 @@ import {
   TextField,
   ImageListItem,
   Divider,
+  Switch,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
@@ -25,8 +26,60 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import Mainbar from "../MainBar";
 import ECard from "../ECard";
+import { styled } from "@mui/material/styles";
 
 function MyAccountSettings(props) {
+  const IOSSwitch = styled((props) => (
+    <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+  ))(({ theme }) => ({
+    width: 42,
+    height: 26,
+    padding: 0,
+    '& .MuiSwitch-switchBase': {
+      padding: 0,
+      margin: 2,
+      transitionDuration: '300ms',
+      '&.Mui-checked': {
+        transform: 'translateX(16px)',
+        color: '#fff',
+        '& + .MuiSwitch-track': {
+          backgroundColor: theme.palette.mode === 'dark' ? '#F83E7D' : '#F83E7D',
+          opacity: 1,
+          border: 0,
+        },
+        '&.Mui-disabled + .MuiSwitch-track': {
+          opacity: 0.5,
+        },
+      },
+      '&.Mui-focusVisible .MuiSwitch-thumb': {
+        color: '#33cf4d',
+        border: '6px solid #fff',
+      },
+      '&.Mui-disabled .MuiSwitch-thumb': {
+        color:
+          theme.palette.mode === 'light'
+            ? theme.palette.grey[100]
+            : theme.palette.grey[600],
+      },
+      '&.Mui-disabled + .MuiSwitch-track': {
+        opacity: theme.palette.mode === 'light' ? 0.7 : 0.3,
+      },
+    },
+    '& .MuiSwitch-thumb': {
+      boxSizing: 'border-box',
+      width: 22,
+      height: 22,
+    },
+    '& .MuiSwitch-track': {
+      borderRadius: 26 / 2,
+      backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+      opacity: 1,
+      transition: theme.transitions.create(['background-color'], {
+        duration: 500,
+      }),
+    },
+  }));
+
   return (
     <>
       <Mainbar></Mainbar>
@@ -117,7 +170,7 @@ function MyAccountSettings(props) {
             </Button>
           </Stack>
         </Grid>
-        <Grid container xs={9} px={6} bgcolor="gray">
+        <Grid container xs={9} px={6} >
           <Grid item spacing={5} xs={12}>
             <Grid item xs={12} align="center">
               <Typography variant="h3" color="#000" fontWeight={700} mb={10}>
@@ -135,10 +188,34 @@ function MyAccountSettings(props) {
             </Grid>
             <Grid container spacing={2} pb={5}>
               <Grid item xs={12}>
-                <Typography variant="h4" color="#000" fontWeight={700}>Push Notifications</Typography>
+                <Typography variant="h4" color="#000" fontWeight={700}>
+                  Push Notifications
+                </Typography>
+                <Grid container spacing={2} py={5} pl={4}>
+                  <Grid item xs={10} >
+                    <Typography variant="h5">
+                      Property has been favourited
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={2} >
+                    <FormControlLabel
+                      control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                    />
+                  </Grid>
+                  <Grid item xs={10} >
+                    <Typography variant="h5">Event registration</Typography>
+                  </Grid>
+                  <Grid item xs={2} >
+                    <FormControlLabel
+                      control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                    />
+                  </Grid>
+                </Grid>
               </Grid>
               <Grid item xs={12}>
-                <Typography variant="h4" color="#000" fontWeight={700}>Privacy and Security</Typography>
+                <Typography variant="h4" color="#000" fontWeight={700}>
+                  Privacy and Security
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
