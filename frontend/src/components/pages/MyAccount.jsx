@@ -49,6 +49,8 @@ function MyAccount(props) {
     const [field_6, setField_6] = useState('')
     const [field_7, setField_7] = useState('')
 
+    const phoneRegex = new RegExp('/\d/g');
+
     const [traitsCheckedState, setTraitsCheckedState] = useState(
         new Array(personalityTraits.length).fill(false)
     );
@@ -95,23 +97,10 @@ function MyAccount(props) {
             "interests": interestsCheckedState
         }
 
-        // {
-        //     "first_name": "WEW",
-        //     "last_name": "WWEEEEEEE",
-        //     "email": "fgWEGEEWGWEG@gmail.com",
-        //     "date_of_birth": null,
-        //     "occupation": "typical enjoyer",
-        //     "age_range": "18-20",
-        //     "tell_us_about_yourself": "k",
-        //     "personal_traits": [{"trait": "happy"}, {"trait": "few"}, {"trait": "few"}],
-        //     "interests": [{"interest": "skateboarding"}]
-        // }
         console.log(accountFields)
 
         axios.get('/user', {
-            params: {
-              ID: 12345
-            }
+
           })
           .then(function (response) {
             console.log(response);
@@ -208,12 +197,16 @@ function MyAccount(props) {
                         InputProps={styleInput} />
                     </Grid>
                     <Grid item xs={12}>
-                    <TextField onChange={e => setField_4(e.target.value)} 
+
+                    <TextField onChange={e => {setField_4(e.target.value)}}
                         required
-                        value={field_4} 
+                        value={field_4}
                         placeholder="Phone" 
                         style={styleTextField}
-                        InputProps={styleInput} />
+                        InputProps={styleInput} 
+                        
+                        errorText=''
+                        />
                     </Grid>
                     <Grid item xs={12}>
                     <TextField onChange={e => setField_5(e.target.value)} 
