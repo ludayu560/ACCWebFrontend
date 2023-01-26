@@ -25,6 +25,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import Mainbar from "../MainBar";
 import ECard from "../ECard";
+import SideNav from "../SideNav";
 
 function MyAccountEvents(props) {
   return (
@@ -41,81 +42,7 @@ function MyAccountEvents(props) {
           </Typography>
         </Grid>
         <Grid item xs={3}>
-          <Stack
-            marginLeft={10}
-            sx={{
-              padding: "1vw",
-              border: 1,
-              borderRadius: "25px",
-              boxShadow: 3,
-            }}
-          >
-            <Button
-              variant="text"
-              to={`/account-${props.name}`}
-              size="large"
-              sx={{ color: "black", padding: 3 }}
-            >
-              My Profile
-            </Button>
-            <Button
-              variant="text"
-              to={`/account-${props.name}`}
-              size="large"
-              sx={{ color: "#F83E7D", padding: 3 }}
-            >
-              Events
-            </Button>
-            <Button
-              variant="text"
-              to={`/account-${props.name}`}
-              size="large"
-              sx={{ color: "black", padding: 3 }}
-              endIcon={<NotificationsActiveIcon />}
-            >
-              Notifications
-            </Button>
-            <Button
-              variant="text"
-              to={`/account-${props.name}`}
-              size="large"
-              sx={{ color: "black", padding: 3 }}
-            >
-              Favourites
-            </Button>
-            <Button
-              variant="text"
-              to={`/account-${props.name}`}
-              size="large"
-              sx={{ color: "black", padding: 3 }}
-            >
-              Settings
-            </Button>
-            <Button
-              variant="text"
-              to={`/account-${props.name}`}
-              size="large"
-              sx={{ color: "black", padding: 3 }}
-            >
-              Payment
-            </Button>
-            <Button
-              variant="text"
-              to={`/account-${props.name}`}
-              size="large"
-              sx={{ color: "black", padding: 3 }}
-            >
-              Help
-            </Button>
-            <Button
-              variant="text"
-              to={`/account-${props.name}`}
-              size="large"
-              sx={{ color: "black", padding: 3 }}
-            >
-              Logout
-            </Button>
-          </Stack>
+          <SideNav></SideNav>
         </Grid>
         <Grid container xs={9} px={6}>
           <Grid item spacing={5} xs={12}>
