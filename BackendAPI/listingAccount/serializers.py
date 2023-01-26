@@ -5,22 +5,16 @@ class PersonalTraitsSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalTrait
         fields = ['trait']
-    # def to_internal_value(self, data):
-    #     return data
 
 class InterestsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Interest
         fields = ['interest']
-    # def to_internal_value(self, data):
-    #     return data
 
 class FavoritesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorites
         fields = ['favorite']
-    def to_internal_value(self, data):
-        return data
 
 class ListingAccountSerializer(serializers.ModelSerializer):
     personal_traits = serializers.StringRelatedField(many=True)
@@ -29,8 +23,9 @@ class ListingAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = ListingAccount
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
-                  'location', 'age_range', 'tell_us_about_yourself', 'created',
-                  'personal_traits', 'interests', 'favorites']
+                  'location', 'age_range', 'tell_us_about_yourself', 'profile_picture', 'banner_picture', 
+                  'display_picture_one', 'display_picture_two', 'display_picture_three', 'display_picture_four',
+                  'created', 'personal_traits', 'interests', 'favorites']
     def to_internal_value(self, data):
         return data
 
@@ -56,17 +51,27 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         instance.first_name = validated_data.get("first_name", instance.first_name)
         instance.last_name = validated_data.get("last_name", instance.last_name)
         instance.email = validated_data.get("email", instance.email)
-        instance.phone_number = validated_data.get("data_of_birth", instance.phone_number)
+        instance.phone_number = validated_data.get("phone_number", instance.phone_number)
+        instance.date_of_birth = validated_data.get("date_of_birth", instance.date_of_birth)
         instance.location = validated_data.get("location", instance.location)
         instance.age_range = validated_data.get("age_range", instance.age_range)
         instance.tell_us_about_yourself = validated_data.get("tell_us_about_yourself", instance.tell_us_about_yourself)
+        instance.profile_picture = validated_data.get("profile_picture", instance.profile_picture)
+        instance.banner_picture = validated_data.get("banner_picture", instance.banner_picture)
+        instance.display_picture_one = validated_data.get("display_picture_one", instance.display_picture_one)
+        instance.display_picture_two = validated_data.get("display_picture_two", instance.display_picture_two)
+        instance.display_picture_three = validated_data.get("display_picture_three", instance.display_picture_three)
+        instance.display_picture_four = validated_data.get("display_picture_four", instance.display_picture_four)
         instance.interests.set("")
         instance.personal_traits.set("")
+        instance.favorites.set("")
         
         for interest_data in interests:
             Interest.objects.create(listing_account = instance, **interest_data)
         for personal_trait_data in personal_traits:
             PersonalTrait.objects.create(listing_account = instance, **personal_trait_data)
+        for favorite_data in favorites:
+            Favorites.objects.create(listing_account = instance, **favorite_data)
 
         instance.save()
         return instance

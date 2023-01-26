@@ -11,12 +11,12 @@ class ListingAccount(models.Model):
     location = models.CharField(max_length=30, null=True)
     age_range = models.CharField(max_length=7, null=True)
     tell_us_about_yourself = models.TextField(null=True)
-    # profile_picture = models.ImageField(null=True)
-    # banner_picture = models.ImageField(null=True)
-    # display_picture_one = models.ImageField(null=True)
-    # display_picture_two = models.ImageField(null=True)
-    # display_picture_three = models.ImageField(null=True)
-    # display_picture_four = models.ImageField(null=True)
+    profile_picture = models.ImageField(null=True)
+    banner_picture = models.ImageField(null=True)
+    display_picture_one = models.ImageField(null=True)
+    display_picture_two = models.ImageField(null=True)
+    display_picture_three = models.ImageField(null=True)
+    display_picture_four = models.ImageField(null=True)
     created = models.DateTimeField(auto_now_add=True) # unsure if needed
 
 class PersonalTrait(models.Model):
