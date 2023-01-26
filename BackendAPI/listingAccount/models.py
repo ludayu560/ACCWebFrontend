@@ -24,5 +24,5 @@ class Interest(models.Model):
     interest = models.CharField(max_length=200, null=True)
     listing_account = models.ForeignKey(ListingAccount, related_name='interests', on_delete=models.CASCADE, null=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.interest}"

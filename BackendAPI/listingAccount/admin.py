@@ -1,4 +1,5 @@
 from django.contrib import admin
+# from listingAccount.models import ListingAccount
 from listingAccount.models import ListingAccount, PersonalTrait, Interest
 # Register your models here.
 
