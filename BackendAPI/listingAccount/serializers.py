@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from listingAccount.models import ListingAccount, PersonalTrait, Interest
-
+from listingAccount.models import ListingAccount, PersonalTrait, Interest, Favorites
 
 class PersonalTraitsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,30 +15,42 @@ class InterestsSerializer(serializers.ModelSerializer):
     def to_internal_value(self, data):
         return data
 
+class FavoritesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorites
+        fields = ['favorite']
+    def to_internal_value(self, data):
+        return data
+
 class ListingAccountSerializer(serializers.ModelSerializer):
     personal_traits = serializers.StringRelatedField(many=True)
     interests = serializers.StringRelatedField(many=True)
+    favorites = serializers.StringRelatedField(many=True)
     class Meta:
         model = ListingAccount
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
                   'location', 'age_range', 'tell_us_about_yourself', 'created',
-                  'personal_traits', 'interests']
+                  'personal_traits', 'interests', 'favorites']
     def to_internal_value(self, data):
         return data
 
     def create(self, validated_data):
         interests_data = validated_data.pop('interests') 
         personal_traits_data = validated_data.pop('personal_traits')
+        favorites_data = validated_data.pop('favorites')
         listing_account = ListingAccount.objects.create(**validated_data)
         for interest_data in interests_data:
             Interest.objects.create(listing_account = listing_account, **interest_data)
         for personal_trait_data in personal_traits_data:
             PersonalTrait.objects.create(listing_account = listing_account, **personal_trait_data)
+        for favorite_data in favorites_data:
+            Favorites.objects.create(listing_account=listing_account, **favorite_data)
         return listing_account
 
     def update(self, instance, validated_data):
         interests = validated_data.pop('interests') 
         personal_traits = validated_data.pop('personal_traits')
+        favorites = validated_data.pop('favorites')
 
         instance.first_name = validated_data.get("first_name", instance.first_name)
         instance.last_name = validated_data.get("last_name", instance.last_name)
