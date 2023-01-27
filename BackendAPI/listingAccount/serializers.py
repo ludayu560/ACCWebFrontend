@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from listingAccount.models import ListingAccount, PersonalTrait, Interest
+from notifications.serializers import NotificationsSerializer
+from notifications.models import Notifications
 
 
 class PersonalTraitsSerializer(serializers.ModelSerializer):
@@ -19,11 +21,12 @@ class InterestsSerializer(serializers.ModelSerializer):
 class ListingAccountSerializer(serializers.ModelSerializer):
     personal_traits = serializers.StringRelatedField(many=True)
     interests = serializers.StringRelatedField(many=True)
+    notifications = NotificationsSerializer(many=True)
     class Meta:
         model = ListingAccount
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
                   'location', 'age_range', 'tell_us_about_yourself', 'created',
-                  'personal_traits', 'interests']
+                  'personal_traits', 'interests', 'notifications']
 
     def to_internal_value(self, data):
         return data
@@ -31,16 +34,20 @@ class ListingAccountSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         interests_data = validated_data.pop('interests') 
         personal_traits_data = validated_data.pop('personal_traits')
+        notifications = validated_data.pop('notifications')
         listing_account = ListingAccount.objects.create(**validated_data)
         for interest_data in interests_data:
             Interest.objects.create(listing_account = listing_account, **interest_data)
         for personal_trait_data in personal_traits_data:
             PersonalTrait.objects.create(listing_account = listing_account, **personal_trait_data)
+        for notification_data in notifications:
+            Notifications.objects.create(listing_account = listing_account, **notification_data)
         return listing_account
 
     def update(self, instance, validated_data):
         interests = validated_data.pop('interests') 
         personal_traits = validated_data.pop('personal_traits')
+        notifications = validated_data.pop('notifications')
 
         instance.username = validated_data.get("username", instance.username)
         instance.first_name = validated_data.get("first_name", instance.first_name)
@@ -52,11 +59,14 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         instance.tell_us_about_yourself = validated_data.get("tell_us_about_yourself", instance.tell_us_about_yourself)
         instance.interests.set("")
         instance.personal_traits.set("")
+        instance.notifications.set("")
         
         for interest_data in interests:
             Interest.objects.create(listing_account = instance, **interest_data)
         for personal_trait_data in personal_traits:
             PersonalTrait.objects.create(listing_account = instance, **personal_trait_data)
+        for notifications_data in notifications:
+            Notifications.objects.create(listing_account = instance, **notifications_data)
 
         instance.save()
         return instance
