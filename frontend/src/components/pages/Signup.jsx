@@ -1,8 +1,30 @@
-import * as React from 'react';
-import {Box, Grid, Typography} from '@mui/material';
+import React, { useState } from "react";
+import {Box, Grid, Typography, TextField, Button} from '@mui/material';
 import { borderRadius } from '@mui/system';
 import { grey, pink, red } from '@mui/material/colors';
+import Page1 from "./Signup1";
+
 function Signup(props) {
+    // Styles
+    const styleTextField = {
+        width: '20vw',
+        borderRadius: '100vmax',
+        border: '3px solid #73737380',
+    };
+    const styleInput = {
+        style: {
+            borderRadius: '25px',  
+        },
+    }
+
+    // React Hooks
+    // const [fName, setFName] = useState('')
+    // const [lName, setLName] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [confirmEmail, setCEmail] = useState('')
+    // const [password, setPassword] = useState('')
+    // const [confirmPassword, setCPassword] = useState('')
+    // const [username, setUsername] = useState('')
 
 
     // dynamically assigns the login / signup component. Placeholder components for now
@@ -10,41 +32,6 @@ function Signup(props) {
         <Grid item xs={4} backgroundColor={'pink'} height={'80vh'}/>: 
         <Grid item xs={4} backgroundColor={'#93C6E7'} height={'80vh'}/>;
 
-    const progressBarComponent = () => {
-        if (props.progress === "1") {
-            return <Grid item container xs={8}>
-                <Grid item xs={12} backgroundColor={'#604258'} height={'30vh'}></Grid>
-                <Grid item xs={2} height={'50vh'}> </Grid>
-                <Grid item container xs={8}> 
-                    <Grid item xs={12}> 
-                        <Typography variant='h4'>Sign Up</Typography>
-                    </Grid>
-
-                </Grid>
-            </Grid>
-        } else if (props.progress === "2") {
-            return <Grid item container xs={8}>
-                <Grid item xs={12} backgroundColor={'#504258'} height={'30vh'}></Grid>
-
-                <Grid item xs={12}> 
-                    Select Role
-                    <Grid item container xs={12}>
-
-                    </Grid>
-                </Grid>
-            </Grid>
-        } else {
-            return <Grid item container xs={8}>
-                <Grid item xs={12} backgroundColor={'#404258'} height={'30vh'}></Grid>
-                <Grid item xs={12}> 
-                    Finish Profile
-                    <Grid item container xs={12}>
-
-                    </Grid>
-                </Grid>
-            </Grid>
-        }
-    }
 
     return (
         <div style={{width: '100vw', height:'100vh', background:'#000000'}}>
@@ -55,8 +42,8 @@ function Signup(props) {
                 sx={{ backgroundColor: '#ffffff'}}>
 
                 <Grid container>
-                    {leftPanelComponent}
-                    {progressBarComponent()}
+                    <Page1></Page1>
+
                 </Grid>
             </Box>
         </div>
