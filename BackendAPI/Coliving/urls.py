@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('listingAccount.urls')),    
     path('', include('events.urls')),
-    path('', include('propertyListing.urls'))
+    path('', include('propertyListing.urls')),
+    path('', include('notifications.urls'))
 ]
