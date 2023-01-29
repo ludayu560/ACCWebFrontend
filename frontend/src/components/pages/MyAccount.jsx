@@ -21,6 +21,10 @@ import AccountContent from "../../assets/AccountContent.svg"
 import NavBar from '../NavBar';
 import axios from 'axios'
 
+const api = axios.create({
+    baseURL: `http://127.0.0.1:8000/ListingAccount/`
+})
+
 function MyAccount(props) {
     const ranges = [
         {
@@ -48,8 +52,6 @@ function MyAccount(props) {
     const [field_5, setField_5] = useState('')
     const [field_6, setField_6] = useState('')
     const [field_7, setField_7] = useState('')
-
-    const phoneRegex = new RegExp('/\d/g');
 
     const [traitsCheckedState, setTraitsCheckedState] = useState(
         new Array(personalityTraits.length).fill(false)
@@ -84,24 +86,37 @@ function MyAccount(props) {
     };
 
     const handleSubmit = () => {
+
+        const returnTraits = [];
+        for (let i = 0; i <= personalityTraits.length; i++) {
+            if (traitsCheckedState[i]) {
+                returnTraits.push(personalityTraits[i]);
+            }
+        }
+        const returnInterests = [];
+        for (let i = 0; i <= interests.length; i++) {
+            if (interestsCheckedState[i]) {
+                returnInterests.push(interests[i]);
+            }
+        }
         // Submit here
         const accountFields = {
-            "username": field_1,
-            "first_name": field_2,
-            "email": field_3,
-            "phone": field_4,
-            "location": field_5,
-            "ageRange": field_6,
-            "about": field_7,
-            "personalityTraits": traitsCheckedState,
-            "interests": interestsCheckedState
+            "username": "",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "phone_number": "",
+            "date_of_birth": null,
+            "location": "",
+            "age_range": "",
+            "tell_us_about_yourself": "",
+            "personal_traits": [],
+            "interests": []
         }
 
-        console.log(accountFields)
-
-        axios.get('/user', {
-
-          })
+        api.delete('/', {
+            id: 54
+        })
           .then(function (response) {
             console.log(response);
           })
@@ -111,7 +126,7 @@ function MyAccount(props) {
           .finally(function () {
             console.log('request executed')
           });
-
+          
         handleReset();
     };
 
@@ -197,16 +212,12 @@ function MyAccount(props) {
                         InputProps={styleInput} />
                     </Grid>
                     <Grid item xs={12}>
-
-                    <TextField onChange={e => {setField_4(e.target.value)}}
+                    <TextField onChange={e => setField_4(e.target.value)} 
                         required
-                        value={field_4}
+                        value={field_4} 
                         placeholder="Phone" 
                         style={styleTextField}
-                        InputProps={styleInput} 
-                        
-                        errorText=''
-                        />
+                        InputProps={styleInput} />
                     </Grid>
                     <Grid item xs={12}>
                     <TextField onChange={e => setField_5(e.target.value)} 

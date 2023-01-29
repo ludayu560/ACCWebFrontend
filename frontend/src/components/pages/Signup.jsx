@@ -3,8 +3,11 @@ import {Box, Grid, Typography, TextField, Button} from '@mui/material';
 import { borderRadius } from '@mui/system';
 import { grey, pink, red } from '@mui/material/colors';
 import Page1 from "./Signup1";
+import Page2 from "./Signup2";
+import Page3 from "./Signup3";
 
 function Signup(props) {
+    const { nav } = props
     // Styles
     const styleTextField = {
         width: '20vw',
@@ -32,17 +35,18 @@ function Signup(props) {
         <Grid item xs={4} backgroundColor={'pink'} height={'80vh'}/>: 
         <Grid item xs={4} backgroundColor={'#93C6E7'} height={'80vh'}/>;
 
-
     return (
         <div style={{width: '100vw', height:'100vh', background:'#000000'}}>
             <Box 
                 position={'absolute'} borderRadius={'10vmin'}
-                marginX={'5vw'} marginY={'10vh'} 
-                width={'90vw'} height={'80vh'} 
+                marginX={'5vw'} marginY={'5vh'} 
+                width={'90vw'} height={'90vh'} 
                 sx={{ backgroundColor: '#ffffff'}}>
 
                 <Grid container>
-                    <Page1></Page1>
+                    {nav === '1' && <Page1></Page1>}
+                    {nav === '2' && <Page2></Page2>}
+                    {nav === '3' && <Page3></Page3>}
 
                 </Grid>
             </Box>
