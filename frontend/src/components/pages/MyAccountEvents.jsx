@@ -24,7 +24,7 @@ import { borderRadius } from "@mui/system";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import Mainbar from "../MainBar";
-import ECard from "../ECard";
+import ECard from "../components/ECard";
 import SideNav from "../SideNav";
 
 function MyAccountEvents(props) {
