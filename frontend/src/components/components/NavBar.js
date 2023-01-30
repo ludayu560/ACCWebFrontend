@@ -10,7 +10,7 @@ import {
   Slide,
   useScrollTrigger,
 } from "@mui/material";
-import AishaLogo from "../assets/Final Logo Transparent 3.svg";
+import AishaLogo from "../../assets/Final Logo Transparent 3.svg";
 
 // import "./Navbar.css";
 

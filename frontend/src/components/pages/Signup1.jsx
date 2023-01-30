@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Grid, Typography, FormControlLabel, Checkbox, Link} from "@mui/material";
 import { Stack } from "@mui/system";
 
-import SignupProgressionIcon from "../ludaworking/SignupProgressIcon";
-import StyledTextField from "../ludaworking/StyledTextField";
-import SignupAisha from "../ludaworking/SignupAishaLogo";
-import StyledButton from "../ludaworking/StyledButton";
 
+import SignupAisha from "../components/SignupAishaLogo";
+import StyledButton from "../components/StyledButton";
+import StyledTextField from "../components/StyledTextField";
+import SignupProgressionIcon from "../components/SignupProgressIcon";
 function Page1() {
     return (
     <>

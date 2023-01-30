@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Grid, Typography} from "@mui/material";
 import { Stack } from "@mui/system";
 
-import SignupProgressionIcon from "../ludaworking/SignupProgressIcon";
-import StyledButton from "../ludaworking/StyledButton";
+import StyledButton from "../components/StyledButton";
+import SignupProgressionIcon from "../components/SignupProgressIcon";
 
 function Page2() {
 

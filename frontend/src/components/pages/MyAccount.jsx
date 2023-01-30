@@ -18,7 +18,7 @@ import {Link} from 'react-router-dom';
 import React, { useState } from "react";
 import RectangleOne from "../../assets/Rectangle1.svg"
 import AccountContent from "../../assets/AccountContent.svg"
-import NavBar from '../NavBar';
+import NavBar from '../components/NavBar';
 import axios from 'axios'
 
 const api = axios.create({
