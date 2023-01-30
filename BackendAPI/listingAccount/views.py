@@ -1,6 +1,6 @@
 # Create your views here.
-from .models import ListingAccount, Interest, PersonalTrait
-from .serializers import ListingAccountSerializer, InterestsSerializer, PersonalTraitsSerializer
+from .models import ListingAccount, Interest, PersonalTrait, Favorites
+from .serializers import ListingAccountSerializer, InterestsSerializer, PersonalTraitsSerializer, FavoritesSerializer
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -16,6 +16,10 @@ class InterestsViewSet(viewsets.ModelViewSet):
 class PersonalTraitsViewSet(viewsets.ModelViewSet):
     queryset = PersonalTrait.objects.all()
     serializer_class = PersonalTraitsSerializer
+
+class FavoritesViewSet(viewsets.ModelViewSet):
+    queryset = Favorites.objects.all()
+    serializer_class = FavoritesSerializer
 
 class ListAccountGetView(APIView):
     def get(self, request, id):

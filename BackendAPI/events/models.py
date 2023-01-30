@@ -8,3 +8,5 @@ class Events(models.Model):
     event_date_time = models.DateTimeField(max_length=50, null=True)
     event_location = models.CharField(max_length=50, null=True)
     event_description = models.TextField(null=True)
+    event_interested = models.PositiveIntegerField(null=True)
+    event_going = models.PositiveIntegerField(null=True)

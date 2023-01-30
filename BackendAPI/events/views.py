@@ -1,4 +1,3 @@
-# Create your views here.
 from .models import Events
 from .serializers import EventsSerializer
 from rest_framework import viewsets

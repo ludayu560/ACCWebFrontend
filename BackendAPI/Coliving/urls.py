@@ -20,5 +20,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('listingAccount.urls')),    
-    path('', include('events.urls'))
+    path('', include('events.urls')),
+    path('', include('propertyListing.urls')),
+    path('', include('notifications.urls'))
 ]
