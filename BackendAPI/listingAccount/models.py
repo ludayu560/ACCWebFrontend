@@ -34,7 +34,7 @@ class Interest(models.Model):
         return f"{self.interest}"
 
 class Favorites(models.Model):
-    favorite = models.CharField(max_length=100, null=True)
+    favorite = models.PositiveIntegerField(null=True)
     listing_account = models.ForeignKey(ListingAccount, related_name='favorites', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
