@@ -12,7 +12,7 @@ import {
   Avatar,
   IconButton,
 } from "@mui/material";
-import Logo from "../assets/Aisha Logo.svg";
+import Logo from "../../assets/Aisha Logo.svg";
 
 function Mainbar() {
   const trigger = useScrollTrigger();
