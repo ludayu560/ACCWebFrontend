@@ -21,6 +21,10 @@ import AccountContent from "../../assets/AccountContent.svg"
 import NavBar from '../NavBar';
 import axios from 'axios'
 
+const api = axios.create({
+    baseURL: `http://127.0.0.1:8000/ListingAccount/`
+})
+
 function MyAccount(props) {
     const ranges = [
         {
@@ -82,37 +86,37 @@ function MyAccount(props) {
     };
 
     const handleSubmit = () => {
+
+        const returnTraits = [];
+        for (let i = 0; i <= personalityTraits.length; i++) {
+            if (traitsCheckedState[i]) {
+                returnTraits.push(personalityTraits[i]);
+            }
+        }
+        const returnInterests = [];
+        for (let i = 0; i <= interests.length; i++) {
+            if (interestsCheckedState[i]) {
+                returnInterests.push(interests[i]);
+            }
+        }
         // Submit here
         const accountFields = {
-            "username": field_1,
-            "first_name": field_2,
-            "email": field_3,
-            "phone": field_4,
-            "location": field_5,
-            "ageRange": field_6,
-            "about": field_7,
-            "personalityTraits": traitsCheckedState,
-            "interests": interestsCheckedState
+            "username": "",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "phone_number": "",
+            "date_of_birth": null,
+            "location": "",
+            "age_range": "",
+            "tell_us_about_yourself": "",
+            "personal_traits": [],
+            "interests": []
         }
 
-        // {
-        //     "first_name": "WEW",
-        //     "last_name": "WWEEEEEEE",
-        //     "email": "fgWEGEEWGWEG@gmail.com",
-        //     "date_of_birth": null,
-        //     "occupation": "typical enjoyer",
-        //     "age_range": "18-20",
-        //     "tell_us_about_yourself": "k",
-        //     "personal_traits": [{"trait": "happy"}, {"trait": "few"}, {"trait": "few"}],
-        //     "interests": [{"interest": "skateboarding"}]
-        // }
-        console.log(accountFields)
-
-        axios.get('/user', {
-            params: {
-              ID: 12345
-            }
-          })
+        api.delete('/', {
+            id: 54
+        })
           .then(function (response) {
             console.log(response);
           })
@@ -122,7 +126,7 @@ function MyAccount(props) {
           .finally(function () {
             console.log('request executed')
           });
-
+          
         handleReset();
     };
 
