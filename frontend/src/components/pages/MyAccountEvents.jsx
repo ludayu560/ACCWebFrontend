@@ -13,19 +13,21 @@ import {
   TextField,
   ImageListItem,
   Divider,
+  Switch,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import RectangleOne from "../../assets/Rectangle1.svg";
 import AccountContent from "../../assets/AccountContent.svg";
-import NavBar from "../NavBar";
+import NavBar from "../components/NavBar";
 import axios from "axios";
 import { borderRadius } from "@mui/system";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import Mainbar from "../MainBar";
+import Mainbar from "../components/MainBar";
 import ECard from "../components/ECard";
-import SideNav from "../SideNav";
+import { styled } from "@mui/material/styles";
+import SideNav from "../components/SideNav";
 
 function MyAccountEvents(props) {
   return (
