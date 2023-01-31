@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from listingAccount.models import ListingAccount, PersonalTrait, Interest, Favorites, AccountEvents
+from listingAccount.models import ListingAccount, PersonalTrait, Interest
+from favorites.serializers import FavoritesSerializer
+from favorites.models import Favorites
 from notifications.serializers import NotificationsSerializer
 from notifications.models import Notifications
 
@@ -14,15 +16,15 @@ class InterestsSerializer(serializers.ModelSerializer):
         model = Interest
         fields = ['interest']
 
-class FavoritesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Favorites
-        fields = ['favorite']
+# class FavoritesSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Favorites
+#         fields = ['favorite']
 
 class ListingAccountSerializer(serializers.ModelSerializer):
     personal_traits = serializers.StringRelatedField(many=True)
     interests = serializers.StringRelatedField(many=True)
-    favorites = serializers.StringRelatedField(many=True)
+    favorites = FavoritesSerializer(many=True)
     accountEvents = serializers.StringRelatedField(many=True)
     notifications = NotificationsSerializer(many=True)
     class Meta:
