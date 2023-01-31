@@ -10,6 +10,7 @@ import { Toolbar } from '@mui/material';
 import Signup from './Signup';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Login from './Login';
+import MyAccountSubscribe from './MyAccountSubscribe';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       <Link to="/account-notifications">Notifications</Link><br />
       <Link to="/account-settings">settings</Link><br />
       <Link to="/account-billing">billing</Link><br />
+      <Link to="/account-subscribe">subscribe</Link><br />
       <Link to="/account-help">help</Link><br />
       <Link to="/signup">Signup</Link><br />
 
@@ -82,6 +84,14 @@ const router = createBrowserRouter([
     <>
     <Toolbar sx={{ height: 168}}/>
     <MyAccountBilling/>
+    </>,
+  },
+  {
+    path: "/account-subscribe",
+    element: 
+    <>
+    <Toolbar sx={{ height: 168}}/>
+    <MyAccountSubscribe/>
     </>,
   },
   {
