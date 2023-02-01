@@ -4,6 +4,8 @@ from favorites.serializers import FavoritesSerializer
 from favorites.models import Favorites
 from notifications.serializers import NotificationsSerializer
 from notifications.models import Notifications
+from accountEvents.models import AccountEvents
+from accountEvents.serializers import AccountEventsSerializer
 
 
 class PersonalTraitsSerializer(serializers.ModelSerializer):
@@ -15,11 +17,6 @@ class InterestsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Interest
         fields = ['interest']
-
-# class FavoritesSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Favorites
-#         fields = ['favorite']
 
 class ListingAccountSerializer(serializers.ModelSerializer):
     personal_traits = serializers.StringRelatedField(many=True)

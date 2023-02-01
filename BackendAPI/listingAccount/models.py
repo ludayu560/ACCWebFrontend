@@ -31,18 +31,4 @@ class Interest(models.Model):
 
     def __str__(self):
         return f"{self.interest}"
-
-# class Favorites(models.Model):
-#     favorite = models.PositiveIntegerField(null=True)
-#     listing_account = models.ForeignKey(ListingAccount, related_name='favorites', on_delete=models.CASCADE, null=True)
-
-#     def __str__(self):
-#         return f"{self.favorite}"
-
-class AccountEvents(models.Model):
-    accountEvents = models.PositiveIntegerField(null=True)
-    listing_account = models.ForeignKey(ListingAccount, related_name='accountEvents', on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return f"{self.accountEvents}"
         

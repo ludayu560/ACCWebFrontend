@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import AccountEvents
+from accountEvents.models import AccountEvents
 
 class AccountEventsSerializer(serializers.ModelSerializer):
     class Meta:

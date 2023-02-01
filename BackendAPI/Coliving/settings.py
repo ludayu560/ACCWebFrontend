@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'listingAccount',
     'events',
     'propertyListing',
-    'notifications'
+    'notifications',
+    'accountEvents',
+    'favorites'
 ]
 
 MIDDLEWARE = [
