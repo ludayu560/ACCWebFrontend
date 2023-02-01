@@ -2,21 +2,40 @@ import React, { useState } from "react";
 import { Grid, Typography, FormControlLabel, Checkbox, Link} from "@mui/material";
 import { Stack } from "@mui/system";
 
-
 import SignupAisha from "../components/SignupAishaLogo";
 import StyledButton from "../components/StyledButton";
 import StyledTextField from "../components/StyledTextField";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
-function Page1() {
+function Page1(props) {
+    const { setPage, returnHook } = props
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
+    const [newsConsent, setNewsConsent] = useState(false);
+
+    const signupValuesOne = {
+        firstName: firstName,
+        lastName : lastName,
+        username : username,
+        email : email,
+        password : password,
+        passwordConfirm : passwordConfirm,
+        newsConsent : newsConsent
+    }
+
+    const onClickNextButton = () => {
+        // send data from all fields as a JSON
+        returnHook(signupValuesOne)
+
+        // go next
+        setPage(2)
+    }
+
+
     return (
-    <>
-        <style>
-            {
-                `.a:hover, .a:active, .a:link, .a:visited {
-                    color: '#F83E7D'
-                }`
-            }
-        </style>
     <Grid container maxHeight={'100vh'}>
         <SignupAisha></SignupAisha>
         <Grid item xs={8}>
@@ -27,30 +46,30 @@ function Page1() {
                 </Typography>
                 <Grid container rowSpacing={'1vh'} columnSpacing={'1vw'}>
                     <Grid item xs={6}>
-                        <StyledTextField placeholder='First Name*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setFirstName} placeholder='First Name*' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField placeholder='Last Name*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setLastName} placeholder='Last Name*' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField placeholder='Userame*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setUsername} placeholder='Username*' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField placeholder='Email Address*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setEmail} placeholder='Email Address*' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField placeholder='Password*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setPassword} placeholder='Password*' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField placeholder='Confirm Password*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setPasswordConfirm} placeholder='Confirm Password*' variant='empty'></StyledTextField>
                     </Grid>
                 </Grid>
                 <Grid container direction="column" alignItems="center" justifyContent="center" paddingTop={'5vh'}>
                     <FormControlLabel
-                        control={<Checkbox sx={{'&.Mui-checked': {color: '#F83E7D'}}}/>} 
+                        control={<Checkbox onClick={e => setNewsConsent(!newsConsent)} sx={{'&.Mui-checked': {color: '#F83E7D'}}}/>} 
                         label={<Typography variant="p" fontWeight={600}>I agree to receive news and updates.</Typography>}/>
                     <Grid item xs={3} marginY={4}>
-                        <StyledButton variant='signup' link='/signup/2' text='Next'/>
+                        <StyledButton onClick={onClickNextButton} variant='signup' text='Next'/>
                     </Grid>
                     <Typography variant="h6" fontWeight={700}>
                         Already a member?
@@ -60,7 +79,6 @@ function Page1() {
             </Stack>
         </Grid>
     </Grid>
-    </>
     )
 }
 
