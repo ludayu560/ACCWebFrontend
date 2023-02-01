@@ -11,6 +11,8 @@ import Signup from './Signup';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Login from './Login';
 import MyAccountSubscribe from './MyAccountSubscribe';
+import MyAccountBillSummary from './MyAccountBilling2';
+import MyAccountMySubscriptions from './MyAccountBilling3';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,8 @@ const router = createBrowserRouter([
       <Link to="/account-settings">settings</Link><br />
       <Link to="/account-billing">billing</Link><br />
       <Link to="/account-subscribe">subscribe</Link><br />
+      <Link to="/account-billsummary">billsummary</Link><br />
+      <Link to="/account-mysubscriptions">mysubscriptions</Link><br />
       <Link to="/account-help">help</Link><br />
       <Link to="/signup">Signup</Link><br />
 
@@ -92,6 +96,22 @@ const router = createBrowserRouter([
     <>
     <Toolbar sx={{ height: 168}}/>
     <MyAccountSubscribe/>
+    </>,
+  },
+  {
+    path: "/account-billsummary",
+    element: 
+    <>
+    <Toolbar sx={{ height: 168}}/>
+    <MyAccountBillSummary/>
+    </>,
+  },
+  {
+    path: "/account-mysubscriptions",
+    element: 
+    <>
+    <Toolbar sx={{ height: 168}}/>
+    <MyAccountMySubscriptions/>
     </>,
   },
   {

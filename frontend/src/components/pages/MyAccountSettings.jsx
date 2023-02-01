@@ -113,24 +113,62 @@ function MyAccountSettings(props) {
                   Push Notifications
                 </Typography>
                 <Grid container spacing={2} py={5} pl={4}>
-                  <Grid item xs={10}>
-                    <Typography variant="h5">Property has been favourited</Typography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Typography variant="h5">Event registration</Typography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
-                  </Grid>
+                  <>
+                    <Grid item xs={10}>
+                      <Typography variant="h5">Property has been favourited</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
+                    </Grid>
+                  </>
+                  <>
+                    <Grid item xs={10}>
+                      <Typography variant="h5">Event registration</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
+                    </Grid>
+                  </>
+                  <>
+                    <Grid item xs={10}>
+                      <Typography variant="h5">New blog has been posted</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
+                    </Grid>
+                  </>
+                  <>
+                    <Grid item xs={10}>
+                      <Typography variant="h5">New event has been posted</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
+                    </Grid>
+                  </>
                 </Grid>
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="h4" color="#000" fontWeight={700}>
                   Privacy and Security
                 </Typography>
+              </Grid>
+              <Grid container spacing={2} py={5} pl={6}>
+                <>
+                  <Grid item xs={10}>
+                    <Typography variant="h5">Visibility</Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
+                  </Grid>
+                </>
+                <>
+                  <Grid item xs={10}>
+                    <Typography variant="h5">Save login info</Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <FormControlLabel control={<IOSSwitch sx={{ m: 1 }} defaultChecked />} />
+                  </Grid>
+                </>
               </Grid>
             </Grid>
           </Grid>

@@ -143,6 +143,8 @@ function MyAccountBilling(props) {
                 }}
                 onClick={() => {
                   setMasterSelected(!masterSelected);
+                  setPalSelected(false);
+                  setVisaSelected(false);
                 }}
               />
               <Button
@@ -157,6 +159,8 @@ function MyAccountBilling(props) {
                 }}
                 onClick={() => {
                   setPalSelected(!palSelected);
+                  setMasterSelected(false);
+                  setVisaSelected(false);
                 }}
               />
               <Button
@@ -171,6 +175,8 @@ function MyAccountBilling(props) {
                 }}
                 onClick={() => {
                   setVisaSelected(!visaSelected);
+                  setMasterSelected(false);
+                  setPalSelected(false);
                 }}
               />
             </Stack>
@@ -201,7 +207,7 @@ function MyAccountBilling(props) {
             </Grid>
             <Grid item pb={10}>
               <Box textAlign="center">
-                <StyledButton variant='signup' text='Next'/>
+                <StyledButton variant='signup' text='Next' link={`/account-billsummary`}/>
               </Box>
             </Grid>
           </Grid>
