@@ -28,7 +28,7 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
                   'location', 'age_range', 'tell_us_about_yourself', 'profile_picture', 'banner_picture',
                   'display_picture_one', 'display_picture_two', 'display_picture_three', 'display_picture_four',
-                  'created', 'personal_traits', 'interests', 'favorites', 'notifications', 'accountEvents']
+                  'personal_traits', 'interests', 'favorites', 'notifications', 'accountEvents']
     def to_internal_value(self, data):
         return data
 
