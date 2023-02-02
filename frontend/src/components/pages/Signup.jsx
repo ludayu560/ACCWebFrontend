@@ -20,16 +20,6 @@ function Signup(props) {
         },
     }
 
-    // React Hooks
-    // const [fName, setFName] = useState('')
-    // const [lName, setLName] = useState('')
-    // const [email, setEmail] = useState('')
-    // const [confirmEmail, setCEmail] = useState('')
-    // const [password, setPassword] = useState('')
-    // const [confirmPassword, setCPassword] = useState('')
-    // const [username, setUsername] = useState('')
-
-
     // dynamically assigns the login / signup component. Placeholder components for now
     const leftPanelComponent = (props.name === "login")? 
         <Grid item xs={4} backgroundColor={'pink'} height={'80vh'}/>: 

@@ -4,8 +4,22 @@ import { Stack } from "@mui/system";
 
 import StyledButton from "../components/StyledButton";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
+ 
+function Page2(props) {
+    const {setPage, returnHook} = props
 
-function Page2() {
+
+    const signupValuesTwo = {
+        'role' : 1
+    }
+
+    const onClickNextButton = () => {
+        // send data from all fields as a JSON
+        returnHook(signupValuesTwo)
+
+        // go next
+        setPage(3)
+    }
 
     return (
         <Grid container direction="column" alignItems="center" height={'80vh'} paddingX={'20vw'} marginTop={'10vh'}>
@@ -26,7 +40,7 @@ function Page2() {
                 I am looking for a place to share and pay rent on a monthly basis.
             </Typography>
 
-            <StyledButton item variant='signup' link='/signup/3' text='Next'/>
+            <StyledButton item onClick={onClickNextButton} variant='signup' text='Next'/>
         </Grid>
     )
 }

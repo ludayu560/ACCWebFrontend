@@ -7,6 +7,7 @@ import MyAccountHelp from './MyAccountHelp';
 import MyAccountNotifications from './MyAccountNotifications';
 import MyAccountSettings from './MyAccountSettings';
 import { Toolbar } from '@mui/material';
+import SignupManager from '../components/SignupManager';
 import Signup from './Signup';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Login from './Login';
@@ -144,15 +145,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <Signup nav='1'/>,
-  },
-  {
-    path: "/signup/2",
-    element: <Signup nav='2'/>,
-  },
-  {
-    path: "/signup/3",
-    element: <Signup nav='3'/>,
+    element: <SignupManager/>,
   },
   {
     path: "/login",

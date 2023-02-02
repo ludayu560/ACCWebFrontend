@@ -2,7 +2,7 @@ import { Button, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForwardIos";
 
 function StyledButton(props) {
-    const { variant, link, text, content, textColor } = props
+    const { variant, link, text, content, textColor, onClick } = props
 
     const signupStyle = { 
         width: "12vw", 
@@ -17,7 +17,8 @@ function StyledButton(props) {
         height: "6vh", 
         borderRadius: "100vmax", 
         textTransform: "none", 
-        background: "#fffff"
+        background: "transparent",
+        textColor: {textColor}
     }
 
     const leftRoleStyle = {
@@ -48,22 +49,23 @@ function StyledButton(props) {
 
     return(
         <div>
-            {variant === 'signup' &&             
+            {variant === 'signup'?
             <Button
+                onClick={onClick? onClick : null}
                 variant="contained"
                 style={signupStyle}
                 endIcon={<ArrowForwardIcon />}
                 href={link}>
                 <Typography variant="h5" fontWeight={600}> {text} </Typography>
-            </Button>}
+            </Button> : null}
 
-            {variant === 'empty' &&             
+            {variant === 'empty' &&
             <Button
                 variant="contained"
                 style={emptyStyle}
                 endIcon={<ArrowForwardIcon />}
                 href={link}>
-                <Typography variant="h5" fontWeight={600}> {text} </Typography>
+                <Typography color={textColor} variant="h5" fontWeight={700}> {text} </Typography>
             </Button>}
 
             {variant === 'leftRole' &&
@@ -86,7 +88,7 @@ function StyledButton(props) {
                 style={rightRoleStyle}>
                 {content}
             </Button>}
-
+            
             {variant === 'pinkBtn' &&             
             <Button
                 variant="contained"
