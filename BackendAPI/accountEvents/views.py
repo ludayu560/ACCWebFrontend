@@ -1,11 +1,9 @@
-from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from models import AccountEvents
 from serializers import AccountEventsSerializer
 
-# Create your views here.
 class AccountEventsViewSet(viewsets.ModelViewSet):
     queryset = AccountEvents.objects.all()
     serializer_class = AccountEventsSerializer
