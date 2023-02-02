@@ -8,7 +8,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function FAQ() {
   return (
     <>
-      <Accordion sx={{boxShadow: 6}}>
+      <Accordion sx={{boxShadow: 0}}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "#F83E7D" }} />}
           aria-controls="panel1a-content"
@@ -18,14 +18,14 @@ export default function FAQ() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography sx={{ ml: 10, pt: 4 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
             leo lobortis eget.
           </Typography>
         </AccordionDetails>
       </Accordion>
 
-      <Accordion sx={{boxShadow: 6}}>
+      <Accordion sx={{boxShadow: 0}}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "#F83E7D" }} />}
           aria-controls="panel2a-content"
@@ -35,14 +35,14 @@ export default function FAQ() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography sx={{ ml: 10, pt: 4 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
             leo lobortis eget.
           </Typography>
         </AccordionDetails>
       </Accordion>
 
-      <Accordion sx={{boxShadow: 6}}>
+      <Accordion sx={{boxShadow: 0}}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "#F83E7D" }} />}
           aria-controls="panel3a-content"
@@ -52,7 +52,7 @@ export default function FAQ() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography sx={{ ml: 10, pt: 4 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit
             leo lobortis eget.
           </Typography>

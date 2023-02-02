@@ -13,6 +13,8 @@ import Login from './Login';
 import MyAccountSubscribe from './MyAccountSubscribe';
 import MyAccountBillSummary from './MyAccountBilling2';
 import MyAccountMySubscriptions from './MyAccountBilling3';
+import MyAccountFavourites from './MyAccountFavourites';
+import MyAccountProfile from './MyAccountProfile';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +24,10 @@ const router = createBrowserRouter([
       <Link to="/home">Home</Link><br />
       <Link to="/account-homeowner">Homeowner Account</Link><br />
       <Link to="/account-tenant">Tenant Account</Link><br />
+      <Link to="/account-profile">profile</Link><br />
       <Link to="/account-events">Events</Link><br />
       <Link to="/account-notifications">Notifications</Link><br />
+      <Link to="/account-favourites">favourites</Link><br />
       <Link to="/account-settings">settings</Link><br />
       <Link to="/account-billing">billing</Link><br />
       <Link to="/account-subscribe">subscribe</Link><br />
@@ -59,6 +63,14 @@ const router = createBrowserRouter([
     </>,
   },
   {
+    path: "/account-profile",
+    element: 
+    <>
+    <Toolbar sx={{ height: 114}}/>
+    <MyAccountProfile/>
+    </>,
+  },
+  {
     path: "/account-notifications",
     element: 
     <>
@@ -80,6 +92,14 @@ const router = createBrowserRouter([
     <>
     <Toolbar sx={{ height: 168}}/>
     <MyAccountSettings/>
+    </>,
+  },
+  {
+    path: "/account-favourites",
+    element: 
+    <>
+    <Toolbar sx={{ height: 168}}/>
+    <MyAccountFavourites/>
     </>,
   },
   {

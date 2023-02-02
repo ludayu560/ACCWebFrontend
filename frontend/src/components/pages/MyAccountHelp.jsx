@@ -71,7 +71,7 @@ function MyAccountHelp(props) {
           <Grid container xs={12} align="center" p={5} spacing={2} mr={4}>
             <Grid item xs={8}>
               <Stack spacing={2}>
-                <Card raised="true" sx={{ p: 4, borderRadius: 4 }}>
+                <Card raised="true" sx={{ borderRadius: 4 }}>
                   <CardActionArea>
                     <Box
                       display="flex"
@@ -81,12 +81,12 @@ function MyAccountHelp(props) {
                         alignItems: "center",
                         flexWrap: "wrap",
                       }}>
-                      <HeadsetMicIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D", mr: "10vw" }} />
+                      <HeadsetMicIcon style={{ fontSize: 150 }} sx={{ color: "#F83E7D", mr: "10vw", p: 4 }} />
                       <Typography variant="h5">Call: +1-647-777-7777</Typography>
                     </Box>
                   </CardActionArea>
                 </Card>
-                <Card raised="true" sx={{ p: 4, borderRadius: 4 }}>
+                <Card raised="true" sx={{ borderRadius: 4 }}>
                   <CardActionArea>
                     <Box
                       display="flex"
@@ -96,7 +96,7 @@ function MyAccountHelp(props) {
                         alignItems: "center",
                         flexWrap: "wrap",
                       }}>
-                      <AlternateEmailIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D", mr: "10vw" }} />
+                      <AlternateEmailIcon style={{ fontSize: 150 }} sx={{ color: "#F83E7D", mr: "10vw", p: 4 }} />
                       <Typography variant="h5">aisha@comfortablecoliving.com</Typography>
                     </Box>
                   </CardActionArea>
@@ -105,18 +105,10 @@ function MyAccountHelp(props) {
             </Grid>
 
             <Grid item xs={4}>
-              <Card raised="true" sx={{ p: 10.5, borderRadius: 4, minHeight: '35vh' }}>
+              <Card raised="true" sx={{ borderRadius: 4 }}>
                 <CardActionArea>
-                  <Grid container>
-                    <Grid item xs={4}></Grid>
-                    <Grid item xs={4}>
-                      <LocalActivityIcon style={{ fontSize: 100 }} sx={{color: "#F83E7D"}} />
-                    </Grid>
-                    <Grid item xs={4}></Grid>
-                    <Grid item xs={12}>
-                      <Typography variant="h5">Support Ticket</Typography>
-                    </Grid>
-                  </Grid>
+                  <LocalActivityIcon style={{ fontSize: 220 }} sx={{ color: "#F83E7D", p: 8 }} />
+                  <Typography variant="h5" sx={{pb: 9.5}}>Support Ticket</Typography>
                 </CardActionArea>
               </Card>
             </Grid>
@@ -139,7 +131,7 @@ function MyAccountHelp(props) {
                 FAQ
               </Typography>
             </Grid>
-            
+
             <Grid item xs={12} ml={0} mt={4}>
               <FAQ></FAQ>
             </Grid>

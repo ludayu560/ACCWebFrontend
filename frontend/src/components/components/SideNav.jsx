@@ -33,10 +33,11 @@ function SideNav(props) {
         borderRadius: "25px",
         boxShadow: 3,
       }}
+      bgcolor='white'
     >
       <Button
         variant="text"
-        to={`/account-profile`}
+        href={`/account-profile`}
         size="large"
         sx={{ color: "black", padding: 3 }}
       >
@@ -61,7 +62,7 @@ function SideNav(props) {
       </Button>
       <Button
         variant="text"
-        to={`/home`}
+        href={`/account-favourites`}
         size="large"
         sx={{ color: "black", padding: 3 }}
       >
