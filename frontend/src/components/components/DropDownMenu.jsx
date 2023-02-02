@@ -19,7 +19,7 @@ import StyledTextField from "./StyledTextField";
 // A Function which renders an empty textbox with dropdown functionality. 
 // Must be passed an array of items. current 
 function DropDownMenu(props) {
-    const { options, placeholder} = props
+    const { options, placeholder, hook} = props
 
     const [anchorEl, setAnchorEl] = useState(null)
 
@@ -35,11 +35,10 @@ function DropDownMenu(props) {
     };
 
     const handleTraitOnChange = (event, position) => {
-
         setTraits(traits.map((item, index) => (index === position)? !item : item))
-
-        console.log(traits, position)
+        hook(traits)
     }
+
     return (
         <div>
             <List disablePadding>

@@ -20,7 +20,7 @@ function Page1(props) {
         firstName: firstName,
         lastName : lastName,
         username : username,
-        email : email,
+        email : email, 
         password : password,
         passwordConfirm : passwordConfirm,
         newsConsent : newsConsent

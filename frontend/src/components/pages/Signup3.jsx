@@ -2,22 +2,28 @@ import React, { useState } from "react";
 import { Grid, Typography, Menu} from "@mui/material";
 import { Stack } from "@mui/system";
 
-import MenuList from '@mui/material/MenuList';
-import MenuItem from '@mui/material/MenuItem';
-import { TextField } from "@mui/material"
-import {Paper} from "@mui/material";
-import {List} from "@mui/material";
-import {ListItem} from "@mui/material";
-import {ListItemText} from "@mui/material";
-import {ListItemButton} from "@mui/material";
-
-
 import DropDownMenu from "../components/DropDownMenu";
 import DropDownList from "../components/DropDownList";
 import StyledButton from "../components/StyledButton";
 import StyledTextField from "../components/StyledTextField";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
-function Page3() {
+function Page3(props) {
+    const {setPage, returnHook} = props
+
+    const [location, setLocation] = useState()
+    const [occupation, setOccupation] = useState()
+    const [dob, setDOB] = useState()
+
+    const [age, setAge] = useState('')
+    const [traits, setTraits] = useState()
+    const [interests, setInterests] = useState()
+
+
+    const onClickNextButton = () => {
+        // send data to server?
+        console.log(traits, interests)
+    }
+
     const ages = [
         '<18',
         '18-25',
@@ -26,7 +32,7 @@ function Page3() {
         '56-65',
         '65+',
     ]
-    const traits = [
+    const traitList = [
         'Extroverted',
         'Introverted',
         'Outgoing',
@@ -38,7 +44,7 @@ function Page3() {
         'Quiet',
         'Adventurous',
     ]
-    const interests = [
+    const interestList = [
         'Gardening',
         'Cooking',
         'Hiking',
@@ -51,7 +57,6 @@ function Page3() {
         'Cars'
     ]
 
-    const [trait, setTraits] = useState('')
 
     return (
         <Grid container direction="column" alignItems="center" height={'80vh'} paddingX={'10vw'} marginTop={'10vh'}>
@@ -63,22 +68,22 @@ function Page3() {
 
             <Stack direction={'column'} spacing={3} paddingTop={6}>
                 <Stack direction={'row'} spacing={3}>
-                    <StyledTextField variant='empty' placeholder="Location"> </StyledTextField>
-                    <DropDownList options={ages} setter={setTraits} placeholder='Age Group'></DropDownList>
+                    <StyledTextField variant='empty' hook={setLocation} placeholder="Location"> </StyledTextField>
+                    <DropDownList options={ages} setter={setAge} placeholder='Age Group'></DropDownList>
 
                 </Stack>
                 <Stack direction={'row'} spacing={3}>
-                    <StyledTextField variant='empty' placeholder='Occupation*'> </StyledTextField>
-                    <StyledTextField variant='empty' placeholder='Date of Birth'> </StyledTextField>
+                    <StyledTextField variant='empty' hook={setOccupation} placeholder='Occupation*'> </StyledTextField>
+                    <StyledTextField variant='empty' hook={setDOB} placeholder='Date of Birth'> </StyledTextField>
                 </Stack>
 
-                <DropDownMenu options={traits} placeholder='Personality Traits'> </DropDownMenu>
-                <DropDownMenu options={interests} placeholder='Interests'> </DropDownMenu>
+                <DropDownMenu options={traitList} hook={setTraits} placeholder='Personality Traits'> </DropDownMenu>
+                <DropDownMenu options={interestList} hook={setInterests} placeholder='Interests'> </DropDownMenu>
             </Stack>
 
             <Stack direction={'row'} marginTop={6} spacing={7}>
                 <StyledButton item variant='empty' textColor='#000' link='/signup/3' text='Skip'/>
-                <StyledButton item variant='signup' link='/signup/3' text='Next'/>
+                <StyledButton item onClick={onClickNextButton} variant='signup' text='Next'/>
             </Stack>
         </Grid>
     )
