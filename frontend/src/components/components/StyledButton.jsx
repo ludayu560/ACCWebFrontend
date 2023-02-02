@@ -88,6 +88,15 @@ function StyledButton(props) {
                 style={rightRoleStyle}>
                 {content}
             </Button>}
+            
+            {variant === 'pinkBtn' &&             
+            <Button
+                variant="contained"
+                style={signupStyle}
+                href={link}>
+                <Typography variant="h5" fontWeight={600}> {text} </Typography>
+            </Button>}
+
         </div>
     )
 }

@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
+import { Button, ButtonBase } from '@mui/material';
 
 export default function SearchBar() {
   return (
@@ -23,9 +24,9 @@ export default function SearchBar() {
         <SearchIcon />
       </IconButton>
       <Divider orientation="vertical" sx={{ borderRightWidth: 2, borderBottomWidth:40}}/>
-      <IconButton sx={{ p: '20px' }} aria-label="menu">
-        <MenuIcon />
-      </IconButton>
+      <ButtonBase variant='text' sx={{ p: '20px', textTransform: 'none', borderRadius: 25}}>
+        Menu
+      </ButtonBase>
     </Paper>
   );
 }

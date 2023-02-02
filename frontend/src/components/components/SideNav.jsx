@@ -33,10 +33,11 @@ function SideNav(props) {
         borderRadius: "25px",
         boxShadow: 3,
       }}
+      bgcolor='white'
     >
       <Button
         variant="text"
-        to={`/account-${props.name}`}
+        href={`/account-profile`}
         size="large"
         sx={{ color: "black", padding: 3 }}
       >
@@ -44,7 +45,7 @@ function SideNav(props) {
       </Button>
       <Button
         variant="text"
-        to={`/account-${props.name}`}
+        href={`/account-events`}
         size="large"
         sx={{ color: "black", padding: 3 }}
       >
@@ -52,7 +53,7 @@ function SideNav(props) {
       </Button>
       <Button
         variant="text"
-        to={`/account-${props.name}`}
+        href={`/account-notifications`}
         size="large"
         sx={{ color: "black", padding: 3 }}
         endIcon={<NotificationsActiveIcon />}
@@ -61,7 +62,7 @@ function SideNav(props) {
       </Button>
       <Button
         variant="text"
-        to={`/account-${props.name}`}
+        href={`/account-favourites`}
         size="large"
         sx={{ color: "black", padding: 3 }}
       >
@@ -69,15 +70,15 @@ function SideNav(props) {
       </Button>
       <Button
         variant="text"
-        to={`/account-${props.name}`}
+        href={`/account-settings`}
         size="large"
-        sx={{ color: "#F83E7D", padding: 3 }}
+        sx={{ color: "black", padding: 3 }}
       >
         Settings
       </Button>
       <Button
         variant="text"
-        to={`/account-${props.name}`}
+        href={`/account-subscribe`}
         size="large"
         sx={{ color: "black", padding: 3 }}
       >
@@ -85,7 +86,7 @@ function SideNav(props) {
       </Button>
       <Button
         variant="text"
-        to={`/account-${props.name}`}
+        href={`/account-help`}
         size="large"
         sx={{ color: "black", padding: 3 }}
       >
