@@ -5,7 +5,7 @@ from rest_framework.routers import DefaultRouter
 from accountEvents.views import AccountEventsViewSet
 from favorites.views import FavoritesViewSet
 
-router=DefaultRouter()
+router = DefaultRouter()
 router.register("ListingAccount", views.ListingAccountViewSet)
 router.register("PersonalTraits", views.PersonalTraitsViewSet)
 router.register("Interests", views.InterestsViewSet)
