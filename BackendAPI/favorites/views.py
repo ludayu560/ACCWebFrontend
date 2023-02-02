@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 from .models import Favorites
 from .serializers import FavoritesSerializer
 from rest_framework import viewsets

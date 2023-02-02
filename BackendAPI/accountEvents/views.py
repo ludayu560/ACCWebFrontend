@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from models import AccountEvents
-from serializers import AccountEventsSerializer
+from .models import AccountEvents
+from .serializers import AccountEventsSerializer
 
 class AccountEventsViewSet(viewsets.ModelViewSet):
     queryset = AccountEvents.objects.all()

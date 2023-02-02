@@ -1,4 +1,3 @@
-# Create your views here.
 from .models import ListingAccount, Interest, PersonalTrait
 from .serializers import ListingAccountSerializer, InterestsSerializer, PersonalTraitsSerializer
 from rest_framework import viewsets

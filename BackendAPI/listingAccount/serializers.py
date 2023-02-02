@@ -7,7 +7,6 @@ from notifications.models import Notifications
 from accountEvents.models import AccountEvents
 from accountEvents.serializers import AccountEventsSerializer
 
-
 class PersonalTraitsSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalTrait
@@ -22,20 +21,20 @@ class ListingAccountSerializer(serializers.ModelSerializer):
     personal_traits = serializers.StringRelatedField(many=True)
     interests = serializers.StringRelatedField(many=True)
     favorites = FavoritesSerializer(many=True)
-    accountEvents = serializers.StringRelatedField(many=True)
+    accountEvents = AccountEventsSerializer(many=True)
     notifications = NotificationsSerializer(many=True)
     class Meta:
         model = ListingAccount
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
-                  'location', 'age_range', 'tell_us_about_yourself', 'profile_picture', 'banner_picture', 
+                  'location', 'age_range', 'tell_us_about_yourself', 'profile_picture', 'banner_picture',
                   'display_picture_one', 'display_picture_two', 'display_picture_three', 'display_picture_four',
                   'created', 'personal_traits', 'interests', 'favorites', 'notifications', 'accountEvents']
     def to_internal_value(self, data):
         return data
 
     def create(self, validated_data):
-        interests_data = validated_data.pop('interests') 
         personal_traits_data = validated_data.pop('personal_traits')
+        interests_data = validated_data.pop('interests')
         favorites_data = validated_data.pop('favorites')
         notifications = validated_data.pop('notifications')
         accountEvents_data = validated_data.pop('accountEvents')
@@ -49,11 +48,11 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         for notification_data in notifications:
             Notifications.objects.create(listing_account = listing_account, **notification_data)
         for accountEvent_data in accountEvents_data:
-            AccountEvents.objects.create(listing_account = listing_account, **accountEvent_data)    
+            AccountEvents.objects.create(listing_account = listing_account, **accountEvent_data)
         return listing_account
 
     def update(self, instance, validated_data):
-        interests = validated_data.pop('interests') 
+        interests = validated_data.pop('interests')
         personal_traits = validated_data.pop('personal_traits')
         favorites = validated_data.pop('favorites')
         notifications = validated_data.pop('notifications')
