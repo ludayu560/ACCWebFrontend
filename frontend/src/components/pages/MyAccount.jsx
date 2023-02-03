@@ -114,18 +114,18 @@ function MyAccount(props) {
             "interests": []
         }
 
-        api.delete('/', {
-            id: 54
-        })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
-          .finally(function () {
-            console.log('request executed')
-          });
+        // api.delete('/', {
+        //     id: 54
+        // })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   })
+        //   .finally(function () {
+        //     console.log('request executed')
+        //   });
           
         handleReset();
     };

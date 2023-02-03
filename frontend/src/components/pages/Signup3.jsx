@@ -8,21 +8,6 @@ import StyledButton from "../components/StyledButton";
 import StyledTextField from "../components/StyledTextField";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
 function Page3(props) {
-    const {setPage, returnHook} = props
-
-    const [location, setLocation] = useState()
-    const [occupation, setOccupation] = useState()
-    const [dob, setDOB] = useState()
-
-    const [age, setAge] = useState('')
-    const [traits, setTraits] = useState()
-    const [interests, setInterests] = useState()
-
-
-    const onClickNextButton = () => {
-        // send data to server?
-        console.log(traits, interests)
-    }
 
     const ages = [
         '<18',
@@ -56,6 +41,31 @@ function Page3(props) {
         'Yoga',
         'Cars'
     ]
+
+    const {setPage, returnHook} = props
+
+    const [location, setLocation] = useState()
+    const [occupation, setOccupation] = useState()
+    const [dob, setDOB] = useState()
+
+    const [age, setAge] = useState('')
+    const [traits, setTraits] = useState()
+    const [interests, setInterests] = useState()
+
+
+    const onClickNextButton = () => {
+        // send data to server?
+        returnHook({
+            traits : traits,
+            interests : interests,
+            age : age,
+            dob : dob,
+            location : location,
+            occupation : occupation,
+        })
+    }
+
+
 
 
     return (

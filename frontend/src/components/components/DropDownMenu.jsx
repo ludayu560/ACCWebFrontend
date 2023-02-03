@@ -5,12 +5,8 @@ import {
     Menu, 
     FormControlLabel,
     Checkbox,
-    Box,
-    Paper,
     List,
     ListItem,
-    ListItemText,
-    MenuItem,
 } from "@mui/material";
 
 import StyledTextField from "./StyledTextField";
@@ -35,8 +31,10 @@ function DropDownMenu(props) {
     };
 
     const handleTraitOnChange = (event, position) => {
-        setTraits(traits.map((item, index) => (index === position)? !item : item))
-        hook(traits)
+        const newTraits = traits.map((item, index) => (index === position)? !item : item)
+        setTraits(newTraits)
+        // hook(traits.map((item, index) => (index === position)? !item : item))
+        hook(options.map((option, index) => (newTraits[index] && option)))
     }
 
     return (
