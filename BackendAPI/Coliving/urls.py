@@ -19,8 +19,8 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tenant/', include('tenant.urls')),
-    path('homeowner/', include('homeowner.urls')),
-    
-    # path('', TemplateView.as_view(template_name='index.html'))
+    path('', include('listingAccount.urls')),    
+    path('', include('events.urls')),
+    path('', include('propertyListing.urls')),
+    path('', include('notifications.urls'))
 ]

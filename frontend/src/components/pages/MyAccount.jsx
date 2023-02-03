@@ -101,6 +101,7 @@ function MyAccount(props) {
         }
         // Submit here
         const accountFields = {
+<<<<<<< HEAD
             "username": "",
             "first_name": "",
             "last_name": "",
@@ -114,6 +115,7 @@ function MyAccount(props) {
             "interests": []
         }
 
+<<<<<<< HEAD
         // api.delete('/', {
         //     id: 54
         // })
@@ -126,6 +128,41 @@ function MyAccount(props) {
         //   .finally(function () {
         //     console.log('request executed')
         //   });
+=======
+        api.delete('/', {
+            id: 54
+        })
+=======
+            ID: 12,
+            "username": field_1,
+            "first_name": field_2,
+            "email": field_3,
+            "phone": field_4,
+            "location": field_5,
+            "ageRange": field_6,
+            "about": field_7,
+            "personalityTraits": '',
+            "interests": '',
+            // "personalityTraits": returnTraits,
+            // "interests": returnInterests
+            'personal_traits': [],
+            'interests': []
+        }
+
+        api.post('/', {
+            params: {accountFields}
+          })
+>>>>>>> develop
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+          .finally(function () {
+            console.log('request executed')
+          });
+>>>>>>> e11cd2158f2edcfa064300eb4093834162537699
           
         handleReset();
     };
