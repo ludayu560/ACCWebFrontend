@@ -43,11 +43,7 @@ const router = createBrowserRouter([
     path: "/home",
     element: 
     <>
-<<<<<<< HEAD
       <Toolbar sx={{ height: 168 }}/>
-=======
-      <Toolbar sx={{ height: 168}}/>
->>>>>>> develop
       <Home />
     </>,
   },

@@ -40,17 +40,27 @@ function SignupManager() {
 
     console.log(pageValueOne, pageValueTwo, pageValueThree)
 
+
     if (currPage === 4) {
         api.post('/', {
-            "first_name": pageValueOne.first_name,
-            "last_name": "WWEEEEEEE",
-            "email": "fgWEGEEWGWEG@gmail.com",
-            "date_of_birth": null,
-            "location": "Toronto",
-            "age_range": "18-20",
-            "tell_us_about_yourself": "k",
-            "personal_traits": [{"trait": "happy"}, {"trait": "few"}, {"trait": "few"}],
-            "interests": [{"interest": "skateboarding"}]
+            "first_name": pageValueOne.firstName,
+            "last_name": pageValueOne.lastName,
+            "email": pageValueOne.email,
+            "date_of_birth": pageValueThree.dob? pageValueThree.dob : null,
+            "location": pageValueThree.location? pageValueThree.location : null,
+            "age_range": pageValueThree.age,
+            "tell_us_about_yourself": "Tell us about yourself",
+            "profile_picture": null,
+            "banner_picture": null,
+            "display_picture_one": null,
+            "display_picture_two": null,
+            "display_picture_three": null,
+            "display_picture_four": null,
+            "personal_traits": [],
+            "interests": [],
+            "favorites": [],
+            "notifications": [],
+            "accountEvents": []
         })
         .then(function (response) {
         console.log(response);
@@ -58,9 +68,7 @@ function SignupManager() {
         .catch(function (error) {
         console.log(error);
         })
-        .finally(function () {
-        console.log('request executed')
-        });
+        setCurrPage(3)
     }
 
     return (
