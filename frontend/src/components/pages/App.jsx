@@ -16,12 +16,14 @@ import MyAccountBillSummary from './MyAccountBilling2';
 import MyAccountMySubscriptions from './MyAccountBilling3';
 import MyAccountFavourites from './MyAccountFavourites';
 import MyAccountProfile from './MyAccountProfile';
+import Landing from './Landing';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: 
     <>
+      <Link to="/landing">Landing</Link><br />
       <Link to="/home">Home</Link><br />
       <Link to="/account-homeowner">Homeowner Account</Link><br />
       <Link to="/account-tenant">Tenant Account</Link><br />
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
       <Link to="/account-help">help</Link><br />
       <Link to="/signup">Signup</Link><br />
 
+    </>,
+  },
+  {
+    path: "/landing",
+    element: 
+    <>
+      <Toolbar sx={{ height: 168 }}/>
+      <Landing/>
     </>,
   },
   {
