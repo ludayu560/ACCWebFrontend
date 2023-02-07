@@ -9,8 +9,6 @@ router = DefaultRouter()
 router.register("ListingAccount", views.ListingAccountViewSet)
 router.register("PersonalTraits", views.PersonalTraitsViewSet)
 router.register("Interests", views.InterestsViewSet)
-router.register("AccountEvents", AccountEventsViewSet)
-router.register("Favorites", FavoritesViewSet)
 urlpatterns = [
     path('get/<int:id>/', views.ListAccountGetView.as_view()),
     path('', include(router.urls)),
