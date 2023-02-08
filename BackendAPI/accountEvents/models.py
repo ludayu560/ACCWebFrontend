@@ -5,6 +5,3 @@ from listingAccount.models import ListingAccount
 class AccountEvents(models.Model):
     accountEvent = models.PositiveIntegerField(null=True)
     listing_account = models.ForeignKey(ListingAccount, related_name='accountEvents', on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return f"{self.accountEvent}"

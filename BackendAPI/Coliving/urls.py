@@ -22,5 +22,7 @@ urlpatterns = [
     path('', include('listingAccount.urls')),    
     path('', include('events.urls')),
     path('', include('propertyListing.urls')),
-    path('', include('notifications.urls'))
+    path('', include('notifications.urls')),
+    path('', include('accountEvents.urls')),
+    path('', include('favorites.urls'))
 ]

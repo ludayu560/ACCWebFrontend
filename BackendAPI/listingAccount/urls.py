@@ -2,8 +2,6 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 from rest_framework.routers import DefaultRouter
-from accountEvents.views import AccountEventsViewSet
-from favorites.views import FavoritesViewSet
 
 router = DefaultRouter()
 router.register("ListingAccount", views.ListingAccountViewSet)

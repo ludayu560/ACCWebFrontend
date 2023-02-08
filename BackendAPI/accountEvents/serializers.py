@@ -4,4 +4,4 @@ from accountEvents.models import AccountEvents
 class AccountEventsSerializer(serializers.ModelSerializer):
     class Meta:
         model = AccountEvents
-        fields = ['accountEvent']
+        fields = '__all__'
