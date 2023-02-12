@@ -36,6 +36,8 @@ const router = createBrowserRouter([
       <Link to="/account-mysubscriptions">mysubscriptions</Link><br />
       <Link to="/account-help">help</Link><br />
       <Link to="/signup">Signup</Link><br />
+      <Link to="/login">Login</Link><br />
+
 
     </>,
   },
@@ -149,7 +151,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Signup name='login'/>,
+    element: <Login/>,
   },
 ]);
 
