@@ -7,6 +7,7 @@ router = DefaultRouter()
 router.register("ListingAccount", views.ListingAccountViewSet)
 router.register("PersonalTraits", views.PersonalTraitsViewSet)
 router.register("Interests", views.InterestsViewSet)
+router.register("Lifestyle", views.LifestyleViewSet)
 urlpatterns = [
     path('', include(router.urls))
 ]
