@@ -15,16 +15,8 @@ class FavoritesGetView(APIView):
     def get(self, request, id):
         snippet = Favorites.objects.filter(listing_account=id)
         array = []
-        index = 0
         for test in snippet:
-            # print(test.property_id.id)
             array.append(PropertyListing.objects.get(id=test.property_id.id))
-            index = index + 1
         serializer = PropertyListingSerializer(array, many=True)
         return Response(serializer.data)
-        # # test = PropertyListingGetView()
-        # # for favorite in favorites:
-        # # serializer = PropertyListingSerializer(PropertyListingGetView.get(test, request, favorite.listing_account), many=False)
-        # serializer = FavoritesSerializer(snippet, many=True)
-        # return Response('serializer.data')
 
