@@ -224,7 +224,7 @@ function Events(props) {
         <Stack
           alignItems="left"
           style={{ background: "linear-gradient(#FFE7EF, white)" }}
-          sx={{ width: "99vw", p: 10 }}>
+          sx={{ p: 10 }}>
           <Typography variant="h2" align="center" sx={{ color: "#F83E7D", fontWeight: "bold", mt: -15, pb: 20 }}>
             Events Calendar
           </Typography>

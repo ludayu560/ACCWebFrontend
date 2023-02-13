@@ -397,7 +397,7 @@ function Landing(props) {
         </Grid>
 
         {/*Community Events*/}
-        <Stack alignItems="left" bgcolor="#EAF5FD" sx={{ width: "100vw", p: 10 }}>
+        <Stack alignItems="left" bgcolor="#EAF5FD" sx={{ p: 10 }}>
           <Typography variant="h2" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }}>
             Community Events
           </Typography>
@@ -430,7 +430,7 @@ function Landing(props) {
         </Grid>
 
         {/*Check Out Our Blog*/}
-        <Stack alignItems="left" bgcolor="#FF87B0" sx={{ width: "100vw", p: 10, pb: 30 }} spacing={6}>
+        <Stack alignItems="left" bgcolor="#FF87B0" sx={{ p: 10, pb: 30 }} spacing={6}>
           <Typography variant="h4" sx={{ color: "#C5265C", fontWeight: "bold" }}>
             Check Out our Blog
           </Typography>
