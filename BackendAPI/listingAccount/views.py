@@ -16,8 +16,3 @@ class PersonalTraitsViewSet(viewsets.ModelViewSet):
     queryset = PersonalTrait.objects.all()
     serializer_class = PersonalTraitsSerializer
 
-class ListAccountGetView(APIView):
-    def get(self, request, id):
-        snippet = ListingAccount.objects.get(id=id)
-        serializer = ListingAccountSerializer(snippet, many=False)
-        return Response(serializer.data)

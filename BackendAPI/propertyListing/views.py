@@ -8,9 +8,4 @@ class PropertyListingViewSet(viewsets.ModelViewSet):
     queryset = PropertyListing.objects.all()
     serializer_class = PropertyListingSerializer
 
-class PropertyListingGetView(APIView):
-    def get(self, request, id):
-        snippet = PropertyListing.objects.get(id=id)
-        serializer = PropertyListingSerializer(snippet, many=False)
-        return Response(serializer.data)
 

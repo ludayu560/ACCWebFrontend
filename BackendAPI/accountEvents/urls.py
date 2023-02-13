@@ -6,6 +6,6 @@ from rest_framework.routers import DefaultRouter
 router=DefaultRouter()
 router.register("AccountEvents", views.AccountEventsViewSet)
 urlpatterns = [
-    path('get/<int:id>/', views.AccountEventsGetView.as_view()),
+    path('AccountEvents/get/<int:id>/', views.EventsGet.as_view()),
     path('', include(router.urls)),
 ]

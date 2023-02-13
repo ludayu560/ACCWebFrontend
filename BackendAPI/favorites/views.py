@@ -10,17 +10,14 @@ class FavoritesViewSet(viewsets.ModelViewSet):
     queryset = Favorites.objects.all()
     serializer_class = FavoritesSerializer
 
-class FavoritesGetView(APIView):
-    def get(self, request, id):
-        snippet = Favorites.objects.get(id=id)
-        serializer = FavoritesSerializer(snippet, many=False)
-        return Response(serializer.data)
-
 class FavoritesPropertyGet(APIView):
     def get(self, request, id):
         snippet = Favorites.objects.filter(listing_account=id)
         array = []
-        for test in snippet:
-            array.append(PropertyListing.objects.get(id=test.property_id.id))
+        for property in snippet:
+            try:
+                array.append(PropertyListing.objects.get(id=property.property_id.id))
+            except:
+                print("Error couldn't retrieve property listing with id", id)
         serializer = PropertyListingSerializer(array, many=True)
         return Response(serializer.data)
