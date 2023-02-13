@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Box } from "@mui/system";
 import { Grid } from "@mui/material";
 
-import Page1 from "../pages/Signup1";
-import Page2 from "../pages/Signup2";
-import Page3 from "../pages/Signup3";
+import Page1 from "./Signup1";
+import Page2 from "./Signup2";
+import Page3 from "./Signup3";
 
 import axios from "axios";
 
@@ -80,7 +80,7 @@ function SignupManager() {
             width={'90vw'} height={'90vh'} 
             sx={{ backgroundColor: '#ffffff'}}>
 
-            <Grid container>
+            <Box>
                 {currPage === 1?
                 <Page1 setPage={setCurrPage} returnHook={setPageValueOne}></Page1>
                 : null}
@@ -90,7 +90,7 @@ function SignupManager() {
                 {currPage === 3? 
                 <Page3 setPage={setCurrPage} returnHook={setPageValueThree}></Page3>
                 : null}
-            </Grid>
+            </Box>
         </Box>
     </div>
     )
