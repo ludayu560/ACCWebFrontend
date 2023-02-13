@@ -5,7 +5,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from propertyListing.models import PropertyListing
 from propertyListing.serializers import PropertyListingSerializer
-from propertyListing.views import PropertyListingViewSet, PropertyListingGetView
 
 class FavoritesViewSet(viewsets.ModelViewSet):
     queryset = Favorites.objects.all()
