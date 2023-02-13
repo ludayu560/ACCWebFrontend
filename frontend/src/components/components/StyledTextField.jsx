@@ -7,7 +7,7 @@ function StyledTextField(props) {
 
     const onChangeHandler = (e) => {
         setField(e.target.value)
-        hook(e.target.value)
+        hook(e.target.value) 
     }
 
     const styleEmpty = {
@@ -63,12 +63,22 @@ function StyledTextField(props) {
                 value={field? field : value}
                 InputProps={styleEmptyInput}/>}
             { variant === 'filled' && <TextField 
-                disabled
+                disabled={disabled? true : false}
                 onChange={onChangeHandler} 
                 placeholder={placeholder} 
                 style={styleFilled} 
                 value={field? value : field}
                 InputProps={styleFilledInput}/>}
+
+            { variant === 'login' && <TextField
+                disabled={disabled? true : false}
+                onChange={onChangeHandler}
+                placeholder={placeholder} 
+                style={styleEmpty} 
+                value={field? field : value}
+                InputProps={styleEmptyInput}
+                variant="filled"/>}
+
             { variant === 'dropDownMenu' && <TextField 
                 disabled={disabled? true : false}
                 onChange={onChangeHandler} 

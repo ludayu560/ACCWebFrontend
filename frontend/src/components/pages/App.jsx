@@ -26,6 +26,7 @@ import Dashboard from "./Dashboard";
 const router = createBrowserRouter([
   {
     path: "/",
+
     element: (
       <>
         <Link to="/landing">Landing</Link>
@@ -79,6 +80,7 @@ const router = createBrowserRouter([
         <Landing />
       </>
     ),
+
   },
   {
     path: "/home",
@@ -248,7 +250,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Signup name="login" />,
+    element: <Login/>,
+
   },
 ]);
 

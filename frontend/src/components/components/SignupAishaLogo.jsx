@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import {ReactComponent as Register1} from '../../assets/Register1.svg';
+import {ReactComponent as Register1} from '../../assets/HouseLogoWhite.svg';
 import {ReactComponent as Register2} from '../../assets/Register2.svg';
 import {ReactComponent as Register3} from '../../assets/Register3.svg';
 
