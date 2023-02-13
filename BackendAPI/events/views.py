@@ -7,9 +7,3 @@ from rest_framework.response import Response
 class EventsViewSet(viewsets.ModelViewSet):
     queryset = Events.objects.all()
     serializer_class = EventsSerializer
-
-class EventsGetView(APIView):
-    def get(self, request, id):
-        snippet = Events.objects.get(id=id)
-        serializer = EventsSerializer(snippet, many=False)
-        return Response(serializer.data)

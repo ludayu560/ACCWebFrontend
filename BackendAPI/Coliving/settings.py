@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'listingAccount',
+    'accountEvents',
     'events',
+    'favorites',
+    'listingAccount',
     'propertyListing',
     'notifications'
+
 ]
 
 MIDDLEWARE = [

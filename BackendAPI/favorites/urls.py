@@ -4,7 +4,8 @@ from . import views
 from rest_framework.routers import DefaultRouter
 
 router=DefaultRouter()
-router.register("Events", views.EventsViewSet)
+router.register("Favorites", views.FavoritesViewSet)
 urlpatterns = [
+    path('Favorites/get/<int:id>/', views.FavoritesPropertyGet.as_view()),
     path('', include(router.urls)),
 ]
