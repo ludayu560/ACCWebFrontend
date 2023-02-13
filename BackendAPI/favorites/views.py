@@ -12,6 +12,12 @@ class FavoritesViewSet(viewsets.ModelViewSet):
     serializer_class = FavoritesSerializer
 
 class FavoritesGetView(APIView):
+    def get_properties(self, request, id):
+        snippet = Favorites.objects.get(id=id)
+        serializer = FavoritesSerializer(snippet, many=False)
+        return Response(serializer.data)
+
+class FavoritesPropertyGet(APIView):
     def get(self, request, id):
         snippet = Favorites.objects.filter(listing_account=id)
         array = []
@@ -19,4 +25,3 @@ class FavoritesGetView(APIView):
             array.append(PropertyListing.objects.get(id=test.property_id.id))
         serializer = PropertyListingSerializer(array, many=True)
         return Response(serializer.data)
-
