@@ -18,7 +18,7 @@ class FavoritesGetView(APIView):
         return Response(serializer.data)
 
 class FavoritesPropertyGet(APIView):
-    def get_properties(self, request, id):
+    def get(self, request, id):
         snippet = Favorites.objects.filter(listing_account=id)
         array = []
         for test in snippet:
