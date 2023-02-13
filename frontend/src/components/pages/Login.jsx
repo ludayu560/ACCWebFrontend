@@ -10,9 +10,11 @@ import {ReactComponent as LoginText1} from '../../assets/LoginText1.svg';
 import {ReactComponent as LoginText2} from '../../assets/LoginText2.svg';
 import {ReactComponent as AishaSignaturePink} from '../../assets/AishaSignatureWhite.svg';
 
-
-
 function Login() {
+    // const {setPage, returnHook} = props()
+
+    const [firstName, setFirstName] = useState('');
+
 
     return (
         <Stack

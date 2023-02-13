@@ -30,9 +30,13 @@ function Navbar() {
           </Link>
           <Box sx={{ flexGrow: 1 }} />
           <Stack direction="row" spacing={5}>
+            <Link href="/login">
             <Button color="inherit" size="large" sx={{ color: "#F83E7D" }}>
-              Log in
+            Log in
             </Button>
+            </Link>
+
+            <Link href="/signup">
             <Button
               color="inherit"
               size="large"
@@ -40,6 +44,7 @@ function Navbar() {
             >
               Get Started
             </Button>
+            </Link>
           </Stack>
         </Toolbar>
       </AppBar>
