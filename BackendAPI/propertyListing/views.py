@@ -13,3 +13,4 @@ class PropertyListingGetView(APIView):
         snippet = PropertyListing.objects.get(id=id)
         serializer = PropertyListingSerializer(snippet, many=False)
         return Response(serializer.data)
+

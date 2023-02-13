@@ -6,6 +6,6 @@ from rest_framework.routers import DefaultRouter
 router=DefaultRouter()
 router.register("Favorites", views.FavoritesViewSet)
 urlpatterns = [
-    path('get/<int:id>/', views.FavoritesGetView.as_view()),
+    path('Favorites/<int:id>/', views.FavoritesGetView.as_view()),
     path('', include(router.urls)),
 ]
