@@ -18,6 +18,10 @@ import MyAccountFavourites from "./MyAccountFavourites";
 import MyAccountProfile from "./MyAccountProfile";
 import Landing from "./Landing";
 import Events from "./Events";
+import TenantHome from "./TenantHome";
+import Housemates from "./Housemates";
+import Listing from "./Listing";
+import Dashboard from "./Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +33,14 @@ const router = createBrowserRouter([
         <Link to="/home">Home</Link>
         <br />
         <Link to="/events">events</Link>
+        <br />
+        <Link to="/tenanthome">Tenant Homepage</Link>
+        <br />
+        <Link to="/housemates">Housemates</Link>
+        <br />
+        <Link to="/listing">Listing</Link>
+        <br />
+        <Link to="/dashboard">dashboard</Link>
         <br />
         <Link to="/account-homeowner">Homeowner Account</Link>
         <br />
@@ -83,6 +95,42 @@ const router = createBrowserRouter([
       <>
         <Toolbar sx={{ height: 114 }} />
         <Events />
+      </>
+    ),
+  },
+  {
+    path: "/tenanthome",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <TenantHome />
+      </>
+    ),
+  },
+  {
+    path: "/housemates",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <Housemates />
+      </>
+    ),
+  },
+  {
+    path: "/listing",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <Listing />
+      </>
+    ),
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <Dashboard/>
       </>
     ),
   },

@@ -2,14 +2,15 @@ import { Button, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForwardIos";
 
 function StyledButton(props) {
-    const { variant, link, text, content, textColor, onClick } = props
+    const { variant, link, text, content, textColor, onClick, bgcolor } = props
 
     const signupStyle = { 
         width: "12vw", 
         height: "6vh", 
         borderRadius: "100vmax", 
         textTransform: "none", 
-        background: "#F83E7D"
+        background: bgcolor ? bgcolor : "#F83E7D",
+        color: textColor ? textColor : 'white'
     }
 
     const emptyStyle = { 
