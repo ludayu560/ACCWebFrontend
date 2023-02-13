@@ -1,10 +1,11 @@
-import { Typography } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import CloseIcon from "@mui/icons-material/Close";
 
 function Tags(props) {
-  const {variant, text} = props;
+  const { variant, text, color } = props;
   return (
     <>
       {variant === "pink" && (
@@ -21,6 +22,19 @@ function Tags(props) {
         </Box>
       )}
 
+      {variant === "filter" && (
+        <Box
+          display="flex"
+          sx={{ border: 3, borderColor: color ? color : "#F83E7D", borderRadius: 10, pl: 5 }}
+          style={{ alignItems: "center" }}>
+          <Typography variant="h6" sx={{ color: color ? color : "#F83E7D" }}>
+            {text}
+          </Typography>
+          <IconButton type="button" sx={{ m: "10px" }} aria-label="search">
+            <CloseIcon sx={{ color: color ? color : "#F83E7D" }} />
+          </IconButton>
+        </Box>
+      )}
     </>
   );
 }
