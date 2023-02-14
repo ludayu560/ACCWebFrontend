@@ -27,4 +27,4 @@ class AccountFilterViewSet(generics.ListAPIView):
     queryset = ListingAccount.objects.all()
     serializer_class = ListingAccountSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['=first_name']
+    search_fields = ['first_name']
