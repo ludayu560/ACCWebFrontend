@@ -23,6 +23,7 @@ import TenantHome from "./TenantHome";
 import Housemates from "./Housemates";
 import Listing from "./Listing";
 import Dashboard from "./Dashboard";
+import Homeowners from "./Homeowners";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,15 @@ const router = createBrowserRouter([
       <>
         <Toolbar sx={{ height: 114 }} />
         <TenantHome />
+      </>
+    ),
+  },
+  {
+    path: "/homeowners",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <Homeowners/>
       </>
     ),
   },
