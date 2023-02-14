@@ -7,5 +7,3 @@ from rest_framework.response import Response
 class PropertyListingViewSet(viewsets.ModelViewSet):
     queryset = PropertyListing.objects.all()
     serializer_class = PropertyListingSerializer
-
-
