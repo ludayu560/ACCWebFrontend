@@ -47,7 +47,7 @@ function Mainbar() {
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/listing">
               Listings
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/homeowners">
               Homeowners
             </Button>
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
