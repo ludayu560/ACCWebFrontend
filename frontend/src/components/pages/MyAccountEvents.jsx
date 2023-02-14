@@ -62,14 +62,14 @@ function MyAccountEvents(props) {
                 />
               </Typography>
             </Grid>
-            <Grid container spacing={2} pb={5} ml={15}>
-              <Grid item xs={6}>
+            <Grid container spacing={8} p={10}>
+              <Grid item xs='auto'>
                 <ECard variant='event'></ECard>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs='auto'>
                 <ECard variant='event'></ECard>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs='auto'>
                 <ECard variant='event'></ECard>
               </Grid>
             </Grid>
@@ -90,11 +90,11 @@ function MyAccountEvents(props) {
                 />
               </Typography>
             </Grid>
-            <Grid container spacing={2} pb={5} ml={15}>
-              <Grid item xs={6}>
+            <Grid container spacing={8} p={10}>
+              <Grid item xs='auto'>
                 <ECard variant='event'></ECard>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs='auto'>
                 <ECard variant='event'></ECard>
               </Grid>
             </Grid>
@@ -115,11 +115,11 @@ function MyAccountEvents(props) {
                 />
               </Typography>
             </Grid>
-            <Grid container spacing={2} pb={5} ml={15}>
-              <Grid item xs={6}>
+            <Grid container spacing={8} p={10}>
+              <Grid item xs='auto'>
                 <ECard variant='event'></ECard>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs='auto'>
                 <ECard variant='event'></ECard>
               </Grid>
             </Grid>

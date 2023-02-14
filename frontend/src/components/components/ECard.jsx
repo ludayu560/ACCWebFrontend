@@ -31,13 +31,13 @@ function ECard(props) {
   return (
     <>
       {variant === "event" && (
-        <Card raised="true" sx={{ borderRadius: 4, width: 470 }}>
+        <Card raised="true" sx={{ borderRadius: 4, width: '350px' }}>
           <CardActionArea>
-            <CardMedia component="img" height="500" src={bbq} />
+            <CardMedia component="img" height="250px" src={bbq} />
             <CardContent>
-              <Grid container spacing={3} m={1}>
+              <Grid container spacing={3}>
                 <Grid item xs={12}>
-                  <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     Sunday, September 3 @ 6:00pm
                   </Typography>
                 </Grid>
@@ -51,7 +51,7 @@ function ECard(props) {
                       alignItems: "center",
                     }}>
                     <LocationOnIcon style={{ fontSize: 60 }} sx={{ mr: 6, color: "blue" }} />
-                    <Typography variant="h6">The Time’s Grill and Bar</Typography>
+                    <Typography variant="h6" sx={{fontSize: 15}}>The Time’s Grill and Bar</Typography>
                   </Box>
                 </Grid>
                 <Grid item xs={12}>
@@ -61,13 +61,12 @@ function ECard(props) {
                       alignItems: "center",
                     }}>
                     <Diversity3Icon style={{ fontSize: 60 }} sx={{ mr: 6, color: "#F83E7D" }} />
-                    <Typography variant="h6">| 15 Interested | 8 Going</Typography>
+                    <Typography variant="h6" sx={{fontSize: 15}}>| 15 Interested | 8 Going</Typography>
                   </Box>
                 </Grid>
                 <Grid item xs={8}></Grid>
                 <Grid item xs={4}>
                   <Checkbox
-                    sx={{ mt: 5 }}
                     icon={<FavoriteBorderIcon style={{ fontSize: 60 }} sx={{ color: "gray" }} />}
                     checkedIcon={<FavoriteIcon style={{ fontSize: 60 }} sx={{ color: "#F83E7D" }} />}
                   />

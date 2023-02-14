@@ -33,7 +33,7 @@ function Events(props) {
     <>
       <Mainbar />
       <Stack>
-        <Stack direction="row" pl={10} bgcolor="#FFE7EF">
+        <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw">
           <Stack pr={20} pt={10}>
             <Typography variant="h3" color="primary" sx={{ color: "#F83E7D", pb: 3, fontWeight: "bold" }}>
               Events
@@ -74,7 +74,7 @@ function Events(props) {
             sx={{ textAlign: "center", color: "#C5265C", pt: 20, fontWeight: "bold" }}>
             Why Join the Aisha Community?
           </Typography>
-          <Stack direction="row" spacing={14} px={14} pt={10} justifyContent="center">
+          <Stack direction="row" spacing={14} px={14} pt={10} justifyContent="center" width="100vw">
             <Card sx={{ width: "294px", borderRadius: 5, border: 5, borderColor: "#C5265C" }} raised="true">
               <Stack p={5} align="center" spacing={4} alignItems="center">
                 <PeopleOutlineIcon style={{ fontSize: 100 }} sx={{ color: "#C5265C" }} />
@@ -163,11 +163,11 @@ function Events(props) {
         </Stack>
 
         {/*Upcoming Events*/}
-        <Stack style={{ background: " white" }} sx={{ pt: 10, pb: 40 }} alignItems="center">
+        <Stack style={{ background: " white" }} sx={{ pt: 10, pb: 40 }} alignItems="center" width="100vw">
           <Typography variant="h1" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2}>
             Upcoming Events
           </Typography>
-          <Stack direction="row" spacing={50} mt={15}>
+          <Stack direction="row" spacing={25} mt={15} >
             <Button
               variant="outlined"
               style={{ width: "430px", height: "116px", textTransform: "none", backgroundColor: "#0045F1" }}
@@ -224,7 +224,7 @@ function Events(props) {
         <Stack
           alignItems="left"
           style={{ background: "linear-gradient(#FFE7EF, white)" }}
-          sx={{ width: "99vw", p: 10 }}>
+          sx={{ p: 10 }}>
           <Typography variant="h2" align="center" sx={{ color: "#F83E7D", fontWeight: "bold", mt: -15, pb: 20 }}>
             Events Calendar
           </Typography>

@@ -116,7 +116,6 @@ function MyAccount(props) {
             "interests": []
         }
 
-
         api.post('/', {
             params: {accountFields}
           })
