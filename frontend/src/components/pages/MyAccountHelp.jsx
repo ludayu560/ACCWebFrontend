@@ -73,32 +73,26 @@ function MyAccountHelp(props) {
               <Stack spacing={2}>
                 <Card raised="true" sx={{ borderRadius: 4 }}>
                   <CardActionArea>
-                    <Box
-                      display="flex"
-                      alignContent="center"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        flexWrap: "wrap",
-                      }}>
+                    <Stack direction="row">
                       <HeadsetMicIcon style={{ fontSize: 150 }} sx={{ color: "#F83E7D", mr: "10vw", p: 4 }} />
-                      <Typography variant="h5">Call: +1-647-777-7777</Typography>
-                    </Box>
+                      <Box display="flex" style={{ alignContent: "center", alignItems: "center" }}>
+                        <Typography variant="h5" align="right">
+                          Call: +1-647-777-7777
+                        </Typography>
+                      </Box>
+                    </Stack>
                   </CardActionArea>
                 </Card>
                 <Card raised="true" sx={{ borderRadius: 4 }}>
                   <CardActionArea>
-                    <Box
-                      display="flex"
-                      alignContent="center"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        flexWrap: "wrap",
-                      }}>
-                      <AlternateEmailIcon style={{ fontSize: 150 }} sx={{ color: "#F83E7D", mr: "10vw", p: 4 }} />
-                      <Typography variant="h5">aisha@comfortablecoliving.com</Typography>
-                    </Box>
+                    <Stack direction="row">
+                      <AlternateEmailIcon style={{ fontSize: 150 }} sx={{ color: "#F83E7D", mr: "5vw", p: 4 }} />
+                      <Box display="flex" style={{ alignContent: "center", alignItems: "center" }}>
+                        <Typography variant="h5" align="right">
+                          aisha@comfortablecoliving.com
+                        </Typography>
+                      </Box>
+                    </Stack>
                   </CardActionArea>
                 </Card>
               </Stack>
@@ -108,7 +102,9 @@ function MyAccountHelp(props) {
               <Card raised="true" sx={{ borderRadius: 4 }}>
                 <CardActionArea>
                   <LocalActivityIcon style={{ fontSize: 220 }} sx={{ color: "#F83E7D", p: 8 }} />
-                  <Typography variant="h5" sx={{pb: 9.5}}>Support Ticket</Typography>
+                  <Typography variant="h5" sx={{ pb: 9.5 }}>
+                    Support Ticket
+                  </Typography>
                 </CardActionArea>
               </Card>
             </Grid>

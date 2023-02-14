@@ -18,8 +18,8 @@ function Mainbar() {
   const trigger = useScrollTrigger();
   return (
     <Slide appear={false} direction="down" in={!trigger}>
-      <AppBar positon="static">
-        <Toolbar sx={{ height: 114, background: "white" }}>
+      <AppBar positon="static" width='100vw'>
+        <Toolbar sx={{ height: 114, background: "white", width: '100vw' }}>
           <Link href="/">
             <Box
               component="img"

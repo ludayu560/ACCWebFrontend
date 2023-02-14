@@ -35,6 +35,7 @@ function TenantHome(props) {
     <>
       <Mainbar />
       <Stack>
+        {/*First Title Section*/}
         <Box component='img' src={TenantHomePageBG}></Box>
         <Stack sx={{mt: -100}}>
           <Stack pl={15} spr={"50vw"} pt={10}>
@@ -247,7 +248,7 @@ function TenantHome(props) {
             priorities. Through our matching system, you will have two options: browse by place to find the perfect
             coliving space first or browse by people to get matched with the perfect housemates.
           </Typography>
-          <Stack direction="row" spacing={40} p={14} justifyContent="center">
+          <Stack direction="row" spacing={40} p={14} justifyContent="center" width='100vw'>
             <Stack sx={{ width: "500px" }} p={5} align="center" spacing={4} alignItems="center">
               <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
                 Are you looking to get matched by listings?

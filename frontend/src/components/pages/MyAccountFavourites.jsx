@@ -51,7 +51,7 @@ function MyAccountFavourites(props) {
           <SideNav></SideNav>
         </Grid>
         <Grid container xs={9} px={6}>
-          <Grid item spacing={5} xs={12}>
+          <Grid item spacing='auto' xs={12}>
             <Grid item xs={12} align="center">
               <Typography variant="h3" color="#000" fontWeight={700}>
                 My Favourites
@@ -66,18 +66,18 @@ function MyAccountFavourites(props) {
                 />
               </Typography>
             </Grid>
-            <Grid container spacing={2} pb={5} ml={15}>
-              <Grid item xs={5}>
-                <ECard variant='favourite'></ECard>
+            <Grid container spacing={8} p={10}>
+              <Grid item xs='auto'>
+                <ECard variant='listing'></ECard>
               </Grid>
-              <Grid item xs={5}>
-                <ECard variant='favourite'></ECard>
+              <Grid item xs='auto'>
+                <ECard variant='listing'></ECard>
               </Grid>
-              <Grid item xs={5}>
-                <ECard variant='favourite'></ECard>
+              <Grid item xs='auto'>
+                <ECard variant='listing'></ECard>
               </Grid>
-              <Grid item xs={6}>
-                <ECard variant='event'></ECard>
+              <Grid item xs='auto'>
+                <ECard variant='listing'></ECard>
               </Grid>
             </Grid>
           </Grid>
