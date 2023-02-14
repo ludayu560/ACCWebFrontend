@@ -63,7 +63,7 @@ function Landing(props) {
           <Typography variant="h5" color="primary" sx={{ textAlign: "center", color: "#F83E7D" }}>
             Coliving is the new way of wellness living
           </Typography>
-          <Stack direction="row" spacing={14} p={14} justifyContent="center">
+          <Stack direction="row" spacing={14} p={14} maxWidth={'100vw'} justifyContent="center">
             <Card sx={{ width: "294px" }} raised="true">
               <Box bgcolor="#F83E7D" sx={{ width: "294px", height: "20px" }} />
               <Stack p={5} align="center" spacing={4} alignItems="center">
@@ -423,7 +423,7 @@ function Landing(props) {
             </Stack>
           </Grid>
           <Grid item xs={6}>
-            <Box sx={{ width: "697px", height: "517px", m: 6 }} bgcolor="gray">
+            <Box sx={{ width: "500px", height: "517px", m: 6 }} bgcolor="gray">
               Photo
             </Box>
           </Grid>
@@ -462,7 +462,7 @@ function Landing(props) {
         </Grid>
 
         {/*Learn More*/}
-        <Stack alignItems="left" bgcolor="#EAF5FD" sx={{ width: "99vw", p: 10 }}>
+        <Stack alignItems="left" bgcolor="#EAF5FD" sx={{ p: 10 }}>
           <Typography variant="h2" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }}>
             Learn More Aisha Comfortable Coliving
           </Typography>

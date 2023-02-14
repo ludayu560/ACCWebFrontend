@@ -32,20 +32,32 @@ function Mainbar() {
           <Box sx={{ flexGrow: 1 }} />
 
           <Stack direction="row" spacing={2}>
-            <Button color="inherit" size="large" sx={{ color: "#000" }}>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
               Home
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }}>
-              Matches
-            </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }}>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/events">
               Events
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }}>
-              Market
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/tenanthome">
+              Tenants
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }}>
-              Blog
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/housemates">
+              Housemates
+            </Button>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/listing">
+              Listings
+            </Button>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
+              Homeowners
+            </Button>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
+              About
+            </Button>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
+              Blogs
+            </Button>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/account-help">
+              Contact
             </Button>
             <IconButton>
               <Avatar></Avatar>

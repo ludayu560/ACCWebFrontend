@@ -57,6 +57,17 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/landing",
+    element: (
+      <>
+        <Toolbar sx={{ height: 168 }} />
+        <Landing />
+      </>
+    ),
+  },
+  
+  // Is this needed?
+  {
     path: "/home",
     element: (
       <>
