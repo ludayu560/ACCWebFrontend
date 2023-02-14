@@ -2,6 +2,27 @@ import { TextField } from "@mui/material"
 import { useState } from "react";
 
 function StyledTextField(props) {
+
+    // textbox functionality is ok, we want to refactor the way textboxes are displayed. 
+    // kinds of textboxes we wish to implement:
+    //      rounded empty grey with black text and label above the border
+    //      rounded empty slate grey with black text and label as a placeholder. no border
+    //          ^a 'for show' textbox to be used as a dropdown menu icon
+    //
+    //      rounded filled grey textbox with no border. dark grey text
+    //
+    //      blocky empty light grey with black text and label as a placeholder. no border
+
+    // variables: 
+    //  variant
+    //  disabled        => default 
+    //  placeholder     placeholder: placeholder
+    //  width           width: width? width : defaultWidth
+    //  height          height: height? height : defaultHeight
+    //  value       
+    //  color
+    //  hook            => returns up back to parent
+
     const { disabled, variant, placeholder, width, height, value, color, hook} = props
     const [field, setField] = useState()
 
