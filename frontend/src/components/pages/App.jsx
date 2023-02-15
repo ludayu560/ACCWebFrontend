@@ -56,16 +56,7 @@ const router = createBrowserRouter([
       </>
     ),
   },
-  {
-    path: "/landing",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <Landing />
-      </>
-    ),
-  },
-  
+
   // Is this needed?
   {
     path: "/home",
@@ -126,7 +117,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Toolbar sx={{ height: 114 }} />
-        <Dashboard/>
+        <Dashboard variant='tenant'/>
       </>
     ),
   },
