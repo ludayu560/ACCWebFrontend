@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class ListingAccount(models.Model):
     username = models.CharField(max_length=20, null=True)
@@ -7,7 +8,7 @@ class ListingAccount(models.Model):
     last_name = models.CharField(max_length=30, null=True)
     email = models.EmailField(max_length=254, null=True)
     phone_number = models.CharField(max_length=254, null=True)
-    date_of_birth = models.DateField(null=True)
+    date_of_birth = models.DateField(blank=True, null=True)
     location = models.CharField(max_length=30, null=True)
     age_range = models.CharField(max_length=7, null=True)
     tell_us_about_yourself = models.TextField(null=True)
@@ -17,6 +18,11 @@ class ListingAccount(models.Model):
     display_picture_two = models.ImageField(null=True)
     display_picture_three = models.ImageField(null=True)
     display_picture_four = models.ImageField(null=True)
+    # age = (datetime.date.today() - date_of_birth)*365
+
+    # def calc_age(self):
+    #     import datetime
+    #     return ((datetime.date.today() - self.date_of_birth)*365)
 
 class PersonalTrait(models.Model):
     trait = models.CharField(max_length=200, null = True)

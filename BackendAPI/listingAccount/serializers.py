@@ -22,6 +22,7 @@ class ListingAccountSerializer(serializers.ModelSerializer):
     personal_traits = serializers.StringRelatedField(many=True)
     interests = serializers.StringRelatedField(many=True)
     notifications = NotificationsSerializer(many=True)
+    lifestyle = serializers.StringRelatedField(many=True)
     class Meta:
         model = ListingAccount
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
@@ -44,7 +45,7 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         for notification_data in notifications:
             Notifications.objects.create(listing_account = listing_account, **notification_data)
         for lifestyle_data in lifestyle:
-            Notifications.objects.create(listing_account = listing_account, **lifestyle_data)
+            Lifestyle.objects.create(listing_account = listing_account, **lifestyle_data)
         return listing_account
 
     def update(self, instance, validated_data):
@@ -71,6 +72,7 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         instance.interests.set("")
         instance.personal_traits.set("")
         instance.notifications.set("")
+        instance.lifestyle.set("")
         
         for interest_data in interests:
             Interest.objects.create(listing_account = instance, **interest_data)
