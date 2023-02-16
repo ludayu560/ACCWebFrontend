@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from propertyListing.models import PropertyListing, Utilities
+from propertyListing.models import PropertyListing, ListingUtilities
 
-class UtilitiesSerializer(serializers.ModelSerializer):
+class ListingUtilitiesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Utilities
-        fields = ['utility']
+        model = ListingUtilities
+        fields = ['listing_utility']
 
 class PropertyListingSerializer(serializers.ModelSerializer):
-    utilities = serializers.StringRelatedField(many=True)
+    listing_utilities = serializers.StringRelatedField(many=True)
     class Meta:
         model = PropertyListing
         fields = ['id', 'listing_city', 'listing_postal', 'listing_province',
@@ -15,19 +15,19 @@ class PropertyListingSerializer(serializers.ModelSerializer):
                   'listing_rate', 'listing_available_bedrooms', 'listing_bathrooms', 
                   'listing_housemates', 'listing_parking', 'listing_furnished', 'listing_smoking', 
                   'listing_pets', 'listing_ac', 'listing_description', 'listing_image_one', 
-                  'listing_image_two', 'listing_image_three', 'listing_image_four', 'utilities']
+                  'listing_image_two', 'listing_image_three', 'listing_image_four', 'listing_utilities']
     def to_internal_value(self, data):
         return data
 
     def create(self, validated_data):
-        utilities_data = validated_data.pop('utilities')
+        listing_utilities_data = validated_data.pop('listing_utilities')
         property_listing = PropertyListing.objects.create(**validated_data)
-        for utility_data in utilities_data:
-            Utilities.objects.create(property_listing = property_listing, **utility_data)
+        for listing_utility_data in listing_utilities_data:
+            ListingUtilities.objects.create(property_listing = property_listing, **listing_utility_data)
         return property_listing
 
     def update(self, instance, validated_data):
-        utilities = validated_data.pop('utilities')
+        listing_utilities = validated_data.pop('listing_utilities')
 
         instance.listing_city = validated_data.get("listing_city", instance.listing_city)
         instance.listing_postal = validated_data.get("listing_postal", instance.listing_postal)
@@ -49,10 +49,10 @@ class PropertyListingSerializer(serializers.ModelSerializer):
         instance.listing_image_two = validated_data.get("listing_image_two", instance.listing_image_two)
         instance.listing_image_three = validated_data.get("listing_image_three", instance.listing_image_three)
         instance.listing_image_four = validated_data.get("listing_image_four", instance.listing_image_four)
-        instance.utilities.set("")
+        instance.listing_utilities.set("")
         
-        for utility_data in utilities:
-            Utilities.objects.create(property_listing = instance, **utility_data)
+        for listing_utility_data in listing_utilities:
+            ListingUtilities.objects.create(property_listing = instance, **listing_utility_data)
          
         instance.save()
         return instance

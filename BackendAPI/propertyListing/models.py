@@ -23,9 +23,9 @@ class PropertyListing(models.Model):
     listing_image_three = models.ImageField(null=True) #path required in the future
     listing_image_four = models.ImageField(null=True) #path required in the future
 
-class Utilities(models.Model):
-    utility = models.CharField(max_length=200, null=True)
-    property_listing = models.ForeignKey(PropertyListing, related_name='utilities', on_delete=models.CASCADE, null=True)
+class ListingUtilities(models.Model):
+    listing_utility = models.CharField(max_length=200, null = True)
+    property_listing = models.ForeignKey(PropertyListing, related_name='listing_utilities', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return f"{self.utility}"
+        return f"{self.listing_utility}"

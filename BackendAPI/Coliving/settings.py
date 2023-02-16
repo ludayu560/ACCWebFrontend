@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'favorites',
     'listingAccount',
     'propertyListing',
-    'notifications'
+    'notifications',
+    'housemate'
 ]
 
 MIDDLEWARE = [
