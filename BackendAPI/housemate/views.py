@@ -12,7 +12,7 @@ class HousemateViewSet(viewsets.ModelViewSet):
 
 class HousemateAccountGet(APIView):
     def get(self, request, id):
-        snippet = Housemate.objects.filter(listing_account=id)
+        snippet = Housemate.objects.filter(property_id=id)
         array = []
         for account in snippet:
             try:

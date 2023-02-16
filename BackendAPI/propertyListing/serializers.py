@@ -23,7 +23,7 @@ class PropertyListingSerializer(serializers.ModelSerializer):
         listing_utilities_data = validated_data.pop('listing_utilities')
         property_listing = PropertyListing.objects.create(**validated_data)
         for listing_utility_data in listing_utilities_data:
-            ListingUtilities.objects.create(property_listing = property_listing, **listing_utility_data)
+            ListingUtilities.objects.create(property_listing_fk = property_listing, **listing_utility_data)
         return property_listing
 
     def update(self, instance, validated_data):
@@ -52,7 +52,7 @@ class PropertyListingSerializer(serializers.ModelSerializer):
         instance.listing_utilities.set("")
         
         for listing_utility_data in listing_utilities:
-            ListingUtilities.objects.create(property_listing = instance, **listing_utility_data)
+            ListingUtilities.objects.create(property_listing_pk = instance, **listing_utility_data)
          
         instance.save()
         return instance
