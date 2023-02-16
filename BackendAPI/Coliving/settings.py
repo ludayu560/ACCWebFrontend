@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'listingAccount',
     'propertyListing',
     'notifications'
-
 ]
 
 MIDDLEWARE = [

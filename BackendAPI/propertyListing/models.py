@@ -2,10 +2,6 @@ from django.db import models
 
 # Create your models here.
 class PropertyListing(models.Model):
-    listing_image_one = models.ImageField(null=True) #path required in the future
-    listing_image_two = models.ImageField(null=True) #path required in the future
-    listing_image_three = models.ImageField(null=True) #path required in the future
-    listing_image_four = models.ImageField(null=True) #path required in the future
     listing_city = models.CharField(max_length=50, null=True)
     listing_postal = models.CharField(max_length=50, null=True)
     listing_province = models.CharField(max_length=50, null=True)
@@ -21,5 +17,15 @@ class PropertyListing(models.Model):
     listing_smoking = models.BooleanField(null=True)
     listing_pets = models.BooleanField(null=True)
     listing_ac = models.BooleanField(null=True)
-    listing_utilities = models.CharField(max_length=30, null=True)
     listing_description = models.TextField(max_length=400, null=True)
+    listing_image_one = models.ImageField(null=True) #path required in the future
+    listing_image_two = models.ImageField(null=True) #path required in the future
+    listing_image_three = models.ImageField(null=True) #path required in the future
+    listing_image_four = models.ImageField(null=True) #path required in the future
+
+class Utilities(models.Model):
+    utility = models.CharField(max_length=200, null=True)
+    property_listing = models.ForeignKey(PropertyListing, related_name='utilities', on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f"{self.utility}"
