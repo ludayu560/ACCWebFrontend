@@ -27,6 +27,4 @@ class AccountFilterViewSet(generics.ListAPIView):
     queryset = ListingAccount.objects.all()
     serializer_class = ListingAccountSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['interests__interest', 'personal_traits__trait', 'lifestyle__lifestyle', 'age']
-
-# class AccountFilterGet(APIView):
+    search_fields = ['age']

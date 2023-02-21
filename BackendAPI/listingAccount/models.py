@@ -1,5 +1,5 @@
 from django.db import models
-import datetime
+from datetime import date
 
 class ListingAccount(models.Model):
     username = models.CharField(max_length=20, null=True)
@@ -18,11 +18,11 @@ class ListingAccount(models.Model):
     display_picture_two = models.ImageField(null=True)
     display_picture_three = models.ImageField(null=True)
     display_picture_four = models.ImageField(null=True)
-    # age = (datetime.date.today() - date_of_birth)*365
-
-    # def calc_age(self):
-    #     import datetime
-    #     return ((datetime.date.today() - self.date_of_birth)*365)
+    age = models.IntegerField(null=True)
+    def calc_age(self):
+        today = date.today()
+        return today.year - self.date_of_birth.year - ((today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
+    age = property(calc_age)
 
 class PersonalTrait(models.Model):
     trait = models.CharField(max_length=200, null = True)
