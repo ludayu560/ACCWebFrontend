@@ -24,6 +24,9 @@ import Housemates from "./Housemates";
 import Listing from "./Listing";
 import Dashboard from "./Dashboard";
 import Homeowners from "./Homeowners";
+import About from "./About";
+import Contact from "./Contact";
+import HowItWorks from "./HowItWorks";
 
 const router = createBrowserRouter([
   {
@@ -117,7 +120,34 @@ const router = createBrowserRouter([
     element: (
       <>
         <Toolbar sx={{ height: 114 }} />
-        <Dashboard variant='tenant'/>
+        <Dashboard variant='propertyOwner'/>
+      </>
+    ),
+  },
+  {
+    path: "/about",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <About/>
+      </>
+    ),
+  },
+  {
+    path: "/contact",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <Contact />
+      </>
+    ),
+  },
+  {
+    path: "/howItWorks",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <HowItWorks />
       </>
     ),
   },
