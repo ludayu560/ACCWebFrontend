@@ -37,28 +37,28 @@ function TenantHome(props) {
       <Stack>
         {/*First Title Section*/}
         <Box component='img' src={TenantHomePageBG}></Box>
-        <Stack sx={{mt: -100}}>
+        <Stack sx={{mt: -80}}>
           <Stack pl={15} spr={"50vw"} pt={10}>
-            <Typography variant="h1" sx={{ fontWeight: "bold", color: "white", fontSize: 120 }}>
+            <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
               Enjoy
             </Typography>
-            <Typography variant="h1" sx={{ fontWeight: "bold", color: "white", fontSize: 120 }}>
+            <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
               Safe
             </Typography>
-            <Typography variant="h1" sx={{ fontWeight: "bold", color: "white", fontSize: 120 }}>
+            <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
               Comfortable
             </Typography>
-            <Typography variant="h1" sx={{ fontWeight: "bold", color: "white", fontSize: 120 }}>
+            <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
               Living
             </Typography>
           </Stack>
-          <Box display="flex" justifyContent="center" p={8}>
+          <Box display="flex" justifyContent="center">
             <Typography variant="h3" sx={{ color: "white" }}>
               Search For Listings
             </Typography>
           </Box>
         </Stack>
-        <Stack alignItems="center" p={6} mt={-12}>
+        <Stack alignItems="center" p={6} mt={-4}>
           <SearchBar variant='location'/>
         </Stack>
 

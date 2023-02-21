@@ -18,8 +18,8 @@ function Mainbar() {
   const trigger = useScrollTrigger();
   return (
     <Slide appear={false} direction="down" in={!trigger}>
-      <AppBar positon="static" width='100vw'>
-        <Toolbar sx={{ height: 114, background: "white", width: '100vw' }}>
+      <AppBar positon="static" >
+        <Toolbar sx={{ height: 114, background: "white"}}>
           <Link href="/">
             <Box
               component="img"
@@ -50,7 +50,7 @@ function Mainbar() {
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/homeowners">
               Homeowners
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/about">
               About
             </Button>
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
