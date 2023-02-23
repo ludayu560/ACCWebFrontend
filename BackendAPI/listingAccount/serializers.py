@@ -25,10 +25,10 @@ class ListingAccountSerializer(serializers.ModelSerializer):
     lifestyle = serializers.StringRelatedField(many=True)
     class Meta:
         model = ListingAccount
-        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
+        fields = ['id', 'username', 'account_type','first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
                   'location', 'age_range', 'tell_us_about_yourself', 'profile_picture', 'banner_picture',
                   'display_picture_one', 'display_picture_two', 'display_picture_three', 'display_picture_four',
-                  'personal_traits', 'interests', 'notifications', 'lifestyle', 'age']
+                  'personal_traits', 'interests', 'notifications', 'lifestyle']
     def to_internal_value(self, data):
         return data
 

@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'favorites',
     'listingAccount',
     'propertyListing',
-    'notifications'
-
+    'notifications',
+    'django_filters'
 ]
 
 MIDDLEWARE = [

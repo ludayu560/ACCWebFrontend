@@ -1,11 +1,14 @@
+from django.forms import ModelChoiceField
 from .models import ListingAccount, Interest, PersonalTrait, Lifestyle
 from .serializers import ListingAccountSerializer, InterestsSerializer, PersonalTraitsSerializer, LifestyleSerializer
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from listingAccount.filters import ListingAccountFilter
 
-from rest_framework import generics
-from rest_framework import filters
+import django_filters
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.generics import ListAPIView
 
 class ListingAccountViewSet(viewsets.ModelViewSet):
     queryset = ListingAccount.objects.all()
@@ -23,8 +26,8 @@ class LifestyleViewSet(viewsets.ModelViewSet):
     queryset = Lifestyle.objects.all()
     serializer_class = LifestyleSerializer
 
-class AccountFilterViewSet(generics.ListAPIView):
+class AccountFilterViewSet(ListAPIView):
     queryset = ListingAccount.objects.all()
     serializer_class = ListingAccountSerializer
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['age']
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = ListingAccountFilter

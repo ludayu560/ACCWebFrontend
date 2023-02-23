@@ -3,7 +3,10 @@ from datetime import date
 
 class ListingAccount(models.Model):
     username = models.CharField(max_length=20, null=True)
-    account_type = models.CharField(max_length=30, null=True)
+    class AccountType(models.TextChoices):
+        TENANT = 'tenant'
+        HOMEOWNER = 'homeowner'
+    account_type = models.CharField(max_length=30, choices=AccountType.choices, null=True)
     first_name = models.CharField(max_length=30, null=True)
     last_name = models.CharField(max_length=30, null=True)
     email = models.EmailField(max_length=254, null=True)
@@ -18,11 +21,14 @@ class ListingAccount(models.Model):
     display_picture_two = models.ImageField(null=True)
     display_picture_three = models.ImageField(null=True)
     display_picture_four = models.ImageField(null=True)
-    age = models.IntegerField(null=True)
-    def calc_age(self):
-        today = date.today()
-        return today.year - self.date_of_birth.year - ((today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
-    age = property(calc_age)
+
+    # @property
+    # def calc_age(self):
+    #     today = date.today()
+    #     return today.year - self.date_of_birth.year - ((today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
+    # age = calc_age
+    age = models.PositiveSmallIntegerField(null=True)
+
 
 class PersonalTrait(models.Model):
     trait = models.CharField(max_length=200, null = True)
