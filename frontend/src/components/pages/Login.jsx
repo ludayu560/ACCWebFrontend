@@ -14,8 +14,12 @@ function Login() {
     // const {setPage, returnHook} = props()
 
     const [firstName, setFirstName] = useState('');
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
 
-
+    const {email, password } = formData;
     return (
         <Stack
             direction={'row'} height={'90vh'} width={'90vw'} marginY={'5vh'} marginX={'5vw'}
@@ -45,21 +49,36 @@ function Login() {
                     </Typography>
 
                     <Stack spacing={'5vh'} paddingTop={'6vh'}>
-                        <StyledTextField placeholder='Email*' variant='empty' width='25vw'></StyledTextField>
-                        <StyledTextField placeholder='Password*' variant='empty' width='25vw'></StyledTextField>
+                        <StyledTextField 
+                           className='form-control'
+                           type='email'
+                           placeholder='Email*'
+                           name='email'
+                           value={email}
+                           onCHange={e => onchange(e)}
+                           required variant='empty' width='25vw'></StyledTextField>
+                        <StyledTextField 
+                        className='form-control'
+                        type='password'
+                        placeholder='Password*'
+                        name='password'
+                        value={password}
+                        onCHange={e => onchange(e)}
+                        required
+                        variant='empty' width='25vw'></StyledTextField>
                     </Stack>
 
                     <Stack direction={'row'} textAlign={'center'} spacing={'3vw'}>
-                        <FormControlLabel
+                        {/* <FormControlLabel
                             control={<Checkbox sx={{'&.Mui-checked': {color: '#F83E7D'}}}/>} 
-                            label={<Typography variant="p" fontWeight={600}>Remember Me</Typography>}/>
+                            label={<Typography variant="p" fontWeight={600}>Remember Me</Typography>}/> */}
 
                         <Box sx={{ display: 'flex', alignItems: 'center', alignSelf: 'right'}} >
                             <Link align="right" variant="p" fontWeight={600}> Forgot Password?</Link>
                         </Box>
                     </Stack>
 
-                    <StyledButton variant='signup' text='Login' width='25vw' noArrow></StyledButton>
+                    <StyledButton variant='signup' text='Login' width='25vw' noArrow type='submit'></StyledButton>
 
                     <Typography fontWeight={700} variant="p">
                         Not registered yet? <Link> Create an Account </Link>

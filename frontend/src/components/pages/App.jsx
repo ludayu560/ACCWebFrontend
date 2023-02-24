@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Link, createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
+import Activate from "../../AuthComponents/Activate";
+import ResetPassword from "../../AuthComponents/ResetPassword";
+import ResetPasswordConfirm from "../../AuthComponents/ResetPasswordConfirm";
 import Home from "./Home";
 import MyAccount from "./MyAccount";
 import MyAccountBilling from "./MyAccountBilling";
@@ -26,6 +29,25 @@ import Dashboard from "./Dashboard";
 import Homeowners from "./Homeowners";
 
 const router = createBrowserRouter([
+  // authn
+  {
+    path: "/activate/:uid/:token",
+    element: (
+      <Activate></Activate>
+    )
+  },
+  {
+    path: "/reset-password",
+    element: (
+      <ResetPassword></ResetPassword>
+    )
+  },
+  {
+    path: "/password/reset/confirm/:uid/:token",
+    element: (
+      <ResetPasswordConfirm></ResetPasswordConfirm>
+    )
+  },
   {
     path: "/",
     element: (

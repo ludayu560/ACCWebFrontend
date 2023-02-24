@@ -1,5 +1,10 @@
 {
   "dependencies": {
-    "@fontsource/open-sans": "^4.5.13"
+    "@fontsource/open-sans": "^4.5.13",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.8.1",
+    "redux": "^4.2.1",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.2"
   }
 }
