@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date
+from datetime import date, datetime
 
 class ListingAccount(models.Model):
     username = models.CharField(max_length=20, null=True)
@@ -22,12 +22,15 @@ class ListingAccount(models.Model):
     display_picture_three = models.ImageField(null=True)
     display_picture_four = models.ImageField(null=True)
 
-    # @property
-    # def calc_age(self):
-    #     today = date.today()
-    #     return today.year - self.date_of_birth.year - ((today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
-    # age = calc_age
-    age = models.PositiveSmallIntegerField(null=True)
+    @property
+    def age(self):
+        if self.date_of_birth:
+            birthdate = datetime.combine(self.date_of_birth, datetime.min.time()).date()
+            today = date.today()
+            age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+            return age
+        else:
+            return None
 
 
 class PersonalTrait(models.Model):
@@ -43,10 +46,3 @@ class Interest(models.Model):
 
     def __str__(self):
         return f"{self.interest}"
-        
-class Lifestyle(models.Model):
-    lifestyle = models.CharField(max_length=200, null=True)
-    listing_account = models.ForeignKey(ListingAccount, related_name='lifestyle', on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return f"{self.lifestyle}"

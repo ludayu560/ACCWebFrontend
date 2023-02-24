@@ -8,7 +8,6 @@ router = DefaultRouter()
 router.register("ListingAccount", views.ListingAccountViewSet)
 router.register("PersonalTraits", views.PersonalTraitsViewSet)
 router.register("Interests", views.InterestsViewSet)
-router.register("Lifestyle", views.LifestyleViewSet)
 urlpatterns = [
     path('ListingAccount/filter', views.AccountFilterViewSet.as_view(), name='ListingAccount'),
     path('', include(router.urls))
