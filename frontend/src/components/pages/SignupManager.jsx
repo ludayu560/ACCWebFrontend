@@ -1,45 +1,25 @@
 import React, { useState } from "react";
 import { Box } from "@mui/system";
-import { Grid } from "@mui/material";
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
 
 import Page1 from "./Signup1";
 import Page2 from "./Signup2";
 import Page3 from "./Signup3";
 
 import axios from "axios";
+    
+export default function SignupManager() {
+    const [open, setOpen] = React.useState(false);
 
-function SignupManager() {
     const api = axios.create({
         baseURL: `http://127.0.0.1:8000/ListingAccount/`
     })
 
     const [currPage, setCurrPage] = useState(1)
-    // const signupValuesOne = {
-    //     firstName: firstName,
-    //     lastName : lastName,
-    //     username : username,
-    //     email : email, 
-    //     password : password,
-    //     passwordConfirm : passwordConfirm,
-    //     newsConsent : newsConsent
-    // }
     const [pageValueOne, setPageValueOne] = useState()
-    // const signupValuesTwo = {
-    //     'role' : 1
-    // }
     const [pageValueTwo, setPageValueTwo] = useState()
-    // {
-    //     traits : traits,
-    //     interests : interests,
-    //     age : age,
-    //     dob : dob,
-    //     location : location,
-    //     occupation : occupation,
-    // }
     const [pageValueThree, setPageValueThree] = useState()
-
-    console.log(pageValueOne, pageValueTwo, pageValueThree)
-
 
     if (currPage === 4) {
         api.post('/', {
@@ -71,29 +51,32 @@ function SignupManager() {
         setCurrPage(3)
     }
 
+    const handleClickOpen = () => {
+    setOpen(true);
+    };
+    const handleClose = () => {
+    setOpen(false);
+    };
+
     return (
-
-        <div style={{width: '100vw', height:'100vh', background:'#000000'}}>
-        <Box 
-            position={'absolute'} borderRadius={'10vmin'}
-            marginX={'5vw'} marginY={'5vh'} 
-            width={'90vw'} height={'90vh'} 
-            sx={{ backgroundColor: '#ffffff'}}>
-
+    <div>
+        <Button onClick={handleClickOpen} color="inherit" size="large" sx={{ color: "#F83E7D", background: "#F83E7D4A" }}>
+            Get Started 
+        </Button>
+        <Dialog onClose={handleClose} open={open}
+            PaperProps={{sx: {minWidth: "80vw", minHeight: "90vh", borderRadius: "100px"}}}>
             <Box>
                 {currPage === 1?
-                <Page1 setPage={setCurrPage} returnHook={setPageValueOne}></Page1>
+                <Page1 setPage={setCurrPage} returnHook={setPageValueOne}/>
                 : null}
                 {currPage === 2?
-                <Page2 setPage={setCurrPage} returnHook={setPageValueTwo}></Page2>
+                <Page2 setPage={setCurrPage} returnHook={setPageValueTwo}/>
                 : null}
                 {currPage === 3? 
-                <Page3 setPage={setCurrPage} returnHook={setPageValueThree}></Page3>
+                <Page3 setPage={setCurrPage} returnHook={setPageValueThree}/>
                 : null}
             </Box>
-        </Box>
+        </Dialog>
     </div>
-    )
+    );
 }
-
-export default SignupManager

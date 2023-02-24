@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import {FormControlLabel, Checkbox, Container, Box, Stack, Typography, Link} from "@mui/material";
+
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import Stack from '@mui/material/Stack';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
 
 import StyledTextField from "../components/StyledTextField";
 import StyledButton from "../components/StyledButton";
@@ -9,18 +18,26 @@ import {ReactComponent as Logo} from '../../assets/HouseLogoPink.svg';
 import {ReactComponent as LoginText1} from '../../assets/LoginText1.svg';
 import {ReactComponent as LoginText2} from '../../assets/LoginText2.svg';
 import {ReactComponent as AishaSignaturePink} from '../../assets/AishaSignatureWhite.svg';
+    
+export default function Login() {
+    const [open, setOpen] = React.useState(false);
 
-function Login() {
-    // const {setPage, returnHook} = props()
-
-    const [firstName, setFirstName] = useState('');
-
+    const handleClickOpen = () => {
+    setOpen(true);
+    };
+    const handleClose = () => {
+    setOpen(false);
+    };
 
     return (
-        <Stack
-            direction={'row'} height={'90vh'} width={'90vw'} marginY={'5vh'} marginX={'5vw'}
-            borderRadius={'20px 10vmin 10vmin 20px'} sx={{background: 'white'}}>
-            
+    <div>
+        <Button onClick={handleClickOpen} color="inherit" size="large" sx={{ color: "#F83E7D" }}>
+            Login
+        </Button>
+        <Dialog onClose={handleClose} open={open}
+                PaperProps={{sx: {minWidth: "80vw", minHeight: "90vh", borderRadius: '30px 10vmin 10vmin 30px'}}}>
+
+        <Stack direction={'row'}>
             <Box position={'relative'}>
                 <Login1 height={'90vh'} padding={'0px'}></Login1>
 
@@ -67,7 +84,7 @@ function Login() {
                 </Stack>
             </Container>
         </Stack>
-    )
+        </Dialog>
+    </div>
+    );
 }
-
-export default Login
