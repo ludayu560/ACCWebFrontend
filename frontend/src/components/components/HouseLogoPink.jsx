@@ -5,7 +5,7 @@ import {ReactComponent as Logo} from '../../assets/HouseLogoPink.svg';
 function HouseLogoPink() {
     return (
         <Box position={'absolute'}>
-            <Box position={'relative'} left={'10vmin'} width={'10vmin'}>
+            <Box position={'relative'} left={'10vmin'} width={'10vmin'} top={'10vmin'}>
                 <Logo>
                 </Logo>
             </Box>

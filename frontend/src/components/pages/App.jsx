@@ -27,6 +27,10 @@ import Housemates from "./Housemates";
 import Listing from "./Listing";
 import Dashboard from "./Dashboard";
 import Homeowners from "./Homeowners";
+import ListingDetails from "./ListingDetails";
+import About from "./About";
+import Contact from "./Contact";
+import HowItWorks from "./HowItWorks";
 
 const router = createBrowserRouter([
   // authn
@@ -78,16 +82,7 @@ const router = createBrowserRouter([
       </>
     ),
   },
-  {
-    path: "/landing",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <Landing />
-      </>
-    ),
-  },
-  
+
   // Is this needed?
   {
     path: "/home",
@@ -148,7 +143,34 @@ const router = createBrowserRouter([
     element: (
       <>
         <Toolbar sx={{ height: 114 }} />
-        <Dashboard/>
+        <Dashboard variant='propertyOwner'/>
+      </>
+    ),
+  },
+  {
+    path: "/about",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <About/>
+      </>
+    ),
+  },
+  {
+    path: "/contact",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <Contact />
+      </>
+    ),
+  },
+  {
+    path: "/howItWorks",
+    element: (
+      <>
+        <Toolbar sx={{ height: 114 }} />
+        <HowItWorks />
       </>
     ),
   },
@@ -260,6 +282,15 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "/listingdetails",
+    element: (
+      <>
+      <Toolbar sx={{ height: 168 }} />
+      <ListingDetails></ListingDetails>
+      </>
+    )
+  }
 ]);
 
 function App() {

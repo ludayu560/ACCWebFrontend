@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { Grid, Typography, FormControlLabel, Checkbox, Link} from "@mui/material";
-import { Stack } from "@mui/system";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Stack from "@mui/system/Stack";
 
 import SignupAisha from "../components/SignupAishaLogo";
 import StyledButton from "../components/StyledButton";
@@ -36,10 +40,10 @@ function Page1(props) {
 
 
     return (
-    <Grid container maxHeight={'100vh'}>
+    <Grid container>
         <SignupAisha></SignupAisha>
         <Grid item xs={8}>
-            <Stack alignItems={'left'} justifyContent={'center'} paddingLeft={'10vw'} paddingRight={'10vw'} paddingTop={'10vh'}>
+            <Stack alignItems={'left'} justifyContent={'center'} paddingLeft={'10vw'} paddingRight={'10vw'} paddingTop={'10vh'} maxWidth={"100%"}>
                 <SignupProgressionIcon stage='1'/>
                 <Typography variant="h4" fontWeight={600} paddingTop={'5vh'} paddingBottom={'2vh'}>
                     Sign-up

@@ -13,7 +13,7 @@ import StyledTextField from "./StyledTextField";
 
 
 // A Function which renders an empty textbox with dropdown functionality. 
-// Must be passed an array of items. current 
+// Must be passed an array of items. 
 function DropDownMenu(props) {
     const { options, placeholder, hook} = props
 

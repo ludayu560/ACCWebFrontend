@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Stack,
-  Button,
-  Link,
-  Box,
-  Slide,
-  useScrollTrigger,
-} from "@mui/material";
-import AishaLogo from "../../assets/Final Logo Transparent 3.svg";
 
-// import "./Navbar.css";
+import AppBar from "@mui/material/AppBar"; 
+import Toolbar from "@mui/material/Toolbar"; 
+import Typography from "@mui/material/Typography"; 
+import Stack from "@mui/material/Stack"; 
+import Button from "@mui/material/Button"; 
+import Link from "@mui/material/Link"; 
+import Box from "@mui/material/Box"; 
+import Slide from "@mui/material/Slide"; 
+import useScrollTrigger from "@mui/material/useScrollTrigger"; 
+
+import AishaLogo from "../../assets/Final Logo Transparent 3.svg";
+import SignupManager from "../pages/SignupManager";
+import Login from "../pages/Login";
+
 
 function Navbar() {
   const trigger = useScrollTrigger(); 
@@ -30,21 +31,8 @@ function Navbar() {
           </Link>
           <Box sx={{ flexGrow: 1 }} />
           <Stack direction="row" spacing={5}>
-            <Link href="/login">
-            <Button color="inherit" size="large" sx={{ color: "#F83E7D" }}>
-            Log in
-            </Button>
-            </Link>
-
-            <Link href="/signup">
-            <Button
-              color="inherit"
-              size="large"
-              sx={{ color: "#F83E7D", background: "#F83E7D4A" }}
-            >
-              Get Started
-            </Button>
-            </Link>
+            <Login></Login>
+            <SignupManager></SignupManager>
           </Stack>
         </Toolbar>
       </AppBar>
