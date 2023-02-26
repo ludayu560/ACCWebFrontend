@@ -6,6 +6,8 @@ import Divider from "@mui/material/Divider";
 
 import ReviewComponent from "../components/PropDetailReviewComponent";
 import HousemateComponent from "../components/PropDetailHousemateComponent";
+import ImageCarousel from "../components/ImageCarousel";
+
 
 function ListingDetails(props) {
 
@@ -35,6 +37,34 @@ let boolAC = true;
 // Description section
 let listingDescription = "Looking for a young professional female. The unit is a townhouse style condo with 3 floors. It has HVAC, in-house laundry, dishwasher and the building is fully managed by a condominium. It is situated at Chapman Mills Drive, Barrhaven. 5 mins walk to the Barrhaven Marketplace that features Walmart, Loblaws, Winners, Sportchek, Staples, Structube, Scotia, TD bank, etc. The house and room is fully furnished. The bus stop (99 hurdman) is directly in front of the building of the house. Available Immediately"
 
+// Carousel Section 
+
+const exampleImageArray = [
+    {
+      src: require(
+        './../../assets/images/image25.png'
+    ),},
+    {
+      src: require(
+        './../../assets/images/image26.png'
+    ),},
+    {
+      src: require(
+        './../../assets/images/image27.png'
+    ),},
+    {
+      src: require(
+        './../../assets/images/image25.png'
+    ),},
+    {
+      src: require(
+        './../../assets/images/image26.png'
+    ),},
+    {
+      src: require(
+        './../../assets/images/image27.png'
+    ),},
+  ]
 
 // Housemates section
 let housemateArray = []
@@ -79,7 +109,7 @@ reviewArray.push(exampleReview, exampleReview, exampleReview)
         <Mainbar></Mainbar>
         <Stack>
             {/* Title Component */}
-            <Box marginLeft={'5vw'}>
+            <Box marginLeft={'5vw'} marginBottom={'10vh'}>
                 <Divider width="20%"></Divider>
                 <Typography fontWeight={600} fontSize={16} color={'#737373FA'} marginTop={"4vh"}>
                     Listed {listingAge} days ago
@@ -92,11 +122,11 @@ reviewArray.push(exampleReview, exampleReview, exampleReview)
                 </Typography>
             </Box>
             {/* Image Carousel */}
-            
+            <ImageCarousel images={exampleImageArray}/>
             {/* Infographics */}
             {/* Map */}
             {/* Description */}
-            <Box marginLeft={'5vw'} marginTop={'15vh'}>
+            <Box marginLeft={'5vw'}>
                 <Typography fontWeight={600} fontSize={40}> Description </Typography>
                 <Divider width="20%"></Divider>
                 <Typography width={'40%'} fontWeight={600} fontSize={20} marginTop={'4vh'}> 

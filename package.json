@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@fontsource/open-sans": "^4.5.13"
+    "@fontsource/open-sans": "^4.5.13",
+    "react-material-ui-carousel": "^3.4.2"
   }
 }

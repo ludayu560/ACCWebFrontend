@@ -268,7 +268,7 @@ const router = createBrowserRouter([
       <ListingDetails></ListingDetails>
       </>
     )
-  }
+  },
 ]);
 
 function App() {
