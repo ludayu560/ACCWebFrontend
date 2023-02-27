@@ -10,6 +10,7 @@ import django_filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import ListAPIView
 
+
 class ListingAccountViewSet(viewsets.ModelViewSet):
     queryset = ListingAccount.objects.all()
     serializer_class = ListingAccountSerializer

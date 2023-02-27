@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'propertyListing',
     'notifications',
     'django_filters'
+    'housemate'
 ]
 
 MIDDLEWARE = [

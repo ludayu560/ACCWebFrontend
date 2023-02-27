@@ -4,8 +4,8 @@ from . import views
 from rest_framework.routers import DefaultRouter
 
 router=DefaultRouter()
-router.register("PropertyListing", views.PropertyListingViewSet)
-router.register("ListingUtilities", views.ListingUtilitiesViewSet)
+router.register("Housemate", views.HousemateViewSet)
 urlpatterns = [
-    path('', include(router.urls))
+    path('Housemate/get/<int:id>/', views.HousemateAccountGet.as_view()),
+    path('', include(router.urls)),
 ]
