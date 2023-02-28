@@ -3,6 +3,8 @@ import Navbar from '../components/components/NavBar';
 import { connect } from 'react-redux';
 import { checkAuthenticated, load_user } from './actions/auth'; //checkAuthenticated, 
 import Mainbar from '../components/components/MainBar';
+import { Route } from 'react-router-dom';
+import Landing from '../components/pages/Landing';
 
 //checkAuthenticated, 
 const Layout = (props) => {
@@ -15,7 +17,7 @@ const Layout = (props) => {
         <div>
             {/*once authenticated use <Mainbar /> */}
             <Navbar/>
-            { props.children}
+            {props.children}
         </div>
     );
 };

@@ -1,5 +1,7 @@
-import { BrowserRouter as Router, Routes, Route, Link, createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+
 
 // login set up
 import { Provider } from "react-redux";
@@ -16,9 +18,7 @@ import MyAccountEvents from "./components/pages/MyAccountEvents";
 import MyAccountHelp from "./components/pages/MyAccountHelp";
 import MyAccountNotifications from "./components/pages/MyAccountNotifications";
 import MyAccountSettings from "./components/pages/MyAccountSettings";
-import { Toolbar } from "@mui/material";
 import SignupManager from "./components/pages/SignupManager";
-import Signup from "./components/pages/Signup";
 import Login from "./components/pages/Login";
 import MyAccountSubscribe from "./components/pages/MyAccountSubscribe";
 import MyAccountBillSummary from "./components/pages/MyAccountBilling2";
@@ -37,273 +37,52 @@ import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import HowItWorks from "./components/pages/HowItWorks";
 
-const router = createBrowserRouter([
-  // authn
-  {
-    path: "/activate/:uid/:token",
-    element: <Activate></Activate>,
-  },
-  {
-    path: "/reset-password",
-    element: <ResetPassword></ResetPassword>,
-  },
-  {
-    path: "/password/reset/confirm/:uid/:token",
-    element: <ResetPasswordConfirm></ResetPasswordConfirm>,
-  },
-  {
-    path: "/",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <Landing />
-      </>
-    ),
-  },
-  {
-    path: "/login",
-    element: <Login></Login>,
-  },
-  {
-    path: "/signup",
-    element: <SignupManager></SignupManager>,
-  },
-  {
-    path: "/landing",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <Landing />
-      </>
-    ),
-  },
-
-  // Is this needed?
-  {
-    path: "/home",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <Home />
-      </>
-    ),
-  },
-  {
-    path: "/events",
-    element: (
-      <>
-        <Toolbar sx={{ height: 114 }} />
-        <Events />
-      </>
-    ),
-  },
-  {
-    path: "/tenanthome",
-    element: (
-      <>
-        <Toolbar sx={{ height: 114 }} />
-        <TenantHome />
-      </>
-    ),
-  },
-  {
-    path: "/homeowners",
-    element: (
-      <>
-        <Toolbar sx={{ height: 114 }} />
-        <Homeowners />
-      </>
-    ),
-  },
-  {
-    path: "/housemates",
-    element: (
-      <>
-        <Toolbar sx={{ height: 114 }} />
-        <Housemates />
-      </>
-    ),
-  },
-  {
-    path: "/listing",
-    element: (
-      <>
-        <Toolbar sx={{ height: 114 }} />
-        <Listing />
-      </>
-    ),
-  },
-  {
-    path: "/dashboard",
-    element: (
-      <>
-        <Toolbar sx={{ height: 114 }} />
-        <Dashboard variant="propertyOwner" />
-      </>
-    ),
-  },
-  {
-    path: "/about",
-    element: (
-      <>
-        <Toolbar sx={{ height: 114 }} />
-        <About />
-      </>
-    ),
-  },
-  {
-    path: "/contact",
-    element: (
-      <>
-        <Toolbar sx={{ height: 114 }} />
-        <Contact />
-      </>
-    ),
-  },
-  {
-    path: "/howItWorks",
-    element: (
-      <>
-        <Toolbar sx={{ height: 114 }} />
-        <HowItWorks />
-      </>
-    ),
-  },
-  {
-    path: "/account-homeowner",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccount name="Homeowner" />
-      </>
-    ),
-  },
-  {
-    path: "/account-tenant",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccount name="Tenant" />
-      </>
-    ),
-  },
-  {
-    path: "/account-profile",
-    element: (
-      <>
-        <Toolbar sx={{ height: 114 }} />
-        <MyAccountProfile />
-      </>
-    ),
-  },
-  {
-    path: "/account-notifications",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccountNotifications />
-      </>
-    ),
-  },
-  {
-    path: "/account-events",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccountEvents />
-      </>
-    ),
-  },
-  {
-    path: "/account-settings",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccountSettings />
-      </>
-    ),
-  },
-  {
-    path: "/account-favourites",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccountFavourites />
-      </>
-    ),
-  },
-  {
-    path: "/account-billing",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccountBilling />
-      </>
-    ),
-  },
-  {
-    path: "/account-subscribe",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccountSubscribe />
-      </>
-    ),
-  },
-  {
-    path: "/account-billsummary",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccountBillSummary />
-      </>
-    ),
-  },
-  {
-    path: "/account-mysubscriptions",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccountMySubscriptions />
-      </>
-    ),
-  },
-  {
-    path: "/account-help",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <MyAccountHelp />
-      </>
-    ),
-  },
-  {
-    path: "/listingdetails",
-    element: (
-      <>
-        <Toolbar sx={{ height: 168 }} />
-        <ListingDetails></ListingDetails>
-      </>
-    ),
-  },
-]);
-
 function App() {
   const THEME = createTheme({
     typography: {
       fontFamily: `"Open Sans", sans-serif`,
     },
   });
-
   return (
+    <ThemeProvider theme={THEME}>
     <Provider store={store}>
-      <ThemeProvider theme={THEME}>
+      <BrowserRouter>
         <Layout>
-          <RouterProvider router={router} />
+          <Routes>
+            <Route exact path='/listingdetails' element={<ListingDetails/>}/>
+            <Route exact path='/account-help' element={<MyAccountHelp/>}/>
+            <Route exact path='/account-mysubscriptions' element={<MyAccountMySubscriptions/>}/>
+            <Route exact path='/account-billsummary' element={<MyAccountBillSummary/>}/>
+            <Route exact path='/account-subscribe' element={<MyAccountSubscribe/>}/>
+            <Route exact path='/account-billing' element={<MyAccountBilling />}/>
+            <Route exact path='/account-favourites' element={<MyAccountFavourites/>}/>
+            <Route exact path='/account-settings' element={<MyAccountSettings/>}/>
+            <Route exact path='/account-events' element={<MyAccountEvents/>}/>
+            <Route exact path='/account-notifications' element={<MyAccountNotifications/>}/>
+            <Route exact path='/account-profile' element={<MyAccountProfile/>}/>
+            <Route exact path='/account-tenant' element={<MyAccount name="Tenant"/>}/>
+            <Route exact path='/account-homeowner' element={<MyAccount name="Homeowner" />}/>
+            <Route exact path='/howItWorks' element={<HowItWorks/>}/>
+            <Route exact path='/contact' element={<Contact/>}/>
+            <Route exact path='/about' element={<About />}/>
+            <Route exact path='/dashboard' element={<Dashboard variant="propertyOwner" />}/>
+            <Route exact path='/listing' element={<Listing />}/>
+            <Route exact path='/housemates' element={<Housemates />}/>
+            <Route exact path='/homeowners' element={<Homeowners />}/>
+            <Route exact path='/tenanthome' element={<TenantHome />}/>
+            <Route exact path='/events' element={<Events />}/>
+            <Route exact path='/home' element={<Home />}/>
+            <Route exact path='/' element={<Landing />}/>
+            <Route exact path='/signup' element={<SignupManager/>}/>
+            <Route exact path='/login' element={<Login/>}/>
+            <Route exact path='/activate/:uid/:token' element={<ResetPasswordConfirm/>}/>
+            <Route exact path='/reset-password' element={<ResetPassword/>}/>
+            <Route exact path='/password/reset/confirm/:uid/:token' element={<Activate/>}/>
+          </Routes>
         </Layout>
-      </ThemeProvider>
+      </BrowserRouter>
     </Provider>
+    </ThemeProvider>
   );
 }
-
 export default App;
