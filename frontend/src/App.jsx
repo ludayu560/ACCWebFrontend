@@ -1,36 +1,41 @@
 import { BrowserRouter as Router, Routes, Route, Link, createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-import Activate from "../../AuthComponents/Activate";
-import ResetPassword from "../../AuthComponents/ResetPassword";
-import ResetPasswordConfirm from "../../AuthComponents/ResetPasswordConfirm";
-import Home from "./Home";
-import MyAccount from "./MyAccount";
-import MyAccountBilling from "./MyAccountBilling";
-import MyAccountEvents from "./MyAccountEvents";
-import MyAccountHelp from "./MyAccountHelp";
-import MyAccountNotifications from "./MyAccountNotifications";
-import MyAccountSettings from "./MyAccountSettings";
+// login set up
+import { Provider } from 'react-redux';
+import store from './AuthComponents/store';
+import Activate from "./AuthComponents/Activate";
+import ResetPassword from "./AuthComponents/ResetPassword";
+import ResetPasswordConfirm from "./AuthComponents/ResetPasswordConfirm";
+import Layout from './AuthComponents/Layout';
+
+import Home from "./components/pages/Home";
+import MyAccount from "./components/pages/MyAccount";
+import MyAccountBilling from "./components/pages/MyAccountBilling";
+import MyAccountEvents from "./components/pages/MyAccountEvents";
+import MyAccountHelp from "./components/pages/MyAccountHelp";
+import MyAccountNotifications from "./components/pages/MyAccountNotifications";
+import MyAccountSettings from "./components/pages/MyAccountSettings";
 import { Toolbar } from "@mui/material";
-import SignupManager from "./SignupManager";
-import Signup from "./Signup";
-import Login from "./Login";
-import MyAccountSubscribe from "./MyAccountSubscribe";
-import MyAccountBillSummary from "./MyAccountBilling2";
-import MyAccountMySubscriptions from "./MyAccountBilling3";
-import MyAccountFavourites from "./MyAccountFavourites";
-import MyAccountProfile from "./MyAccountProfile";
-import Landing from "./Landing";
-import Events from "./Events";
-import TenantHome from "./TenantHome";
-import Housemates from "./Housemates";
-import Listing from "./Listing";
-import Dashboard from "./Dashboard";
-import Homeowners from "./Homeowners";
-import ListingDetails from "./ListingDetails";
-import About from "./About";
-import Contact from "./Contact";
-import HowItWorks from "./HowItWorks";
+import SignupManager from "./components/pages/SignupManager";
+import Signup from "./components/pages/Signup";
+import Login from "./components/pages/Login";
+import MyAccountSubscribe from "./components/pages/MyAccountSubscribe";
+import MyAccountBillSummary from "./components/pages/MyAccountBilling2";
+import MyAccountMySubscriptions from "./components/pages/MyAccountBilling3";
+import MyAccountFavourites from "./components/pages/MyAccountFavourites";
+import MyAccountProfile from "./components/pages/MyAccountProfile";
+import Landing from "./components/pages/Landing";
+import Events from "./components/pages/Events";
+import TenantHome from "./components/pages/TenantHome";
+import Housemates from "./components/pages/Housemates";
+import Listing from "./components/pages/Listing";
+import Dashboard from "./components/pages/Dashboard";
+import Homeowners from "./components/pages/Homeowners";
+import ListingDetails from "./components/pages/ListingDetails";
+import About from "./components/pages/About";
+import Contact from "./components/pages/Contact";
+import HowItWorks from "./components/pages/HowItWorks";
 
 const router = createBrowserRouter([
   // authn
@@ -301,9 +306,11 @@ function App() {
   });
   
   return (
-    <ThemeProvider theme={THEME}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={THEME}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </Provider>
   );
 }
 
