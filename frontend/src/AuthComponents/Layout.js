@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import Navbar from '../components/components/NavBar';
 import { connect } from 'react-redux';
 import { checkAuthenticated, load_user } from './actions/auth'; //checkAuthenticated, 
+import Mainbar from '../components/components/MainBar';
+
 //checkAuthenticated, 
 const Layout = (props) => {
     useEffect(() => {
@@ -11,7 +13,8 @@ const Layout = (props) => {
 
     return (
         <div>
-            <Navbar />
+            {/*once authenticated use <Mainbar /> */}
+            <Navbar/>
             { props.children}
         </div>
     );

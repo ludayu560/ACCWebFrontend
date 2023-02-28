@@ -2,12 +2,12 @@ import { BrowserRouter as Router, Routes, Route, Link, createBrowserRouter, Rout
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 // login set up
-import { Provider } from 'react-redux';
-import store from './AuthComponents/store';
+import { Provider } from "react-redux";
+import store from "./AuthComponents/store";
 import Activate from "./AuthComponents/Activate";
 import ResetPassword from "./AuthComponents/ResetPassword";
 import ResetPasswordConfirm from "./AuthComponents/ResetPasswordConfirm";
-import Layout from './AuthComponents/Layout';
+import Layout from "./AuthComponents/Layout";
 
 import Home from "./components/pages/Home";
 import MyAccount from "./components/pages/MyAccount";
@@ -41,21 +41,15 @@ const router = createBrowserRouter([
   // authn
   {
     path: "/activate/:uid/:token",
-    element: (
-      <Activate></Activate>
-    )
+    element: <Activate></Activate>,
   },
   {
     path: "/reset-password",
-    element: (
-      <ResetPassword></ResetPassword>
-    )
+    element: <ResetPassword></ResetPassword>,
   },
   {
     path: "/password/reset/confirm/:uid/:token",
-    element: (
-      <ResetPasswordConfirm></ResetPasswordConfirm>
-    )
+    element: <ResetPasswordConfirm></ResetPasswordConfirm>,
   },
   {
     path: "/",
@@ -68,15 +62,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: (
-      <Login></Login>
-    )
+    element: <Login></Login>,
   },
   {
     path: "/signup",
-    element: (
-      <SignupManager></SignupManager>
-    )
+    element: <SignupManager></SignupManager>,
   },
   {
     path: "/landing",
@@ -121,7 +111,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Toolbar sx={{ height: 114 }} />
-        <Homeowners/>
+        <Homeowners />
       </>
     ),
   },
@@ -148,7 +138,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Toolbar sx={{ height: 114 }} />
-        <Dashboard variant='propertyOwner'/>
+        <Dashboard variant="propertyOwner" />
       </>
     ),
   },
@@ -157,7 +147,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Toolbar sx={{ height: 114 }} />
-        <About/>
+        <About />
       </>
     ),
   },
@@ -291,11 +281,11 @@ const router = createBrowserRouter([
     path: "/listingdetails",
     element: (
       <>
-      <Toolbar sx={{ height: 168 }} />
-      <ListingDetails></ListingDetails>
+        <Toolbar sx={{ height: 168 }} />
+        <ListingDetails></ListingDetails>
       </>
-    )
-  }
+    ),
+  },
 ]);
 
 function App() {
@@ -304,11 +294,13 @@ function App() {
       fontFamily: `"Open Sans", sans-serif`,
     },
   });
-  
+
   return (
     <Provider store={store}>
       <ThemeProvider theme={THEME}>
-        <RouterProvider router={router} />
+        <Layout>
+          <RouterProvider router={router} />
+        </Layout>
       </ThemeProvider>
     </Provider>
   );
