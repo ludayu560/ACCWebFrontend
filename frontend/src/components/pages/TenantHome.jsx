@@ -33,6 +33,7 @@ import TenantHomePageBG from "../../assets/TenantHomePageBG.png";
 function TenantHome(props) {
   return (
     <>
+      <Mainbar />
       <Stack>
         {/*First Title Section*/}
         <Box component='img' src={TenantHomePageBG}></Box>

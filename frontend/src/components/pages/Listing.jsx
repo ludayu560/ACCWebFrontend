@@ -12,6 +12,7 @@ function Listing(props) {
   const data = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
   return (
     <>
+      <Mainbar />
       <Stack>
         <Stack direction='row' alignItems="center" p={10} spacing={5} mt={15}>
           <Typography variant="h2" sx={{ fontWeight: "bold" }}>

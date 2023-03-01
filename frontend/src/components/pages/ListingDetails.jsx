@@ -106,6 +106,7 @@ reviewArray.push(exampleReview, exampleReview, exampleReview)
 
     return (
         <>
+        <Mainbar></Mainbar>
         <Stack>
             {/* Title Component */}
             <Box marginLeft={'5vw'} marginBottom={'10vh'}>

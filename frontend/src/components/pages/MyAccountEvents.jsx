@@ -32,6 +32,7 @@ import SideNav from "../components/SideNav";
 function MyAccountEvents(props) {
   return (
     <>
+      <Mainbar></Mainbar>
       <Grid container spacing={8}>
         <Grid item xs={12}>
           <Typography variant="h2" padding={"3vw"} fontWeight={700}>
