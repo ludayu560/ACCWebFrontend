@@ -34,6 +34,7 @@ import AboutBG from "../../assets/AboutBG.png";
 function Contact(props) {
   return (
     <>
+      <Mainbar />
       <Stack>
         {/*First Title Section*/}
         <Box component="img" src={AboutBG} height="666px"></Box>
