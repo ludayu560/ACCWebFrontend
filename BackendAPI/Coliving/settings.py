@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'listingAccount',
     'propertyListing',
     'notifications',
+    'django_filters',
     'housemate'
 ]
 

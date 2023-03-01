@@ -7,5 +7,6 @@ router = DefaultRouter()
 router.register("PropertyListing", views.PropertyListingViewSet)
 router.register("ListingUtilities", views.ListingUtilitiesViewSet)
 urlpatterns = [
+    path('PropertyListing/filter', views.PropertyListingFilterViewSet.as_view(), name='PropertyListing'),
     path('', include(router.urls))
 ]
