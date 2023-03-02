@@ -150,7 +150,7 @@ function MyAccountBilling(props) {
               <Button
                 variant="outlined"
                 style={{ width: "20vw", height: "18vh" }}
-                startIcon={<Avatar src={PayPalLogo} style={{ width: "auto", height: "8vh" }} variant="square" />}
+                startIcon={<Avatar src={PayPalLogo} style={{ width: "auto", height: "6vh" }} variant="square" />}
                 sx={{
                   "&:hover": { backgroundColor: "transparent", borderWidth: palSelected ? 5 : 1 },
                   borderColor: "#F9568D",
@@ -166,7 +166,7 @@ function MyAccountBilling(props) {
               <Button
                 variant="outlined"
                 style={{ width: "20vw", height: "18vh" }}
-                startIcon={<Avatar src={VisaLogo} style={{ width: "auto", height: "8vh" }} variant="square" />}
+                startIcon={<Avatar src={VisaLogo} style={{ width: "auto", height: "6vh" }} variant="square" />}
                 sx={{
                   "&:hover": { backgroundColor: "transparent", borderWidth: visaSelected ? 5 : 1 },
                   borderColor: "#F9568D",

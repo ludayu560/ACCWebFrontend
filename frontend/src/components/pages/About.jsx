@@ -29,7 +29,7 @@ import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVer
 import ECard from "../components/ECard";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import TenantHomePageBG from "../../assets/TenantHomePageBG.png";
-import AboutBG from "../../assets/AboutBG.png"
+import AboutBG from "../../assets/AboutBG.png";
 
 function About(props) {
   return (
@@ -43,7 +43,7 @@ function About(props) {
             <Typography variant="h1" align="center" sx={{ fontWeight: "bold", color: "white" }}>
               Together is Better
             </Typography>
-            <Typography variant="h3" align="center" sx={{ fontWeight: "bold", color: "white" }}>
+            <Typography variant="h4" align="center" sx={{ color: "white" }}>
               “Life is beautiful because of the people we meet”
             </Typography>
             <Typography variant="h6" align="center" sx={{ fontWeight: "bold", color: "white" }}>
@@ -83,9 +83,9 @@ function About(props) {
           </Typography>
         </Stack>
         {/*our mission + vision + value portion */}
-        <Grid container pb={10}>
+        <Grid container pb={10} justifyContent="center" spacing={10} px={20}>
           <Grid item xs={6}>
-            <Stack sx={{ width: "40vw", p: 7, px: 10 }} spacing={4}>
+            <Stack spacing={4}>
               <Typography variant="h4" sx={{ color: "#0045F1", fontWeight: "bold" }}>
                 Our Mission
               </Typography>
@@ -102,17 +102,13 @@ function About(props) {
             </Stack>
           </Grid>
           <Grid item xs={6}>
-            <Box sx={{ maxWidth: "697px", height: "517px", m: 6 }} bgcolor="gray">
-              Photo
-            </Box>
+            <Box component="img" src={require("../../assets/image 48.png")} width="100%" />
           </Grid>
           <Grid item xs={6}>
-            <Box sx={{ width: "697px", height: "517px", m: 6 }} bgcolor="gray">
-              Photo
-            </Box>
+            <Box component="img" src={require("../../assets/image 49.png")} width="100%" />
           </Grid>
           <Grid item xs={6}>
-            <Stack sx={{ width: "40vw", p: 7, px: 10 }} spacing={4}>
+            <Stack spacing={4}>
               <Typography variant="h4" sx={{ color: "#0045F1", fontWeight: "bold" }}>
                 Our Vision
               </Typography>
@@ -157,11 +153,9 @@ function About(props) {
         </Stack>
 
         {/*our mission + vision + value portion */}
-        <Grid container pt={10}>
+        <Grid container p={10} justifyContent='center' >
           <Grid item xs={6}>
-            <Box sx={{ width: "697px", height: "622px", m: 6 }} bgcolor="gray">
-              Photo
-            </Box>
+          <Box component="img" src={require("../../assets/image 50.png")} width="100%" />
           </Grid>
           <Grid item xs={6}>
             <Stack sx={{ width: "50vw", p: 7, px: 10 }} spacing={4}>
@@ -194,10 +188,10 @@ function About(props) {
         </Stack>
         {/*Why should you join content*/}
         <Stack pb={20}>
-          <Grid container>
+          <Grid container justifyContent='center' px={20}>
             <Grid item xs={6} p={10} pb={0}>
               <Stack alignItems="center" spacing={4}>
-                <Box bgcolor="gray" sx={{ width: "532px", height: "370px" }}></Box>
+                <Box component="img" src={require("../../assets/image 51.png")} width="100%" />
                 <Typography variant="h5" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   Elena Stone
                 </Typography>
@@ -208,7 +202,7 @@ function About(props) {
             </Grid>
             <Grid item xs={6} p={10} pb={0}>
               <Stack alignItems="center" spacing={4}>
-                <Box bgcolor="gray" sx={{ width: "532px", height: "370px" }}></Box>
+                <Box component="img" src={require("../../assets/image 53.png")} width="100%" />
                 <Typography variant="h5" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   Max
                 </Typography>

@@ -36,8 +36,8 @@ function TenantHome(props) {
       <Mainbar />
       <Stack>
         {/*First Title Section*/}
-        <Box component='img' src={TenantHomePageBG}></Box>
-        <Stack sx={{mt: -80}}>
+        <Box component="img" src={require("../../assets/image 2 (1).png")}/>
+        <Stack sx={{ mt: -72 }} pb={10}>
           <Stack pl={15} spr={"50vw"} pt={10}>
             <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
               Enjoy
@@ -52,14 +52,52 @@ function TenantHome(props) {
               Living
             </Typography>
           </Stack>
-          <Box display="flex" justifyContent="center">
-            <Typography variant="h3" sx={{ color: "white" }}>
-              Search For Listings
-            </Typography>
-          </Box>
         </Stack>
-        <Stack alignItems="center" p={6} mt={-4}>
-          <SearchBar variant='location'/>
+
+        {/*Let’s Match You! title*/}
+        <Stack style={{ background: "white" }} spacing={3} alignItems="center" mt={10}>
+          <Box component="img" src={require("../../assets/Property 1=Default.png")} sx={{ width: "10vw" }} />
+          <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "#113170", fontWeight: "bold" }}>
+            Let’s Match You!
+          </Typography>
+          <Typography variant="h6" align="center" px={20}>
+            Our matching system is designed to allow you to search for a coliving experience based on your priorities.
+            Find your perfect match by either browsing by place to find your next coliving space or browsing by people
+            to get matched with your housemates.
+          </Typography>
+          <Grid container spacing={2} p={10} justifyContent="center">
+            <Grid item xs="auto">
+              <Stack
+                sx={{ width: "582px" }}
+                p={5}
+                align="center"
+                spacing={4}
+                alignItems="center"
+                style={{ background: "#0045F10F" }}>
+                <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
+                  Are you looking to get matched by listings?
+                </Typography>
+                <HouseIcon style={{ fontSize: 200 }} sx={{ color: "#0045F1" }} />
+                <StyledButton variant="pinkBtn" text="Listings" bgcolor="#0045F1" />
+              </Stack>
+            </Grid>
+
+            <Grid item xs="auto">
+              <Stack
+                sx={{ width: "582px" }}
+                p={5}
+                align="center"
+                spacing={4}
+                alignItems="center"
+                style={{ background: "#F83E7D0F" }}>
+                <Typography variant="h5" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
+                  Are you looking to get matched by housemates?
+                </Typography>
+                <PeopleIcon style={{ fontSize: 200 }} sx={{ color: "#F83E7D" }} />
+                <StyledButton variant="pinkBtn" text="Housemates"></StyledButton>
+              </Stack>
+            </Grid>
+          </Grid>
         </Stack>
 
         {/*Pink Area*/}
@@ -99,9 +137,7 @@ function TenantHome(props) {
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   1. Starting A New Semester
                 </Typography>
-                <Box bgcolor="gray" sx={{ width: "532px", height: "370px" }}>
-                  Leaving home for the first time? Worried about making new friends?
-                </Box>
+                <Box component="img" src={require("../../assets/image 4.png")} bgcolor="gray" />
                 <Typography sx={{ px: 15 }}>
                   At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
                   here to help you find the best rental experience away from home. Join our community and embark on a
@@ -114,47 +150,7 @@ function TenantHome(props) {
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   1. Starting A New Semester
                 </Typography>
-                <Box bgcolor="gray" sx={{ width: "532px", height: "370px" }}>
-                  Leaving home for the first time? Worried about making new friends?
-                </Box>
-                <Typography sx={{ px: 15 }}>
-                  At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
-                  here to help you find the best rental experience away from home. Join our community and embark on a
-                  new journey of wellness living.
-                </Typography>
-              </Stack>
-            </Grid>
-            <Grid item xs={12}>
-              <Stack alignItems="center" p={4}>
-                <StyledButton variant="pinkBtn" text="Search Rentals" />
-              </Stack>
-            </Grid>
-          </Grid>
-
-          <Grid container>
-            <Grid item xs={6} p={10} pb={0}>
-              <Stack alignItems="center" spacing={4}>
-                <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
-                  1. Starting A New Semester
-                </Typography>
-                <Box bgcolor="gray" sx={{ width: "532px", height: "370px" }}>
-                  Leaving home for the first time? Worried about making new friends?
-                </Box>
-                <Typography sx={{ px: 15 }}>
-                  At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
-                  here to help you find the best rental experience away from home. Join our community and embark on a
-                  new journey of wellness living.
-                </Typography>
-              </Stack>
-            </Grid>
-            <Grid item xs={6} p={10} pb={0}>
-              <Stack alignItems="center" spacing={4}>
-                <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
-                  1. Starting A New Semester
-                </Typography>
-                <Box bgcolor="gray" sx={{ width: "532px", height: "370px" }}>
-                  Leaving home for the first time? Worried about making new friends?
-                </Box>
+                <Box component="img" src={require("../../assets/image 5.png")} bgcolor="gray" />
                 <Typography sx={{ px: 15 }}>
                   At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
                   here to help you find the best rental experience away from home. Join our community and embark on a
@@ -175,9 +171,7 @@ function TenantHome(props) {
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   1. Starting A New Semester
                 </Typography>
-                <Box bgcolor="gray" sx={{ width: "532px", height: "370px" }}>
-                  Leaving home for the first time? Worried about making new friends?
-                </Box>
+                <Box component="img" src={require("../../assets/image 8.png")} bgcolor="gray" />
                 <Typography sx={{ px: 15 }}>
                   At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
                   here to help you find the best rental experience away from home. Join our community and embark on a
@@ -190,9 +184,41 @@ function TenantHome(props) {
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   1. Starting A New Semester
                 </Typography>
-                <Box bgcolor="gray" sx={{ width: "532px", height: "370px" }}>
-                  Leaving home for the first time? Worried about making new friends?
-                </Box>
+                <Box component="img" src={require("../../assets/image 9.png")} bgcolor="gray" />
+                <Typography sx={{ px: 15 }}>
+                  At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
+                  here to help you find the best rental experience away from home. Join our community and embark on a
+                  new journey of wellness living.
+                </Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={12}>
+              <Stack alignItems="center" p={4}>
+                <StyledButton variant="pinkBtn" text="Search Rentals" />
+              </Stack>
+            </Grid>
+          </Grid>
+
+          <Grid container>
+            <Grid item xs={6} p={10} pb={0}>
+              <Stack alignItems="center" spacing={4}>
+                <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
+                  1. Starting A New Semester
+                </Typography>
+                <Box component="img" src={require("../../assets/image 19.png")} bgcolor="gray" />
+                <Typography sx={{ px: 15 }}>
+                  At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
+                  here to help you find the best rental experience away from home. Join our community and embark on a
+                  new journey of wellness living.
+                </Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={6} p={10} pb={0}>
+              <Stack alignItems="center" spacing={4}>
+                <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
+                  1. Starting A New Semester
+                </Typography>
+                <Box component="img" src={require("../../assets/image 20 (1).png")} bgcolor="gray" />
                 <Typography sx={{ px: 15 }}>
                   At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
                   here to help you find the best rental experience away from home. Join our community and embark on a
@@ -222,7 +248,7 @@ function TenantHome(props) {
         </Stack>
 
         {/*Blog Grid*/}
-        <Grid container spacing={20} alignContent="center" justifyContent="center" mt={-30} pb={20}>
+        <Grid container spacing={10} alignContent="center" justifyContent="center" mt={-25} pb={20}>
           <Grid item xs="auto">
             <Card sx={{ width: "377px", height: "500px" }}></Card>
           </Grid>
@@ -233,39 +259,6 @@ function TenantHome(props) {
             <Card sx={{ width: "377px", height: "500px" }}></Card>
           </Grid>
         </Grid>
-
-        {/*Let’s Match You! title*/}
-        <Stack style={{ background: "white" }} pb={20} spacing={3} alignItems="center">
-          <Box bgcolor="gray" sx={{ width: "300px", height: "144px" }}>
-            logo
-          </Box>
-          <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "#113170", fontWeight: "bold" }}>
-            Let’s Match You!
-          </Typography>
-          <Typography variant="h6" align="center" px={20}>
-            At Aisha Comfortable Coliving we understand that your preferences may vary from the next person. For this
-            reason, our matching system is designed to allow you to search for a coliving experience based on your
-            priorities. Through our matching system, you will have two options: browse by place to find the perfect
-            coliving space first or browse by people to get matched with the perfect housemates.
-          </Typography>
-          <Stack direction="row" spacing={40} p={14} justifyContent="center" width='100vw'>
-            <Stack sx={{ width: "500px" }} p={5} align="center" spacing={4} alignItems="center">
-              <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
-                Are you looking to get matched by listings?
-              </Typography>
-              <HouseIcon style={{ fontSize: 200 }} sx={{ color: "#0045F1" }} />
-              <StyledButton variant="pinkBtn" text="Listings"></StyledButton>
-            </Stack>
-
-            <Stack sx={{ width: "500px" }} p={5} align="center" spacing={4} alignItems="center">
-              <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
-                Are you looking to get matched by housemates?
-              </Typography>
-              <PeopleIcon style={{ fontSize: 200 }} sx={{ color: "#0045F1" }} />
-              <StyledButton variant="pinkBtn" text="Housemates"></StyledButton>
-            </Stack>
-          </Stack>
-        </Stack>
 
         {/*Here’s What It’s Going to Cost You title*/}
         <Stack direction="row" style={{ background: "#42ACF980" }} py={10} pb={20} alignItems="center">

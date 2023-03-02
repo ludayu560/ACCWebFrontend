@@ -62,7 +62,7 @@ function Landing(props) {
                 borderRadius: 5,
                 boxShadow: 12,
               }}
-              src={HomePhoto}
+              src={require("../../assets/HomePhoto.png")}
             />
           </Grid>
         </Grid>
