@@ -68,6 +68,7 @@ function Dashboard(props) {
 
   return (
     <>
+      <Mainbar />
       <Stack>
         <Box component="img" src={renderBGImage()}></Box>
         <Stack sx={{ mt: -72 }}>

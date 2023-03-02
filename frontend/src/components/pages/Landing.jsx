@@ -19,6 +19,7 @@ import Footer from "../components/Footer";
 function Landing(props) {
   return (
     <>
+      <NavBar></NavBar>
       <Stack>
         <Stack direction="row" m={10} spacing={1}>
           <Stack pr={20}>
