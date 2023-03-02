@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+<<<<<<< HEAD
 import App from './components/pages/App.jsx';
+=======
+import App from './App';
+>>>>>>> e69033a74b136864f2d4861fecd788735118f726
 
 import reportWebVitals from './reportWebVitals';
 

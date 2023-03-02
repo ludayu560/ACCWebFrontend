@@ -23,7 +23,6 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 function Homeowners(props) {
   return (
     <>
-      <Mainbar />
       <Stack>
         {/*First Title Section*/}
         <Box component="img" src={homeownersbg}></Box>
