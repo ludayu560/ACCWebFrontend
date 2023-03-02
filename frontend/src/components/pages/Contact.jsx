@@ -107,7 +107,12 @@ function Contact(props) {
         </Grid>
 
         {/*Learn More About Aisha Comfortable Coliving*/}
-        <Stack style={{ background: "#CFEAFD" }} p={10} spacing={3} alignItems="center">
+        <Stack
+          style={{ background: "linear-gradient(#D7F3FF, white)" }}
+          p={10}
+          spacing={3}
+          alignItems="center"
+          sx={{ borderTopRightRadius: 200, borderTopLeftRadius: 200 }}>
           <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "#0045F1", fontWeight: "bold" }}>
             Learn More About Aisha Comfortable Coliving
           </Typography>

@@ -8,7 +8,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function FAQ() {
   return (
     <>
-      <Accordion sx={{boxShadow: 0}}>
+      <Accordion sx={{ boxShadow: 0 }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "#F83E7D" }} />}
           aria-controls="panel1a-content"
@@ -25,7 +25,7 @@ export default function FAQ() {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion sx={{boxShadow: 0}}>
+      <Accordion sx={{ boxShadow: 0 }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "#F83E7D" }} />}
           aria-controls="panel2a-content"
@@ -42,12 +42,12 @@ export default function FAQ() {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion sx={{boxShadow: 0}}>
+      <Accordion sx={{ boxShadow: 0 }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "#F83E7D" }} />}
           aria-controls="panel3a-content"
           id="panel3a-header">
-          <Typography variant="h4" sx={{ ml: 10, pt: 4}}>
+          <Typography variant="h4" sx={{ ml: 10, pt: 4 }}>
             Account Details
           </Typography>
         </AccordionSummary>
@@ -57,15 +57,6 @@ export default function FAQ() {
             leo lobortis eget.
           </Typography>
         </AccordionDetails>
-      </Accordion>
-
-      <Accordion disabled>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "#F83E7D" }} />}
-          aria-controls="panel4a-content"
-          id="panel4a-header">
-          <Typography>Work in Progress</Typography>
-        </AccordionSummary>
       </Accordion>
     </>
   );
