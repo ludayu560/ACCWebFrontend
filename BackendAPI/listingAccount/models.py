@@ -15,12 +15,12 @@ class ListingAccount(models.Model):
     location = models.CharField(max_length=30, null=True)
     age_range = models.CharField(max_length=7, null=True)
     tell_us_about_yourself = models.TextField(null=True)
-    profile_picture = models.ImageField(null=True)
-    banner_picture = models.ImageField(null=True)
-    display_picture_one = models.ImageField(null=True)
-    display_picture_two = models.ImageField(null=True)
-    display_picture_three = models.ImageField(null=True)
-    display_picture_four = models.ImageField(null=True)
+    profile_picture = models.ImageField(upload_to='profile_picture', null=True)
+    banner_picture = models.ImageField(upload_to='banner_picture', null=True)
+    display_picture_one = models.ImageField(upload_to='display_picture_one', null=True)
+    display_picture_two = models.ImageField(upload_to='display_picture_two', null=True)
+    display_picture_three = models.ImageField(upload_to='display_picture_three', null=True)
+    display_picture_four = models.ImageField(upload_to='display_picture_four', null=True)
 
     @property
     def age(self):
@@ -31,7 +31,6 @@ class ListingAccount(models.Model):
             return age
         else:
             return None
-
 
 class PersonalTrait(models.Model):
     trait = models.CharField(max_length=200, null = True)

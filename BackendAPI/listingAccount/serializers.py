@@ -14,6 +14,12 @@ class InterestsSerializer(serializers.ModelSerializer):
         fields = ['interest']
 
 class ListingAccountSerializer(serializers.ModelSerializer):
+    profile_picture = serializers.ImageField(required=False)
+    banner_picture = serializers.ImageField(required=False)
+    display_picture_one = serializers.ImageField(required=False)
+    display_picture_two = serializers.ImageField(required=False)
+    display_picture_three = serializers.ImageField(required=False)
+    display_picture_four = serializers.ImageField(required=False)
     personal_traits = serializers.StringRelatedField(many=True)
     interests = serializers.StringRelatedField(many=True)
     notifications = NotificationsSerializer(many=True)

@@ -20,7 +20,7 @@ class PropertyListing(models.Model):
     listing_pets = models.BooleanField(null=True)
     listing_ac = models.BooleanField(null=True)
     listing_description = models.TextField(max_length=400, null=True)
-    listing_image_one = models.ImageField(null=True, upload_to='listing_image_one/') #path required in the future
+    listing_image_one = models.ImageField(upload_to='listing_image_one/', null=True) #path required in the future
     listing_image_two = models.ImageField(null=True) #path required in the future
     listing_image_three = models.ImageField(null=True) #path required in the future
     listing_image_four = models.ImageField(null=True) #path required in the future

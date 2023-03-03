@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 router=DefaultRouter()
 router.register("Events", views.EventsViewSet)
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', include(router.urls))
 ]
 
 if settings.DEBUG:
