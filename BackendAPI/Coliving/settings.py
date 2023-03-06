@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'events',
     'account',
     'propertyListing',
-    'notifications'
+    'notifications',
+    'payments.apps.PaymentsConfig'
 ]
 
 MIDDLEWARE = [
@@ -63,11 +64,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Coliving.urls'
 
+TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, '../frontend/build'),
+            # os.path.join(BASE_DIR, '../frontend/build'),
+            TEMPLATE_DIR
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -148,11 +151,15 @@ USE_TZ = True
 #     os.path.join(BASE_DIR, '../frontend/build/static')
 # ]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'build/static')
-]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'build/static')
+# ]
+STATIC_URL = '/static/'
+
+# for django >= 3.1
+STATICFILES_DIRS = [BASE_DIR / 'static']  # new
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -197,3 +204,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
 
 ]
+
+STRIPE_PUBLIC_KEY = 'pk_test_51MgWeGIbS9zGmxyRiMx4IgPqp34SqFHh014qhJ6ceVDx9unZj6JGHpkpzEPTqSBHUvemwi5Nvy2sGL8cRSCzfO3x00GU5m3gJI'
+STRIPE_PRIVATE_KEY = 'sk_test_51MgWeGIbS9zGmxyRI0YVdFYW5kYR2aLgCMybhMelyNG48gnT4C3uVUbMJQNVZoW93Rr0yzit8nDafEHLOCYlhytt00ZSyjloXI'
+STRIPE_ENDPOINT_SECRET = 'whsec_a7476a205aa7fc26a4aa76e9bfd407ef38b8e1471a2b60196b32dd60ee437784'
+
+STRIPE_PRICE_ID = 'price_1Mhd29IbS9zGmxyRvmsKkXaV'
