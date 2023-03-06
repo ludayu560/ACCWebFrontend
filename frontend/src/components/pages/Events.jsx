@@ -29,9 +29,10 @@ import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVer
 import ECard from "../components/ECard";
 
 function Events(props) {
+  const data = ["1", "2", "3", "4", "5", "6"];
+
   return (
     <>
-      <Mainbar />
       <Stack>
         <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw">
           <Stack pr={20} pt={10} pb={20}>
@@ -73,10 +74,12 @@ function Events(props) {
           </Typography>
           <Grid container spacing={4} pt={10} justifyContent="center">
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5, border: 5, borderColor: "#C5265C" }} raised="true">
+              <Card
+                sx={{ width: "294px", height: "511px", borderRadius: 5, border: 5, borderColor: "#C5265C" }}
+                raised="true">
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <PeopleOutlineIcon style={{ fontSize: 100 }} sx={{ color: "#C5265C" }} />
-                  <Typography variant="h5" sx={{ color: "#C5265C" }}>
+                  <Typography variant="h5" sx={{ color: "#C5265C", height: "60px" }}>
                     Make Friends
                   </Typography>
                   <Typography variant="p">
@@ -88,10 +91,12 @@ function Events(props) {
             </Grid>
 
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5, border: 5, borderColor: "#C5265C" }} raised="true">
+              <Card
+                sx={{ width: "294px", height: "511px", borderRadius: 5, border: 5, borderColor: "#C5265C" }}
+                raised="true">
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <ShareOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#C5265C" }} />
-                  <Typography variant="h5" sx={{ color: "#C5265C" }}>
+                  <Typography variant="h5" sx={{ color: "#C5265C", height: "60px" }}>
                     Grow Your Network
                   </Typography>
                   <Typography variant="p">
@@ -103,10 +108,12 @@ function Events(props) {
             </Grid>
 
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5, border: 5, borderColor: "#C5265C" }} raised="true">
+              <Card
+                sx={{ width: "294px", height: "511px", borderRadius: 5, border: 5, borderColor: "#C5265C" }}
+                raised="true">
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <PsychologyOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#C5265C" }} />
-                  <Typography variant="h5" sx={{ color: "#C5265C" }}>
+                  <Typography variant="h5" sx={{ color: "#C5265C", height: "60px" }}>
                     Reduce Stress
                   </Typography>
                   <Typography variant="p">
@@ -118,10 +125,12 @@ function Events(props) {
             </Grid>
 
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5, border: 5, borderColor: "#C5265C" }} raised="true">
+              <Card
+                sx={{ width: "294px", height: "511px", borderRadius: 5, border: 5, borderColor: "#C5265C" }}
+                raised="true">
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <WbTwilightIcon style={{ fontSize: 100 }} sx={{ color: "#C5265C" }} />
-                  <Typography variant="h5" sx={{ color: "#C5265C" }}>
+                  <Typography variant="h5" sx={{ color: "#C5265C", height: "60px" }}>
                     Expand Your Horizons
                   </Typography>
                   <Typography variant="p">
@@ -141,12 +150,11 @@ function Events(props) {
           <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "#F83E7D", fontWeight: "bold" }}>
             To Have Fun!
           </Typography>
-          <SentimentVerySatisfiedOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D" }} />
         </Stack>
 
         {/*Events Square thingy*/}
         <Stack style={{ background: "linear-gradient(#FFE7EF, white)" }} sx={{ p: 5, pb: 20 }}>
-          <Typography variant="h1" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2} mr='30vw'>
+          <Typography variant="h1" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2} mr="30vw">
             Our Event Attendes Enjoy their Experience.
           </Typography>
           <Grid container pt={5} justifyContent="center">
@@ -186,24 +194,11 @@ function Events(props) {
 
         {/*Events Grid */}
         <Grid container spacing={20} alignContent="center" justifyContent="center" pb={20} mt={-45} bgcolor="#DEECF5">
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
+          {data.map((id) => (
+            <Grid item xs="auto">
+              <ECard variant="event" />
+            </Grid>
+          ))}
         </Grid>
 
         {/*Don’t see what you’re looking for? Create your own event!*/}
@@ -214,23 +209,23 @@ function Events(props) {
           <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2} pb={15}>
             Create your own event!
           </Typography>
-          <StyledButton variant="pinkBtn" text="Create Event" />
+          <StyledButton variant="pinkBtn" text="Create Event" bgcolor="#0045F1" />
         </Stack>
 
         {/*Community Events*/}
         <Stack alignItems="left" style={{ background: "linear-gradient(#FFE7EF, white)" }} sx={{ p: 10 }}>
-          <Typography variant="h2" align="center" sx={{ color: "#F83E7D", fontWeight: "bold", mt: -15, pb: 20 }}>
-            Events Calendar
+          <Typography variant="h1" align="center" sx={{ color: "#F83E7D", fontWeight: "bold", mt: -15, pb: 20 }}>
+            Events Schedule
           </Typography>
-          <Card sx={{ width: "40vw" }} raised>
-            <MyCalendar></MyCalendar>
-          </Card>
+          <Typography variant="h1" align="center" sx={{ color: "#F83E7D", fontWeight: "bold", mt: -15, pb: 20 }}>
+            WIP!!!!!
+          </Typography>
           <Typography variant="h2" align="center" sx={{ color: "#C5265C", fontWeight: "bold", pt: 20 }}>
             Interested in Hosting Your Own Event?
           </Typography>
 
           <Typography variant="h1" align="center" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-            Create Your Event
+            Host Your Event
           </Typography>
         </Stack>
 
