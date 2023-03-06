@@ -19,7 +19,7 @@ function Mainbar() {
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       <AppBar positon="static" >
-        <Toolbar sx={{ height: 114, background: "white"}}>
+        <Toolbar sx={{ height: '10vh', background: "white"}}>
           <Link href="/">
             <Box
               component="img"
@@ -56,7 +56,7 @@ function Mainbar() {
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
               Blogs
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/account-help">
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/contact">
               Contact
             </Button>
             <IconButton>

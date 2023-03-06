@@ -19,7 +19,7 @@ export default function SearchBar(props) {
       {!variant && (
         <Paper
           component="form"
-          sx={{ display: "flex", alignItems: "center", width: '60vw', height: 70, borderRadius: 25 }}
+          sx={{ display: "flex", alignItems: "center", width: width ? width : '60vw', height: 70, borderRadius: 25 }}
           elevation={10}>
           <InputBase
             sx={{ ml: 1, flex: 1, p: 4 }}
