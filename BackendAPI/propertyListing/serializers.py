@@ -8,6 +8,11 @@ class ListingUtilitiesSerializer(serializers.ModelSerializer):
 
 class PropertyListingSerializer(serializers.ModelSerializer):
     listing_utilities = serializers.StringRelatedField(many=True)
+    listing_image_one = serializers.ImageField(required=False)
+    listing_image_two = serializers.ImageField(required=False)
+    listing_image_three = serializers.ImageField(required=False)
+    listing_image_four = serializers.ImageField(required=False)
+
     class Meta:
         model = PropertyListing
         fields = ['id', 'listing_city', 'listing_postal', 'listing_province',
