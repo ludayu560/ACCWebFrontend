@@ -12,6 +12,7 @@ import ImageCarousel from "../components/ImageCarousel";
 function ListingDetails(props) {
 
 // API Calls:
+// GET:
 
 // Header section
 let listingAge = 10;
@@ -21,8 +22,7 @@ let favorited = false;
 let listingBedrooms = 3;
 let listingBathrooms = 2;
 let carouselImages = []; // => array of what?
-
-// inforgraphic description section
+// infographic description section
 let dateAvailable = "";
 let numberOfHousemates = 3;
 let numberOfParking = 3;
@@ -33,12 +33,9 @@ let boolHomeowner = true;
 let boolPets = false;
 let boolSmoking = false;
 let boolAC = true;
-
 // Description section
 let listingDescription = "Looking for a young professional female. The unit is a townhouse style condo with 3 floors. It has HVAC, in-house laundry, dishwasher and the building is fully managed by a condominium. It is situated at Chapman Mills Drive, Barrhaven. 5 mins walk to the Barrhaven Marketplace that features Walmart, Loblaws, Winners, Sportchek, Staples, Structube, Scotia, TD bank, etc. The house and room is fully furnished. The bus stop (99 hurdman) is directly in front of the building of the house. Available Immediately"
-
-// Carousel Section 
-
+// Carousel Section (exampleImageArray = carouselImages)
 const exampleImageArray = [
     {
       src: require(
@@ -65,7 +62,6 @@ const exampleImageArray = [
         './../../assets/images/image27.png'
     ),},
   ]
-
 // Housemates section
 let housemateArray = []
     // example item of the housemate section
@@ -104,6 +100,11 @@ let exampleReview = {
 }
 reviewArray.push(exampleReview, exampleReview, exampleReview)
 
+
+// POST:
+// favorite the listing for this account
+// write a review for the listing
+// report listing
     return (
         <>
         <Mainbar></Mainbar>

@@ -11,7 +11,6 @@ import ResetPassword from "./AuthComponents/ResetPassword";
 import ResetPasswordConfirm from "./AuthComponents/ResetPasswordConfirm";
 import Layout from "./AuthComponents/Layout";
 
-import Home from "./components/pages/Home";
 import MyAccount from "./components/pages/MyAccount";
 import MyAccountBilling from "./components/pages/MyAccountBilling";
 import MyAccountEvents from "./components/pages/MyAccountEvents";
@@ -65,13 +64,12 @@ function App() {
             <Route exact path='/howItWorks' element={<HowItWorks/>}/>
             <Route exact path='/contact' element={<Contact/>}/>
             <Route exact path='/about' element={<About />}/>
-            <Route exact path='/dashboard' element={<Dashboard variant="propertyOwner" />}/>
+            <Route exact path='/dashboard' element={<Dashboard variant="tenant" />}/>
             <Route exact path='/listing' element={<Listing />}/>
             <Route exact path='/housemates' element={<Housemates />}/>
             <Route exact path='/homeowners' element={<Homeowners />}/>
             <Route exact path='/tenanthome' element={<TenantHome />}/>
             <Route exact path='/events' element={<Events />}/>
-            <Route exact path='/home' element={<Home />}/>
             <Route exact path='/' element={<Landing />}/>
             <Route exact path='/signup' element={<SignupManager/>}/>
             <Route exact path='/login' element={<Login/>}/>

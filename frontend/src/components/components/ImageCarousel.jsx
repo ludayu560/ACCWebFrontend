@@ -1,36 +1,11 @@
 import React, { useState } from "react";
-import { Button, Stack, Box } from "@mui/material";
+import { Button, Stack, Box, Hidden } from "@mui/material";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 function ImageCarousel(props) {
-  const { images2 } = props;
-  const images = [
-    {
-      src: require(
-        './../../assets/images/image25.png'
-    ),},
-    {
-      src: require(
-        './../../assets/images/image26.png'
-    ),},
-    {
-      src: require(
-        './../../assets/images/image27.png'
-    ),},
-    {
-      src: require(
-        './../../assets/images/image25.png'
-    ),},
-    {
-      src: require(
-        './../../assets/images/image26.png'
-    ),},
-    {
-      src: require(
-        './../../assets/images/image27.png'
-    ),},
-  ]
+  const { images } = props;
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleClickNext = () => {
@@ -43,25 +18,25 @@ function ImageCarousel(props) {
 
   return (
     <div>
-      <Stack direction={'row'} alignContent={'center'} justifyContent={'center'} height={'30vh'} marginBottom={'10vh'}>
+      <Stack direction={'row'} alignContent={'center'} justifyContent={'center'} height={'50vh'} marginBottom={'10vh'} overflow={'hidden'}>
         {images.map((image, index) => {
           if (index === activeIndex) {
             return (
-              <Box marginX={'2vw'} component={'img'} src={image.src} height={'130%'}/>
+              <Box marginX={'2vw'} component={'img'} src={image.src} height={'100%'}/>
             );
           } else if (
             index === (activeIndex + 1) % images.length ||
             (activeIndex === images.length - 1 && index === 0)
           ) {
             return (
-              <Box marginX={'2vw'} component={'img'} src={image.src}/>
+              <Box marginX={'2vw'} component={'img'} src={image.src} height={'90%'}/>
             );
           } else if (
             index === (activeIndex - 1 + images.length) % images.length ||
             (activeIndex === 0 && index === images.length - 1)
           ) {
             return (
-              <Box marginX={'2vw'} component={'img'} src={image.src}/>
+              <Box marginX={'2vw'} component={'img'} src={image.src} height={'90%'}/>
             );
           } else {
             return null;

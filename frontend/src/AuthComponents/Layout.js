@@ -16,7 +16,7 @@ const Layout = (props) => {
   }, []);
 
   return (
-    <div>
+    <div style={{overflowX: 'hidden'}}>
       {/*once authenticated use <Mainbar /> */}
       {authenticated === true ? <Mainbar /> : <Navbar />}
       <Box height="10vh" />

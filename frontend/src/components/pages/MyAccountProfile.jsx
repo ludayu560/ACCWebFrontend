@@ -54,9 +54,6 @@ function MyAccountProfile(props) {
         <Grid item xs={12}>
           <Box sx={{ width: "100vw" }} component="img" src={background} />
         </Grid>
-        <Grid item xs={3} mt={-90}>
-          <SideNav></SideNav>
-        </Grid>
       </Grid>
 
       {/*profile info */}
