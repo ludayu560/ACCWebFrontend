@@ -27,9 +27,12 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import WbTwilightIcon from "@mui/icons-material/WbTwilight";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
 import ECard from "../components/ECard";
+import React, { useState } from "react";
 
 function Events(props) {
   const data = ["1", "2", "3", "4", "5", "6"];
+  const [onlineSelected, setOnlineSelected] = useState(true);
+  const [inpersonSelected, setInpersonSelected] = useState(false);
 
   return (
     <>
@@ -54,7 +57,7 @@ function Events(props) {
           <Box component="img" src={require("../../assets/unsplash_gYdjZzXNWlg.png")} sx={{ width: "45vw" }} />
         </Stack>
         <Stack alignItems="center" p={6} mt={-20}>
-          <SearchBar />
+          <SearchBar variant="event" />
         </Stack>
 
         {/*Pink Area*/}
@@ -175,17 +178,35 @@ function Events(props) {
           <Stack direction="row" spacing={25} mt={15}>
             <Button
               variant="outlined"
-              style={{ width: "430px", height: "116px", textTransform: "none", backgroundColor: "#0045F1" }}
-              sx={{ borderRadius: 5 }}>
-              <Typography variant="h4" sx={{ color: "white" }}>
+              style={{
+                width: "430px",
+                height: "116px",
+                textTransform: "none",
+                backgroundColor: onlineSelected ? "#0045F1" : "white",
+              }}
+              sx={{ borderRadius: 5, border: 3 }}
+              onClick={() => {
+                setInpersonSelected(false);
+                setOnlineSelected(true);
+              }}>
+              <Typography variant="h4" sx={{ color: onlineSelected ? "white" : "#0045F1" }}>
                 Online Events
               </Typography>
             </Button>
             <Button
               variant="outlined"
-              style={{ width: "430px", height: "116px", textTransform: "none", backgroundColor: "white" }}
-              sx={{ borderRadius: 5, border: 3 }}>
-              <Typography variant="h4" sx={{ color: "#0045F1" }}>
+              style={{
+                width: "430px",
+                height: "116px",
+                textTransform: "none",
+                backgroundColor: inpersonSelected ? "#0045F1" : "white",
+              }}
+              sx={{ borderRadius: 5, border: 3 }}
+              onClick={() => {
+                setInpersonSelected(true);
+                setOnlineSelected(false);
+              }}>
+              <Typography variant="h4" sx={{ color: inpersonSelected ? "white" : "#0045F1" }}>
                 In-Person Events
               </Typography>
             </Button>
@@ -194,11 +215,15 @@ function Events(props) {
 
         {/*Events Grid */}
         <Grid container spacing={20} alignContent="center" justifyContent="center" pb={20} mt={-45} bgcolor="#DEECF5">
-          {data.map((id) => (
-            <Grid item xs="auto">
-              <ECard variant="event" />
-            </Grid>
-          ))}
+          {onlineSelected && (
+            <>
+              {data.map((id) => (
+                <Grid item xs="auto">
+                  <ECard variant="event" />
+                </Grid>
+              ))}
+            </>
+          )}
         </Grid>
 
         {/*Don’t see what you’re looking for? Create your own event!*/}
