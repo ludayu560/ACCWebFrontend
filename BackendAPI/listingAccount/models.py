@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date, datetime
+from account.models import User
 
 class ListingAccount(models.Model):
     username = models.CharField(max_length=20, null=True)
@@ -21,6 +22,7 @@ class ListingAccount(models.Model):
     display_picture_two = models.ImageField(upload_to='display_picture_two', null=True)
     display_picture_three = models.ImageField(upload_to='display_picture_three', null=True)
     display_picture_four = models.ImageField(upload_to='display_picture_four', null=True)
+    account = models.ForeignKey(User, related_name="Account", on_delete=models.CASCADE, null=True)
 
     @property
     def age(self):
