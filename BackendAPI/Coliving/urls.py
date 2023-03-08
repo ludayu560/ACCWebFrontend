@@ -19,13 +19,14 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('auth/', include('djoser.urls')),
-    # path('auth/', include('djoser.urls.jwt')),
-    # path('', include('listingAccount.urls')),    
-    # path('', include('events.urls')),
-    # path('', include('propertyListing.urls')),
-    # path('', include('notifications.urls')),
-    path('', include('payments.urls'))
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.jwt')),
+    path('', include('listingAccount.urls')),    
+    path('', include('events.urls')),
+    path('', include('propertyListing.urls')),
+    path('', include('notifications.urls')),
+    path('', include('account.urls'))
+    # path('', include('payments.urls'))
 ]
 
 # urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='index.html'))]

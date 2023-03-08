@@ -2,6 +2,7 @@ from rest_framework import serializers
 from listingAccount.models import ListingAccount, PersonalTrait, Interest, Favorites, AccountEvents
 from notifications.serializers import NotificationsSerializer
 from notifications.models import Notifications
+from account.models import User
 
 
 class PersonalTraitsSerializer(serializers.ModelSerializer):
@@ -20,6 +21,7 @@ class FavoritesSerializer(serializers.ModelSerializer):
         fields = ['favorite']
 
 class ListingAccountSerializer(serializers.ModelSerializer):
+    user_id = serializers.IntegerField()
     personal_traits = serializers.StringRelatedField(many=True)
     interests = serializers.StringRelatedField(many=True)
     favorites = serializers.StringRelatedField(many=True)
@@ -30,7 +32,7 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'first_name', 'last_name', 'email', 'phone_number', 'date_of_birth',
                   'location', 'age_range', 'tell_us_about_yourself', 'profile_picture', 'banner_picture', 
                   'display_picture_one', 'display_picture_two', 'display_picture_three', 'display_picture_four',
-                  'created', 'personal_traits', 'interests', 'favorites', 'notifications', 'accountEvents']
+                  'created', 'personal_traits', 'interests', 'favorites', 'notifications', 'accountEvents', 'user_id']
     def to_internal_value(self, data):
         return data
 
@@ -40,7 +42,9 @@ class ListingAccountSerializer(serializers.ModelSerializer):
         favorites_data = validated_data.pop('favorites')
         notifications = validated_data.pop('notifications')
         accountEvents_data = validated_data.pop('accountEvents')
-        listing_account = ListingAccount.objects.create(**validated_data)
+        user_id = validated_data.pop('user_id')
+        user = User.objects.get(id=user_id)
+        listing_account = ListingAccount.objects.create(user=user, **validated_data)
         for interest_data in interests_data:
             Interest.objects.create(listing_account = listing_account, **interest_data)
         for personal_trait_data in personal_traits_data:

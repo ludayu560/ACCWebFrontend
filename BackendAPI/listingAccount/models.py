@@ -1,4 +1,5 @@
 from django.db import models
+from account.models import User
 
 # Create your models here.
 class ListingAccount(models.Model):
@@ -18,6 +19,8 @@ class ListingAccount(models.Model):
     display_picture_three = models.ImageField(null=True)
     display_picture_four = models.ImageField(null=True)
     created = models.DateTimeField(auto_now_add=True) # unsure if needed
+    user = models.ForeignKey(User, related_name='user', on_delete=models.CASCADE, null=True)
+
 
 class PersonalTrait(models.Model):
     trait = models.CharField(max_length=200, null = True)

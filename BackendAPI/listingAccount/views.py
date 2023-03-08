@@ -5,6 +5,7 @@ from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+
 class ListingAccountViewSet(viewsets.ModelViewSet):
     queryset = ListingAccount.objects.all()
     serializer_class = ListingAccountSerializer
@@ -20,9 +21,15 @@ class PersonalTraitsViewSet(viewsets.ModelViewSet):
 class FavoritesViewSet(viewsets.ModelViewSet):
     queryset = Favorites.objects.all()
     serializer_class = FavoritesSerializer
-
-class ListAccountGetView(APIView):
+    
+class AccountGetListing(APIView):
     def get(self, request, id):
-        snippet = ListingAccount.objects.get(id=id)
-        serializer = ListingAccountSerializer(snippet, many=False)
+        snippet = ListingAccount.objects.filter(user = id)
+        array = []
+        for listing_account in snippet:
+            try:
+                array.append(ListingAccount.objects.get(id=listing_account.id))
+            except:
+                print("Error", id)
+        serializer = ListingAccountSerializer(snippet, many=True)
         return Response(serializer.data)
