@@ -8,7 +8,6 @@ import Box from "@mui/material/Box";
 import React, {useState} from "react";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
-
 import HousemateFilterPanel from "../components/HousemateFilterPanel";
 import StyledButton from "../components/StyledButton";
 import SearchBar from "../components/SearchBar";
@@ -18,9 +17,18 @@ import ECard from "../components/ECard";
 import Tags from "../components/Tags";
 
 function Housemates(props) {
-
-  const [filterParams, setFilterParams] = useState()
-  const data = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+  const [filterParams, setFilterParams] = useState({
+    traits: [],
+    interests: [],
+    ageRange: [16,100],
+    priceRange: [400,4000],
+    housemateType: '',
+  })
+  const data = ['$'+filterParams.priceRange[0]+' - $'+filterParams.priceRange[1],
+                    filterParams.ageRange[0]+' - '+filterParams.ageRange[1],
+                    filterParams.housemateType,
+                 ...filterParams.traits, 
+                 ...filterParams.interests];
   return (
     <>
       <Mainbar />
@@ -40,6 +48,7 @@ function Housemates(props) {
                 <HousemateFilterPanel returnHook={setFilterParams}/>
               </Grid>
               {data.map((id) => (
+                (id === '')? null :
                 <Grid item xs="auto">
                   <Tags variant="filter" text={id}></Tags>
                 </Grid>

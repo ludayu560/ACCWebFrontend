@@ -88,7 +88,8 @@ function HousemateFilterPanel(props) {
         interests: [],
         ageRange: ageRange,
         priceRange: priceRange,
-        housemateType: housemateType
+        housemateType: housemateType,
+        // fullArray: 
     }
     traitArray.map((item, index) => (item)? returnedJSON.traits.push(traitList[index]) : null)
     interestArray.map((item, index) => (item)? returnedJSON.interests.push(interestList[index]) : null)
