@@ -5,7 +5,7 @@ function StyledButton(props) {
   const { variant, link, text, content, textColor, onClick, noArrow, width, bgcolor } = props;
 
   const signupStyle = {
-    width: width ? width : "",
+    minWidth: width ? width : "",
     padding: 20,
     paddingLeft: 40,
     paddingRight: 40,
