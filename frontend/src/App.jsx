@@ -11,7 +11,6 @@ import ResetPassword from "./AuthComponents/ResetPassword";
 import ResetPasswordConfirm from "./AuthComponents/ResetPasswordConfirm";
 import Layout from "./AuthComponents/Layout";
 
-import Home from "./components/pages/Home";
 import MyAccount from "./components/pages/MyAccount";
 import MyAccountBilling from "./components/pages/MyAccountBilling";
 import MyAccountEvents from "./components/pages/MyAccountEvents";

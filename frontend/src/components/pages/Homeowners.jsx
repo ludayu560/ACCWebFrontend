@@ -27,7 +27,7 @@ function Homeowners(props) {
       <Stack>
         {/*First Title Section*/}
         <Box component="img" src={homeownersbg} width="100vw" />
-        <Stack sx={{ mt: "-35vh" }}>
+        <Stack sx={{mt: "-32vw" }}>
           <Stack pl={15}>
             <Typography variant="h1" sx={{ fontWeight: "bold", color: "white", fontSize: "6vw" }}>
               Find Your

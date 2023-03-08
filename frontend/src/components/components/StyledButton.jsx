@@ -58,47 +58,54 @@ function StyledButton(props) {
           variant="contained"
           style={signupStyle}
           endIcon={noArrow ? null : <ArrowForwardIcon />}
-          href={link}>
+          href={link}
+          {...props}>
           <Typography variant="h5" fontWeight={600} sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
             {text}
+            {props.children}
           </Typography>
         </Button>
       ) : null}
 
       {variant === "empty" && (
-        <Button variant="contained" style={emptyStyle} endIcon={<ArrowForwardIcon />} href={link}>
+        <Button variant="contained" style={emptyStyle} endIcon={<ArrowForwardIcon />} href={link} {...props}>
           <Typography
             color={textColor}
             variant="h5"
             fontWeight={700}
             sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
             {text}
+            {props.children}
           </Typography>
         </Button>
       )}
 
       {variant === "leftRole" && (
-        <Button variant="contained" style={leftRoleStyle}>
+        <Button variant="contained" style={leftRoleStyle} {...props}>
           {content}
+          {props.children}
         </Button>
       )}
 
       {variant === "middleRole" && (
-        <Button variant="contained" style={middleRoleStyle}>
+        <Button variant="contained" style={middleRoleStyle} {...props}>
           {content}
+          {props.children}
         </Button>
       )}
 
       {variant === "rightRole" && (
-        <Button variant="contained" style={rightRoleStyle}>
+        <Button variant="contained" style={rightRoleStyle} {...props}>
           {content}
+          {props.children}
         </Button>
       )}
 
       {variant === "pinkBtn" && (
-        <Button variant="contained" style={signupStyle} href={link}>
+        <Button variant="contained" style={signupStyle} href={link} {...props}>
           <Typography variant="h5"sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
             {text}
+            {props.children}
           </Typography>
         </Button>
       )}
