@@ -15,7 +15,7 @@ import SignupManager from "../pages/SignupManager";
 import Login from "../pages/Login";
 
 
-function Navbar() {
+function Navbar({setNav}) {
   const trigger = useScrollTrigger(); 
   return (
     <Slide appear={false} direction="down" in={!trigger}>

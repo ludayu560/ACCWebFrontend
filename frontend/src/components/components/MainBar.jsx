@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { logout } from "../../AuthComponents/actions/auth";
+import { connect } from 'react-redux';
 import {
   AppBar,
   Toolbar,
@@ -14,8 +16,12 @@ import {
 } from "@mui/material";
 import Logo from "../../assets/Aisha Logo.svg";
 
-function Mainbar() {
+function Mainbar({logout, setNav}) {
   const trigger = useScrollTrigger();
+  const logout_user = () => {
+    logout();
+    setNav(false)
+};
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       <AppBar positon="static" >
@@ -59,6 +65,9 @@ function Mainbar() {
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/contact">
               Contact
             </Button>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} onClick={logout_user}>
+              Logout
+            </Button>
             <IconButton>
               <Avatar></Avatar>
             </IconButton>
@@ -69,4 +78,4 @@ function Mainbar() {
   );
 }
 
-export default Mainbar;
+export default connect(null, {logout}) (Mainbar);

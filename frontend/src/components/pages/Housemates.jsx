@@ -31,7 +31,7 @@ function Housemates(props) {
                  ...filterParams.interests];
   return (
     <>
-      <Mainbar />
+      {/* <Mainbar /> */}
       <Stack>
         <Stack alignItems="center" p={6} spacing={5} mt={15}>
           <Typography variant="h2" sx={{ fontWeight: "bold" }}>

@@ -138,7 +138,7 @@ function HowItWorks(props) {
 
   return (
     <>
-      <Mainbar />
+      {/* <Mainbar /> */}
       <Stack>
         {/*For Property Owners Div*/}
         <Stack alignItems="left" sx={{ p: 10 }}>
