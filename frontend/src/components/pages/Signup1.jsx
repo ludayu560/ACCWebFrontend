@@ -57,7 +57,7 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
         console.log(`password: ${password}`)
         console.log(`passwordConfirm: ${passwordConfirm}`)
         if (password === passwordConfirm) {
-            signup(firstName, lastName, email, password, passwordConfirm)
+            signup( firstName + " " + lastName, email, password, passwordConfirm)
             // setAccountCreated(true);
             returnHook(signupValuesOne)
             setPage(2)
