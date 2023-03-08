@@ -5,20 +5,21 @@ import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import { Toolbar } from "@mui/material";
-const NavbarManager = ({isAuthenticated }) => {
+const NavbarManager = ({isAuthenticated, user}) => {
     const [pageNavigate, setPageNavigate] = useState(false);
     // isAuthenticated ? setPageNavigate(true) : setPageNavigate(false)
+    
     return (
         <div>
             {isAuthenticated ? 
             <>
                 <Toolbar sx={{height: 168}}/>
-                <Mainbar nav={setPageNavigate}/>
+                <Mainbar setNav={setPageNavigate}/>
             </>
             : 
             <>
                 <Toolbar sx={{height: 168}}/>
-                <Navbar nav={setPageNavigate}/>
+                <Navbar setNav={setPageNavigate}/>
             </>}
                         {/* {isAuthenticated ? <Toolbar height='168px'><Mainbar nav={setPageNavigate}></Mainbar> </Toolbar>
             : <Toolbar height='168px'><Navbar nav={setPageNavigate}></Navbar></Toolbar>} */}
@@ -27,7 +28,8 @@ const NavbarManager = ({isAuthenticated }) => {
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
 });
 
 export default connect(mapStateToProps)(NavbarManager);

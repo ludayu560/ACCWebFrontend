@@ -15,18 +15,28 @@ import { signup } from "../../AuthComponents/actions/auth";
 import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-function Page1({ signup, isAuthenticated, props}) {
+function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
 // function Page1(props) {
-    const { setPage, returnHook } = props
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('')
+    const [username, setUsername] = useState('');
     const [newsConsent, setNewsConsent] = useState(false);
-    
-    // const [accountCreated, setAccountCreated] = useState(false);
+    const [accountCreated, setAccountCreated] = useState(false);
+
+    // const [formData, setFormData] = useState({
+    //     firstName: '',
+    //     lastName: '',
+    //     email: '',
+    //     password: '',
+    //     passwordConfirm: ''
+    // });
+
+    // const { firstName, lastName, email, password, passwordConfirm } = formData;
+
+    // const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const signupValuesOne = {
         firstName: firstName,
@@ -35,19 +45,23 @@ function Page1({ signup, isAuthenticated, props}) {
         email : email, 
         password : password,
         passwordConfirm : passwordConfirm,
-        newsConsent : newsConsent
+        newsConsent : newsConsent,
     }
 
-    const onClickNextButton = () => {
-        // if (password === reset_password) {
-        //     signup(firstName + " " + lastName, email, password, passwordConfirm)
-        // }
-        // setAccountCreated(true);
-        // send data from all fields as a JSON
-        returnHook(signupValuesOne)
-
-        // go next
-        setPage(2)
+    const onClickNextButton = e => {
+        e.preventDefault();
+        console.log(" click worked")
+        console.log(`firstName: ${firstName}`)
+        console.log(`lastName: ${lastName}`)
+        console.log(`email: ${email}`)
+        console.log(`password: ${password}`)
+        console.log(`passwordConfirm: ${passwordConfirm}`)
+        if (password === passwordConfirm) {
+            signup(firstName, lastName, email, password, passwordConfirm)
+            // setAccountCreated(true);
+            returnHook(signupValuesOne)
+            setPage(2)
+        }
     }
 
     // if (isAuthenticated) {
@@ -105,7 +119,8 @@ function Page1({ signup, isAuthenticated, props}) {
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
 });
 
 export default connect(mapStateToProps, { signup })(Page1);
