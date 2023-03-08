@@ -7,8 +7,11 @@ import Mainbar from "../components/MainBar";
 import ECard from "../components/ECard";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Tags from "../components/Tags";
+import ListingFilterPanel from "../components/ListingFilterPanel";
+import { useState } from "react";
 
 function Listing(props) {
+  const [filterParams, setFilterParams] = useState()
   const data = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
   return (
     <>
@@ -27,7 +30,7 @@ function Listing(props) {
           <Grid item xs={9}>
             <Grid container spacing={4}>
               <Grid item>
-                <StyledButton variant="pinkBtn" text="Filters" bgcolor='#0045F1'/>
+                <ListingFilterPanel returnHook={setFilterParams}/>
               </Grid>
               {data.map((id) => (
                 <Grid item xs="auto">
