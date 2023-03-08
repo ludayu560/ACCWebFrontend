@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import Divider from "@mui/material/Divider";
@@ -10,16 +10,19 @@ import { Button, ButtonBase } from "@mui/material";
 import StyledTextField from "./StyledTextField";
 import { Box, Stack } from "@mui/system";
 import StyledButton from "./StyledButton";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 export default function SearchBar(props) {
   const { disabled, variant, placeholder, width, height, value, color, hook } = props;
+  const [online, setOnline] = useState();
+
 
   return (
     <>
       {!variant && (
         <Paper
           component="form"
-          sx={{ display: "flex", alignItems: "center", width: width ? width : '60vw', height: 70, borderRadius: 25 }}
+          sx={{ display: "flex", alignItems: "center", width: width ? width : "60vw", height: 70, borderRadius: 25 }}
           elevation={10}>
           <InputBase
             sx={{ ml: 1, flex: 1, p: 4 }}
@@ -29,10 +32,38 @@ export default function SearchBar(props) {
           <IconButton type="button" sx={{ p: "20px" }} aria-label="search">
             <SearchIcon />
           </IconButton>
-          <Divider orientation="vertical" sx={{ borderRightWidth: 2, borderBottomWidth: 40 }} />
+          <Divider orientation="vertical" sx={{ borderBottomWidth: 40 }} />
           <ButtonBase variant="text" sx={{ p: "20px", textTransform: "none", borderRadius: 25 }}>
             Menu
           </ButtonBase>
+        </Paper>
+      )}
+
+      {variant === "event" && (
+        <Paper
+          component="form"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            width: width ? width : "80vw",
+            height: 100,
+            borderRadius: 25,
+            pr: 2,
+          }}
+          elevation={10}>
+          <InputBase sx={{ ml: 1, flex: 1, p: 4 }} placeholder="Events I’m interested in" />
+          <IconButton type="button" sx={{ p: "20px" }} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+          <Divider orientation="vertical" sx={{ borderBottomWidth: 40 }} />
+          <InputBase sx={{ ml: 1, flex: 1, p: 4 }} placeholder="Event Category" />
+          <Divider orientation="vertical" sx={{ borderBottomWidth: 40 }} />
+          <InputBase sx={{ ml: 1, flex: 1, p: 4 }} placeholder="Event Location" />
+          <Divider orientation="vertical" sx={{ borderBottomWidth: 40 }} />
+          <IconButton type="button" sx={{ p: "20px" }} aria-label="search">
+            <CalendarMonthIcon />
+          </IconButton>
+          <StyledButton variant="pinkBtn" text="Search" />
         </Paper>
       )}
 
@@ -93,7 +124,7 @@ export default function SearchBar(props) {
           component="form"
           sx={{ display: "flex", alignItems: "center", width: 500, height: 70, borderRadius: 25, p: 2 }}
           elevation={10}>
-          <IconButton type="button" sx={{ my: "10px"}} aria-label="search">
+          <IconButton type="button" sx={{ my: "10px" }} aria-label="search">
             <SearchIcon sx={{ fontSize: 40 }} />
           </IconButton>
 

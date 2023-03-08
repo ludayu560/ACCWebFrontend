@@ -27,11 +27,15 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import WbTwilightIcon from "@mui/icons-material/WbTwilight";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
 import ECard from "../components/ECard";
+import React, { useState } from "react";
 
 function Events(props) {
+  const data = ["1", "2", "3", "4", "5", "6"];
+  const [onlineSelected, setOnlineSelected] = useState(true);
+  const [inpersonSelected, setInpersonSelected] = useState(false);
+
   return (
     <>
-      <Mainbar />
       <Stack>
         <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw">
           <Stack pr={20} pt={10} pb={20}>
@@ -53,7 +57,7 @@ function Events(props) {
           <Box component="img" src={require("../../assets/unsplash_gYdjZzXNWlg.png")} sx={{ width: "45vw" }} />
         </Stack>
         <Stack alignItems="center" p={6} mt={-20}>
-          <SearchBar />
+          <SearchBar variant="event" />
         </Stack>
 
         {/*Pink Area*/}
@@ -73,10 +77,12 @@ function Events(props) {
           </Typography>
           <Grid container spacing={4} pt={10} justifyContent="center">
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5, border: 5, borderColor: "#C5265C" }} raised="true">
+              <Card
+                sx={{ width: "294px", height: "511px", borderRadius: 5, border: 5, borderColor: "#C5265C" }}
+                raised="true">
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <PeopleOutlineIcon style={{ fontSize: 100 }} sx={{ color: "#C5265C" }} />
-                  <Typography variant="h5" sx={{ color: "#C5265C" }}>
+                  <Typography variant="h5" sx={{ color: "#C5265C", height: "60px" }}>
                     Make Friends
                   </Typography>
                   <Typography variant="p">
@@ -88,10 +94,12 @@ function Events(props) {
             </Grid>
 
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5, border: 5, borderColor: "#C5265C" }} raised="true">
+              <Card
+                sx={{ width: "294px", height: "511px", borderRadius: 5, border: 5, borderColor: "#C5265C" }}
+                raised="true">
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <ShareOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#C5265C" }} />
-                  <Typography variant="h5" sx={{ color: "#C5265C" }}>
+                  <Typography variant="h5" sx={{ color: "#C5265C", height: "60px" }}>
                     Grow Your Network
                   </Typography>
                   <Typography variant="p">
@@ -103,10 +111,12 @@ function Events(props) {
             </Grid>
 
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5, border: 5, borderColor: "#C5265C" }} raised="true">
+              <Card
+                sx={{ width: "294px", height: "511px", borderRadius: 5, border: 5, borderColor: "#C5265C" }}
+                raised="true">
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <PsychologyOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#C5265C" }} />
-                  <Typography variant="h5" sx={{ color: "#C5265C" }}>
+                  <Typography variant="h5" sx={{ color: "#C5265C", height: "60px" }}>
                     Reduce Stress
                   </Typography>
                   <Typography variant="p">
@@ -118,10 +128,12 @@ function Events(props) {
             </Grid>
 
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5, border: 5, borderColor: "#C5265C" }} raised="true">
+              <Card
+                sx={{ width: "294px", height: "511px", borderRadius: 5, border: 5, borderColor: "#C5265C" }}
+                raised="true">
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <WbTwilightIcon style={{ fontSize: 100 }} sx={{ color: "#C5265C" }} />
-                  <Typography variant="h5" sx={{ color: "#C5265C" }}>
+                  <Typography variant="h5" sx={{ color: "#C5265C", height: "60px" }}>
                     Expand Your Horizons
                   </Typography>
                   <Typography variant="p">
@@ -141,12 +153,11 @@ function Events(props) {
           <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "#F83E7D", fontWeight: "bold" }}>
             To Have Fun!
           </Typography>
-          <SentimentVerySatisfiedOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D" }} />
         </Stack>
 
         {/*Events Square thingy*/}
         <Stack style={{ background: "linear-gradient(#FFE7EF, white)" }} sx={{ p: 5, pb: 20 }}>
-          <Typography variant="h1" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2} mr='30vw'>
+          <Typography variant="h1" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2} mr="30vw">
             Our Event Attendes Enjoy their Experience.
           </Typography>
           <Grid container pt={5} justifyContent="center">
@@ -167,17 +178,35 @@ function Events(props) {
           <Stack direction="row" spacing={25} mt={15}>
             <Button
               variant="outlined"
-              style={{ width: "430px", height: "116px", textTransform: "none", backgroundColor: "#0045F1" }}
-              sx={{ borderRadius: 5 }}>
-              <Typography variant="h4" sx={{ color: "white" }}>
+              style={{
+                width: "430px",
+                height: "116px",
+                textTransform: "none",
+                backgroundColor: onlineSelected ? "#0045F1" : "white",
+              }}
+              sx={{ borderRadius: 5, border: 3 }}
+              onClick={() => {
+                setInpersonSelected(false);
+                setOnlineSelected(true);
+              }}>
+              <Typography variant="h4" sx={{ color: onlineSelected ? "white" : "#0045F1" }}>
                 Online Events
               </Typography>
             </Button>
             <Button
               variant="outlined"
-              style={{ width: "430px", height: "116px", textTransform: "none", backgroundColor: "white" }}
-              sx={{ borderRadius: 5, border: 3 }}>
-              <Typography variant="h4" sx={{ color: "#0045F1" }}>
+              style={{
+                width: "430px",
+                height: "116px",
+                textTransform: "none",
+                backgroundColor: inpersonSelected ? "#0045F1" : "white",
+              }}
+              sx={{ borderRadius: 5, border: 3 }}
+              onClick={() => {
+                setInpersonSelected(true);
+                setOnlineSelected(false);
+              }}>
+              <Typography variant="h4" sx={{ color: inpersonSelected ? "white" : "#0045F1" }}>
                 In-Person Events
               </Typography>
             </Button>
@@ -186,24 +215,15 @@ function Events(props) {
 
         {/*Events Grid */}
         <Grid container spacing={20} alignContent="center" justifyContent="center" pb={20} mt={-45} bgcolor="#DEECF5">
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
-          <Grid item xs="auto">
-            <ECard variant="favourite" />
-          </Grid>
+          {onlineSelected && (
+            <>
+              {data.map((id) => (
+                <Grid item xs="auto">
+                  <ECard variant="event" />
+                </Grid>
+              ))}
+            </>
+          )}
         </Grid>
 
         {/*Don’t see what you’re looking for? Create your own event!*/}
@@ -214,23 +234,23 @@ function Events(props) {
           <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2} pb={15}>
             Create your own event!
           </Typography>
-          <StyledButton variant="pinkBtn" text="Create Event" />
+          <StyledButton variant="pinkBtn" text="Create Event" bgcolor="#0045F1" />
         </Stack>
 
         {/*Community Events*/}
         <Stack alignItems="left" style={{ background: "linear-gradient(#FFE7EF, white)" }} sx={{ p: 10 }}>
-          <Typography variant="h2" align="center" sx={{ color: "#F83E7D", fontWeight: "bold", mt: -15, pb: 20 }}>
-            Events Calendar
+          <Typography variant="h1" align="center" sx={{ color: "#F83E7D", fontWeight: "bold", mt: -15, pb: 20 }}>
+            Events Schedule
           </Typography>
-          <Card sx={{ width: "40vw" }} raised>
-            <MyCalendar></MyCalendar>
-          </Card>
+          <Typography variant="h1" align="center" sx={{ color: "#F83E7D", fontWeight: "bold", mt: -15, pb: 20 }}>
+            WIP!!!!!
+          </Typography>
           <Typography variant="h2" align="center" sx={{ color: "#C5265C", fontWeight: "bold", pt: 20 }}>
             Interested in Hosting Your Own Event?
           </Typography>
 
           <Typography variant="h1" align="center" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-            Create Your Event
+            Host Your Event
           </Typography>
         </Stack>
 
