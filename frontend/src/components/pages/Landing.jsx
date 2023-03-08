@@ -29,7 +29,7 @@ import img11 from "../../assets/image 11.png";
 function Landing(props) {
   return (
     <>
-      <NavBar></NavBar>
+      {/* <NavBar></NavBar> */}
       <Stack>
         <Grid container py={10}>
           <Grid item xs={7}>

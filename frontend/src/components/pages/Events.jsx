@@ -31,7 +31,7 @@ import ECard from "../components/ECard";
 function Events(props) {
   return (
     <>
-      <Mainbar />
+      {/* <Mainbar /> */}
       <Stack>
         <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw">
           <Stack pr={20} pt={10} pb={20}>

@@ -10,15 +10,23 @@ import SignupAisha from "../components/SignupAishaLogo";
 import StyledButton from "../components/StyledButton";
 import StyledTextField from "../components/StyledTextField";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
-function Page1(props) {
+import { reset_password } from "../../AuthComponents/actions/auth";
+import { signup } from "../../AuthComponents/actions/auth";
+import { Navigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+function Page1({ signup, isAuthenticated, props}) {
+// function Page1(props) {
     const { setPage, returnHook } = props
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [passwordConfirm, setPasswordConfirm] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('')
     const [newsConsent, setNewsConsent] = useState(false);
+    
+    // const [accountCreated, setAccountCreated] = useState(false);
 
     const signupValuesOne = {
         firstName: firstName,
@@ -31,6 +39,10 @@ function Page1(props) {
     }
 
     const onClickNextButton = () => {
+        // if (password === reset_password) {
+        //     signup(firstName + " " + lastName, email, password, passwordConfirm)
+        // }
+        // setAccountCreated(true);
         // send data from all fields as a JSON
         returnHook(signupValuesOne)
 
@@ -38,7 +50,13 @@ function Page1(props) {
         setPage(2)
     }
 
+    // if (isAuthenticated) {
+    //     return <Navigate to='/home'/>;
+    // }
 
+    // if (accountCreated) {
+    //     return <Navigate to='/'/>;
+    // }
     return (
     <Grid container>
         <SignupAisha></SignupAisha>
@@ -86,4 +104,9 @@ function Page1(props) {
     )
 }
 
-export default Page1
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { signup })(Page1);
+// export default Page1;

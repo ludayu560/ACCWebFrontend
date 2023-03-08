@@ -49,7 +49,7 @@ function MyAccountProfile(props) {
   const [ultSelected, setUltSelected] = useState(true);
   return (
     <>
-      <Mainbar></Mainbar>
+      {/* <Mainbar></Mainbar> */}
       <Grid container>
         <Grid item xs={12}>
           <Box sx={{ width: "100vw" }} component="img" src={background} />

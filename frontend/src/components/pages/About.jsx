@@ -15,7 +15,7 @@ import AboutBG from "../../assets/AboutBG.png";
 function About(props) {
   return (
     <>
-      <Mainbar />
+      {/* <Mainbar /> */}
       <Stack>
         {/*First Title Section*/}
         <Box component="img" src={AboutBG} height="666px"></Box>

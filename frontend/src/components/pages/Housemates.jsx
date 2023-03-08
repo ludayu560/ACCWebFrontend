@@ -36,7 +36,7 @@ function Housemates(props) {
   const data = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
   return (
     <>
-      <Mainbar />
+      {/* <Mainbar /> */}
       <Stack>
         <Stack alignItems="center" p={6} spacing={5} mt={15}>
           <Typography variant="h2" sx={{ fontWeight: "bold" }}>

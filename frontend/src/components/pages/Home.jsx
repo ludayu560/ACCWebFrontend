@@ -8,7 +8,7 @@ function Home(props) {
 	
   return (
     <>
-	  <NavBar></NavBar>
+	  {/* <NavBar></NavBar> */}
       <Stack>
         <Stack direction="row" m={10} spacing={1}>
           <Stack pr={20}>
