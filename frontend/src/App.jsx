@@ -76,13 +76,12 @@ function App() {
               <Route exact path='/' element={<Landing />} />
               <Route exact path='/signup' element={<SignupManager />} />
               <Route exact path='/login' element={<Login />} />
-            </Routes>
-          </Layout>
-          <Routes>
-            <Route exact path='/activate/:uid/:token' element={<ResetPasswordConfirm />} />
-            <Route exact path='/reset-password' element={<ResetPassword />} />
-            <Route exact path='/password/reset/confirm/:uid/:token' element={<Activate />} />
+              <Route exact path='/activate/:uid/:token' element={<Activate />} />
+              <Route exact path='/reset-password' element={<ResetPassword />} />
+              <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
           </Routes>
+          </Layout>
+
         </BrowserRouter>
       </ThemeProvider>
     </Provider>
