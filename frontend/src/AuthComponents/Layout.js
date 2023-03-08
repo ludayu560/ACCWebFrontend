@@ -9,12 +9,13 @@ import Landing from '../components/pages/Landing';
 import { Stack } from '@mui/system';
 import { Toolbar } from "@mui/material";
 
-//checkAuthenticated, 
+//checkAuthenticated,
 const Layout = (props) => {
-    useEffect(() => {
-        props.checkAuthenticated();
-        props.load_user();
-    }, []);
+  const authenticated = true;
+  useEffect(() => {
+    props.checkAuthenticated();
+    props.load_user();
+  }, []);
 
     return (
         <div>
