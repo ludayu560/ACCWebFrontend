@@ -24,7 +24,7 @@ import { ReactComponent as LoginText1 } from '../../assets/LoginText1.svg';
 import { ReactComponent as LoginText2 } from '../../assets/LoginText2.svg';
 import { ReactComponent as AishaSignaturePink } from '../../assets/AishaSignatureWhite.svg';
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated, user}) => {
     // login handlers
 
     // const [firstName, setFirstName] = useState('');
@@ -40,8 +40,10 @@ const Login = ({ login, isAuthenticated }) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        console.log("attemps");
         login(email, password);
+        if (user != null) {
+            console.log(user)
+        }
     }
 
     // dialog handler 
@@ -147,7 +149,8 @@ const Login = ({ login, isAuthenticated }) => {
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
 });
 
 export default connect(mapStateToProps, { login })(Login);

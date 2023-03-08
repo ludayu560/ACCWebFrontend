@@ -22,6 +22,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('', include('listingAccount.urls')),    
+    # path('', include('account.urls')),    
     path('', include('events.urls')),
     path('', include('propertyListing.urls')),
     path('', include('notifications.urls'))

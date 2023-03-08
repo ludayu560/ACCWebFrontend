@@ -78,9 +78,8 @@ function App() {
               <Route exact path='/activate/:uid/:token' element={<Activate />} />
               <Route exact path='/reset-password' element={<ResetPassword />} />
               <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
-          </Routes>
+            </Routes>
           </Layout>
-
         </BrowserRouter>
       </ThemeProvider>
     </Provider>

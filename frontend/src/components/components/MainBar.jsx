@@ -65,6 +65,9 @@ function Mainbar({logout, setNav}) {
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/contact">
               Contact
             </Button>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} onClick={logout_user}>
+              Logout
+            </Button>
             <IconButton>
               <Avatar></Avatar>
             </IconButton>

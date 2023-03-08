@@ -48,7 +48,8 @@ export default function (state = initialState, action) {
         case SIGNUP_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: false
+                isAuthenticated: false,
+                user: payload
             }
         case USER_LOADED_SUCCESS:
             return {
