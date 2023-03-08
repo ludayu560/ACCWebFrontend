@@ -25,14 +25,11 @@ function Tags(props) {
       {variant === "filter" && (
         <Box
           display="flex"
-          sx={{ border: 3, borderColor: color ? color : "#F83E7D", borderRadius: 10, pl: 5 }}
+          sx={{ border: 3, borderColor: color ? color : "#F83E7D", borderRadius: 10, p: 2 }}
           style={{ alignItems: "center" }}>
-          <Typography variant="h6" sx={{ color: color ? color : "#F83E7D" }}>
+          <Typography variant="h6" sx={{ color: color ? color : "#F83E7D", m: "10px" }}>
             {text}
           </Typography>
-          <IconButton type="button" sx={{ m: "10px" }} aria-label="search">
-            <CloseIcon sx={{ color: color ? color : "#F83E7D" }} />
-          </IconButton>
         </Box>
       )}
     </>
