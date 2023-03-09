@@ -1,0 +1,43 @@
+import styled, { createGlobalStyle } from 'styled-components';
+
+export const ShadowBox = styled.div`
+	display: ${({ display }) => (display ? display : 'flex')};
+	background: ${({ background }) => (background ? background : '#d9d9d9')};
+	flex-direction: ${({ flexDirection }) => (flexDirection  ? flexDirection  : 'column')};
+	border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : '1vmin')};
+	padding: ${({ padding }) => (padding ? padding : '')};
+	padding-top: ${({ pt }) => (pt ? pt : '')};
+	padding-bottom: ${({ pb }) => (pb ? pb : '')};
+	margin: ${({ margin }) => (margin ? margin : '')};
+	margin-bottom: ${({ mb }) => (mb ? mb : '')};
+	margin-top: ${({ mt }) => (mt ? mt : '')};
+	color: ${({ color }) => (color ? color : '')};
+	position: ${({ position }) => (position ? position : '')};
+	width: ${({ width }) => (width ? width : 'fit-content')};
+	min-width: ${({ minWidth }) => (minWidth ? minWidth : '')};
+	max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '')};
+	height: ${({ height }) => (height ? height : '')};
+	max-height: ${({ maxHeight }) => (maxHeight ? maxHeight : '')};
+	min-height: ${({ minHeight }) => (minHeight ? minHeight : '')};
+	text-align: ${({ textAlign }) => (textAlign ? textAlign : '')};
+`;
+export const FlexSection = styled.div`
+	display: ${({ display }) => (display ? display : 'flex')};
+	background: ${({ background }) => (background ? background : '')};
+	flex-direction: ${({ fd }) => (fd  ? fd  : 'row')};
+	padding: ${({ padding }) => (padding ? padding : '')};
+	padding-top: ${({ pt }) => (pt ? pt : '')};
+	padding-bottom: ${({ pb }) => (pb ? pb : '')};
+	padding-left: ${({ pl }) => (pl ? pl : '')};
+	padding-right: ${({ pr }) => (pr ? pr : '')};
+	margin: ${({ margin }) => (margin ? margin : '')};
+	margin-bottom: ${({ mb }) => (mb ? mb : '')};
+	margin-top: ${({ mt }) => (mt ? mt : '')};
+	margin-left: ${({ ml }) => (ml ? ml : '')};
+	margin-right: ${({ mr }) => (mr ? mr : '')};
+	color: ${({ color }) => (color ? color : '')};
+	position: ${({ position }) => (position ? position : '')};
+	width: ${({ width }) => (width ? width : 'auto')};
+	height: ${({ height }) => (height ? height : '')};
+	text-align: ${({ textAlign }) => (textAlign ? textAlign : '')};
+`;

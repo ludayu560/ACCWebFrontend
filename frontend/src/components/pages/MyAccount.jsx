@@ -18,9 +18,7 @@ import {Link} from 'react-router-dom';
 import React, { useState } from "react";
 import RectangleOne from "../../assets/Rectangle1.svg"
 import AccountContent from "../../assets/AccountContent.svg"
-import NavBar from '../components/NavBar';
-import SideNav from "../components/SideNav";
-
+import NavBar from '../NavBar';
 import axios from 'axios'
 
 const api = axios.create({
@@ -103,23 +101,35 @@ function MyAccount(props) {
         }
         // Submit here
         const accountFields = {
-            "username": "",
-            "first_name": "",
-            "last_name": "",
-            "email": "",
-            "phone_number": "",
-            "date_of_birth": null,
-            "location": "",
-            "age_range": "",
-            "tell_us_about_yourself": "",
-            "personal_traits": [],
-            "interests": []
+            ID: 12,
+            "username": field_1,
+            "first_name": field_2,
+            "email": field_3,
+            "phone": field_4,
+            "location": field_5,
+            "ageRange": field_6,
+            "about": field_7,
+            "personalityTraits": '',
+            "interests": '',
+            // "personalityTraits": returnTraits,
+            // "interests": returnInterests
+            'personal_traits': [],
+            'interests': []
         }
 
         api.post('/', {
             params: {accountFields}
           })
-          
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+          .finally(function () {
+            console.log('request executed')
+          });
+
         handleReset();
     };
 
@@ -137,7 +147,11 @@ function MyAccount(props) {
     }
     return (
         <>
+<<<<<<< HEAD
         {/* <NavBar></NavBar> */}
+=======
+        <NavBar></NavBar>
+>>>>>>> develop
         <Grid container spacing={8}>
         <Grid item xs={12}>
             <Typography variant='h2' padding={'3vw'} fontWeight={700}>
@@ -146,7 +160,19 @@ function MyAccount(props) {
             </Typography>
         </Grid>
         <Grid item xs={3}>
-        <SideNav></SideNav>
+        <Stack
+            marginLeft={8}
+            sx={{backgroundColor: '#E3E7EF', padding: '2vw', borderRadius: '25px'}}
+        >
+            <Link to={`/account-${props.name}`}>My Profile</Link> <br />
+            <Link to={`/account-${props.name}`}>Events</Link> <br />
+            <Link to={`/account-${props.name}`}>Notifications</Link> <br />
+            <Link to={`/account-${props.name}`}>Favourites</Link> <br />
+            <Link to={`/account-${props.name}`}>Settings</Link> <br />
+            <Link to={`/account-${props.name}`}>Payment</Link> <br />
+            <Link to={`/account-${props.name}`}>Help</Link> <br />
+            <Link to={`/account-${props.name}`}>Logout</Link> <br />
+        </Stack>
         </Grid>
         <Grid item xs={9}>
             <Grid item xs={9}>

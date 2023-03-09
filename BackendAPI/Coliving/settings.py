@@ -38,18 +38,23 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'corsheaders',
     'django.contrib.staticfiles',
+    'django_cleanup.apps.CleanupConfig',
+    'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
+    'payments.apps.PaymentsConfig'
     'djoser',
     'listingAccount',
+    'storages',
+    'accountEvents',
     'events',
-    'account',
+    'favorites',
+    'listingAccount',
     'propertyListing',
     'notifications',
-    'payments.apps.PaymentsConfig'
+    'housemate'
 ]
 
 MIDDLEWARE = [
@@ -60,19 +65,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'Coliving.urls'
 
-TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
+#TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # os.path.join(BASE_DIR, '../frontend/build'),
-            TEMPLATE_DIR
+            os.path.join(BASE_DIR, '../frontend/build'),
+            #TEMPLATE_DIR
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -94,16 +97,14 @@ WSGI_APPLICATION = 'Coliving.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
         # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'production',
         # 'USER': 'admin',
         # 'PASSWORD': 'Work2003',
         # 'HOST': 'coliving-db.ckmvyermclnj.us-west-2.rds.amazonaws.com',
         # 'PORT': 3306
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -151,20 +152,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-# STATIC_URL = 'static/'
-# STASTICFILES_DIRS = [
-#     os.path.join(BASE_DIR, '../frontend/build/static')
-# ]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_URL = 'static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'build/static')
-# ]
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), ) 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# for django >= 3.1
-STATICFILES_DIRS = [BASE_DIR / 'static']  # new
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# AWS_ACCESS_KEY_ID = ''
+# AWS_SECRET_ACCESS_KEY = ''
+# AWS_STORAGE_BUCKET_NAME = ''
+
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = ''
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -225,3 +225,7 @@ STRIPE_PRIVATE_KEY = 'sk_test_51MgWeGIbS9zGmxyRI0YVdFYW5kYR2aLgCMybhMelyNG48gnT4
 STRIPE_ENDPOINT_SECRET = 'whsec_a7476a205aa7fc26a4aa76e9bfd407ef38b8e1471a2b60196b32dd60ee437784'
 
 STRIPE_PRICE_ID = 'price_1Mhd29IbS9zGmxyRvmsKkXaV'
+
+STASTICFILES_DIRS = [
+    os.path.join(BASE_DIR, '../frontend/build/static')
+]
