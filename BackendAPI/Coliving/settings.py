@@ -44,9 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
-    'payments.apps.PaymentsConfig'
+    'payments.apps.PaymentsConfig',
     'djoser',
-    'listingAccount',
     'storages',
     'accountEvents',
     'events',
@@ -54,7 +53,8 @@ INSTALLED_APPS = [
     'listingAccount',
     'propertyListing',
     'notifications',
-    'housemate'
+    'housemate',
+    'account'
 ]
 
 MIDDLEWARE = [
