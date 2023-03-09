@@ -19,7 +19,7 @@ class ListingAccount(models.Model):
     display_picture_three = models.ImageField(null=True)
     display_picture_four = models.ImageField(null=True)
     created = models.DateTimeField(auto_now_add=True) # unsure if needed
-    account = models.ForeignKey(User, related_name="Account", on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, related_name='user', on_delete=models.CASCADE, null=True)
 
 
 class PersonalTrait(models.Model):
