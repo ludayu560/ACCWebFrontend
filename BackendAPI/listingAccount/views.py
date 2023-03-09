@@ -31,5 +31,5 @@ class AccountGetListing(APIView):
                 array.append(ListingAccount.objects.get(id=listing_account.id))
             except:
                 print("Error", id)
-        serializer = ListingAccountSerializer(snippet, many=True)
+        serializer = ListingAccountSerializer(array, many=True)
         return Response(serializer.data)
