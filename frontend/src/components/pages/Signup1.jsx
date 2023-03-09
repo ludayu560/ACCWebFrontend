@@ -46,6 +46,7 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
         password : password,
         passwordConfirm : passwordConfirm,
         newsConsent : newsConsent,
+        id: null
     }
 
     const onClickNextButton = e => {
@@ -59,11 +60,15 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
         if (password === passwordConfirm) {
             signup( firstName + " " + lastName, email, password, passwordConfirm)
             // setAccountCreated(true);
-            returnHook(signupValuesOne)
-            setPage(2)
+            
         }
     }
-
+    
+    if (user) {
+        signupValuesOne.id = user.id
+        returnHook(signupValuesOne)
+        setPage(2)
+    }
     // if (isAuthenticated) {
     //     return <Navigate to='/home'/>;
     // }
