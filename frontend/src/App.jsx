@@ -35,6 +35,8 @@ import ListingDetails from "./components/pages/ListingDetails";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import HowItWorks from "./components/pages/HowItWorks";
+import RLF from "./components/pages/RentalListingForm";
+import RentalListingForm from "./components/pages/RentalListingForm";
 
 function App() {
   const THEME = createTheme({
@@ -67,6 +69,7 @@ function App() {
               <Route exact path='/about' element={<About />} />
               <Route exact path='/dashboard' element={<Dashboard variant="propertyOwner" />} />
               <Route exact path='/listing' element={<Listing />} />
+              <Route exact path='/RLF' element={<RentalListingForm/>} />
               <Route exact path='/housemates' element={<Housemates />} />
               <Route exact path='/homeowners' element={<Homeowners />} />
               <Route exact path='/tenanthome' element={<TenantHome />} />

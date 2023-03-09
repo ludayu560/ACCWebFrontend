@@ -11,17 +11,16 @@ import ListingFilterPanel from "../components/ListingFilterPanel";
 import { useState } from "react";
 
 function Listing(props) {
-  const [filterParams, setFilterParams] = useState()
+  const [filterParams, setFilterParams] = useState();
   const data = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
   return (
     <>
-      {/* <Mainbar /> */}
       <Stack>
-        <Stack direction='row' alignItems="center" p={10} spacing={5} mt={15}>
+        <Stack direction="row" alignItems="center" p={10} spacing={5}>
           <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-          Listings
+            Listings
           </Typography>
-          <Box sx={{flexGrow: 1}}/>
+          <Box sx={{ flexGrow: 1 }} />
           <SearchBar variant="listings" />
         </Stack>
 
@@ -30,25 +29,27 @@ function Listing(props) {
           <Grid item xs={9}>
             <Grid container spacing={4}>
               <Grid item>
-                <ListingFilterPanel returnHook={setFilterParams}/>
+                <ListingFilterPanel returnHook={setFilterParams} />
               </Grid>
-              {data.map((id) => (
-                <Grid item xs="auto">
-                  <Tags variant="filter" text={id} color='#0045F1'></Tags>
-                </Grid>
-              ))}
+              {data.map((id) =>
+                id === "" ? null : (
+                  <Grid item xs="auto">
+                    <Tags variant="filter" text={id} color='#0045F1'></Tags>
+                  </Grid>
+                )
+              )}
             </Grid>
           </Grid>
           <Grid item xs={3} px={10}>
-            <Stack spacing={15} alignItems='center'>
-              <Typography align='center'>Showing 1 - 21of 242 results </Typography>
-              <StyledButton variant="pinkBtn" text="Newest First" bgcolor='transparent' textColor='black'/>
+            <Stack spacing={10} alignItems="center">
+              <Typography align="center">Showing 1 - 21of 242 results </Typography>
+              <StyledButton variant="pinkBtn" text="Newest First" bgcolor="gray" textColor="black" width="20vw" />
             </Stack>
           </Grid>
         </Grid>
 
         {/*Housemate Card Area*/}
-        <Grid container px={10} py={2} spacing={10}>
+        <Grid container px={10} pb={2} spacing={10}>
           {data.map((id) => (
             <Grid item xs="auto">
               <ECard variant="listing" />
