@@ -1,5 +1,5 @@
 import { Box, Stack } from "@mui/system";
-import { Button, Card, Grid, Paper, Typography } from "@mui/material";
+import { Button, Card, CardActionArea, Grid, Paper, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import HomePhoto from "../../assets/HomePhoto.png";
 import NavBar from "../components/NavBar";
@@ -33,10 +33,9 @@ import TenantHomePageBG from "../../assets/TenantHomePageBG.png";
 function TenantHome(props) {
   return (
     <>
-      {/* <Mainbar /> */}
       <Stack>
         {/*First Title Section*/}
-        <Box component="img" src={require("../../assets/image 2 (1).png")}/>
+        <Box component="img" src={require("../../assets/image 2 (1).png")} />
         <Stack sx={{ mt: -72 }} pb={10}>
           <Stack pl={15} spr={"50vw"} pt={10}>
             <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
@@ -67,35 +66,43 @@ function TenantHome(props) {
           </Typography>
           <Grid container spacing={2} p={10} justifyContent="center">
             <Grid item xs="auto">
-              <Stack
-                sx={{ width: "582px" }}
-                p={5}
-                align="center"
-                spacing={4}
-                alignItems="center"
-                style={{ background: "#0045F10F" }}>
-                <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
-                  Are you looking to get matched by listings?
-                </Typography>
-                <HouseIcon style={{ fontSize: 200 }} sx={{ color: "#0045F1" }} />
-                <StyledButton variant="pinkBtn" text="Listings" bgcolor="#0045F1" />
-              </Stack>
+              <Card raised>
+                <CardActionArea>
+                  <Stack
+                    sx={{ width: "582px" }}
+                    p={5}
+                    align="center"
+                    spacing={4}
+                    alignItems="center"
+                    style={{ background: "#0045F10F" }}>
+                    <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
+                      Are you looking to get matched by listings?
+                    </Typography>
+                    <HouseIcon style={{ fontSize: 200 }} sx={{ color: "#0045F1" }} />
+                    <StyledButton variant="pinkBtn" text="Listings" bgcolor="#0045F1" />
+                  </Stack>
+                </CardActionArea>
+              </Card>
             </Grid>
 
             <Grid item xs="auto">
-              <Stack
-                sx={{ width: "582px" }}
-                p={5}
-                align="center"
-                spacing={4}
-                alignItems="center"
-                style={{ background: "#F83E7D0F" }}>
-                <Typography variant="h5" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-                  Are you looking to get matched by housemates?
-                </Typography>
-                <PeopleIcon style={{ fontSize: 200 }} sx={{ color: "#F83E7D" }} />
-                <StyledButton variant="pinkBtn" text="Housemates"></StyledButton>
-              </Stack>
+              <Card raised>
+                <CardActionArea>
+                  <Stack
+                    sx={{ width: "582px" }}
+                    p={5}
+                    align="center"
+                    spacing={4}
+                    alignItems="center"
+                    style={{ background: "#F83E7D0F" }}>
+                    <Typography variant="h5" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
+                      Are you looking to get matched by housemates?
+                    </Typography>
+                    <PeopleIcon style={{ fontSize: 200 }} sx={{ color: "#F83E7D" }} />
+                    <StyledButton variant="pinkBtn" text="Housemates"></StyledButton>
+                  </Stack>
+                </CardActionArea>
+              </Card>
             </Grid>
           </Grid>
         </Stack>

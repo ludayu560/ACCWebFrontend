@@ -26,23 +26,23 @@ import GppGoodIcon from "@mui/icons-material/GppGood";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 function ECard(props) {
-  const { variant, themeColor} = props;
+  const { variant, themeColor, date, time, name, location, interested, going } = props;
 
   return (
     <>
       {variant === "event" && (
-        <Card raised="true" sx={{ borderRadius: 4, width: '350px' }}>
+        <Card raised="true" sx={{ borderRadius: 4, width: "350px" }}>
           <CardActionArea>
             <CardMedia component="img" height="250px" src={bbq} />
             <CardContent>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                    Sunday, September 3 @ 6:00pm
+                    {time ? time : "Date: N/A"}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant="h6">Monthly Community BBQ</Typography>
+                  <Typography variant="h6">{name ? name : "Name: N/A"}</Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <Box
@@ -51,7 +51,9 @@ function ECard(props) {
                       alignItems: "center",
                     }}>
                     <LocationOnIcon style={{ fontSize: 60 }} sx={{ mr: 6, color: "blue" }} />
-                    <Typography variant="h6" sx={{fontSize: 15}}>The Time’s Grill and Bar</Typography>
+                    <Typography variant="h6" sx={{ fontSize: 15 }}>
+                      {location ? location : "Location: N/A"}
+                    </Typography>
                   </Box>
                 </Grid>
                 <Grid item xs={12}>
@@ -61,7 +63,9 @@ function ECard(props) {
                       alignItems: "center",
                     }}>
                     <Diversity3Icon style={{ fontSize: 60 }} sx={{ mr: 6, color: "#F83E7D" }} />
-                    <Typography variant="h6" sx={{fontSize: 15}}>| 15 Interested | 8 Going</Typography>
+                    <Typography variant="h6" sx={{ fontSize: 15 }}>
+                      | {interested ? interested : "N/A"} Interested | {going ? going : "N/A"} Going
+                    </Typography>
                   </Box>
                 </Grid>
                 <Grid item xs={8}></Grid>
@@ -73,6 +77,73 @@ function ECard(props) {
                 </Grid>
               </Grid>
             </CardContent>
+          </CardActionArea>
+        </Card>
+      )}
+
+      {variant === "eventSchedule" && (
+        <Card raised="true" sx={{ borderRadius: 4, width: "80vw", height: "15vw" }}>
+          <CardActionArea>
+            <Grid container>
+              <Grid item xs={2} bgcolor="#F83E7D">
+                <Stack alignItems="center" pt="2.2vw">
+                  <Typography variant="h2" sx={{ fontWeight: "bold", color: "white", fontSize: "4vw" }}>
+                    25
+                  </Typography>
+                  <Typography variant="h2" sx={{ fontWeight: "bold", color: "white", fontSize: "4vw" }}>
+                    JAN
+                  </Typography>
+                </Stack>
+              </Grid>
+              <Grid item xs={3}>
+                <Box component="img" width="100%" src={bbq} />
+              </Grid>
+              <Grid item xs={4.5}>
+                <Stack p="2vw">
+                  <Typography variant="h5" sx={{ fontWeight: "bold", fontSize: "1.7vw" }} mb="1vw">
+                    Monthly Community BBQ
+                  </Typography>
+                  <Box
+                    display="flex"
+                    style={{
+                      alignItems: "center",
+                    }}>
+                    <LocationOnIcon style={{ fontSize: "2.3vw" }} sx={{ mr: "1vw", color: "#F83E7D" }} />
+                    <Stack>
+                      <Typography variant="h6" sx={{ fontSize: "1vw" }}>
+                        | {interested ? interested : "N/A"} Interested
+                      </Typography>
+                    </Stack>
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: "1.3vw" }} mt="2vw">
+                    Sunday, September 3 @ 6:00pm
+                  </Typography>
+                </Stack>
+              </Grid>
+              <Grid item xs={2}>
+                <Box
+                  display="flex"
+                  style={{
+                    alignItems: "center",
+                  }}
+                  py="2vw">
+                  <Diversity3Icon style={{ fontSize: "3vw" }} sx={{ mr: "1vw", color: "#F83E7D" }} />
+                  <Stack>
+                    <Typography variant="h6" sx={{ fontSize: "1vw" }}>
+                      | {interested ? interested : "N/A"} Interested
+                    </Typography>
+                    <Typography variant="h6" sx={{ fontSize: "1vw" }}>
+                      | {going ? going : "N/A"} Going
+                    </Typography>
+                  </Stack>
+                </Box>
+                <Checkbox
+                  icon={<FavoriteBorderIcon style={{ fontSize: "4.5vw" }} sx={{ color: "gray" }} />}
+                  checkedIcon={<FavoriteIcon style={{ fontSize: "4.5vw" }} sx={{ color: "#F83E7D" }} />}
+                  sx={{ ml: "8vw" }}
+                />
+              </Grid>
+            </Grid>
           </CardActionArea>
         </Card>
       )}
@@ -259,7 +330,7 @@ function ECard(props) {
               <Typography variant="h6" sx={{ fontSize: 15 }} mb={10}>
                 Sunday, September 3 @ 6:00pm
               </Typography>
-              <StyledButton variant="signup" text="Events" bgcolor={themeColor}/>
+              <StyledButton variant="signup" text="Events" bgcolor={themeColor} />
             </Stack>
             <Box sx={{ flexGrow: 1 }} />
             <Box component="img" width="582px" height="312px" src={bbq} sx={{ mr: -20 }} />
