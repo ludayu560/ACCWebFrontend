@@ -37,7 +37,7 @@ export const load_listing = (id) => async dispatch => {
 
             // const body = JSON.stringify({ id });
             // console.log(`id is ${id}`)
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/accountList/${id}`, config);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/accountList/${id}/`, config);
             dispatch({
                 type: LISTINGACCOUNT_LOAD_SUCCESS,
                 payload: res.data
