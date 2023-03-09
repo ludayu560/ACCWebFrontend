@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('events.urls')),
     path('', include('propertyListing.urls')),
     path('', include('notifications.urls')),
-    path('', include('account.urls'))
+    # path('', include('account.urls'))
     # path('', include('payments.urls'))
 ]
 

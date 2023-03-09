@@ -11,15 +11,49 @@ import {
     PASSWORD_RESET_CONFIRM_SUCCESS,
     PASSWORD_RESET_CONFIRM_FAIL,
     SIGNUP_SUCCESS,
-    SIGNUP_FAIL, 
+    SIGNUP_FAIL,
     ACTIVATION_SUCCESS,
     ACTIVATION_FAIL,
+    LISTINGACCOUNT_LOAD_SUCCESS,
+    LISTINGACCOUNT_LOAD_FAIL,
     // GOOGLE_AUTH_SUCCESS,
     // GOOGLE_AUTH_FAIL,
     // FACEBOOK_AUTH_SUCCESS,
     // FACEBOOK_AUTH_FAIL,
     LOGOUT
 } from './types';
+
+
+export const load_listing = (id) => async dispatch => {
+
+    if (localStorage.getItem('access')) {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            };
+
+            // const body = JSON.stringify({ id });
+            // console.log(`id is ${id}`)
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/accountList/${id}`, config);
+            dispatch({
+                type: LISTINGACCOUNT_LOAD_SUCCESS,
+                payload: res.data
+            });
+        } catch (err) {
+            console.log(err)
+            dispatch({
+                type: LISTINGACCOUNT_LOAD_FAIL
+            });
+        }
+    } else {
+        dispatch({
+            type: LISTINGACCOUNT_LOAD_FAIL
+        });
+    }
+};
 
 export const load_user = () => async dispatch => {
     if (localStorage.getItem('access')) {
@@ -29,15 +63,18 @@ export const load_user = () => async dispatch => {
                 'Authorization': `JWT ${localStorage.getItem('access')}`,
                 'Accept': 'application/json'
             }
-        }; 
+        };
 
         try {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/users/me/`, config);
-    
             dispatch({
                 type: USER_LOADED_SUCCESS,
                 payload: res.data
             });
+
+            // console.log(`id: ${res.data.id}`);
+            // console.log(`data: ${res.data}`);
+            dispatch(load_listing(res.data.id));
         } catch (err) {
             dispatch({
                 type: USER_LOADED_FAIL
@@ -57,7 +94,7 @@ export const checkAuthenticated = () => async dispatch => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
-        }; 
+        };
 
         const body = JSON.stringify({ token: localStorage.getItem('access') });
 
@@ -103,7 +140,6 @@ export const login = (email, password) => async dispatch => {
             type: LOGIN_SUCCESS,
             payload: res.data
         });
-
         dispatch(load_user());
     } catch (err) {
         dispatch({

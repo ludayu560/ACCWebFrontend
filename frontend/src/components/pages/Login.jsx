@@ -13,7 +13,7 @@ import MLink from '@mui/material/Link';
 import Box from '@mui/material/Box';
 
 //auth
-import { login } from '../../AuthComponents/actions/auth'
+import { load_listing, login } from '../../AuthComponents/actions/auth'
 
 import StyledTextField from "../components/StyledTextField";
 import StyledButton from "../components/StyledButton";
@@ -24,7 +24,7 @@ import { ReactComponent as LoginText1 } from '../../assets/LoginText1.svg';
 import { ReactComponent as LoginText2 } from '../../assets/LoginText2.svg';
 import { ReactComponent as AishaSignaturePink } from '../../assets/AishaSignatureWhite.svg';
 
-const Login = ({ login, isAuthenticated, user}) => {
+const Login = ({ login, isAuthenticated, user, listingAccount}) => {
     // login handlers
 
     // const [firstName, setFirstName] = useState('');
@@ -41,9 +41,7 @@ const Login = ({ login, isAuthenticated, user}) => {
     const onSubmit = e => {
         e.preventDefault();
         login(email, password);
-        if (user != null) {
-            console.log(user)
-        }
+        
     }
 
     // dialog handler 
@@ -56,9 +54,19 @@ const Login = ({ login, isAuthenticated, user}) => {
         setOpen(false);
     };
 
-    // if (isAuthenticated) {
-    //     return <Navigate to='/home'/>;
-    // }
+    if (isAuthenticated) {
+        console.log("login passed");
+        if (user != null) {
+            console.log(user);
+            console.log(user.id)
+            load_listing(user.id);
+        }
+    }
+    
+    if (listingAccount) {
+        console.log("listing account loaded");
+    }
+
 
     return (
         <div>
@@ -150,7 +158,8 @@ const Login = ({ login, isAuthenticated, user}) => {
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    user: state.auth.user
+    user: state.auth.user,
+    listingAccount: state.auth.listingAccount
 });
 
 export default connect(mapStateToProps, { login })(Login);

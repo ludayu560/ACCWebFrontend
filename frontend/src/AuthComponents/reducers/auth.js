@@ -15,6 +15,8 @@ import {
     SIGNUP_FAIL,
     ACTIVATION_SUCCESS,
     ACTIVATION_FAIL,
+    LISTINGACCOUNT_LOAD_SUCCESS,
+    LISTINGACCOUNT_LOAD_FAIL,
     // GOOGLE_AUTH_SUCCESS,
     // GOOGLE_AUTH_FAIL,
     // FACEBOOK_AUTH_SUCCESS,
@@ -26,12 +28,18 @@ const initialState = {
     access: localStorage.getItem('access'),
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
-    user: null
+    user: null,
+    listingAccount: null
 };
 
 export default function (state = initialState, action) {
     const { type, payload } = action
     switch (type) {
+        case LISTINGACCOUNT_LOAD_SUCCESS:
+            return {
+                ...state,
+                listingAccount: payload
+            }
         case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
@@ -81,13 +89,15 @@ export default function (state = initialState, action) {
                 access: null,
                 refresh: null,
                 isAuthenticated: false,
-                user: null
+                user: null,
+                listingAccount: null
             }
         case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:
         case PASSWORD_RESET_CONFIRM_SUCCESS:
         case PASSWORD_RESET_CONFIRM_FAIL:
         case ACTIVATION_SUCCESS:
+        case LISTINGACCOUNT_LOAD_FAIL:
         case ACTIVATION_FAIL:
             return {
                 ...state
