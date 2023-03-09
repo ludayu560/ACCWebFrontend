@@ -20,7 +20,7 @@ function Navbar({setNav}) {
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       <AppBar positon="static" elevation={4}>
-        <Toolbar sx={{ height: '10vh', background: "white" }}>
+        <Toolbar sx={{ height: '168px', background: "white" }}>
           <Link href="/">
             <Box
               component="img"
