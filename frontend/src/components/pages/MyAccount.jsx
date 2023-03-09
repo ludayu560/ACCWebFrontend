@@ -115,11 +115,34 @@ function MyAccount(props) {
             "personal_traits": [],
             "interests": []
         }
+        accountFields = {
+            "id": 1,
+            "username": "George",
+            "account_type": "tenant",
+            "first_name": "George",
+            "last_name": "Li",
+            "email": "g257li@uwaterloo.ca",
+            "phone_number": "6476790885",
+            "date_of_birth": "2002-09-26",
+            "location": "Toronto",
+            "age_range": "19-21",
+            "tell_us_about_yourself": "ahhhh",
+            "profile_picture": "http://127.0.0.1:8000/media/profile_picture/43dfc696e92214af5868b2421604f4cd.jpg",
+            "banner_picture": "http://127.0.0.1:8000/media/banner_picture/43dfc696e92214af5868b2421604f4cd.jpg",
+            "display_picture_one": "http://127.0.0.1:8000/media/display_picture_one/43dfc696e92214af5868b2421604f4cd.jpg",
+            "display_picture_two": "http://127.0.0.1:8000/media/display_picture_two/43dfc696e92214af5868b2421604f4cd.jpg",
+            "display_picture_three": "http://127.0.0.1:8000/media/display_picture_three/43dfc696e92214af5868b2421604f4cd.jpg",
+            "display_picture_four": "http://127.0.0.1:8000/media/display_picture_four/43dfc696e92214af5868b2421604f4cd.jpg",
+            "personal_traits": [],
+            "interests": [],
+            "notifications": [],
+            "user_id": 3
+        }
 
         api.post('/', {
             params: {accountFields}
           })
-          
+          console.log('post', accountFields)
         handleReset();
     };
 

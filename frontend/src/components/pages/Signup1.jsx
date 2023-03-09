@@ -66,6 +66,7 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
     
     if (user) {
         signupValuesOne.id = user.id
+        console.log(user.id)
         returnHook(signupValuesOne)
         setPage(2)
     }
