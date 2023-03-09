@@ -1,26 +1,21 @@
-import { Box, Stack } from "@mui/system";
 import {
   Checkbox,
   Container,
   Divider,
   FormControlLabel,
   Grid,
-  IconButton,
-  Paper,
   TextField,
   ToggleButton,
   ToggleButtonGroup,
   Typography,
+  Box, 
+  Stack
 } from "@mui/material";
 import StyledButton from "../components/StyledButton";
-import Footer from "../components/Footer";
-import SearchBar from "../components/SearchBar";
-import Mainbar from "../components/MainBar";
-import ECard from "../components/ECard";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import Tags from "../components/Tags";
-import ListingFilterPanel from "../components/ListingFilterPanel";
-import React, { useState, useRef, useEffect } from "react";
+import {ReactComponent as MissingImage} from '../../assets/Icons/missingImage.svg'
+import React, { useState } from "react";
+import axios from "axios";
+
 
 const CustomToggleButtonStyles = {
   "&.MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected": {
@@ -67,49 +62,61 @@ const CustomCheckboxStyles = {
 function RentalListingForm(props) {
   const { returnHook } = props;
 
-  const [open, setOpen] = useState(false);
-  const [unitType, setUnitType] = useState();
-  const [liveIn, setLiveIn] = useState("no preference");
-  const [NOBedrooms, setNOBedrooms] = useState("no preference"); // number of bedrooms
-  const [NOBathrooms, setNOBathrooms] = useState("no preference"); // number of bathrooms
-  const [utilities, setUtilities] = useState("no preference");
-  const [NOHousemates, setNOHousemates] = useState("no preference");
+  const [utilities, setUtilities] = useState("no");
   const [furnished, setFurnished] = useState("no preference");
   const [pets, setPets] = useState("no preference");
-  const [parking, setParking] = useState("no preference");
   const [airCon, setAirCon] = useState("no preference");
   const [smoking, setSmoking] = useState("no preference");
-  const [priceRange, setPrice] = useState([700, 1500]);
+  const [parking, setParking] = useState("no preference");
+
+
+  ////////////////////////////////////////////////////////////////////////
+  // Image Uploading Section
+
+  const [state, setState] = useState({
+    title: '',
+    content: '',
+    image: null
+  })
+
+  const handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  };
+
+  const handleImageChange = (e) => {
+    this.setState({
+      image: e.target.files[0]
+    })
+  };
+
+  const HandleSubmit = (e) => {
+    e.preventDefault();
+    console.log(state);
+    let form_data = new FormData();
+    form_data.append('image', state.image, state.image.name);
+    form_data.append('title', state.title);
+    form_data.append('content', state.content);
+    console.log(form_data)
+    let url = 'http://localhost:8000/api/posts/';
+    axios.post(url, form_data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    })
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => console.log(err))
+  };
+  //////////////////////////////////////////////////////////////////////////
 
   // Handle the final submitting of the form to filter things
   const handleSubmit = () => {
     const returnedJSON = {};
-
-    // return the submitted data
-    // returnHook(returnedJSON)
-
-    // close the menu
-    setOpen(false);
   };
 
-  // Check if the user clicks out of the menu, close the menu if so.
-  const sideMenuRef = useRef(null);
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (sideMenuRef.current && !sideMenuRef.current.contains(event.target)) {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [sideMenuRef]);
-
-  const [filterParams, setFilterParams] = useState();
-  const data = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
   return (
     <>
       <Typography variant="h2" sx={{ fontWeight: "bold", color: "#0045F1", p: 8 }}>
@@ -141,16 +148,27 @@ function RentalListingForm(props) {
         <Grid item xs={6}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Box bgcolor="gray" height="30vw" />
+              <Box height="30vw">
+                <MissingImage/>
+                <input type="file"
+                   id="image"
+                   accept="image/png, image/jpeg"  onChange={handleImageChange} required/>
+              </Box>
             </Grid>
             <Grid item xs={4}>
-              <Box bgcolor="gray" height="10vw" />
+              <Box height="10vw">
+                <MissingImage/>
+              </Box>
             </Grid>
             <Grid item xs={4}>
-              <Box bgcolor="gray" height="10vw" />
+              <Box height="10vw">
+                <MissingImage/>
+              </Box>
             </Grid>
             <Grid item xs={4}>
-              <Box bgcolor="gray" height="10vw" />
+              <Box height="10vw">
+                <MissingImage/>
+              </Box>
             </Grid>
           </Grid>
         </Grid>
@@ -173,27 +191,51 @@ function RentalListingForm(props) {
           </Stack>
         </Grid>
         <Grid item xs={4}>
-          <TextField variant="filled" label="Name" style={{ backgroundColor: "white" }} required fullWidth />
+          <TextField variant="filled" label="City" style={{ backgroundColor: "white" }} required fullWidth />
         </Grid>
         <Grid item xs={4}>
-          <TextField variant="filled" label="Name" style={{ backgroundColor: "white" }} required fullWidth />
+          <TextField variant="filled" label="Postal Code" style={{ backgroundColor: "white" }} required fullWidth />
         </Grid>
         <Grid item xs={4}>
-          <TextField variant="filled" label="Name" style={{ backgroundColor: "white" }} required fullWidth />
+          <TextField variant="filled" label="Province" style={{ backgroundColor: "white" }} required fullWidth />
         </Grid>
         <Grid item xs={5}>
           <Stack spacing={2}>
-            <TextField variant="filled" label="Name" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Name" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Name" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Name" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Name" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Name" style={{ backgroundColor: "white" }} required fullWidth />
+            <TextField variant="filled" label="Date Available" style={{ backgroundColor: "white" }} required fullWidth />
+            <TextField variant="filled" label="Unit Type" style={{ backgroundColor: "white" }} required fullWidth />
+            <TextField variant="filled" label="Total # of Bedrooms in Property" style={{ backgroundColor: "white" }} required fullWidth />
+            <TextField variant="filled" label="Rent Per Room" style={{ backgroundColor: "white" }} required fullWidth />
+            <TextField variant="filled" label="# of Bedrooms for Rent" style={{ backgroundColor: "white" }} required fullWidth />
+            <TextField variant="filled" label="Total # of Bathrooms" style={{ backgroundColor: "white" }} required fullWidth />
+            <TextField variant="filled" label="Total Anticipated Housemates" style={{ backgroundColor: "white" }} required fullWidth />
+
           </Stack>
         </Grid>
 
         <Grid item xs={7}>
           <Grid container>
+            <Grid item xs={6}>
+              {/* Parking */}
+              <Container>
+                <Typography marginTop={"3vh"} gutterBottom fontWeight={700}>
+                  Parking Included
+                </Typography>
+                <ToggleButtonGroup
+                  exclusive
+                  value={parking}
+                  onChange={(event, value) => {
+                    setParking(value);
+                  }}
+                  sx={{ flexWrap: "wrap" }}>
+                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
+                    Yes
+                  </ToggleButton>
+                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
+                    No
+                  </ToggleButton>
+                </ToggleButtonGroup>
+              </Container>
+            </Grid>
             <Grid item xs={6}>
               {/* Furnished */}
               <Container>
@@ -207,9 +249,6 @@ function RentalListingForm(props) {
                     setFurnished(value);
                   }}
                   sx={{ flexWrap: "wrap" }}>
-                  <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
-                    No Preference
-                  </ToggleButton>
                   <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
@@ -232,9 +271,6 @@ function RentalListingForm(props) {
                     setSmoking(value);
                   }}
                   sx={{ flexWrap: "wrap" }}>
-                  <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
-                    No Preference
-                  </ToggleButton>
                   <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
