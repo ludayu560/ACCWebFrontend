@@ -6,5 +6,6 @@ from rest_framework.routers import DefaultRouter
 router=DefaultRouter()
 router.register("Notifications", views.NotificationsViewSet)
 urlpatterns = [
-    path('', include(router.urls))
+    path('get/<int:id>/', views.NotificationsGetView.as_view()),
+    path('', include(router.urls)),
 ]

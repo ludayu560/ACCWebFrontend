@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-<<<<<<< HEAD
 import App from './App.jsx';
-=======
-import App from './components/pages/App';
->>>>>>> develop
 
 import reportWebVitals from './reportWebVitals';
 
