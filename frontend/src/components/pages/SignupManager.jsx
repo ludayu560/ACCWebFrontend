@@ -12,7 +12,7 @@ import { signup } from "../../AuthComponents/actions/auth";
 import { connect } from 'react-redux';
 
     
-function SignupManager() {
+function SignupManager({ signup, isAuthenticated, user}) {
     const [open, setOpen] = React.useState(false);
 
     const api = axios.create({
@@ -25,35 +25,41 @@ function SignupManager() {
     const [pageValueThree, setPageValueThree] = useState()
 
     if (currPage === 4) {
-        api.post('/', {
-            "first_name": pageValueOne.firstName,
-            "last_name": pageValueOne.lastName,
-            "email": pageValueOne.email,
-            "date_of_birth": pageValueThree.dob? pageValueThree.dob : null,
-            "location": pageValueThree.location? pageValueThree.location : null,
-            "age_range": pageValueThree.age,
-            "tell_us_about_yourself": "Tell us about yourself",
-            "profile_picture": null,
-            "banner_picture": null,
-            "display_picture_one": null,
-            "display_picture_two": null,
-            "display_picture_three": null,
-            "display_picture_four": null,
-            "personal_traits": [],
-            "interests": [],
-            "favorites": [],
-            "notifications": [],
-            "accountEvents": []
-        })
-        .then(function (response) {
-        console.log(response);
-        })
-        .catch(function (error) {
-        console.log(error);
-        })
+        if (pageValueOne.password === pageValueOne.passwordConfirm) {
+            signup( pageValueOne.firstName + " " + pageValueOne.lastName,
+            pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
+        }
+        // setCurrPage(1)
+    }
 
-
-        setCurrPage(1)
+    if (user) {
+        // api.post('/', {
+        //     "first_name": pageValueOne.firstName,
+        //     "last_name": pageValueOne.lastName,
+        //     "email": pageValueOne.email,
+        //     "date_of_birth": pageValueThree.dob? pageValueThree.dob : null,
+        //     "location": pageValueThree.location? pageValueThree.location : null,
+        //     "age_range": pageValueThree.age,
+        //     "tell_us_about_yourself": "Tell us about yourself",
+        //     "profile_picture": null,
+        //     "banner_picture": null,
+        //     "display_picture_one": null,
+        //     "display_picture_two": null,
+        //     "display_picture_three": null,
+        //     "display_picture_four": null,
+        //     "personal_traits": [],
+        //     "interests": [],
+        //     "favorites": [],
+        //     "notifications": [],
+        //     "accountEvents": [],
+        //     ""
+        // })
+        // .then(function (response) {
+        // console.log(response);
+        // })
+        // .catch(function (error) {
+        // console.log(error);
+        // })
     }
 
     const handleClickOpen = () => {

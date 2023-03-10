@@ -15,8 +15,8 @@ import { signup } from "../../AuthComponents/actions/auth";
 import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
-// function Page1(props) {
+// function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
+function Page1({setPage, returnHook }) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -46,30 +46,30 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
         password : password,
         passwordConfirm : passwordConfirm,
         newsConsent : newsConsent,
-        id: null
     }
 
     const onClickNextButton = e => {
-        e.preventDefault();
-        console.log(" click worked")
-        console.log(`firstName: ${firstName}`)
-        console.log(`lastName: ${lastName}`)
-        console.log(`email: ${email}`)
-        console.log(`password: ${password}`)
-        console.log(`passwordConfirm: ${passwordConfirm}`)
-        if (password === passwordConfirm) {
-            signup( firstName + " " + lastName, email, password, passwordConfirm)
-            // setAccountCreated(true);
-            
-        }
-    }
-    
-    if (user) {
-        signupValuesOne.id = user.id
-        console.log(user.id)
         returnHook(signupValuesOne)
         setPage(2)
+        // e.preventDefault();
+        // console.log(" click worked")
+        // console.log(`firstName: ${firstName}`)
+        // console.log(`lastName: ${lastName}`)
+        // console.log(`email: ${email}`)
+        // console.log(`password: ${password}`)
+        // console.log(`passwordConfirm: ${passwordConfirm}`)
+        // if (password === passwordConfirm) {
+        //     signup( firstName + " " + lastName, email, password, passwordConfirm)
+        //     // setAccountCreated(true);
+            
+        // }
     }
+    
+    // if (user) {
+    //     signupValuesOne.id = user.id
+    //     console.log(user.id)
+    // }
+
     // if (isAuthenticated) {
     //     return <Navigate to='/home'/>;
     // }
@@ -124,10 +124,10 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
     )
 }
 
-const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated,
-    user: state.auth.user
-});
+// const mapStateToProps = state => ({
+//     isAuthenticated: state.auth.isAuthenticated,
+//     user: state.auth.user
+// });
 
-export default connect(mapStateToProps, { signup })(Page1);
-// export default Page1;
+// export default connect(mapStateToProps, { signup })(Page1);
+export default Page1;
