@@ -37,6 +37,7 @@ import img13 from "../../assets/image 13.png";
 import img12 from "../../assets/image 12.png";
 import img11 from "../../assets/image 11.png";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
+import { connect } from 'react-redux';
 import SearchBar from "../components/SearchBar";
 
 function Landing({isAuthenticated}) {
