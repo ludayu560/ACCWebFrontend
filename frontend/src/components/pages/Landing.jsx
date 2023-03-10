@@ -39,7 +39,7 @@ import img11 from "../../assets/image 11.png";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
 import SearchBar from "../components/SearchBar";
 
-function Landing(props) {
+function Landing({isAuthenticated}) {
   return (
     <>
       <Stack>
@@ -610,4 +610,8 @@ function Landing(props) {
   );
 }
 
-export default Landing;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps)(Landing);
