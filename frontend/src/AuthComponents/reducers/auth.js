@@ -29,7 +29,8 @@ const initialState = {
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
     user: null,
-    listingAccount: null
+    listingAccount: null,
+    signedup: null,
 };
 
 export default function (state = initialState, action) {
@@ -57,7 +58,8 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isAuthenticated: false,
-                user: payload
+                user: payload,
+                signedup: true
             }
         case USER_LOADED_SUCCESS:
             return {
@@ -90,7 +92,8 @@ export default function (state = initialState, action) {
                 refresh: null,
                 isAuthenticated: false,
                 user: null,
-                listingAccount: null
+                listingAccount: null,
+                signedup: false
             }
         case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:

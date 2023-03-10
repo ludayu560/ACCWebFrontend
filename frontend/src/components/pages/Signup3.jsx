@@ -11,7 +11,7 @@ import HouseLogoPink from "../components/HouseLogoPink";
 import axios from "axios";
 import { signup } from "../../AuthComponents/actions/auth";
 import { connect } from 'react-redux';
-function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
+function Page3({ setPage, pageValueOne, pageValueTwo, signup, user, signedup}) {
 
     const api = axios.create({
         baseURL: `http://127.0.0.1:8000/ListingAccount/`
@@ -79,7 +79,7 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
 
     }
 
-    if (user) {
+    if (signedup) {
         api.post('/', {
             "username": pageValueOne.username,
             "account_type": pageValueTwo,
@@ -152,6 +152,7 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
 
 
 const mapStateToProps = state => ({
+    signedup: state.auth.signedup,
     user: state.auth.user
 });
 
