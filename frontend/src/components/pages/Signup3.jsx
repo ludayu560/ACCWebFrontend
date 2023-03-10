@@ -56,27 +56,10 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user, signedup}) {
     const [traits, setTraits] = useState()
     const [interests, setInterests] = useState()
 
-    const onClickNextButton = (e) => {
-        e.preventDefault()
-        console.log("before page set 3")
-        // createAccount(true)
+    const onClickNextButton = () => {
         if (pageValueOne.password === pageValueOne.passwordConfirm) {
             signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
         }
-        console.log('setpage')
-        // send data to server?
-        // returnHook({
-        //     traits : traits,
-        //     interests : interests,
-        //     age : age,
-        //     dob : dob,
-        //     location : location,
-        //     occupation : occupation,
-        // })
-
-        console.log("after page set 3")
-        // closePage(false)
-
     }
 
     if (signedup) {

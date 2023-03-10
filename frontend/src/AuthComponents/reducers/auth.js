@@ -55,6 +55,7 @@ export default function (state = initialState, action) {
                 refresh: payload.refresh
             }
         case SIGNUP_SUCCESS:
+            console.log("Signup Successed")
             return {
                 ...state,
                 isAuthenticated: false,

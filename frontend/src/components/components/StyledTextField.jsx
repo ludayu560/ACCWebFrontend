@@ -81,7 +81,6 @@ function StyledTextField(props) {
       width: width ? width : "17vw",
     },
   };
-  console.log({...props})
   return (
     <div>
       {variant === "empty"? (
