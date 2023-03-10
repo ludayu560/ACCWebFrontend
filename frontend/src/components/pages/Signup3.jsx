@@ -64,7 +64,6 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
             signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
         }
         console.log('setpage')
-        setPage(4)
         // send data to server?
         // returnHook({
         //     traits : traits,
@@ -98,8 +97,8 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
             "display_picture_two": null,
             "display_picture_three": null,
             "display_picture_four": null,
-            "personal_traits": traits,
-            "interests": interests,
+            "personal_traits": [],
+            "interests": [],
             "notifications": [],
             "user_id": user.id
         })
@@ -109,6 +108,8 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
         .catch(function (error) {
         console.log(error);
         })
+        console.log('posted')
+        setPage(4)
     }
 
     return (
