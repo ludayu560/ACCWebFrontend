@@ -33,8 +33,6 @@ const TextFieldStyle = {
     }
 }
 
-
-
 const Login = ({ login, isAuthenticated, user, listingAccount}) => {
     // login handlers
 

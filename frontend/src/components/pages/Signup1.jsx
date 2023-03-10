@@ -10,12 +10,7 @@ import SignupAisha from "../components/SignupAishaLogo";
 import StyledButton from "../components/StyledButton";
 import StyledTextField from "../components/StyledTextField";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
-import { reset_password } from "../../AuthComponents/actions/auth";
-import { signup } from "../../AuthComponents/actions/auth";
-import { Navigate } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-// function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
 function Page1({setPage, returnHook }) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -24,19 +19,6 @@ function Page1({setPage, returnHook }) {
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const [username, setUsername] = useState('');
     const [newsConsent, setNewsConsent] = useState(false);
-    const [accountCreated, setAccountCreated] = useState(false);
-
-    // const [formData, setFormData] = useState({
-    //     firstName: '',
-    //     lastName: '',
-    //     email: '',
-    //     password: '',
-    //     passwordConfirm: ''
-    // });
-
-    // const { firstName, lastName, email, password, passwordConfirm } = formData;
-
-    // const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const signupValuesOne = {
         firstName: firstName,
@@ -51,32 +33,8 @@ function Page1({setPage, returnHook }) {
     const onClickNextButton = e => {
         returnHook(signupValuesOne)
         setPage(2)
-        // e.preventDefault();
-        // console.log(" click worked")
-        // console.log(`firstName: ${firstName}`)
-        // console.log(`lastName: ${lastName}`)
-        // console.log(`email: ${email}`)
-        // console.log(`password: ${password}`)
-        // console.log(`passwordConfirm: ${passwordConfirm}`)
-        // if (password === passwordConfirm) {
-        //     signup( firstName + " " + lastName, email, password, passwordConfirm)
-        //     // setAccountCreated(true);
-            
-        // }
     }
-    
-    // if (user) {
-    //     signupValuesOne.id = user.id
-    //     console.log(user.id)
-    // }
 
-    // if (isAuthenticated) {
-    //     return <Navigate to='/home'/>;
-    // }
-
-    // if (accountCreated) {
-    //     return <Navigate to='/'/>;
-    // }
     return (
     <Grid container>
         <SignupAisha></SignupAisha>
@@ -124,10 +82,4 @@ function Page1({setPage, returnHook }) {
     )
 }
 
-// const mapStateToProps = state => ({
-//     isAuthenticated: state.auth.isAuthenticated,
-//     user: state.auth.user
-// });
-
-// export default connect(mapStateToProps, { signup })(Page1);
 export default Page1;

@@ -54,6 +54,7 @@ function Page3(props) {
     const [interests, setInterests] = useState()
 
     const onClickNextButton = () => {
+        console.log('setpage')
         setPage(4)
         // send data to server?
         returnHook({

@@ -81,19 +81,19 @@ function StyledTextField(props) {
       width: width ? width : "17vw",
     },
   };
+  console.log({...props})
   return (
     <div>
-      {variant === "empty" && (
+      {variant === "empty"? (
         <TextField
           onChange={onChangeHandler}
           disabled={disabled ? true : false}
+          // {...props}
           sx={LoginStyle}
           label={label}
-          value={field ? field : value}
-          {...props}>
-
+          value={field ? field : value}>
           </TextField>
-      )}
+      ): null}
 
       {variant === "filled" && (
         <TextField

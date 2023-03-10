@@ -74,9 +74,6 @@ function App() {
               <Route exact path='/tenanthome' element={<TenantHome />} />
               <Route exact path='/events' element={<Events />} />
               <Route exact path='/' element={<Landing />} />
-              <Route exact path='/signup' element={<SignupManager />} />
-
-              <Route exact path='/login' element={<Login />} />
               <Route exact path='/activate/:uid/:token' element={<Activate />} />
               <Route exact path='/reset-password' element={<ResetPassword />} />
               <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />

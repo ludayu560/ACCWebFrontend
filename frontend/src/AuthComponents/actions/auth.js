@@ -214,6 +214,7 @@ export const login = (email, password) => async dispatch => {
 
 
 export const signup = (name, email, password, re_password) => async dispatch => {
+    console.log('signup running')
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -229,10 +230,12 @@ export const signup = (name, email, password, re_password) => async dispatch => 
             type: SIGNUP_SUCCESS,
             payload: res.data
         });
+        console.log('signup try')
     } catch (err) {
         dispatch({
             type: SIGNUP_FAIL
         })
+        console.log('signup err')
     }
 };
 

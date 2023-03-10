@@ -12,7 +12,7 @@ import { signup } from "../../AuthComponents/actions/auth";
 import { connect } from 'react-redux';
 
     
-function SignupManager({ signup, isAuthenticated, user}) {
+function SignupManager({signup, isAuthenticated, user}) {
     const [open, setOpen] = React.useState(false);
 
     const api = axios.create({
@@ -26,40 +26,9 @@ function SignupManager({ signup, isAuthenticated, user}) {
 
     if (currPage === 4) {
         if (pageValueOne.password === pageValueOne.passwordConfirm) {
-            signup( pageValueOne.firstName + " " + pageValueOne.lastName,
-            pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
+            signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
         }
-        // setCurrPage(1)
-    }
 
-    if (user) {
-        // api.post('/', {
-        //     "first_name": pageValueOne.firstName,
-        //     "last_name": pageValueOne.lastName,
-        //     "email": pageValueOne.email,
-        //     "date_of_birth": pageValueThree.dob? pageValueThree.dob : null,
-        //     "location": pageValueThree.location? pageValueThree.location : null,
-        //     "age_range": pageValueThree.age,
-        //     "tell_us_about_yourself": "Tell us about yourself",
-        //     "profile_picture": null,
-        //     "banner_picture": null,
-        //     "display_picture_one": null,
-        //     "display_picture_two": null,
-        //     "display_picture_three": null,
-        //     "display_picture_four": null,
-        //     "personal_traits": [],
-        //     "interests": [],
-        //     "favorites": [],
-        //     "notifications": [],
-        //     "accountEvents": [],
-        //     ""
-        // })
-        // .then(function (response) {
-        // console.log(response);
-        // })
-        // .catch(function (error) {
-        // console.log(error);
-        // })
     }
 
     const handleClickOpen = () => {
@@ -68,6 +37,37 @@ function SignupManager({ signup, isAuthenticated, user}) {
     const handleClose = () => {
     setOpen(false);
     };
+
+    if (user) {
+        api.post('/', {
+            "username": "",
+            "account_type": null,
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "phone_number": "",
+            "date_of_birth": null,
+            "location": "",
+            "age_range": "",
+            "tell_us_about_yourself": "",
+            "profile_picture": null,
+            "banner_picture": null,
+            "display_picture_one": null,
+            "display_picture_two": null,
+            "display_picture_three": null,
+            "display_picture_four": null,
+            "personal_traits": [],
+            "interests": [],
+            "notifications": [],
+            "user_id": user.id
+        })
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error);
+        })
+    }
 
     return (
     <div>
@@ -97,4 +97,4 @@ const mapStateToProps = state => ({
     user: state.auth.user
 });
 
-export default connect(mapStateToProps, { signup })(Page1);
+export default connect(mapStateToProps, { signup })(SignupManager);
