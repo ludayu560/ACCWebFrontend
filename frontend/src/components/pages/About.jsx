@@ -11,6 +11,7 @@ import ECard from "../components/ECard";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import TenantHomePageBG from "../../assets/TenantHomePageBG.png";
 import AboutBG from "../../assets/AboutBG.png";
+import MainLogo from "../../assets/Icons/IconHouseLogoWhite.svg";
 
 function About(props) {
   return (
@@ -19,7 +20,8 @@ function About(props) {
         {/*First Title Section*/}
         <Box component="img" src={AboutBG} height="666px"></Box>
         <Stack sx={{ mt: -75, pb: 40 }} alignItems="center">
-          <Stack pt={10} spacing={5}>
+          <Stack pt={10} spacing={5} alignItems="center">
+            <Box component="img" src={MainLogo} width="10vw" />
             <Typography variant="h1" align="center" sx={{ fontWeight: "bold", color: "white" }}>
               Together is Better
             </Typography>
@@ -111,7 +113,7 @@ function About(props) {
           <Typography variant="h2" sx={{ textAlign: "center", fontWeight: "bold", color: "#0045F1" }}>
             Our Values
           </Typography>
-          <Typography variant="h3" sx={{ textAlign: "center", fontWeight: "bold", color: "#0045F1" }}>
+          <Typography variant="h3" sx={{ textAlign: "center", color: "#0045F1" }}>
             We live by our values
           </Typography>
           <Typography variant="h5" sx={{ textAlign: "center", px: 25 }}>
@@ -133,13 +135,13 @@ function About(props) {
         </Stack>
 
         {/*our mission + vision + value portion */}
-        <Grid container p={10} justifyContent='center' >
+        <Grid container p={10} justifyContent="center">
           <Grid item xs={6}>
-          <Box component="img" src={require("../../assets/image 50.png")} width="100%" />
+            <Box component="img" src={require("../../assets/image 50.png")} width="100%" />
           </Grid>
           <Grid item xs={6}>
-            <Stack sx={{ width: "50vw", p: 7, px: 10 }} spacing={4}>
-              <Typography variant="h5" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
+            <Stack sx={{ width: "50vw", p: 7, px: 15 }} spacing={4}>
+              <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
                 Meet the Founder & CEO of Aisha Comfortable Coliving
               </Typography>
               <Typography variant="h5" sx={{}}>
@@ -166,33 +168,31 @@ function About(props) {
             Communications Team
           </Typography>
         </Stack>
-        {/*Why should you join content*/}
-        <Stack pb={20}>
-          <Grid container justifyContent='center' px={20}>
-            <Grid item xs={6} p={10} pb={0}>
-              <Stack alignItems="center" spacing={4}>
-                <Box component="img" src={require("../../assets/image 51.png")} width="100%" />
-                <Typography variant="h5" sx={{ fontWeight: "bold", color: "#C5265C" }}>
-                  Elena Stone
-                </Typography>
-                <Typography variant="h5" sx={{ px: 15 }}>
-                  elena@comfortablecoliving.com
-                </Typography>
-              </Stack>
-            </Grid>
-            <Grid item xs={6} p={10} pb={0}>
-              <Stack alignItems="center" spacing={4}>
-                <Box component="img" src={require("../../assets/image 53.png")} width="100%" />
-                <Typography variant="h5" sx={{ fontWeight: "bold", color: "#C5265C" }}>
-                  Max
-                </Typography>
-                <Typography variant="h5" sx={{ px: 15 }}>
-                  max@comfortablecoliving.com
-                </Typography>
-              </Stack>
-            </Grid>
+        {/*Communications Team content*/}
+        <Grid container justifyContent="center" px={20} pb={20}>
+          <Grid item xs="auto" p={10} pb={0}>
+            <Stack alignItems="center" spacing={4} width="345px">
+              <Box component="img" src={require("../../assets/image 51.png")} width="100%" />
+              <Typography variant="h5" sx={{ fontWeight: "bold", color: "#C5265C" }}>
+                Elena Stone
+              </Typography>
+              <Typography variant="h5" sx={{ px: 15 }}>
+                elena@comfortablecoliving.com
+              </Typography>
+            </Stack>
           </Grid>
-        </Stack>
+          <Grid item xs="auto" p={10} pb={0}>
+            <Stack alignItems="center" spacing={4} width="345px">
+              <Box component="img" src={require("../../assets/image 53.png")} width="100%" />
+              <Typography variant="h5" sx={{ fontWeight: "bold", color: "#C5265C" }}>
+                Max
+              </Typography>
+              <Typography variant="h5" sx={{ px: 15 }}>
+                max@comfortablecoliving.com
+              </Typography>
+            </Stack>
+          </Grid>
+        </Grid>
 
         <Footer></Footer>
       </Stack>
