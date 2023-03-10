@@ -8,8 +8,11 @@ import Page2 from "./Signup2";
 import Page3 from "./Signup3";
 
 import axios from "axios";
+import { signup } from "../../AuthComponents/actions/auth";
+import { connect } from 'react-redux';
+
     
-export default function SignupManager() {
+function SignupManager() {
     const [open, setOpen] = React.useState(false);
 
     const api = axios.create({
@@ -48,7 +51,9 @@ export default function SignupManager() {
         .catch(function (error) {
         console.log(error);
         })
-        setCurrPage(3)
+
+
+        setCurrPage(1)
     }
 
     const handleClickOpen = () => {
@@ -80,3 +85,10 @@ export default function SignupManager() {
     </div>
     );
 }
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
+});
+
+export default connect(mapStateToProps, { signup })(Page1);
