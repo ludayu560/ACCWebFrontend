@@ -11,7 +11,7 @@ import HouseLogoPink from "../components/HouseLogoPink";
 import axios from "axios";
 import { signup } from "../../AuthComponents/actions/auth";
 import { connect } from 'react-redux';
-function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
+function Page3({ setPage, pageValueOne, pageValueTwo, signup, user, signedup}) {
 
     const api = axios.create({
         baseURL: `http://127.0.0.1:8000/ListingAccount/`
@@ -64,7 +64,6 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
             signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
         }
         console.log('setpage')
-        setPage(4)
         // send data to server?
         // returnHook({
         //     traits : traits,
@@ -80,7 +79,7 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
 
     }
 
-    if (user) {
+    if (signedup) {
         api.post('/', {
             "username": pageValueOne.username,
             "account_type": pageValueTwo,
@@ -91,6 +90,8 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
             "date_of_birth": null,
             "location": location,
             "age_range": age,
+            "occupation": "Doctor", //occupation
+            "news_consent": true,   //pagevalue1
             "tell_us_about_yourself": "",
             "profile_picture": null,
             "banner_picture": null,
@@ -98,8 +99,8 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
             "display_picture_two": null,
             "display_picture_three": null,
             "display_picture_four": null,
-            "personal_traits": traits,
-            "interests": interests,
+            "personal_traits": [],
+            "interests": [],
             "notifications": [],
             "user_id": user.id
         })
@@ -109,6 +110,8 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
         .catch(function (error) {
         console.log(error);
         })
+        console.log('posted')
+        setPage(4)
     }
 
     return (
@@ -149,6 +152,7 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
 
 
 const mapStateToProps = state => ({
+    signedup: state.auth.signedup,
     user: state.auth.user
 });
 
