@@ -23,11 +23,10 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 function Homeowners(props) {
   return (
     <>
-      {/* <Mainbar /> */}
       <Stack>
         {/*First Title Section*/}
         <Box component="img" src={homeownersbg} width="100vw" />
-        <Stack sx={{mt: "-32vw" }}>
+        <Stack sx={{ mt: "-32vw" }}>
           <Stack pl={15}>
             <Typography variant="h1" sx={{ fontWeight: "bold", color: "white", fontSize: "6vw" }}>
               Find Your
@@ -166,9 +165,10 @@ function Homeowners(props) {
                 Leave the hard work to us
               </Typography>
               <Typography variant="h5" sx={{}}>
-                Let us help you grow your real estate equity by finding the right tenants for your home. Our team will
-                take care of the entire renting process from finding the right tenants to rent collection. Equity
-                building is made easy with Aisha Comfortable Coliving.
+                Say hello to coliving and goodbye to financial stress. We will match you with a woman who shares
+                similiar interests and values. Having someone to talk to, share a nice meal, listen to music, and share
+                thoughts and feelings with adds quality to our lives. Coffee always tastes better when shared, so enjoy
+                companionship with more financial freedom.
               </Typography>
 
               <StyledButton variant="pinkBtn" text="List Rental" bgcolor="#0045F1" />
@@ -285,18 +285,18 @@ function Homeowners(props) {
         {/*Short-Term Rentals Content*/}
         <Stack alignItems="center" px={30} py={10} spacing={4}>
           <Box component="img" src={require("../../assets/image 41.png")} width="100%" />
-          <Typography variant="h5" >
+          <Typography variant="h5">
             Sharing your home for shorter terms offer flexibility that suits your needs and lifestyle, while still
             giving you the opportunity to reach financial independence. In addition to the extra income, you will make
             new friends and connections.
           </Typography>
-          <Typography variant="h5" >
+          <Typography variant="h5">
             Coliving can be a suitable option for those wanting to experience new destinations while avoiding higher
             costs. This also makes your place an attractive option to both local and international women visitors. It
             will be a secure environment for both yourself and the woman traveller as our platform will match you with
             the right renter.
           </Typography>
-          <Typography variant="h5" >
+          <Typography variant="h5">
             Short-term rental is a great fit for smaller towns and rural areas where people come to experience culture
             and local community first-hand, especially in places where reliable short-term accommodations are harder to
             find.
@@ -395,7 +395,7 @@ function Homeowners(props) {
           </Typography>
         </Stack>
         {/*Rent Guarantee Program Content*/}
-        <Grid container p={10} spacing={5} justifyContent='center'>
+        <Grid container p={10} spacing={5} justifyContent="center">
           <Grid item xs={6}>
             <Stack spacing={4}>
               <Typography variant="h5" sx={{}}>
@@ -413,8 +413,8 @@ function Homeowners(props) {
             <Box component="img" src={require("../../assets/image 46.png")} width="100%" />
           </Grid>
         </Grid>
-        <Stack alignItems="center" sx={{ pb: 30, px: '10vw' }}>
-          <Typography variant="h5" align="center" sx={{fontWeight: 'bold'}}>
+        <Stack alignItems="center" sx={{ pb: 30, px: "10vw" }}>
+          <Typography variant="h5" align="center" sx={{ fontWeight: "bold" }}>
             If you are interested in the Rent Guarantee program or would like to know more details, please contact us
             and we will be happy to speak with you.
           </Typography>
