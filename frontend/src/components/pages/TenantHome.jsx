@@ -29,6 +29,7 @@ import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVer
 import ECard from "../components/ECard";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import TenantHomePageBG from "../../assets/TenantHomePageBG.png";
+import MainLogo from "../../assets/Icons/MainLogo.svg";
 
 function TenantHome(props) {
   return (
@@ -55,7 +56,7 @@ function TenantHome(props) {
 
         {/*Let’s Match You! title*/}
         <Stack style={{ background: "white" }} spacing={3} alignItems="center" mt={10}>
-          <Box component="img" src={require("../../assets/Property 1=Default.png")} sx={{ width: "10vw" }} />
+          <Box component="img" src={MainLogo} width="10vw" />
           <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "#113170", fontWeight: "bold" }}>
             Let’s Match You!
           </Typography>
@@ -142,10 +143,10 @@ function TenantHome(props) {
             <Grid item xs={6} p={10} pb={0}>
               <Stack alignItems="center" spacing={4}>
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
-                  1. Starting A New Semester
+                  Starting A New Semester
                 </Typography>
-                <Box component="img" src={require("../../assets/image 4.png")} bgcolor="gray" />
-                <Typography sx={{ px: 15 }}>
+                <Box component="img" src={require("../../assets/image 4.png")} bgcolor="gray" width="100%"/>
+                <Typography sx={{ px: "2vw" }}>
                   At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
                   here to help you find the best rental experience away from home. Join our community and embark on a
                   new journey of wellness living.
@@ -155,13 +156,13 @@ function TenantHome(props) {
             <Grid item xs={6} p={10} pb={0}>
               <Stack alignItems="center" spacing={4}>
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
-                  1. Starting A New Semester
+                  Starting A New Job
                 </Typography>
-                <Box component="img" src={require("../../assets/image 5.png")} bgcolor="gray" />
-                <Typography sx={{ px: 15 }}>
-                  At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
-                  here to help you find the best rental experience away from home. Join our community and embark on a
-                  new journey of wellness living.
+                <Box component="img" src={require("../../assets/image 5.png")} bgcolor="gray" width="100%"/>
+                <Typography sx={{ px: "2vw" }}>
+                  The growing demand for affordable housing makes it even more challenging to find a comfortable place
+                  to live nowadays. Let Aisha Comfortable Coliving take care of finding a financially affordable,
+                  enjoyable, and safe space for you.
                 </Typography>
               </Stack>
             </Grid>
@@ -176,26 +177,26 @@ function TenantHome(props) {
             <Grid item xs={6} p={10} pb={0}>
               <Stack alignItems="center" spacing={4}>
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
-                  1. Starting A New Semester
+                  It Takes a Village
                 </Typography>
-                <Box component="img" src={require("../../assets/image 8.png")} bgcolor="gray" />
-                <Typography sx={{ px: 15 }}>
-                  At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
-                  here to help you find the best rental experience away from home. Join our community and embark on a
-                  new journey of wellness living.
+                <Box component="img" src={require("../../assets/image 8.png")} bgcolor="gray" width="100%"/>
+                <Typography sx={{ px: "2vw" }}>
+                  We understand that as a mother you have a lot on your plate. Let us lend an extra hand and help create
+                  a safe space for you and your child. Through coliving, you can receive extra support from another
+                  woman while also exploring the community and generating friendships that will last a lifetime.
                 </Typography>
               </Stack>
             </Grid>
             <Grid item xs={6} p={10} pb={0}>
               <Stack alignItems="center" spacing={4}>
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
-                  1. Starting A New Semester
+                  Fun Senior Years
                 </Typography>
-                <Box component="img" src={require("../../assets/image 9.png")} bgcolor="gray" />
-                <Typography sx={{ px: 15 }}>
-                  At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
-                  here to help you find the best rental experience away from home. Join our community and embark on a
-                  new journey of wellness living.
+                <Box component="img" src={require("../../assets/image 9.png")} bgcolor="gray" width="100%"/>
+                <Typography sx={{ px: "2vw" }}>
+                  The fun doesn’t stop as you get older. Reduce expenses and enjoy having a new friend at home. Coliving
+                  ensures a safe and secure space, with someone by your side that you can rely on. We work to foster a
+                  strong community spirit through fun events organized for our community members.
                 </Typography>
               </Stack>
             </Grid>
@@ -210,26 +211,30 @@ function TenantHome(props) {
             <Grid item xs={6} p={10} pb={0}>
               <Stack alignItems="center" spacing={4}>
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
-                  1. Starting A New Semester
+                  School Abroad
                 </Typography>
-                <Box component="img" src={require("../../assets/image 19.png")} bgcolor="gray" />
-                <Typography sx={{ px: 15 }}>
-                  At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
-                  here to help you find the best rental experience away from home. Join our community and embark on a
-                  new journey of wellness living.
+                <Box component="img" src={require("../../assets/image 19.png")} bgcolor="gray" width="100%"/>
+                <Typography sx={{ px: "2vw" }}>
+                  We understand the challenge of moving to a new country to start school and trying to find safe and
+                  affordable accommodation. At Aisha Comfortable Coliving, we will match you with secure rental homes
+                  near your school. Through coliving, your transition into a new culture will be much easier. As a
+                  parent, it can be worrisome to see your child not just leaving home, but leaving to study overseas.
+                  Let us make the transition less overwhelming. Our community welcomes your child!
                 </Typography>
               </Stack>
             </Grid>
             <Grid item xs={6} p={10} pb={0}>
               <Stack alignItems="center" spacing={4}>
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
-                  1. Starting A New Semester
+                  Short Stays
                 </Typography>
-                <Box component="img" src={require("../../assets/image 20 (1).png")} bgcolor="gray" />
-                <Typography sx={{ px: 15 }}>
-                  At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
-                  here to help you find the best rental experience away from home. Join our community and embark on a
-                  new journey of wellness living.
+                <Box component="img" src={require("../../assets/image 20 (1).png")} bgcolor="gray" width="100%"/>
+                <Typography sx={{ px: "2vw" }}>
+                  Whether for a short-term vacation or temporary relocation, we have got you covered. With coliving, you
+                  get the opportunity to explore different parts across Canada. Experience the country’s subcultures
+                  through the comfort of staying with a like-minded woman. You get to experience local communities
+                  first-hand and new places, while avoiding higher costs. Coliving with another woman can ensure your
+                  safety while travelling, so you can enjoy your trip worry-free.
                 </Typography>
               </Stack>
             </Grid>
@@ -257,13 +262,42 @@ function TenantHome(props) {
         {/*Blog Grid*/}
         <Grid container spacing={10} alignContent="center" justifyContent="center" mt={-25} pb={20}>
           <Grid item xs="auto">
-            <Card sx={{ width: "377px", height: "500px" }}></Card>
+            <Stack alignItems="center" spacing={4} sx={{ width: "377px" }}>
+              <Box component="img" src={require("../../assets/image 11 (1).png")} bgcolor="gray" width="100%" />
+              <Typography variant="h4" sx={{ fontWeight: "bold", color: "#113170" }}>
+                Matching Services
+              </Typography>
+              <Typography sx={{ px: "2vw" }}>
+                Our matching service brings together women of similar values and interests. We will arrange a virtual
+                meeting to connect potential housemates to see if it is a good fit. We will keep looking until you are
+                satisfied and comfortable.
+              </Typography>
+            </Stack>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{ width: "377px", height: "500px" }}></Card>
+            <Stack alignItems="center" spacing={4} sx={{ width: "377px" }}>
+              <Box component="img" src={require("../../assets/image 11 (1).png")} bgcolor="gray" width="100%" />
+              <Typography variant="h4" sx={{ fontWeight: "bold", color: "#113170" }}>
+                Background Check
+              </Typography>
+              <Typography sx={{ px: "2vw" }}>
+                Your safety is our priority. That is why we perform thorough background checks on each woman who shares
+                a coliving space to ensure an environment where you can relax and enjoy each other’s company.
+              </Typography>
+            </Stack>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{ width: "377px", height: "500px" }}></Card>
+            <Stack alignItems="center" spacing={4} sx={{ width: "377px" }}>
+              <Box component="img" src={require("../../assets/image 11 (1).png")} bgcolor="gray" width="100%" />
+              <Typography variant="h4" sx={{ fontWeight: "bold", color: "#113170" }}>
+                Mediation
+              </Typography>
+              <Typography sx={{ px: "2vw" }}>
+                In life, differences can happen. We are here to support you. If your situation is not easily resolved,
+                we will provide mediation to help support all parties involved, through our comprehensive mediation
+                plan.
+              </Typography>
+            </Stack>
           </Grid>
         </Grid>
 
