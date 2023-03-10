@@ -8,8 +8,11 @@ import Page2 from "./Signup2";
 import Page3 from "./Signup3";
 
 import axios from "axios";
+import { signup } from "../../AuthComponents/actions/auth";
+import { connect } from 'react-redux';
+
     
-export default function SignupManager() {
+function SignupManager({signup, isAuthenticated, user}) {
     const [open, setOpen] = React.useState(false);
 
     const api = axios.create({
@@ -22,33 +25,10 @@ export default function SignupManager() {
     const [pageValueThree, setPageValueThree] = useState()
 
     if (currPage === 4) {
-        api.post('/', {
-            "first_name": pageValueOne.firstName,
-            "last_name": pageValueOne.lastName,
-            "email": pageValueOne.email,
-            "date_of_birth": pageValueThree.dob? pageValueThree.dob : null,
-            "location": pageValueThree.location? pageValueThree.location : null,
-            "age_range": pageValueThree.age,
-            "tell_us_about_yourself": "Tell us about yourself",
-            "profile_picture": null,
-            "banner_picture": null,
-            "display_picture_one": null,
-            "display_picture_two": null,
-            "display_picture_three": null,
-            "display_picture_four": null,
-            "personal_traits": [],
-            "interests": [],
-            "favorites": [],
-            "notifications": [],
-            "accountEvents": []
-        })
-        .then(function (response) {
-        console.log(response);
-        })
-        .catch(function (error) {
-        console.log(error);
-        })
-        setCurrPage(3)
+        if (pageValueOne.password === pageValueOne.passwordConfirm) {
+            signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
+        }
+
     }
 
     const handleClickOpen = () => {
@@ -57,6 +37,37 @@ export default function SignupManager() {
     const handleClose = () => {
     setOpen(false);
     };
+
+    if (user) {
+        api.post('/', {
+            "username": "",
+            "account_type": null,
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "phone_number": "",
+            "date_of_birth": null,
+            "location": "",
+            "age_range": "",
+            "tell_us_about_yourself": "",
+            "profile_picture": null,
+            "banner_picture": null,
+            "display_picture_one": null,
+            "display_picture_two": null,
+            "display_picture_three": null,
+            "display_picture_four": null,
+            "personal_traits": [],
+            "interests": [],
+            "notifications": [],
+            "user_id": user.id
+        })
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error);
+        })
+    }
 
     return (
     <div>
@@ -80,3 +91,10 @@ export default function SignupManager() {
     </div>
     );
 }
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
+});
+
+export default connect(mapStateToProps, { signup })(SignupManager);

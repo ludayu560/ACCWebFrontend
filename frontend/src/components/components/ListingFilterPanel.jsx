@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 
 import StyledButton from "./StyledButton";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { useUtils } from "@mui/x-date-pickers/internals";
 
 const CustomToggleButtonStyles = {
   "&.MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected":
@@ -62,28 +63,46 @@ const CustomSliderStyles = {
 };
 
 function ListingFilterPanel(props) {
-  const { returnHook } = props;
+  const { returnHook, query } = props;
 
   const [open, setOpen] = useState(false);
-  const [unitType, setUnitType] = useState();
-  const [liveIn, setLiveIn] = useState("no preference");
-  const [NOBedrooms, setNOBedrooms] = useState("no preference"); // number of bedrooms
-  const [NOBathrooms, setNOBathrooms] = useState("no preference"); // number of bathrooms
-  const [utilities, setUtilities] = useState("no preference");
-  const [NOHousemates, setNOHousemates] = useState("no preference");
-  const [furnished, setFurnished] = useState("no preference");
-  const [pets, setPets] = useState("no preference");
-  const [parking, setParking] = useState("no preference");
-  const [airCon, setAirCon] = useState("no preference");
-  const [smoking, setSmoking] = useState("no preference");
+  const [unitType, setUnitType] = useState("unknown");
+  const [liveIn, setLiveIn] = useState("unknown");
+  const [NOBedrooms, setNOBedrooms] = useState(0); // number of bedrooms
+  const [NOBathrooms, setNOBathrooms] = useState(0); // number of bathrooms
+  const [utilities, setUtilities] = useState("unknown");
+  const [NOHousemates, setNOHousemates] = useState(0);
+  const [furnished, setFurnished] = useState("unknown");
+  const [pets, setPets] = useState("unknown");
+  const [parking, setParking] = useState("unknown");
+  const [airCon, setAirCon] = useState("unknown");
+  const [smoking, setSmoking] = useState("unknown");
   const [priceRange, setPrice] = useState([700, 1500]);
 
   // Handle the final submitting of the form to filter things
   const handleSubmit = () => {
-    const returnedJSON = {};
+    const returnedJSON = {
+      listing_city: "",
+      listing_province: "",
+      listing_type: unitType,
+      listing_rate__gte: priceRange[0],
+      listing_rate__lte: priceRange[1],
+      listing_women_homeowner: liveIn,
+      listing_total_bedrooms: NOBedrooms,   // int
+      listing_den: "unknown",
+      listing_bathrooms: NOBathrooms,       // int
+      listing_housemates: NOHousemates,     // int
+      listing_furnished: furnished,
+      listing_pets: pets,
+      listing_parking: parking,
+      listing_ac: airCon,
+      listing_smoking: smoking,
+      utilities: utilities,
+    };
 
     // return the submitted data
-    // returnHook(returnedJSON)
+    returnHook(returnedJSON)
+    query(true)
 
     // close the menu
     setOpen(false);
@@ -125,12 +144,13 @@ function ListingFilterPanel(props) {
               Unit Type
             </Typography>
             <ToggleButtonGroup
+              exclusive
               value={unitType}
               onChange={(event, newUnitType) => {
                 setUnitType(newUnitType);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={"unknown"} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
               <ToggleButton value={"apartment"} sx={CustomToggleButtonStyles}>
@@ -180,7 +200,7 @@ function ListingFilterPanel(props) {
                 setLiveIn(value);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={"unknown"} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
               <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
@@ -204,25 +224,22 @@ function ListingFilterPanel(props) {
                 setNOBedrooms(value);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={0} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
-              <ToggleButton value={"1"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={1} sx={CustomToggleButtonStyles}>
                 1
               </ToggleButton>
-              <ToggleButton value={"2"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={2} sx={CustomToggleButtonStyles}>
                 2
               </ToggleButton>
-              <ToggleButton value={"3"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={3} sx={CustomToggleButtonStyles}>
                 3
               </ToggleButton>
-              <ToggleButton value={"4"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={4} sx={CustomToggleButtonStyles}>
                 4
               </ToggleButton>
-              <ToggleButton value={"+Den"} sx={CustomToggleButtonStyles}>
-                +Den
-              </ToggleButton>
-              <ToggleButton value={"5+"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={5} sx={CustomToggleButtonStyles}>
                 5+
               </ToggleButton>
             </ToggleButtonGroup>
@@ -240,19 +257,19 @@ function ListingFilterPanel(props) {
                 setNOBathrooms(value);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={0} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
-              <ToggleButton value={"1"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={1} sx={CustomToggleButtonStyles}>
                 1
               </ToggleButton>
-              <ToggleButton value={"2"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={2} sx={CustomToggleButtonStyles}>
                 2
               </ToggleButton>
-              <ToggleButton value={"3"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={3} sx={CustomToggleButtonStyles}>
                 3
               </ToggleButton>
-              <ToggleButton value={"4+"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={4} sx={CustomToggleButtonStyles}>
                 4+
               </ToggleButton>
             </ToggleButtonGroup>
@@ -270,7 +287,7 @@ function ListingFilterPanel(props) {
                 setUtilities(value);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={"unknown"} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
               <ToggleButton value={"none"} sx={CustomToggleButtonStyles}>
@@ -303,19 +320,19 @@ function ListingFilterPanel(props) {
                 setNOHousemates(value);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={0} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
-              <ToggleButton value={"1"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={1} sx={CustomToggleButtonStyles}>
                 1
               </ToggleButton>
-              <ToggleButton value={"2"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={2} sx={CustomToggleButtonStyles}>
                 2
               </ToggleButton>
-              <ToggleButton value={"3"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={3} sx={CustomToggleButtonStyles}>
                 3
               </ToggleButton>
-              <ToggleButton value={"4+"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={4} sx={CustomToggleButtonStyles}>
                 4+
               </ToggleButton>
             </ToggleButtonGroup>
@@ -333,7 +350,7 @@ function ListingFilterPanel(props) {
                 setFurnished(value);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={"unknown"} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
               <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
@@ -357,7 +374,7 @@ function ListingFilterPanel(props) {
                 setPets(value);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={"unknown"} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
               <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
@@ -381,7 +398,7 @@ function ListingFilterPanel(props) {
                 setParking(value);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={"unknown"} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
               <ToggleButton value={"0"} sx={CustomToggleButtonStyles}>
@@ -411,7 +428,7 @@ function ListingFilterPanel(props) {
                 setAirCon(value);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={"unknown"} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
               <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
@@ -435,7 +452,7 @@ function ListingFilterPanel(props) {
                 setSmoking(value);
               }}
               sx={{ flexWrap: "wrap" }}>
-              <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+              <ToggleButton value={"unknown"} sx={CustomToggleButtonStyles}>
                 No Preference
               </ToggleButton>
               <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>

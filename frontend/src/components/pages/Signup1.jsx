@@ -10,13 +10,8 @@ import SignupAisha from "../components/SignupAishaLogo";
 import StyledButton from "../components/StyledButton";
 import StyledTextField from "../components/StyledTextField";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
-import { reset_password } from "../../AuthComponents/actions/auth";
-import { signup } from "../../AuthComponents/actions/auth";
-import { Navigate } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
-// function Page1(props) {
+function Page1({setPage, returnHook }) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -24,19 +19,6 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
     const [passwordConfirm, setPasswordConfirm] = useState('')
     const [username, setUsername] = useState('');
     const [newsConsent, setNewsConsent] = useState(false);
-    const [accountCreated, setAccountCreated] = useState(false);
-
-    // const [formData, setFormData] = useState({
-    //     firstName: '',
-    //     lastName: '',
-    //     email: '',
-    //     password: '',
-    //     passwordConfirm: ''
-    // });
-
-    // const { firstName, lastName, email, password, passwordConfirm } = formData;
-
-    // const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const signupValuesOne = {
         firstName: firstName,
@@ -46,37 +28,13 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
         password : password,
         passwordConfirm : passwordConfirm,
         newsConsent : newsConsent,
-        id: null
     }
 
     const onClickNextButton = e => {
-        e.preventDefault();
-        console.log(" click worked")
-        console.log(`firstName: ${firstName}`)
-        console.log(`lastName: ${lastName}`)
-        console.log(`email: ${email}`)
-        console.log(`password: ${password}`)
-        console.log(`passwordConfirm: ${passwordConfirm}`)
-        if (password === passwordConfirm) {
-            signup( firstName + " " + lastName, email, password, passwordConfirm)
-            // setAccountCreated(true);
-            
-        }
-    }
-    
-    if (user) {
-        signupValuesOne.id = user.id
-        console.log(user.id)
         returnHook(signupValuesOne)
         setPage(2)
     }
-    // if (isAuthenticated) {
-    //     return <Navigate to='/home'/>;
-    // }
 
-    // if (accountCreated) {
-    //     return <Navigate to='/'/>;
-    // }
     return (
     <Grid container>
         <SignupAisha></SignupAisha>
@@ -88,22 +46,22 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
                 </Typography>
                 <Grid container rowSpacing={'1vh'} columnSpacing={'1vw'}>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setFirstName} placeholder='First Name*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setFirstName} label='First Name' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setLastName} placeholder='Last Name*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setLastName} label='Last Name' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setUsername} placeholder='Username*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setUsername} label='Username' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setEmail} placeholder='Email Address*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setEmail} label='Email Address' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setPassword} placeholder='Password*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setPassword} label='Password' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setPasswordConfirm} placeholder='Confirm Password*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setPasswordConfirm} label='Confirm Password*' variant='empty'></StyledTextField>
                     </Grid>
                 </Grid>
                 <Grid container direction="column" alignItems="center" justifyContent="center" paddingTop={'5vh'}>
@@ -124,10 +82,4 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
     )
 }
 
-const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated,
-    user: state.auth.user
-});
-
-export default connect(mapStateToProps, { signup })(Page1);
-// export default Page1;
+export default Page1;

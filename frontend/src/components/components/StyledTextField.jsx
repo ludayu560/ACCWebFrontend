@@ -22,12 +22,20 @@ function StyledTextField(props) {
   //  color
   //  hook            => returns up back to parent
 
-  const { disabled, variant, placeholder, helperText, multiline, width, height, value, color, hook } = props;
+  const { disabled, variant, placeholder, multiline, width, height, value, color, hook, label } = props;
   const [field, setField] = useState();
 
   const onChangeHandler = (e) => {
     setField(e.target.value);
     hook(e.target.value);
+  };
+
+  const LoginStyle = {
+    '& .MuiOutlinedInput-root': {
+      borderRadius: '100vmax',
+      border: '2px solid #73737380',
+      width: (width)? width : '15vw',
+    }
   };
 
   const styleEmpty = {
@@ -73,18 +81,20 @@ function StyledTextField(props) {
       width: width ? width : "17vw",
     },
   };
+  console.log({...props})
   return (
     <div>
-      {variant === "empty" && (
+      {variant === "empty"? (
         <TextField
-          disabled={disabled ? true : false}
           onChange={onChangeHandler}
-          placeholder={placeholder}
-          style={styleEmpty}
-          value={field ? field : value}
-          InputProps={styleEmptyInput}
-        />
-      )}
+          disabled={disabled ? true : false}
+          // {...props}
+          sx={LoginStyle}
+          label={label}
+          value={field ? field : value}>
+          </TextField>
+      ): null}
+
       {variant === "filled" && (
         <TextField
           disabled={disabled ? true : false}
@@ -104,8 +114,8 @@ function StyledTextField(props) {
           style={styleEmpty}
           value={field ? field : value}
           InputProps={styleEmptyInput}
-          variant="filled"
-        />
+          variant="filled">
+          </TextField>
       )}
 
       {variant === "dropDownMenu" && (

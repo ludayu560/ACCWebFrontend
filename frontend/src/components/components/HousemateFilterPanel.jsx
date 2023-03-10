@@ -12,31 +12,6 @@ import Box from '@mui/material/Box';
 
 import StyledButton from './StyledButton';
 
-
-const traitList = [
-    'Extroverted',
-    'Introverted',
-    'Outgoing',
-    'Open',
-    'Creative',
-    'Analytical',
-    'Private',
-    'Laid-back',
-    'Quiet',
-    'Adventurous',
-]
-const interestList = [
-    'Gardening',
-    'Cooking',
-    'Hiking',
-    'Music',
-    'Reading',
-    'Art',
-    'Puzzles',
-    'Sports',
-    'Yoga',
-    'Cars'
-]
 const CustomSliderStyles = {
   // the entire range of possible values
   '& .MuiSlider-rail': {
@@ -71,7 +46,7 @@ const CustomCheckboxStyles = {
 }
 
 function HousemateFilterPanel(props) {
-  const {returnHook} = props
+  const {returnHook, query, traitList, interestList} = props
   const [open, setOpen] = useState(false);
 
   // manage states here
@@ -96,6 +71,7 @@ function HousemateFilterPanel(props) {
     
     // return the submitted data
     returnHook(returnedJSON)
+    query(true)
     
     // close the menu
     setOpen(false)
@@ -117,9 +93,9 @@ function HousemateFilterPanel(props) {
   const handleHousemateChange = (event, type) => {
     if (type === housemateType){
         setHousemateType('')
-    } else if (type === "Housemate") {
+    } else if (type === "Tenant") {
         setHousemateType(type)
-    } else if (type === "Female Homeowner") {
+    } else if (type === "Homeowner") {
         setHousemateType(type)
     }
   }
@@ -200,11 +176,11 @@ function HousemateFilterPanel(props) {
                     I am looking for a...
                 </Typography>
                 <FormControlLabel
-                    control={<Checkbox checked={housemateType === 'Housemate'} sx={CustomCheckboxStyles} onChange={(event) => {handleHousemateChange(event,'Housemate')}}/>}
+                    control={<Checkbox checked={housemateType === 'Tenant'} sx={CustomCheckboxStyles} onChange={(event) => {handleHousemateChange(event,'Tenant')}}/>}
                     label={<Typography fontWeight={600} color={'#323232'}> Housemate </Typography>}
                 />
                 <FormControlLabel
-                    control={<Checkbox checked={housemateType === 'Female Homeowner'} sx={CustomCheckboxStyles} onChange={(event) => {handleHousemateChange(event,'Female Homeowner')}}/>}
+                    control={<Checkbox checked={housemateType === 'Homeowner'} sx={CustomCheckboxStyles} onChange={(event) => {handleHousemateChange(event,'Homeowner')}}/>}
                     label={<Typography fontWeight={600} color={'#323232'}> Female Homeowner </Typography>}
                 />
             </Container>
