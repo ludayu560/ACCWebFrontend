@@ -88,22 +88,22 @@ function Page1({ signup, setPage, returnHook, isAuthenticated, user}) {
                 </Typography>
                 <Grid container rowSpacing={'1vh'} columnSpacing={'1vw'}>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setFirstName} placeholder='First Name*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setFirstName} label='First Name' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setLastName} placeholder='Last Name*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setLastName} label='Last Name' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setUsername} placeholder='Username*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setUsername} label='Username' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setEmail} placeholder='Email Address*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setEmail} label='Email Address' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setPassword} placeholder='Password*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setPassword} label='Password' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setPasswordConfirm} placeholder='Confirm Password*' variant='empty'></StyledTextField>
+                        <StyledTextField hook={setPasswordConfirm} label='Confirm Password*' variant='empty'></StyledTextField>
                     </Grid>
                 </Grid>
                 <Grid container direction="column" alignItems="center" justifyContent="center" paddingTop={'5vh'}>
