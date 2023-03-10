@@ -17,11 +17,15 @@ function Page2(props) {
     const {setPage, returnHook} = props
 
     const onClickNextButton = () => {
+        console.log("before page set 2")
+
         // send data from all fields as a JSON
         returnHook(selected)
 
         // go next
         setPage(3)
+        console.log("after page set 2")
+
     }
 
     // handle the state of the buttons. only one button should be selected at once

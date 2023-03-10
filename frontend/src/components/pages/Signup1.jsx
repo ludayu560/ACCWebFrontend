@@ -31,9 +31,15 @@ function Page1({setPage, returnHook }) {
     }
 
     const onClickNextButton = e => {
+        console.log("before page set 1")
+
         returnHook(signupValuesOne)
         setPage(2)
+        console.log("after page set 1")
+
     }
+
+    
 
     return (
     <Grid container>

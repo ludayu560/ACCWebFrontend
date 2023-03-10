@@ -13,7 +13,8 @@ import { connect } from 'react-redux';
 
     
 function SignupManager({signup, isAuthenticated, user}) {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const [createAccount, setCreateAccount] = useState(false)
 
     const api = axios.create({
         baseURL: `http://127.0.0.1:8000/ListingAccount/`
@@ -24,11 +25,18 @@ function SignupManager({signup, isAuthenticated, user}) {
     const [pageValueTwo, setPageValueTwo] = useState()
     const [pageValueThree, setPageValueThree] = useState()
 
-    if (currPage === 4) {
+    if (createAccount) {
+        console.log("setprint 4 ")
         if (pageValueOne.password === pageValueOne.passwordConfirm) {
             signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
         }
 
+    }
+    if (currPage === 3) {
+        console.log("print 3")
+    }
+    if (currPage === 4) {
+        console.log("print 4 without async?")
     }
 
     const handleClickOpen = () => {
@@ -39,6 +47,7 @@ function SignupManager({signup, isAuthenticated, user}) {
     };
 
     if (user) {
+        
         api.post('/', {
             "username": "",
             "account_type": null,
@@ -84,7 +93,7 @@ function SignupManager({signup, isAuthenticated, user}) {
                 <Page2 setPage={setCurrPage} returnHook={setPageValueTwo}/>
                 : null}
                 {currPage === 3? 
-                <Page3 setPage={setCurrPage} returnHook={setPageValueThree}/>
+                <Page3 setPage={setCurrPage} returnHook={setPageValueThree} closePage={setOpen} createAccount={setCreateAccount}/>
                 : null}
             </Box>
         </Dialog>
