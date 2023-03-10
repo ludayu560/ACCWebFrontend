@@ -25,7 +25,7 @@ function Tags(props) {
       {variant === "filter" && (
         <Box
           display="flex"
-          sx={{ border: 3, borderColor: color ? color : "#F83E7D", borderRadius: 10, p: 2 }}
+          sx={{ border: 3, borderColor: color ? color : "#F83E7D", borderRadius: 10, px: 2 }}
           style={{ alignItems: "center" }}>
           <Typography variant="h6" sx={{ color: color ? color : "#F83E7D", m: "10px" }}>
             {text}

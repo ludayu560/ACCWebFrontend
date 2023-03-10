@@ -4,7 +4,7 @@ import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-
+ 
 import React, {useState} from "react";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
@@ -16,7 +16,35 @@ import Footer from "../components/Footer";
 import ECard from "../components/ECard";
 import Tags from "../components/Tags";
 
+import axios from "axios";
+
+const traitList = [
+  'Extroverted',
+  'Introverted',
+  'Outgoing',
+  'Open',
+  'Creative',
+  'Analytical',
+  'Private',
+  'Laid-back',
+  'Quiet',
+  'Adventurous',
+]
+const interestList = [
+  'Gardening',
+  'Cooking',
+  'Hiking',
+  'Music',
+  'Reading',
+  'Art',
+  'Puzzles',
+  'Sports',
+  'Yoga',
+  'Cars'
+]
+
 function Housemates(props) {
+  const [newQuery, setNewQuery] = useState(true)
   const [filterParams, setFilterParams] = useState({
     traits: [],
     interests: [],
@@ -29,9 +57,21 @@ function Housemates(props) {
                     filterParams.housemateType,
                  ...filterParams.traits, 
                  ...filterParams.interests];
+
+  // Query section
+  if (newQuery) {
+    const query = 'account_type='+filterParams.housemateType.toLowerCase()+
+                  '&age_min='+filterParams.ageRange[0]+
+                  '&age_max='+filterParams.ageRange[1]+
+                  '&personal_traits='+filterParams.traits.map(word => word.toLowerCase()).join('%2C')+
+                  '&interests='+filterParams.interests.map(word => word.toLowerCase()).join('%2C')
+    const response = axios.get('http://127.0.0.1:8000/ListingAccount/filter?' + query)
+    console.log(response)
+    setNewQuery(false)
+  }
+  
   return (
     <>
-      {/* <Mainbar /> */}
       <Stack>
         <Stack alignItems="center" p={6} spacing={5} mt={15}>
           <Typography variant="h2" sx={{ fontWeight: "bold" }}>
@@ -45,7 +85,7 @@ function Housemates(props) {
           <Grid item xs={9}>
             <Grid container spacing={2}>
               <Grid item>
-                <HousemateFilterPanel returnHook={setFilterParams}/>
+                <HousemateFilterPanel returnHook={setFilterParams} query={setNewQuery} traitList={traitList} interestList={interestList}/>
               </Grid>
               {data.map((id) => (
                 (id === '')? null :
