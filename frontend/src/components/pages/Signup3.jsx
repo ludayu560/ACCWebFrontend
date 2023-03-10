@@ -43,7 +43,7 @@ function Page3(props) {
         'Cars'
     ]
 
-    const {setPage, returnHook} = props
+    const {setPage, returnHook, closePage, createAccount} = props
 
     const [location, setLocation] = useState()
     const [occupation, setOccupation] = useState()
@@ -53,7 +53,11 @@ function Page3(props) {
     const [traits, setTraits] = useState()
     const [interests, setInterests] = useState()
 
-    const onClickNextButton = () => {
+    const onClickNextButton = (e) => {
+        e.preventDefault()
+        console.log("before page set 3")
+        createAccount(true)
+
         console.log('setpage')
         setPage(4)
         // send data to server?
@@ -65,6 +69,9 @@ function Page3(props) {
             location : location,
             occupation : occupation,
         })
+        console.log("after page set 3")
+        closePage(false)
+
     }
 
     return (
@@ -96,7 +103,7 @@ function Page3(props) {
 
         <Stack direction={'row'} marginTop={'5vh'} spacing={'4vw'}>
             <StyledButton item variant='empty' textColor='#000' text='Skip'/>
-            <StyledButton item onClick={onClickNextButton} variant='signup' link='/account-homeowner' text='Next'/>
+            <StyledButton item onClick={onClickNextButton} variant='signup' text='Next'/>
         </Stack>
         </Stack>
         </>
