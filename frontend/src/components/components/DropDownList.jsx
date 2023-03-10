@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Typography, Menu} from "@mui/material";
+import { Grid, Typography, Menu, TextField} from "@mui/material";
 
 import MenuItem from '@mui/material/MenuItem';
 import {List} from "@mui/material";
@@ -7,6 +7,13 @@ import {ListItem} from "@mui/material";
 import {ListItemText} from "@mui/material";
 import StyledTextField from "./StyledTextField";
 
+const LoginStyle = {
+    '& .MuiOutlinedInput-root': {
+        borderRadius: '100vmax',
+        border: '2px solid #73737380',
+        width: '17vw',
+    },
+  }
 
 // A Function which renders an empty textbox with dropdown functionality. 
 // Must be passed an array of items. current 
@@ -34,7 +41,7 @@ function DropDownList(props) {
         <div>
             <List disablePadding>
                 <ListItem ListItemButton onClick={handleClickListItem} disablePadding>
-                    <StyledTextField disabled variant='dropDownMenu' placeholder={placeholder} color={'#000000'} value={options[selectedIndex]}/>
+                    <TextField disabled placeholder={placeholder} value={options[selectedIndex]} sx={LoginStyle}/>
                 </ListItem>
             </List>
 

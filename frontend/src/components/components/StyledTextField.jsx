@@ -22,7 +22,7 @@ function StyledTextField(props) {
   //  color
   //  hook            => returns up back to parent
 
-  const { disabled, variant, placeholder, multiline, width, height, value, color, hook, label } = props;
+  const { disabled, variant, placeholder, multiline, width, height, value, color, hook, label, required } = props;
   const [field, setField] = useState();
 
   const onChangeHandler = (e) => {
@@ -34,7 +34,7 @@ function StyledTextField(props) {
     '& .MuiOutlinedInput-root': {
       borderRadius: '100vmax',
       border: '2px solid #73737380',
-      width: (width)? width : '15vw',
+      width: (width)? width : '17vw',
     }
   };
 
@@ -87,10 +87,10 @@ function StyledTextField(props) {
         <TextField
           onChange={onChangeHandler}
           disabled={disabled ? true : false}
-          // {...props}
           sx={LoginStyle}
           label={label}
-          value={field ? field : value}>
+          value={field ? field : value}
+          required={Boolean(props.required)}>
           </TextField>
       ): null}
 

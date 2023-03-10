@@ -60,42 +60,47 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user, signedup}) {
         if (pageValueOne.password === pageValueOne.passwordConfirm) {
             signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
         }
+        if (signedup) {
+            const processedTraits = []
+            const processedInterests = []
+            traits.map(item => processedTraits.append({"trait": item}))
+            interests.map(item => processedInterests.append({"interest": item}))
+    
+            api.post('/', {
+                "username": pageValueOne.username,
+                "account_type": pageValueTwo,
+                "first_name": pageValueOne.firstName,
+                "last_name": pageValueOne.lastName,
+                "email": pageValueOne.email,
+                "phone_number": "",
+                "date_of_birth": null,
+                "location": location,
+                "age_range": age,
+                "occupation": occupation,
+                "news_consent": true,
+                "tell_us_about_yourself": "",
+                "profile_picture": null,
+                "banner_picture": null,
+                "display_picture_one": null,
+                "display_picture_two": null,
+                "display_picture_three": null,
+                "display_picture_four": null,
+                "personal_traits": processedTraits,  // we need to process personal traits and interests before they are useable 
+                "interests": processedInterests,
+                "notifications": [],
+                "user_id": user.id
+            })
+            .then(function (response) {
+            console.log(response);
+            })
+            .catch(function (error) {
+            console.log(error);
+            })
+            setPage(1)
+        }
     }
 
-    if (signedup) {
-        api.post('/', {
-            "username": pageValueOne.username,
-            "account_type": pageValueTwo,
-            "first_name": pageValueOne.firstName,
-            "last_name": pageValueOne.lastName,
-            "email": pageValueOne.email,
-            "phone_number": "",
-            "date_of_birth": null,
-            "location": location,
-            "age_range": age,
-            "occupation": "Doctor", //occupation
-            "news_consent": true,   //pagevalue1
-            "tell_us_about_yourself": "",
-            "profile_picture": null,
-            "banner_picture": null,
-            "display_picture_one": null,
-            "display_picture_two": null,
-            "display_picture_three": null,
-            "display_picture_four": null,
-            "personal_traits": [],
-            "interests": [],
-            "notifications": [],
-            "user_id": user.id
-        })
-        .then(function (response) {
-        console.log(response);
-        })
-        .catch(function (error) {
-        console.log(error);
-        })
-        console.log('posted')
-        setPage(4)
-    }
+
 
     return (
         <>
@@ -111,21 +116,20 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user, signedup}) {
 
         <Stack direction={'column'} spacing={'2vh'} paddingTop={6}>
             <Stack direction={'row'} spacing={'2vw'}>
-                <StyledTextField variant='empty' hook={setLocation} placeholder="Location"> </StyledTextField>
-                <DropDownList options={ages} setter={setAge} placeholder='Age Group'></DropDownList>
-
+                <StyledTextField variant='empty' hook={setLocation} label="Location"> </StyledTextField>
+                <DropDownList options={ages} setter={setAge} label='Age Group'></DropDownList>
             </Stack>
             <Stack direction={'row'} spacing={'2vw'}>
-                <StyledTextField variant='empty' hook={setOccupation} placeholder='Occupation*'> </StyledTextField>
-                <StyledTextField variant='empty' hook={setDOB} placeholder='Date of Birth'> </StyledTextField>
+                <StyledTextField variant='empty' hook={setOccupation} label='Occupation*'> </StyledTextField>
+                <StyledTextField variant='empty' hook={setDOB} label='Date of Birth'> </StyledTextField>
             </Stack>
 
-            <DropDownMenu options={traitList} hook={setTraits} placeholder='Personality Traits'> </DropDownMenu>
-            <DropDownMenu options={interestList} hook={setInterests} placeholder='Interests'> </DropDownMenu>
+            <DropDownMenu options={traitList} hook={setTraits} label='Personality Traits'> </DropDownMenu>
+            <DropDownMenu options={interestList} hook={setInterests} label='Interests'> </DropDownMenu>
         </Stack>
 
         <Stack direction={'row'} marginTop={'5vh'} spacing={'4vw'}>
-            <StyledButton item variant='empty' textColor='#000' text='Skip'/>
+            <StyledButton item onClick={onClickNextButton} variant='empty' textColor='#000' text='Skip'/>
             <StyledButton item onClick={onClickNextButton} variant='signup' text='Next'/>
         </Stack>
         </Stack>

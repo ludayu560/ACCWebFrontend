@@ -2,7 +2,7 @@ import { Button, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForwardIos";
 
 function StyledButton(props) {
-  const { variant, link, text, content, textColor, onClick, noArrow, width, bgcolor } = props;
+  const { variant, link, text, content, textColor, onClick, noArrow, width, bgcolor, type } = props;
 
   const signupStyle = {
     minWidth: width ? width : "",
@@ -59,6 +59,7 @@ function StyledButton(props) {
           style={signupStyle}
           endIcon={noArrow ? null : <ArrowForwardIcon />}
           href={link}
+          type={type}
           {...props}>
           <Typography variant="h5" fontWeight={600} sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
             {text}

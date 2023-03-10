@@ -10,6 +10,15 @@ import SignupAisha from "../components/SignupAishaLogo";
 import StyledButton from "../components/StyledButton";
 import StyledTextField from "../components/StyledTextField";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
+import { TextField } from "@mui/material";
+
+const LoginStyle = {
+    '& .MuiOutlinedInput-root': {
+      borderRadius: '100vmax',
+      border: '2px solid #73737380',
+      width: '17vw',
+    }
+  };
 
 function Page1({setPage, returnHook }) {
     const [firstName, setFirstName] = useState('');
@@ -31,16 +40,12 @@ function Page1({setPage, returnHook }) {
     }
 
     const onClickNextButton = e => {
-        console.log("before page set 1")
-
-        returnHook(signupValuesOne)
-        setPage(2)
-        console.log("after page set 1")
-
+        if (firstName && lastName && email && password === passwordConfirm && password && username) {
+            returnHook(signupValuesOne)
+            setPage(2)
+        }
     }
-
     
-
     return (
     <Grid container>
         <SignupAisha></SignupAisha>
@@ -52,22 +57,22 @@ function Page1({setPage, returnHook }) {
                 </Typography>
                 <Grid container rowSpacing={'1vh'} columnSpacing={'1vw'}>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setFirstName} label='First Name' variant='empty'></StyledTextField>
+                        <StyledTextField required hook={setFirstName} label='First Name' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setLastName} label='Last Name' variant='empty'></StyledTextField>
+                        <StyledTextField required hook={setLastName} label='Last Name' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setUsername} label='Username' variant='empty'></StyledTextField>
+                        <StyledTextField required hook={setUsername} label='Username' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setEmail} label='Email Address' variant='empty'></StyledTextField>
+                        <StyledTextField required hook={setEmail} label='Email Address' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setPassword} label='Password' variant='empty'></StyledTextField>
+                        <StyledTextField required hook={setPassword} label='Password' variant='empty'></StyledTextField>
                     </Grid>
                     <Grid item xs={6}>
-                        <StyledTextField hook={setPasswordConfirm} label='Confirm Password*' variant='empty'></StyledTextField>
+                        <StyledTextField required hook={setPasswordConfirm} label='Confirm Password' variant='empty'></StyledTextField>
                     </Grid>
                 </Grid>
                 <Grid container direction="column" alignItems="center" justifyContent="center" paddingTop={'5vh'}>

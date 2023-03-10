@@ -6,47 +6,26 @@ import Dialog from '@mui/material/Dialog';
 import Page1 from "./Signup1";
 import Page2 from "./Signup2";
 import Page3 from "./Signup3";
-
-import axios from "axios";
-import { signup } from "../../AuthComponents/actions/auth";
-import { connect } from 'react-redux';
-
     
-function SignupManager({signup, isAuthenticated, user}) {
+export default function SignupManager() {
     const [open, setOpen] = useState(false);
-    // const [createAccount, setCreateAccount] = useState(false)
 
-    const api = axios.create({
-        baseURL: `http://127.0.0.1:8000/ListingAccount/`
-    })
 
     const [currPage, setCurrPage] = useState(1)
     const [pageValueOne, setPageValueOne] = useState()
     const [pageValueTwo, setPageValueTwo] = useState()
-    // const [pageValueThree, setPageValueThree] = useState()
-
-    // if (createAccount) {
-    //     console.log("setprint 4 ")
-    //     if (pageValueOne.password === pageValueOne.passwordConfirm) {
-    //         signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
-    //     }
-
-    // }
-    // if (currPage === 3) {
-    //     console.log("print 3")
-    // }
 
     if (currPage === 4) {
         setOpen(false);
     }
 
     const handleClickOpen = () => {
-    setOpen(true);
+        setOpen(true);
     };
     const handleClose = () => {
-    setOpen(false);
+        setOpen(false);
+        setCurrPage(1)
     };
-
 
     return (
     <div>
@@ -70,10 +49,3 @@ function SignupManager({signup, isAuthenticated, user}) {
     </div>
     );
 }
-
-const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated,
-    user: state.auth.user
-});
-
-export default connect(mapStateToProps, { signup })(SignupManager);
