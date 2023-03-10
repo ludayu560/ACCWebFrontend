@@ -90,6 +90,8 @@ function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
             "date_of_birth": null,
             "location": location,
             "age_range": age,
+            "occupation": "Doctor", //occupation
+            "news_consent": true,   //pagevalue1
             "tell_us_about_yourself": "",
             "profile_picture": null,
             "banner_picture": null,
