@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
     
 function SignupManager({signup, isAuthenticated, user}) {
     const [open, setOpen] = useState(false);
-    const [createAccount, setCreateAccount] = useState(false)
+    // const [createAccount, setCreateAccount] = useState(false)
 
     const api = axios.create({
         baseURL: `http://127.0.0.1:8000/ListingAccount/`
@@ -23,20 +23,21 @@ function SignupManager({signup, isAuthenticated, user}) {
     const [currPage, setCurrPage] = useState(1)
     const [pageValueOne, setPageValueOne] = useState()
     const [pageValueTwo, setPageValueTwo] = useState()
-    const [pageValueThree, setPageValueThree] = useState()
+    // const [pageValueThree, setPageValueThree] = useState()
 
-    if (createAccount) {
-        console.log("setprint 4 ")
-        if (pageValueOne.password === pageValueOne.passwordConfirm) {
-            signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
-        }
+    // if (createAccount) {
+    //     console.log("setprint 4 ")
+    //     if (pageValueOne.password === pageValueOne.passwordConfirm) {
+    //         signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
+    //     }
 
-    }
-    if (currPage === 3) {
-        console.log("print 3")
-    }
+    // }
+    // if (currPage === 3) {
+    //     console.log("print 3")
+    // }
+
     if (currPage === 4) {
-        console.log("print 4 without async?")
+        setOpen(false);
     }
 
     const handleClickOpen = () => {
@@ -46,37 +47,6 @@ function SignupManager({signup, isAuthenticated, user}) {
     setOpen(false);
     };
 
-    if (user) {
-        
-        api.post('/', {
-            "username": "",
-            "account_type": null,
-            "first_name": "",
-            "last_name": "",
-            "email": "",
-            "phone_number": "",
-            "date_of_birth": null,
-            "location": "",
-            "age_range": "",
-            "tell_us_about_yourself": "",
-            "profile_picture": null,
-            "banner_picture": null,
-            "display_picture_one": null,
-            "display_picture_two": null,
-            "display_picture_three": null,
-            "display_picture_four": null,
-            "personal_traits": [],
-            "interests": [],
-            "notifications": [],
-            "user_id": user.id
-        })
-        .then(function (response) {
-        console.log(response);
-        })
-        .catch(function (error) {
-        console.log(error);
-        })
-    }
 
     return (
     <div>
@@ -93,7 +63,7 @@ function SignupManager({signup, isAuthenticated, user}) {
                 <Page2 setPage={setCurrPage} returnHook={setPageValueTwo}/>
                 : null}
                 {currPage === 3? 
-                <Page3 setPage={setCurrPage} returnHook={setPageValueThree} closePage={setOpen} createAccount={setCreateAccount}/>
+                <Page3 setPage={setCurrPage} closePage={setOpen} pageValueOne={pageValueOne} pageValueTwo={pageValueTwo}/>
                 : null}
             </Box>
         </Dialog>

@@ -8,8 +8,14 @@ import StyledButton from "../components/StyledButton";
 import StyledTextField from "../components/StyledTextField";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
 import HouseLogoPink from "../components/HouseLogoPink";
-function Page3(props) {
+import axios from "axios";
+import { signup } from "../../AuthComponents/actions/auth";
+import { connect } from 'react-redux';
+function Page3({ setPage, pageValueOne, pageValueTwo, signup, user}) {
 
+    const api = axios.create({
+        baseURL: `http://127.0.0.1:8000/ListingAccount/`
+    })
     const ages = [
         '<18',
         '18-25',
@@ -42,9 +48,6 @@ function Page3(props) {
         'Yoga',
         'Cars'
     ]
-
-    const {setPage, returnHook, closePage, createAccount} = props
-
     const [location, setLocation] = useState()
     const [occupation, setOccupation] = useState()
     const [dob, setDOB] = useState()
@@ -56,22 +59,56 @@ function Page3(props) {
     const onClickNextButton = (e) => {
         e.preventDefault()
         console.log("before page set 3")
-        createAccount(true)
-
+        // createAccount(true)
+        if (pageValueOne.password === pageValueOne.passwordConfirm) {
+            signup( pageValueOne.firstName + " " + pageValueOne.lastName, pageValueOne.email, pageValueOne.password, pageValueOne.passwordConfirm)
+        }
         console.log('setpage')
         setPage(4)
         // send data to server?
-        returnHook({
-            traits : traits,
-            interests : interests,
-            age : age,
-            dob : dob,
-            location : location,
-            occupation : occupation,
-        })
-        console.log("after page set 3")
-        closePage(false)
+        // returnHook({
+        //     traits : traits,
+        //     interests : interests,
+        //     age : age,
+        //     dob : dob,
+        //     location : location,
+        //     occupation : occupation,
+        // })
 
+        console.log("after page set 3")
+        // closePage(false)
+
+    }
+
+    if (user) {
+        api.post('/', {
+            "username": pageValueOne.username,
+            "account_type": pageValueTwo,
+            "first_name": pageValueOne.firstName,
+            "last_name": pageValueOne.lastName,
+            "email": pageValueOne.email,
+            "phone_number": "",
+            "date_of_birth": null,
+            "location": location,
+            "age_range": age,
+            "tell_us_about_yourself": "",
+            "profile_picture": null,
+            "banner_picture": null,
+            "display_picture_one": null,
+            "display_picture_two": null,
+            "display_picture_three": null,
+            "display_picture_four": null,
+            "personal_traits": traits,
+            "interests": interests,
+            "notifications": [],
+            "user_id": user.id
+        })
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error);
+        })
     }
 
     return (
@@ -110,4 +147,9 @@ function Page3(props) {
     )
 }
 
-export default Page3
+
+const mapStateToProps = state => ({
+    user: state.auth.user
+});
+
+export default connect(mapStateToProps, { signup })(Page3);

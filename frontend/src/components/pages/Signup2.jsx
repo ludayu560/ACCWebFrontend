@@ -29,7 +29,7 @@ function Page2(props) {
     }
 
     // handle the state of the buttons. only one button should be selected at once
-    const [selected, setSelected] = useState(0);
+    const [selected, setSelected] = useState('');
 
     const handleClick = (index) => {
         if (selected === index) {
@@ -66,67 +66,67 @@ function Page2(props) {
 
             <ButtonGroup>
                 <Button
-                    onClick={() => handleClick(0)}
+                    onClick={() => handleClick('tenant')}
                     variant='contained'
                     style={{
                         ...buttonStyle,
                         borderRadius: '50px 0 0 50px',
-                        background: (selected === 0) ? '#F83E7D' : 'transparent',
+                        background: (selected === 'tenant') ? '#F83E7D' : 'transparent',
                         boxShadow: '0px 4px 4px rgba(248, 62, 125, 0.5)',
                         marginRight: '3vw'}}>
 
                     <Stack alignItems={"center"}>
                         <Box width={"4vw"}>
-                            {selected === 0? <IconTenantWhite/> : <IconTenant/>}
+                            {selected === 'tenant'? <IconTenantWhite/> : <IconTenant/>}
                         </Box>
-                        <Typography marginTop={'2vh'} style={{...textStyle, color: (selected === 0) ? '#fff' : '#F83E7D'}}>Woman Tenant</Typography>
+                        <Typography marginTop={'2vh'} style={{...textStyle, color: (selected === 'tenant') ? '#fff' : '#F83E7D'}}>Woman Tenant</Typography>
                     </Stack>
                 </Button>
                 <Button
-                    onClick={() => handleClick(1)}
+                    onClick={() => handleClick('homeowner')}
                     variant='contained'
                     style={{
                         ...buttonStyle,
-                        background: (selected === 1) ? '#0045F1' : 'transparent',
+                        background: (selected === 'homeowner') ? '#0045F1' : 'transparent',
                         boxShadow: '0px 4px 4px rgba(66, 172, 249, 0.5)',
                         marginRight: '3vw'}}>
 
                     <Stack alignItems={"center"}>
                         <Box width={"5vw"}>
-                            {selected === 1? <IconWomanHomeownerWhite/> : <IconWomanHomeowner/>}
+                            {selected === 'homeowner'? <IconWomanHomeownerWhite/> : <IconWomanHomeowner/>}
                         </Box>
-                        <Typography marginTop={'1vh'} style={{...textStyle, color: (selected === 1) ? '#fff' : '#0045F1'}}>Woman Homeowner</Typography>
+                        <Typography marginTop={'1vh'} style={{...textStyle, color: (selected === 'homeowner') ? '#fff' : '#0045F1'}}>Woman Homeowner</Typography>
                     </Stack>
                 </Button>
                 <Button
-                    onClick={() => handleClick(2)}
+                    onClick={() => handleClick('propertyowner')}
                     variant='contained'
                     style={{
                         ...buttonStyle,
-                        background: (selected === 2) ? '#113170' : 'transparent',
+                        background: (selected === 'propertyowner') ? '#113170' : 'transparent',
                         boxShadow: '0px 4px 4px rgba(0, 69, 241, 0.51)',
                         marginRight: '3vw'}}>
 
                     <Stack alignItems={"center"}>
                         <Box width={"3vw"}>
-                            {selected === 2? <IconPropertyOwnerWhite/> : <IconPropertyOwner/>}
+                            {selected === 'propertyowner'? <IconPropertyOwnerWhite/> : <IconPropertyOwner/>}
                         </Box>
-                        <Typography marginTop={'2vh'}style={{...textStyle, color: (selected === 2) ? '#fff' : '#113170'}}>Property Owner</Typography>
+                        <Typography marginTop={'2vh'}style={{...textStyle, color: (selected === 'propertyowner') ? '#fff' : '#113170'}}>Property Owner</Typography>
                     </Stack>
                 </Button>
                 <Button
                     variant='contained'
-                    onClick={() => handleClick(3)}
+                    onClick={() => handleClick('other')}
                     style={{
                         ...buttonStyle,
                         borderRadius: '0 50px 50px 0',
-                        background: (selected === 3) ? '#C5265C' : 'transparent',
+                        background: (selected === 'other') ? '#C5265C' : 'transparent',
                         boxShadow: '0px 4px 4px rgba(115, 115, 115, 0.5)'}}>
                     <Stack alignItems={"center"}>
                         <Box width={"4vw"}>
-                            {selected === 3? <IconOtherWhite/> : <IconOther/>}
+                            {selected === 'other'? <IconOtherWhite/> : <IconOther/>}
                         </Box>
-                        <Typography marginTop={'3vh'} style={{...textStyle, color: (selected === 3) ? '#fff' : '#C5265C'}}>Other</Typography>
+                        <Typography marginTop={'3vh'} style={{...textStyle, color: (selected === 'other') ? '#fff' : '#C5265C'}}>Other</Typography>
                     </Stack>
                 </Button>
             </ButtonGroup>
