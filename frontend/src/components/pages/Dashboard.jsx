@@ -36,17 +36,20 @@ import DashboardWHBG from "../../assets/DashboardWHBG.png";
 import DashboardPOBG from "../../assets/DashboardPOBG.png";
 import DashboardOtherBG from "../../assets/DashboardOtherBG.png";
 
-function Dashboard(props) {
-  const { variant } = props;
+import { connect } from 'react-redux';
+
+function Dashboard({variant, isAuthenticated, listingAccount}) {
+  
   const data = ["1", "2", "3", "4"];
 
   function renderBGImage() {
+    {/*listingAccount.account_type*/}
     switch (variant) {
       case "tenant":
         return DashboardTenantBG;
-      case "womenHomeOwner":
+      case "homeowner":
         return DashboardWHBG;
-      case "propertyOwner":
+      case "propertyowner":
         return DashboardPOBG;
       default:
         return DashboardOtherBG;
@@ -54,12 +57,13 @@ function Dashboard(props) {
   }
 
   function colorTheme() {
+    {/*listingAccount.account_type*/}
     switch (variant) {
       case "tenant":
         return "#F83E7D";
-      case "womenHomeOwner":
+      case "homeowner":
         return "#0045F1";
-      case "propertyOwner":
+      case "propertyowner":
         return "#113170";
       default:
         return "#C5265C";
@@ -200,4 +204,10 @@ function Dashboard(props) {
   );
 }
 
-export default Dashboard;
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  listingAccount: state.auth.listingAccount
+});
+
+export default connect(mapStateToProps)(Dashboard);

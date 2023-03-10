@@ -62,8 +62,8 @@ function App() {
               <Route exact path='/account-events' element={<MyAccountEvents />} />
               <Route exact path='/account-notifications' element={<MyAccountNotifications />} />
               <Route exact path='/account-profile' element={<MyAccountProfile />} />
-              <Route exact path='/account-tenant' element={<MyAccount name="Tenant" />} />
-              <Route exact path='/account-homeowner' element={<MyAccount name="Homeowner" />} />
+              <Route exact path='/account-tenant' element={<MyAccount name="tenant" />} />
+              <Route exact path='/account-homeowner' element={<MyAccount name="homeowner" />} />
               <Route exact path='/howItWorks' element={<HowItWorks />} />
               <Route exact path='/contact' element={<Contact />} />
               <Route exact path='/about' element={<About />} />

@@ -40,11 +40,21 @@ function Footer() {
           COMPANY
         </Typography>
         <Stack pt={2}>
-          <Typography sx={{ color: "white" }}>About</Typography>
-          <Typography sx={{ color: "white" }}>Tenants</Typography>
-          <Typography sx={{ color: "white" }}>Homeowners</Typography>
-          <Typography sx={{ color: "white" }}>Events</Typography>
-          <Typography sx={{ color: "white" }}>Contact Us</Typography>
+          <Link href="/about" underline="hover">
+            <Typography sx={{ color: "white" }}>About</Typography>
+          </Link>
+          <Link href="/tenanthome" underline="hover">
+            <Typography sx={{ color: "white" }}>Tenants</Typography>
+          </Link>
+          <Link href="/homeowners" underline="hover">
+            <Typography sx={{ color: "white" }}>Homeowners</Typography>
+          </Link>
+          <Link href="/events" underline="hover">
+            <Typography sx={{ color: "white" }}>Events</Typography>
+          </Link>
+          <Link href="/contact" underline="hover">
+            <Typography sx={{ color: "white" }}>Contact Us</Typography>
+          </Link>
         </Stack>
       </Grid>
       <Grid item xs={2}>

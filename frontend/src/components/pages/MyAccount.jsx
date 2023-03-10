@@ -27,7 +27,23 @@ const api = axios.create({
     baseURL: `http://127.0.0.1:8000/ListingAccount/`
 })
 
+
+
 function MyAccount(props) {
+    function colorTheme() {
+        {/*listingAccount.account_type*/}
+        switch (props.name) {
+          case "tenant":
+            return "#F83E7D";
+          case "homeowner":
+            return "#0045F1";
+          case "propertyowner":
+            return "#113170";
+          default:
+            return "#C5265C";
+        }
+      }
+
     const ranges = [
         {
             value: '18 - 23',
@@ -160,7 +176,6 @@ function MyAccount(props) {
     }
     return (
         <>
-        {/* <NavBar></NavBar> */}
         <Grid container spacing={8}>
         <Grid item xs={12}>
             <Typography variant='h2' padding={'3vw'} fontWeight={700}>
@@ -295,7 +310,7 @@ function MyAccount(props) {
                                 {personalityTraits.map((name, index) => {
                                 return (
                                     <FormControlLabel item control={
-                                        <Checkbox onChange={()=>handleTraitOnChange(index)} sx={{'&.Mui-checked': {color: '#F83E7D'}}}/>} 
+                                        <Checkbox onChange={()=>handleTraitOnChange(index)} sx={{'&.Mui-checked': {color: colorTheme()}}}/>} 
                                         label={<Typography width='8vw'>{name}</Typography>} />
                                 );
                                 })}

@@ -32,7 +32,7 @@ import TenantHomePageBG from "../../assets/TenantHomePageBG.png";
 
 function TenantHome(props) {
   return (
-    <>
+    <div style={{ overflowX: "hidden" }}>
       <Stack>
         {/*First Title Section*/}
         <Box component="img" src={require("../../assets/image 2 (1).png")} />
@@ -285,7 +285,7 @@ function TenantHome(props) {
 
         <Footer></Footer>
       </Stack>
-    </>
+    </div>
   );
 }
 

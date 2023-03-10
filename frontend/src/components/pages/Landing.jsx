@@ -38,10 +38,11 @@ import img12 from "../../assets/image 12.png";
 import img11 from "../../assets/image 11.png";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
 import SearchBar from "../components/SearchBar";
+import { connect } from 'react-redux';
 
 function Landing({isAuthenticated}) {
   return (
-    <>
+    <div style={{ overflowX: "hidden" }}>
       <Stack>
         <Grid container py={10}>
           <Grid item xs={7}>
@@ -606,7 +607,7 @@ function Landing({isAuthenticated}) {
         </Stack>
         <Footer></Footer>
       </Stack>
-    </>
+    </div>
   );
 }
 
