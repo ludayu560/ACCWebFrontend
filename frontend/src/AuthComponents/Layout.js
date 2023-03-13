@@ -12,10 +12,13 @@ import { Toolbar } from "@mui/material";
 //checkAuthenticated,
 const Layout = (props) => {
   const authenticated = true;
+
+  async function caller() {
+    const wait = await props.checkAuthenticated();
+    const hold = await props.load_user();
+  }
   useEffect(() => {
-    props.checkAuthenticated();
-    props.load_user();
-    // props.load_listingAccount();
+    caller()
   }, []);
 
     return (
