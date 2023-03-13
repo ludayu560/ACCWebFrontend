@@ -6,7 +6,7 @@ import promise from 'redux-promise-middleware'
 
 const initialState = {};
 
-const middleware = [thunk, promise()];
+const middleware = [thunk];
 
 const store = createStore(
     rootReducer,
