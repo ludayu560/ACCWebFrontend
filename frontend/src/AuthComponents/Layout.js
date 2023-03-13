@@ -20,15 +20,15 @@ const Layout = (props) => {
   // async function caller() {
   // }
   useEffect(() => {
-    new Promise((resolve, reject) => {
-      props.checkAuthenticated();
-      props.load_user();
-      // await dispatch();
-      // await dispatch();
-      setTimeout(() => {
-          resolve();
-      }, 2000);
-    })
+    props.checkAuthenticated();
+    props.load_user();
+    // new Promise((resolve, reject) => {
+    //   // await dispatch();
+    //   // await dispatch();
+    //   setTimeout(() => {
+    //       resolve();
+    //   }, 2000);
+    // })
   }, []);
   
   if (user) {
