@@ -73,7 +73,7 @@ export const load_user = () => async dispatch => {
                 payload: res.data
             });
 
-            // console.log(`id: ${res.data.id}`);
+            console.log(`id: ${res.data.id}`);
             // console.log(`data: ${res.data}`);
             dispatch(load_listing(res.data.id));
         } catch (err) {

@@ -15,7 +15,7 @@ import StyledButton from "../components/StyledButton";
 import {ReactComponent as MissingImage} from '../../assets/Icons/missingImage.svg'
 import React, { useState } from "react";
 import axios from "axios";
-
+import { LOGIN_SUCCESS } from "../../AuthComponents/actions/types";
 
 const CustomToggleButtonStyles = {
   "&.MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected": {
@@ -69,53 +69,92 @@ function RentalListingForm(props) {
   const [smoking, setSmoking] = useState("no preference");
   const [parking, setParking] = useState("no preference");
 
+  //////////////////////////////////////////////////////////////
+  const [image_1, setimage_1] = useState(null);
+  const [image_2, setimage_2] = useState(null);
+  const [image_3, setimage_3] = useState(null);
+  const [image_4, setimage_4] = useState(null);
 
-  ////////////////////////////////////////////////////////////////////////
-  // Image Uploading Section
 
-  const [state, setState] = useState({
-    title: '',
-    content: '',
-    image: null
-  })
+  const HandleSubmit = async (event) => {
+    event.preventDefault();
 
-  const handleChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    })
+    const formData = new FormData();
+
+
+    formData.append('listing_city', '');
+    formData.append('listing_postal', '');
+    formData.append('listing_province', '');
+    formData.append('listing_availability_date', null);
+    formData.append('listing_type', '');
+    formData.append('listing_total_bedrooms', null);
+    formData.append('listing_den', false);
+    formData.append('listing_rate', null);
+    formData.append('listing_women_homeowner', false);
+    formData.append('listing_available_bedrooms', null);
+    formData.append('listing_bathrooms', null);
+    formData.append('listing_housemates', null);
+    formData.append('listing_parking', false);
+    formData.append('listing_furnished', false);
+    formData.append('listing_smoking', false);
+    formData.append('listing_pets', false);
+    formData.append('listing_ac', false);
+    formData.append('listing_description', '');
+    formData.append('listing_image_one', image_1);
+    formData.append('listing_image_two', image_2);
+    formData.append('listing_image_three', image_3);
+    formData.append('listing_image_four', image_4);
+    formData.append('listing_utilities', []);
+
+    const pseudoData = {
+      listing_image_one: null,
+      listing_image_two: null,
+      listing_image_three: null,
+      listing_image_four: null,
+      listing_city: "",
+      listing_postal: "",
+      listing_province: "",
+      listing_availability_date: null,
+      listing_type: "",
+      listing_total_bedrooms: null,
+      listing_den: false,
+      listing_rate: null,
+      listing_women_homeowner: false,
+      listing_available_bedrooms: null,
+      listing_bathrooms: null,
+      listing_housemates: null,
+      listing_parking: false,
+      listing_furnished: false,
+      listing_smoking: false,
+      listing_pets: false,
+      listing_ac: false,
+      listing_description: "",
+      listing_utilities: ""
+    }
+
+    // const data = {};
+    // for (const [key, value] of formData.entries()) {
+    //   data[key] = value;
+    // }
+    
+    // const json = JSON.stringify(data);
+    // console.log(json);
+    const myNewModel = await axios
+    .post('http://127.0.0.1:8000/PropertyListing/', formData, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+    }).then((res) => {
+        return res;
+    }).catch((error) => {
+        return error.response;
+    });
+    if (myNewModel.status === 201) {
+      console.log('success')
+    }
+    return myNewModel;
   };
-
-  const handleImageChange = (e) => {
-    this.setState({
-      image: e.target.files[0]
-    })
-  };
-
-  const HandleSubmit = (e) => {
-    e.preventDefault();
-    console.log(state);
-    let form_data = new FormData();
-    form_data.append('image', state.image, state.image.name);
-    form_data.append('title', state.title);
-    form_data.append('content', state.content);
-    console.log(form_data)
-    let url = 'http://localhost:8000/api/posts/';
-    axios.post(url, form_data, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    })
-        .then(res => {
-          console.log(res.data);
-        })
-        .catch(err => console.log(err))
-  };
-  //////////////////////////////////////////////////////////////////////////
-
-  // Handle the final submitting of the form to filter things
-  const handleSubmit = () => {
-    const returnedJSON = {};
-  };
+  ///////////////////////////////////////////////////////////////////
 
   return (
     <>
@@ -150,9 +189,7 @@ function RentalListingForm(props) {
             <Grid item xs={12}>
               <Box height="30vw">
                 <MissingImage/>
-                <input type="file"
-                   id="image"
-                   accept="image/png, image/jpeg"  onChange={handleImageChange} required/>
+                <input type="file" onChange={(event) => {setimage_1(event.target.files[0])}}/>
               </Box>
             </Grid>
             <Grid item xs={4}>
@@ -293,9 +330,6 @@ function RentalListingForm(props) {
                     setPets(value);
                   }}
                   sx={{ flexWrap: "wrap" }}>
-                  <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
-                    No Preference
-                  </ToggleButton>
                   <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
@@ -318,9 +352,6 @@ function RentalListingForm(props) {
                     setAirCon(value);
                   }}
                   sx={{ flexWrap: "wrap" }}>
-                  <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
-                    No Preference
-                  </ToggleButton>
                   <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
@@ -392,7 +423,7 @@ function RentalListingForm(props) {
             />
 
             <StyledButton variant="pinkBtn" text="Preview Listing" width="20vw" />
-            <StyledButton variant="pinkBtn" text="Submit" bgcolor="#0045F1" width="20vw" />
+            <StyledButton variant="pinkBtn" text="Submit" bgcolor="#0045F1" width="20vw" onClick={HandleSubmit}/>
           </Stack>
         </Grid>
       </Grid>

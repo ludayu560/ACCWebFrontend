@@ -36,6 +36,7 @@ import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import HowItWorks from "./components/pages/HowItWorks";
 import RentalListingForm from "./components/pages/RentalListingForm";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const THEME = createTheme({

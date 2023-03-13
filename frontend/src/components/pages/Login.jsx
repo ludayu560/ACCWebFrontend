@@ -64,18 +64,12 @@ const Login = ({ login, isAuthenticated, user, listingAccount}) => {
     };
 
     if (isAuthenticated) {
-        console.log("login passed");
         if (user != null) {
             console.log(user);
             console.log(user.id)
             load_listing(user.id);
         }
     }
-    
-    if (listingAccount) {
-        console.log("listing account loaded");
-    }
-
 
     return (
         <div>
