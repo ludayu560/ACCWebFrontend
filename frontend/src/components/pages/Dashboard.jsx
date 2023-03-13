@@ -21,8 +21,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
   const data = ["1", "2", "3", "4"];
 
   function renderBGImage() {
-    {/*listingAccount.account_type*/}
-    switch (variant) {
+    switch (listingAccount.account_type) {
       case "tenant":
         return DashboardTenantBG;
       case "homeowner":
@@ -35,8 +34,6 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
   }
 
   function colorTheme() {
-    // variant = listingAccount[0].account_type
-    {/*listingAccount.account_type*/}
     switch (listingAccount.account_type) {
       case "tenant":
         return "#F83E7D";
@@ -49,10 +46,8 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
     }
   }
 
-  return listingAccount == null ? (<div>loading</div>) :(
+  return listingAccount == null ? (<div>loading</div>) : (
     <>
-      {/* <Mainbar /> */}
-      
       <Stack>
         <Box component="img" src={renderBGImage()}></Box>
         <Stack sx={{ mt: -72 }}>
