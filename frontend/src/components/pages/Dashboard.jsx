@@ -19,23 +19,38 @@ import { connect } from 'react-redux';
 function Dashboard({variant, isAuthenticated, listingAccount}) {
   
   const data = ["1", "2", "3", "4"];
-
-  function renderBGImage() {
-    {/*listingAccount.account_type*/}
-    // console.log(listingAccount)
-    // console.log(listingAccount[0])
-    // console.log(listingAccount[0].account_type)
-    // variant = listingAccount[0].account_type
+  const [curImage, setCurImage] = useState(DashboardOtherBG);
+  const [curColor, setColor] = useState("#C5265C");
+  if (listingAccount) {
     switch (listingAccount.account_type) {
       case "tenant":
-        return DashboardTenantBG;
+        setCurImage(DashboardTenantBG);
       case "homeowner":
-        return DashboardWHBG;
+        setCurImage(DashboardWHBG);
+        // return DashboardWHBG;
       case "propertyowner":
-        return DashboardPOBG;
+        setCurImage(DashboardPOBG);
+        // return DashboardPOBG;
       default:
-        return DashboardOtherBG;
+        setCurImage(DashboardOtherBG);
+        // return DashboardOtherBG;
     }
+    switch (listingAccount.account_type) {
+      case "tenant":
+        setColor("#F83E7D");
+      case "homeowner":
+        setColor("#0045F1");
+      case "propertyowner":
+        setColor("#113170");
+        // return "#113170";
+      default:
+        setColor("#C5265C");
+        return "#C5265C";
+    }
+
+  }
+  function renderBGImage() {
+    {/*listingAccount.account_type*/}
   }
 
   function colorTheme() {
@@ -57,7 +72,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
     <>
       {/* <Mainbar /> */}
       <Stack>
-        <Box component="img" src={renderBGImage()}></Box>
+        <Box component="img" src={curImage}></Box>
         <Stack sx={{ mt: -72 }}>
           <Stack pl={15} spr={"50vw"} pt={10}>
             <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
@@ -78,7 +93,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
 
         {/*Welcome Back*/}
         <Stack style={{ background: "white" }} p={8} pb={10} spacing={3} alignItems="center">
-          <Typography variant="h1" sx={{ textAlign: "center", color: colorTheme() }}>
+          <Typography variant="h1" sx={{ textAlign: "center", color: curColor }}>
             Welcome Back!
           </Typography>
           <Typography variant="h3" sx={{ textAlign: "center" }}>
@@ -88,8 +103,8 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
 
         {/*Welcome Back*/}
         <Stack style={{ background: "white" }} pb={20} spacing={5} alignItems="center">
-          <ECard variant="long" themeColor={colorTheme()}></ECard>
-          <ECard variant="long" themeColor={colorTheme()}></ECard>
+          <ECard variant="long" themeColor={curColor}></ECard>
+          <ECard variant="long" themeColor={curColor}></ECard>
         </Stack>
 
         {/*Saved Matches*/}
