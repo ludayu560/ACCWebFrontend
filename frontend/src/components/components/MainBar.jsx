@@ -50,7 +50,7 @@ function Mainbar({logout, setNav}) {
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/housemates">
               Housemates
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/listing">
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/listings">
               Listings
             </Button>
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/homeowners">

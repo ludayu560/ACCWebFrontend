@@ -31,10 +31,10 @@ const Layout = (props) => {
     // })
   }, []);
   
-  if (user) {
-    console.log(user)
-    props.load_listing(user.id);
-  }
+  // if (user) {
+  //   console.log(user)
+  //   props.load_listing(user.id);
+  // }
     return (
         <div>
             {/*once authenticated use <Mainbar /> */}
