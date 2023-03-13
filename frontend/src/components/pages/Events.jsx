@@ -28,6 +28,7 @@ import WbTwilightIcon from "@mui/icons-material/WbTwilight";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
 import ECard from "../components/ECard";
 import React, { useState } from "react";
+import axios from "axios";
 
 const CustomCheckboxStyles = {
   // the box color when unchecked
@@ -43,6 +44,40 @@ const CustomCheckboxStyles = {
 };
 
 function Events(props) {
+
+  const [image, setImage] = useState(null);
+  const [form, setForm] = useState({
+      "event_name": "",
+      "event_date_time": "2023-03-13T09:21:00Z",
+      "event_location": "",
+      "event_description": "",
+      "event_interested": 0,
+      "event_going": 0
+  })
+  
+  const onChange = e => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = (event) => {
+    const formData = new FormData();
+    formData.append('event_image', image);
+    formData.append('event_name', form.event_name);
+    formData.append('event_date_time', form.event_date_time);
+    formData.append('event_location', form.event_location);
+    formData.append('event_description', form.event_description);
+    formData.append('event_interested', 0);
+    formData.append('event_going', 0);
+
+    axios.post('http://127.0.0.1:8000/Events/', formData, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+    }).then((res) => {
+        return res;
+    }).catch((error) => {
+        return error.response;
+    });
+  }
+
   const data = ["1", "2", "3", "4", "5", "6"];
   const [onlineSelected, setOnlineSelected] = useState(true);
   const [inpersonSelected, setInpersonSelected] = useState(false);
@@ -287,14 +322,14 @@ function Events(props) {
         </Grid>
         <Grid item xs={6}>
           <Box bgcolor="gray" sx={{ height: "319px" }}>
-            Photo place here
+          <input type="file" onChange={(event) => {setImage(event.target.files[0])}}/>
           </Box>
         </Grid>
         <Grid item xs={6}>
           <Stack spacing={10}>
-            <TextField variant="filled" label="Event Title" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Time & Date" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Location" style={{ backgroundColor: "white" }} required fullWidth />
+            <TextField value={form.event_name} onChange={onChange} name={'event_name'} variant="filled" label="Event Title" style={{ backgroundColor: "white" }} required fullWidth />
+            <TextField value={form.event_date_time} onChange={onChange} name={'event_date_time'} variant="filled" label="Time & Date" style={{ backgroundColor: "white" }} required fullWidth />
+            <TextField value={form.event_location} onChange={onChange} name={'event_location'} variant="filled" label="Location" style={{ backgroundColor: "white" }} required fullWidth />
           </Stack>
         </Grid>
         <Grid item xs={4}>
@@ -306,6 +341,9 @@ function Events(props) {
         </Grid>
         <Grid item xs={8}>
           <TextField
+            value={form.event_description}
+            name={'event_description'}
+            onChange={onChange}
             id="filled-multiline-static"
             label="Description"
             multiline
@@ -327,7 +365,7 @@ function Events(props) {
               label="I agree to the Aisha Community Terms & Conditions"
               sx={{ mb: "2vw" }}
             />
-            <StyledButton variant="pinkBtn" text="Submit" />
+            <StyledButton variant="pinkBtn" text="Submit" onClick={handleSubmit}/>
           </Stack>
         </Grid>
       </Grid>
