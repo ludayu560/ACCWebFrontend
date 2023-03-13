@@ -39,7 +39,7 @@ export default function (state = initialState, action) {
         case LISTINGACCOUNT_LOAD_SUCCESS:
             return {
                 ...state,
-                listingAccount: payload
+                listingAccount: payload[0]
             }
         case AUTHENTICATED_SUCCESS:
             return {

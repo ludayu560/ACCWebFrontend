@@ -56,6 +56,7 @@ export const load_listing = (id) => async dispatch => {
 };
 
 export const load_user = () => async dispatch => {
+    console.log("load user called")
     if (localStorage.getItem('access')) {
         const config = {
             headers: {
