@@ -8,17 +8,27 @@ import { Route } from 'react-router-dom';
 import Landing from '../components/pages/Landing';
 import { Stack } from '@mui/system';
 import { Toolbar } from "@mui/material";
-
+import promise from 'redux-promise-middleware';
 //checkAuthenticated,
 const Layout = (props) => {
   const authenticated = true;
-
-  async function caller() {
-    const wait = await props.checkAuthenticated();
-    const hold = await props.load_user();
-  }
+  const appendItem = (item, dispatch) => new Promise((resolve, reject) => {
+    // do anything here
+    resolve();
+  })
+  
+  // async function caller() {
+  // }
   useEffect(() => {
-    caller()
+    new Promise((resolve, reject) => {
+      props.checkAuthenticated();
+      props.load_user();
+      // await dispatch();
+      // await dispatch();
+      setTimeout(() => {
+          resolve();
+      }, 2000);
+    })
   }, []);
 
     return (
