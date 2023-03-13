@@ -36,7 +36,6 @@ import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import HowItWorks from "./components/pages/HowItWorks";
 import RentalListingForm from "./components/pages/RentalListingForm";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const THEME = createTheme({
@@ -62,10 +61,7 @@ function App() {
               <Route exact path='/account-events' element={<MyAccountEvents />} />
               <Route exact path='/account-notifications' element={<MyAccountNotifications />} />
               <Route exact path='/account-profile' element={<MyAccountProfile />} />
-              <Route exact path='/account-tenant' element={<MyAccount name="tenant" />} />
-              <Route exact path='/account-homeowner' element={<MyAccount name="homeowner" />} />
-              <Route exact path='/account-propertyowner' element={<MyAccount name="propertyowner" />} />
-              <Route exact path='/account-others' element={<MyAccount name="others" />} />
+              <Route exact path='/account' element={<MyAccount/>} />
               <Route exact path='/howItWorks' element={<HowItWorks />} />
               <Route exact path='/contact' element={<Contact />} />
               <Route exact path='/about' element={<About />} />
