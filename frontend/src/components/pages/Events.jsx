@@ -27,8 +27,12 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import WbTwilightIcon from "@mui/icons-material/WbTwilight";
 import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
 import ECard from "../components/ECard";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 
 const CustomCheckboxStyles = {
   // the box color when unchecked
@@ -72,17 +76,38 @@ function Events(props) {
             "Content-Type": "multipart/form-data",
         },
     }).then((res) => {
-        return res;
+        console.log(res)
     }).catch((error) => {
         return error.response;
     });
+
   }
+
+  // const [foo, setFoo] = useState(null);
+
+  // if (!foo) {
+  //   axios.get('http://localhost:8000/ListingAccount/1/')
+  //   .then((response) => {
+  //     setFoo(response.data);
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //   });
+  // }
+  // if (foo) {
+  //   console.log(foo.notifications)
+  // }
+
+  // 
+
+
 
   const data = ["1", "2", "3", "4", "5", "6"];
   const [onlineSelected, setOnlineSelected] = useState(true);
   const [inpersonSelected, setInpersonSelected] = useState(false);
 
-  return (
+  // return foo === null ? (<div>loading</div>) : (
+    return (
     <div style={{ overflowX: "hidden" }}>
       <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw">
         <Stack pr={20} pt={10} pb={20}>
@@ -328,6 +353,9 @@ function Events(props) {
         <Grid item xs={6}>
           <Stack spacing={10}>
             <TextField value={form.event_name} onChange={onChange} name={'event_name'} variant="filled" label="Event Title" style={{ backgroundColor: "white" }} required fullWidth />
+            {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker />
+            </LocalizationProvider> */}
             <TextField value={form.event_date_time} onChange={onChange} name={'event_date_time'} variant="filled" label="Time & Date" style={{ backgroundColor: "white" }} required fullWidth />
             <TextField value={form.event_location} onChange={onChange} name={'event_location'} variant="filled" label="Location" style={{ backgroundColor: "white" }} required fullWidth />
           </Stack>

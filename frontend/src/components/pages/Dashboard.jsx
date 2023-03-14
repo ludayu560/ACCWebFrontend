@@ -46,7 +46,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
     }
   }
 
-  return listingAccount == null ? (<div>loading</div>) : (
+  return listingAccount === null ? (<div>loading</div>) : (
     <>
       <Stack>
         <Box component="img" src={renderBGImage()}></Box>
