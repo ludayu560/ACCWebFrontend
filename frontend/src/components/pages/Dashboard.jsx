@@ -72,8 +72,6 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
 
   return listingAccount == null ? (<div>loading</div>) :(
     <>
-      {/* <Mainbar /> */}
-      
       <Stack>
         <Box component="img" src={renderBGImage()}></Box>
         <Stack sx={{ mt: -72 }}>

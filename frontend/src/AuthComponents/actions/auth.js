@@ -16,13 +16,93 @@ import {
     ACTIVATION_FAIL,
     LISTINGACCOUNT_LOAD_SUCCESS,
     LISTINGACCOUNT_LOAD_FAIL,
-    // GOOGLE_AUTH_SUCCESS,
-    // GOOGLE_AUTH_FAIL,
-    // FACEBOOK_AUTH_SUCCESS,
-    // FACEBOOK_AUTH_FAIL,
+    LISTINGACCOUNT_CREATE_SUCCESS,
+    LISTINGACCOUNT_CREATE_FAIL,
+    LISTINGACCOUNT_UPDATE_SUCCESS,
+    LISTINGACCOUNT_UPDATE_FAIL,
     LOGOUT
 } from './types';
 
+export const create_listing_account = (username, type, first, last, email, phone, birth_date, location, 
+    age_range, occupation, news_consent, tell_us_about_yourself, profile_pic, banner_pic, display_pic_one, 
+    display_pic_two, display_pic_three, display_pic_five, user_id, traits, interest) => async dispatch => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'multipart/form-data'
+            }
+        };
+        // const body = JSON.stringify({ id });
+        // console.log(`id is ${id}`)
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}/ListingAccount/`, config);
+        const configJSON = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        };
+        for (let i = 0; i < traits.length(); i++) {
+            const body = JSON.stringify();
+            const res = axios.post(`${process.env.REACT_APP_API_URL}/PersonalTraits/`, body, configJSON);
+        }
+        
+        for (let i = 0; i < interest.length(); i++) {
+            const body = JSON.stringify();
+            const res = axios.post(`${process.env.REACT_APP_API_URL}/Interests/`, body, configJSON);
+        }
+        dispatch({
+            type: LISTINGACCOUNT_CREATE_SUCCESS,
+            payload: res.data
+        });
+    } catch (err) {
+        console.log(err)
+        dispatch({
+            type: LISTINGACCOUNT_CREATE_FAIL
+        });
+    }
+};
+
+
+export const update_listing_account = (listingAccount) => async dispatch => {
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Accept': 'multipart/form-data'
+            }
+        };
+        const body = JSON.stringify();
+
+        const res = await axios.put(`${process.env.REACT_APP_API_URL}/ListingAccount/${listingAccount.id}`, body, config);
+        const PTDeleteRES = await axios.delete(`${process.env.REACT_APP_API_URL}/PersonalTrait/${listingAccount.id}`, config);
+        const IDeleteRes = await axios.delete(`${process.env.REACT_APP_API_URL}/Interest/${listingAccount.id}`, config);
+        const configJSON = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        };
+        for (let i = 0; i < listingAccount.traits.length(); i++) {
+            const body = JSON.stringify();
+            const res = axios.post(`${process.env.REACT_APP_API_URL}/PersonalTraits/`, body, configJSON);
+        }
+        
+        for (let i = 0; i < listingAccount.interests.length(); i++) {
+            const body = JSON.stringify();
+            const res = axios.post(`${process.env.REACT_APP_API_URL}/Interests/`, body, configJSON);
+        }
+        dispatch({
+            type: LISTINGACCOUNT_UPDATE_SUCCESS,
+            payload: listingAccount
+        });
+    } catch (err) {
+        console.log(err)
+        dispatch({
+            type: LISTINGACCOUNT_UPDATE_FAIL
+        });
+    }
+};
 
 export const load_listing = (id) => async dispatch => {
 
@@ -30,17 +110,22 @@ export const load_listing = (id) => async dispatch => {
         try {
             const config = {
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Content-Type': 'multipart/form-data',
+                    'Accept': 'multipart/form-data'
                 }
             };
 
             // const body = JSON.stringify({ id });
             // console.log(`id is ${id}`)
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/accountList/${id}/`, config);
+            var res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/accountList/${id}/`, config);
+            var listingAccount = res.data[0];
+            const interests = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.id}/`, config);
+            const traits = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.id}/`, config);
+            listingAccount.traits = traits;
+            listingAccount.interests = interests;
             dispatch({
                 type: LISTINGACCOUNT_LOAD_SUCCESS,
-                payload: res.data
+                payload: listingAccount
             });
         } catch (err) {
             console.log(err)
