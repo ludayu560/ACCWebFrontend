@@ -6,6 +6,7 @@ import {List} from "@mui/material";
 import {ListItem} from "@mui/material";
 import {ListItemText} from "@mui/material";
 import StyledTextField from "./StyledTextField";
+import CustomTextField from "./CustomTextField";
 
 const LoginStyle = {
     '& .MuiOutlinedInput-root': {
@@ -41,7 +42,7 @@ function DropDownList(props) {
         <div>
             <List disablePadding>
                 <ListItem ListItemButton onClick={handleClickListItem} disablePadding>
-                    <TextField disabled placeholder={placeholder} value={options[selectedIndex]} sx={LoginStyle}/>
+                    <CustomTextField disabled variant="signup" placeholder={placeholder} value={options[selectedIndex]} style={{width:"25vw"}}/>
                 </ListItem>
             </List>
 
@@ -49,7 +50,7 @@ function DropDownList(props) {
                 {options.map((option, index) => (
                 <MenuItem
                     style={{
-                        width: '17vw'
+                        width: '25vw'
                     }}
                     key={option}
                     disabled={index === selectedIndex}

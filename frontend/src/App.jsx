@@ -36,7 +36,7 @@ import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import HowItWorks from "./components/pages/HowItWorks";
 import RentalListingForm from "./components/pages/RentalListingForm";
-import InputTextField from "./components/components/InputTextField";
+import CustomTextField from "./components/components/CustomTextField";
 
 function App() {
   const THEME = createTheme({
@@ -78,7 +78,7 @@ function App() {
               <Route exact path='/reset-password' element={<ResetPassword />} />
               <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
 
-              <Route exact path='/dev' element={<InputTextField/>} />
+              <Route exact path='/dev' element={<CustomTextField variant="signup" label="highest level prop call"/>} />
 
             </Routes>
           </Layout>
