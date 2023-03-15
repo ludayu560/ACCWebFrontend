@@ -67,8 +67,8 @@ const ResetPasswordConfirm = ({ reset_password_confirm }) => {
             onChange={(e) => onChange(e)}
             minLength="6"
           />
-        </form>
         <StyledButton variant="pinkBtn" text="Submit" type="submit" width='20vw'/>
+        </form>
         <Box component="img" src={MainLogo} width="5vw" pt={5} />
       </Stack>
     </div>

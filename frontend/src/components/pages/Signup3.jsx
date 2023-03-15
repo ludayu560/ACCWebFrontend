@@ -152,8 +152,10 @@ function Page3({
             </CustomTextField>
             <CustomTextField
               variant="signup"
-              onClick={(e) => setDOB(e.target.value)}
+              InputLabelProps={{ shrink: true }}
+              onChange={(e) => setDOB(e.target.value)}
               label="Date of Birth"
+              type="date"
               style={{width:'25vw'}}
             >
               {" "}
