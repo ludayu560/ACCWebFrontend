@@ -17,6 +17,10 @@ import {
     ACTIVATION_FAIL,
     LISTINGACCOUNT_LOAD_SUCCESS,
     LISTINGACCOUNT_LOAD_FAIL,
+    LISTINGACCOUNT_CREATE_SUCCESS,
+    LISTINGACCOUNT_CREATE_FAIL,
+    LISTINGACCOUNT_UPDATE_SUCCESS,
+    LISTINGACCOUNT_UPDATE_FAIL,
     LOGOUT
 } from '../actions/types';
 
@@ -35,7 +39,12 @@ export default function (state = initialState, action) {
         case LISTINGACCOUNT_LOAD_SUCCESS:
             return {
                 ...state,
-                listingAccount: payload[0]
+                listingAccount: payload
+            }
+        case LISTINGACCOUNT_UPDATE_SUCCESS:
+            return {
+                ...state,
+                listingAccount: payload
             }
         case AUTHENTICATED_SUCCESS:
             return {
@@ -98,6 +107,9 @@ export default function (state = initialState, action) {
         case PASSWORD_RESET_CONFIRM_FAIL:
         case ACTIVATION_SUCCESS:
         case LISTINGACCOUNT_LOAD_FAIL:
+        case LISTINGACCOUNT_CREATE_SUCCESS:
+        case LISTINGACCOUNT_CREATE_FAIL:
+        case LISTINGACCOUNT_UPDATE_FAIL:
         case ACTIVATION_FAIL:
             return {
                 ...state
