@@ -4,31 +4,9 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import HomePhoto from "../../assets/HomePhoto.png";
 import NavBar from "../components/NavBar";
 import StyledButton from "../components/StyledButton";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
-import ForestOutlinedIcon from "@mui/icons-material/ForestOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import HouseIcon from "@mui/icons-material/House";
-import PeopleIcon from "@mui/icons-material/People";
-import GppGoodIcon from "@mui/icons-material/GppGood";
-import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
-import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
-import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import Footer from "../components/Footer";
-import StyledPhoto from "../components/StyledPhoto";
 import SearchBar from "../components/SearchBar";
-import MyCalendar from "../components/Calendar";
-import StyledTextField from "../components/StyledTextField";
-import { TextField } from "@mui/material";
-import Mainbar from "../components/MainBar";
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
-import WbTwilightIcon from "@mui/icons-material/WbTwilight";
-import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
 import ECard from "../components/ECard";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import TenantHomePageBG from "../../assets/TenantHomePageBG.png";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import DashboardTenantBG from "../../assets/DashboardTenantBG.png";
@@ -43,8 +21,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
   const data = ["1", "2", "3", "4"];
 
   function renderBGImage() {
-    {/*listingAccount.account_type*/}
-    switch (variant) {
+    switch (listingAccount.account_type) {
       case "tenant":
         return DashboardTenantBG;
       case "homeowner":
@@ -57,8 +34,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
   }
 
   function colorTheme() {
-    {/*listingAccount.account_type*/}
-    switch (variant) {
+    switch (listingAccount.account_type) {
       case "tenant":
         return "#F83E7D";
       case "homeowner":
@@ -70,7 +46,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
     }
   }
 
-  return listingAccount == null ? (<div>loading</div>) :(
+  return listingAccount === null ? (<div>loading</div>) : (
     <>
       <Stack>
         <Box component="img" src={renderBGImage()}></Box>

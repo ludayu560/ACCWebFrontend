@@ -25,6 +25,8 @@ import SideNav from "../components/SideNav";
 import axios from "axios";
 import StyledButton from "../components/StyledButton";
 
+import { connect } from "react-redux";
+
 const api = axios.create({
   baseURL: `http://127.0.0.1:8000/ListingAccount/`,
 });
@@ -50,14 +52,11 @@ const CustomSliderStyles = {
   },
 };
 
-function MyAccount(props) {
+function MyAccount({ props, isAuthenticated, listingAccount }) {
   const [ageRange, setAge] = useState([25, 40]);
 
   function colorTheme() {
-    {
-      /*listingAccount.account_type*/
-    }
-    switch (props.name) {
+    switch (listingAccount.account_type) {
       case "tenant":
         return "#F83E7D";
       case "homeowner":
@@ -193,7 +192,9 @@ function MyAccount(props) {
       minWidth: "20vw",
     },
   };
-  return (
+  return listingAccount == null ? (
+    <div>loading</div>
+  ) : (
     <>
       <Grid container spacing={8}>
         <Grid item xs={12}>
@@ -211,7 +212,7 @@ function MyAccount(props) {
           </Grid>
           <Grid item xs={11}>
             <Typography variant="h2" align="center" color={colorTheme()} fontWeight="bold" marginTop={"2vmin"}>
-              {props.name}
+              {listingAccount.account_type}
             </Typography>
           </Grid>
           <Grid container xs={9} spacing={2}>
@@ -302,7 +303,7 @@ function MyAccount(props) {
             </Grid>
 
             {/*About youself */}
-            {props.name !== "propertyowner" && (
+            {listingAccount.account_type !== "propertyowner" && (
               <>
                 <Grid container xs={12}>
                   <Typography variant="h4" fontWeight={600} fontSize={40} marginTop={"2vmin"}>
@@ -343,7 +344,7 @@ function MyAccount(props) {
               </>
             )}
             {/*Preferences */}
-            {((props.name === "tenant") || (props.name === "homeowner")) && (
+            {(listingAccount.account_type === "tenant" || listingAccount.account_type === "homeowner") && (
               <>
                 <Grid container xs={12}>
                   <Typography variant="h4" fontWeight={600} fontSize={40} marginTop={"2vmin"}>
@@ -385,7 +386,7 @@ function MyAccount(props) {
             )}
 
             {/*Price Range Slider*/}
-            {props.name === "tenant" && (
+            {listingAccount.account_type === "tenant" && (
               <Grid container xs={12}>
                 <Typography variant="h4" fontWeight={600} fontSize={40} marginTop={"2vmin"}>
                   Price Range Preference
@@ -413,7 +414,7 @@ function MyAccount(props) {
             )}
 
             {/*Personality Traits and Interests */}
-            {((props.name === "tenant") || (props.name === "homeowner"))  && (
+            {(listingAccount.account_type === "tenant" || listingAccount.account_type === "homeowner") && (
               <Grid container marginTop={"2vmin"} spacing={1}>
                 <Grid item xs={6}>
                   <Grid container xs={12}>
@@ -490,7 +491,7 @@ function MyAccount(props) {
             )}
             {/*Save button */}
             <Grid container xs={12} justifyContent="center" mt={10}>
-              <StyledButton variant="pinkBtn" text="Save" bgcolor={colorTheme()} width="246px"/>
+              <StyledButton variant="pinkBtn" text="Save" bgcolor={colorTheme()} width="246px" />
             </Grid>
           </Grid>
         </Grid>
@@ -499,4 +500,9 @@ function MyAccount(props) {
   );
 }
 
-export default MyAccount;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  listingAccount: state.auth.listingAccount,
+});
+
+export default connect(mapStateToProps)(MyAccount);

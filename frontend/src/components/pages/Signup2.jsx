@@ -19,7 +19,17 @@ function Page2(props) {
     const onClickNextButton = () => {
         if (selected) {
             // send data from all fields as a JSON
+            // switch (selected) {
+            //     case :
+            // returnHook("tenant")
+            //     case :
+            // returnHook("homeowner")
+            //     case :
+            // returnHook("propertyowner")
+            //     default:
+            //   }
             returnHook(selected)
+            console.log(selected)
             // go next
             setPage(3)
         }

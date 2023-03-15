@@ -62,8 +62,17 @@ function Landing({isAuthenticated}) {
                 all women.
               </Typography>
               <Stack direction="row" spacing={20} px={10} alignItems="center">
-                <StyledButton variant="pinkBtn" text="Find Rental" />
-                <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" />
+                {isAuthenticated ? 
+                  <>
+                    <StyledButton variant="pinkBtn" text="Find Rental" link="/listings"/>
+                    <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/RLF"/>
+                  </>
+                : 
+                  <>
+                    <StyledButton variant="pinkBtn" text="Find Rental" link="/"/>
+                    <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/"/>
+                  </>
+                }
               </Stack>
             </Stack>
           </Grid>
