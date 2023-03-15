@@ -101,7 +101,7 @@ function Page3({
         .catch(function (error) {
           console.log(error);
         });
-      setPage(1);
+        window.location.replace("/");
     }
   };
 
@@ -131,7 +131,7 @@ function Page3({
               variant="signup"
               onClick={(e) => setLocation(e.target.value)}
               label="Location"
-              style={{width:'23vw'}}
+              style={{ width: "23vw" }}
             >
               {" "}
             </CustomTextField>
@@ -146,7 +146,7 @@ function Page3({
               variant="signup"
               onClick={(e) => setOccupation(e.target.value)}
               label="Occupation*"
-              style={{width:'23vw'}}
+              style={{ width: "23vw" }}
             >
               {" "}
             </CustomTextField>
@@ -156,7 +156,7 @@ function Page3({
               onChange={(e) => setDOB(e.target.value)}
               label="Date of Birth"
               type="date"
-              style={{width:'25vw'}}
+              style={{ width: "25vw" }}
             >
               {" "}
             </CustomTextField>

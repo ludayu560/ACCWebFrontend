@@ -78,7 +78,7 @@ function App() {
               <Route exact path='/reset-password' element={<ResetPassword />} />
               <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
 
-              <Route exact path='/dev' element={<CustomTextField variant="signup" label="highest level prop call"/>} />
+              <Route exact path='/dev' element={<CustomTextField label="highest level prop call"/>} />
 
             </Routes>
           </Layout>
