@@ -15,8 +15,9 @@ const ResetPassword = ({ reset_password }) => {
 
   const { email } = formData;
 
-  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -34,22 +35,23 @@ const ResetPassword = ({ reset_password }) => {
         <Typography variant="h3" fontWeight="bold" sx={{ color: "#0045F1" }}>
           Request Password Reset:
         </Typography>
-        <Typography variant="h5">Please enter your email to send a password reset request</Typography>
+        <Typography variant="h5">
+          Please enter your email to send a password reset request
+        </Typography>
         <form onSubmit={(e) => onSubmit(e)}>
           <TextField
             variant="filled"
-            label="Email"
             style={{ backgroundColor: "white" }}
             required
-            className="form-control"
+            label="Email"
             type="email"
             placeholder="Email"
             name="email"
             value={email}
             onChange={(e) => onChange(e)}
           />
+          <StyledButton variant="pinkBtn" text="Submit" type="submit"/>
         </form>
-        <StyledButton variant="pinkBtn" text="Submit" type="submit"/>
         <Box component="img" src={MainLogo} width="5vw" pt={5} />
       </Stack>
     </div>
