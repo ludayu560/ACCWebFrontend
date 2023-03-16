@@ -66,11 +66,12 @@ function Page3({
     }
   };
   if (signedup) {
-    const processedTraits = [];
-    const processedInterests = [];
-    traits.map((item) => processedTraits.append({ trait: item }));
-    interests.map((item) => processedInterests.append({ interest: item }));
-
+    // const processedTraits = [];
+    // const processedInterests = [];
+    // traits.map((item) => processedTraits.append({ trait: item }));
+    // interests.map((item) => processedInterests.append({ interest: item }));
+    console.log(interests, traits)
+    // new Date().toISOString().split('T')[0]
     const listingAccount = {
       username: pageValueOne.username,
       account_type: pageValueTwo,
@@ -78,7 +79,7 @@ function Page3({
       last_name: pageValueOne.lastName,
       email: pageValueOne.email,
       phone_number: "",
-      date_of_birth: null,
+      date_of_birth: dob,
       location: location,
       age_range: age,
       occupation: occupation,
@@ -90,14 +91,17 @@ function Page3({
       display_picture_two: null,
       display_picture_three: null,
       display_picture_four: null,
-      traits: processedTraits, // we need to process personal traits and interests before they are useable
-      interests: processedInterests,
+      // traits: traits, // we need to process personal traits and interests before they are useable
+      // interests: interests,
+      traits: ['Quiet'],
+      interests: ['Cooking'],
       notifications: [],
       user: user.id,
     }
     create_listing_account(listingAccount)
     setPage(1);
   }
+  // console.log(new Date(dob).toISOString().split('T')[0])
 
   return (
     <>

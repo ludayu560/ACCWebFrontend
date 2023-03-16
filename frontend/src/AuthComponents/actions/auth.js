@@ -290,6 +290,8 @@ export const load_property_listing = (id) => async dispatch => {
 //
 
 export const create_listing_account = (listingAccount) => async dispatch => {
+
+    console.log(listingAccount)
     try {
         const config = {
             headers: {
@@ -332,15 +334,17 @@ export const create_listing_account = (listingAccount) => async dispatch => {
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/ListingAccount/`, formData, config);
         const PersonalTraitsformData = new FormData();
         PersonalTraitsformData.append('trait', null);
-        PersonalTraitsformData.append('listing_account', listingAccount.id);
-        for (let i = 0; i < listingAccount.traits.length(); i++) {
+        PersonalTraitsformData.append('listing_account', listingAccount.user);
+
+        console.log(listingAccount.traits)
+        for (let i = 0; i < listingAccount.traits.length; i++) {
             PersonalTraitsformData.set('interest', listingAccount.traits[i]);
             const res = axios.post(`${process.env.REACT_APP_API_URL}/PersonalTraits/`, PersonalTraitsformData, config);
         }
         const interestformData = new FormData();
         interestformData.append('interest', null);
-        interestformData.append('listing_account', listingAccount.id);
-        for (let i = 0; i < listingAccount.interests.length(); i++) {
+        interestformData.append('listing_account', listingAccount.user);
+        for (let i = 0; i < listingAccount.interests.length; i++) {
             interestformData.set('interest', listingAccount.interests[i]);
             const res = axios.post(`${process.env.REACT_APP_API_URL}/Interests/`, interestformData, config);
         }
@@ -358,6 +362,7 @@ export const create_listing_account = (listingAccount) => async dispatch => {
 
 
 export const update_listing_account = (listingAccount) => async dispatch => {
+    
     try {
         const config = {
             headers: {
@@ -397,13 +402,13 @@ export const update_listing_account = (listingAccount) => async dispatch => {
             formData.append('display_picture_four', listingAccount.display_picture_four);
         }
         formData.append('user', listingAccount.user);
-        const res = await axios.put(`${process.env.REACT_APP_API_URL}/ListingAccount/${listingAccount.id}`, formData, config);
-        const PTDeleteRES = await axios.delete(`${process.env.REACT_APP_API_URL}/PersonalTrait/${listingAccount.id}`, config);
-        const IDeleteRes = await axios.delete(`${process.env.REACT_APP_API_URL}/Interest/${listingAccount.id}`, config);
-
+        const res = await axios.put(`${process.env.REACT_APP_API_URL}/ListingAccount/${listingAccount.user}`, formData, config);
+        const PTDeleteRES = await axios.delete(`${process.env.REACT_APP_API_URL}/PersonalTrait/${listingAccount.user}`, config);
+        const IDeleteRes = await axios.delete(`${process.env.REACT_APP_API_URL}/Interest/${listingAccount.user}`, config);
+        
         const PersonalTraitsformData = new FormData();
         PersonalTraitsformData.append('trait', null);
-        PersonalTraitsformData.append('listing_account', listingAccount.id);
+        PersonalTraitsformData.append('listing_account', listingAccount.user);
         for (let i = 0; i < listingAccount.traits.length(); i++) {
             PersonalTraitsformData.set('interest', listingAccount.traits[i]);
             const res = axios.post(`${process.env.REACT_APP_API_URL}/PersonalTraits/`, PersonalTraitsformData, config);
@@ -411,7 +416,7 @@ export const update_listing_account = (listingAccount) => async dispatch => {
 
         const interestformData = new FormData();
         interestformData.append('interest', null);
-        interestformData.append('listing_account', listingAccount.id);
+        interestformData.append('listing_account', listingAccount.user);
         for (let i = 0; i < listingAccount.interests.length(); i++) {
             interestformData.set('interest', listingAccount.interests[i]);
             const res = axios.post(`${process.env.REACT_APP_API_URL}/Interests/`, interestformData, config);
@@ -435,7 +440,7 @@ export const load_listing = (id) => async dispatch => {
             const config = {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Accept': 'multipart/form-data'
+                    'Accept': 'image/*'
                 }
             };
 
@@ -443,8 +448,8 @@ export const load_listing = (id) => async dispatch => {
             // console.log(`id is ${id}`)
             var res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/accountList/${id}/`, config);
             var listingAccount = res.data[0];
-            const interests = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.id}/`, config);
-            const traits = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.id}/`, config);
+            const interests = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.user}/`, config);
+            const traits = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.user}/`, config);
             listingAccount.traits = traits;
             listingAccount.interests = interests;
             dispatch({

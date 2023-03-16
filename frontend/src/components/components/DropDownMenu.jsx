@@ -43,21 +43,24 @@ function DropDownMenu(props) {
     setAnchorEl(event.currentTarget);
   };
 
-  // when the popup is closed, map options and traits to set the new returned value. set anchor to null
-  const handleClose = () => {
-    const temp = [];
-    traits.map((item, index) => (item ? temp.push(options[index]) : null));
-    setReturnTraits(temp);
-    hook(returnTraits);
-    setAnchorEl(null);
-  };
-
   // when the menu is OPEN, we manage the abstracted states of each of the checkboxes T/F
   const handleTraitOnChange = (event, position) => {
     const newTraits = traits.map((item, index) =>
       index === position ? !item : item
     );
     setTraits(newTraits);
+    console.log("newtraits:"+newTraits);
+    const temp = [];
+    traits.map((item, index) => (item ? temp.push(options[index]) : null));
+    console.log("returntraits:"+returnTraits);
+    setReturnTraits(temp);
+    hook(returnTraits);
+  };
+
+  // when the popup is closed, map options and traits to set the new returned value. set anchor to null
+  const handleClose = () => {
+
+    setAnchorEl(null);
   };
 
   return (
