@@ -22,8 +22,10 @@ import {
     LISTINGACCOUNT_UPDATE_FAIL,
     LOGOUT
 } from './types';
+import { listItemAvatarClasses } from '@mui/material';
 
 export const create_listing_account = (listingAccount) => async dispatch => {
+    console.log(listingAccount)
     try {
         const config = {
             headers: {
