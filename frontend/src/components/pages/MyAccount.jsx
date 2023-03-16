@@ -183,38 +183,38 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
   };
 
   // testing purposes only
-  listingAccount = {
-    id: 1,
-    username: "Lyuda",
-    account_type: "tenant",
-    first_name: "LuDa",
-    last_name: "Yu",
-    email: "ludayu560@gmail.com",
-    phone_number: null,
-    date_of_birth: "2023-03-03",
-    location: null,
-    age_range: null,
-    occupation: null,
-    news_consent: true,
-    tell_us_about_yourself: null,
-    profile_picture: null,
-    banner_picture: null,
-    display_picture_one: null,
-    display_picture_two: null,
-    display_picture_three: null,
-    display_picture_four: null,
-    user: 1,
-  };
+  // listingAccount = {
+  //   id: 1,
+  //   username: "Lyuda",
+  //   account_type: "tenant",
+  //   first_name: "LuDa",
+  //   last_name: "Yu",
+  //   email: "ludayu560@gmail.com",
+  //   phone_number: null,
+  //   date_of_birth: "2023-03-03",
+  //   location: null,
+  //   age_range: null,
+  //   occupation: null,
+  //   news_consent: true,
+  //   tell_us_about_yourself: null,
+  //   profile_picture: null,
+  //   banner_picture: null,
+  //   display_picture_one: null,
+  //   display_picture_two: null,
+  //   display_picture_three: null,
+  //   display_picture_four: null,
+  //   user: 1,
+  // };
 
   const [value, setValue] = useState([400, 4000]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  // return listingAccount === null ? (
-  //   <div>loading</div>
-  // ) :
-  return (
+  return listingAccount === null ? (
+    <div>loading</div>
+  ) :(
+  // return (
     <>
       <Grid container spacing={8}>
         <Grid item xs={12}>

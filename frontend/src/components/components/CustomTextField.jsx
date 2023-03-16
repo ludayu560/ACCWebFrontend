@@ -59,7 +59,7 @@ class MyAccount extends React.Component {
         inputProps={{
           sx: {
             "&:-webkit-autofill": {
-              WebkitBoxShadow: "0 0 0 1000px transparent inset",
+              WebkitBoxShadow: "0 0 0 1000px white inset",
             },
           },
         }}

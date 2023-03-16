@@ -451,8 +451,8 @@ export const load_listing = (id) => async dispatch => {
         try {
             const config = {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
-                    'Accept': 'image/*'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 }
             };
 
