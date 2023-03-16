@@ -105,7 +105,7 @@ export const load_event = (id) => async dispatch => {
         try {
             const config = {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 }
             };
@@ -270,8 +270,8 @@ export const load_property_listing = (id) => async dispatch => {
     try {
         const config = {
             headers: {
-                'Content-Type': 'multipart/form-data',
-                'Accept': 'multipart/form-data'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         };
 
