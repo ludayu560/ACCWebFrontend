@@ -32,6 +32,18 @@ import {
     EVENT_CREATE_FAIL,
     EVENT_UPDATE_SUCCESS,
     EVENT_UPDATE_FAIL,
+    EVENTS_CREATED_LOAD_SUCCESS,
+    EVENTS_CREATED_LOAD_FAIL,
+    FAVORITE_CREATE_SUCCESS,
+    FAVORITE_CREATE_FAIL,
+    CREATE_EVENT_ATTENDING_SUCCESS,
+    CREATE_EVENT_ATTENDING_FAIL,
+    GET_EVENTS_ATTENDING_SUCCESS,
+    GET_EVENTS_ATTENDING_FAIL,
+    CREATE_EVENT_INTERESTED_SUCCESS,
+    CREATE_EVENT_INTERESTED_FAIL,
+    GET_EVENTS_INTERESTED_SUCCESS,
+    GET_EVENTS_INTERESTED_FAIL,
     LOGOUT
 } from '../actions/types';
 
@@ -42,12 +54,41 @@ const initialState = {
     user: null,
     listingAccount: null,
     signedup: null,
-    currentPropertyListing: null
+    currentPropertyListing: null,
+    eventsCreated: null,
+    attending_events: null,
+    interested_events: null,
+    favorites: null,
 };
 
 export default function (state = initialState, action) {
     const { type, payload } = action
     switch (type) {
+        case GET_EVENTS_INTERESTED_SUCCESS:
+            return {
+                ...state,
+                interested_events: payload
+            };
+        case GET_EVENTS_ATTENDING_SUCCESS:
+            return {
+                ...state,
+                attending_events: payload,
+            }
+        case GET_FAVORITES_SUCCESS:
+            return {
+                ...state,
+                favorites: action.payload
+            };
+        case FAVORITES_LOAD_SUCCESS:
+            return {
+                ...state,
+                favorites: payload
+            };
+        case EVENTS_CREATED_LOAD_SUCCESS:
+            return {
+                ...state,
+                eventsCreated: payload
+            }
         case LISTINGACCOUNT_LOAD_SUCCESS:
             return {
                 ...state,
@@ -132,7 +173,11 @@ export default function (state = initialState, action) {
                 user: null,
                 listingAccount: null,
                 signedup: false,
-                currentPropertyListing: null
+                currentPropertyListing: null,
+                eventsCreated: null,
+                attending_events: null,
+                interested_events: null,
+                favorites: null
             }
         case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:
@@ -151,6 +196,16 @@ export default function (state = initialState, action) {
         case EVENT_CREATE_SUCCESS:
         case EVENT_CREATE_FAIL:
         case EVENT_UPDATE_FAIL:
+        case EVENTS_CREATED_LOAD_FAIL:
+        case FAVORITE_CREATE_SUCCESS:
+        case FAVORITE_CREATE_FAIL:
+        case FAVORITES_LOAD_FAIL:
+        case CREATE_EVENT_ATTENDING_SUCCESS:
+        case CREATE_EVENT_ATTENDING_FAIL:
+        case GET_EVENTS_ATTENDING_FAIL:
+        case CREATE_EVENT_INTERESTED_SUCCESS:
+        case CREATE_EVENT_INTERESTED_FAIL:
+        case GET_EVENTS_INTERESTED_FAIL:
         case ACTIVATION_FAIL:
             return {
                 ...state
