@@ -2,7 +2,6 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-
 // login set up
 import { Provider } from "react-redux";
 import store from "./AuthComponents/store";
@@ -52,35 +51,95 @@ function App() {
         <BrowserRouter>
           <Layout>
             <Routes>
-              <Route exact path='/listingdetails' element={<ListingDetails />} />
-              <Route exact path='/account-help' element={<MyAccountHelp />} />
-              <Route exact path='/account-mysubscriptions' element={<MyAccountMySubscriptions />} />
-              <Route exact path='/account-billsummary' element={<MyAccountBillSummary />} />
-              <Route exact path='/account-subscribe' element={<MyAccountSubscribe />} />
-              <Route exact path='/account-billing' element={<MyAccountBilling />} />
-              <Route exact path='/account-favourites' element={<MyAccountFavourites />} />
-              <Route exact path='/account-settings' element={<MyAccountSettings />} />
-              <Route exact path='/account-events' element={<MyAccountEvents />} />
-              <Route exact path='/account-notifications' element={<MyAccountNotifications />} />
-              <Route exact path='/account-profile' element={<MyAccountProfile />} />
-              <Route exact path='/account' element={<MyAccount/>} />
-              <Route exact path='/howItWorks' element={<HowItWorks />} />
-              <Route exact path='/contact' element={<Contact />} />
-              <Route exact path='/about' element={<About />} />
-              <Route exact path='/dashboard' element={<Dashboard variant="propertyOwner" />} />
-              <Route exact path='/RLF' element={<RentalListingForm/>} />
-              <Route exact path='/listings' element={<Listing />} />
-              <Route exact path='/housemates' element={<Housemates />} />
-              <Route exact path='/homeowners' element={<Homeowners />} />
-              <Route exact path='/tenanthome' element={<TenantHome />} />
-              <Route exact path='/events' element={<Events />} />
-              <Route exact path='/' element={<Landing />} />
-              <Route exact path='/activate/:uid/:token' element={<Activate />} />
-              <Route exact path='/reset-password' element={<ResetPassword />} />
-              <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
+              <Route
+                exact
+                path="/listingdetails"
+                element={<ListingDetails />}
+              />
+              <Route exact path="/account-help" element={<MyAccountHelp />} />
+              <Route
+                exact
+                path="/account-mysubscriptions"
+                element={<MyAccountMySubscriptions />}
+              />
+              <Route
+                exact
+                path="/account-billsummary"
+                element={<MyAccountBillSummary />}
+              />
+              <Route
+                exact
+                path="/account-subscribe"
+                element={<MyAccountSubscribe />}
+              />
+              <Route
+                exact
+                path="/account-billing"
+                element={<MyAccountBilling />}
+              />
+              <Route
+                exact
+                path="/account-favourites"
+                element={<MyAccountFavourites />}
+              />
+              <Route
+                exact
+                path="/account-settings"
+                element={<MyAccountSettings />}
+              />
+              <Route
+                exact
+                path="/account-events"
+                element={<MyAccountEvents />}
+              />
+              <Route
+                exact
+                path="/account-notifications"
+                element={<MyAccountNotifications />}
+              />
+              <Route
+                exact
+                path="/account-profile"
+                element={<MyAccountProfile />}
+              />
+              <Route exact path="/account" element={<MyAccount />} />
+              <Route exact path="/howItWorks" element={<HowItWorks />} />
+              <Route exact path="/contact" element={<Contact />} />
+              <Route exact path="/about" element={<About />} />
+              <Route
+                exact
+                path="/dashboard"
+                element={<Dashboard variant="propertyOwner" />}
+              />
+              <Route exact path="/RLF" element={<RentalListingForm />} />
+              <Route exact path="/listings" element={<Listing />} />
+              <Route exact path="/housemates" element={<Housemates />} />
+              <Route exact path="/homeowners" element={<Homeowners />} />
+              <Route exact path="/tenanthome" element={<TenantHome />} />
+              <Route exact path="/events" element={<Events />} />
+              <Route exact path="/" element={<Landing />} />
+              <Route
+                exact
+                path="/activate/:uid/:token"
+                element={<Activate />}
+              />
+              <Route exact path="/reset-password" element={<ResetPassword />} />
+              <Route
+                exact
+                path="/password/reset/confirm/:uid/:token"
+                element={<ResetPasswordConfirm />}
+              />
 
-              <Route exact path='/dev' element={<ImageUpload></ImageUpload>} />
-
+              <Route
+                exact
+                path="/dev"
+                element={
+                  <>
+                    <ImageUpload></ImageUpload>
+                    <CustomTextField variant="myaccount"></CustomTextField>
+                  </>
+                }
+              />
             </Routes>
           </Layout>
         </BrowserRouter>

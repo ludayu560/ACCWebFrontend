@@ -1,6 +1,5 @@
 import {
   Container,
-  Button,
   Grid,
   Box,
   FormGroup,
@@ -8,24 +7,20 @@ import {
   Checkbox,
   MenuItem,
   Typography,
-  Stack,
-  Paper,
   TextField,
-  ImageListItem,
   Divider,
   Slider,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import RectangleOne from "../../assets/Rectangle1.svg";
-import AccountContent from "../../assets/AccountContent.svg";
-import NavBar from "../components/NavBar";
 import SideNav from "../components/SideNav";
 
 import axios from "axios";
 import StyledButton from "../components/StyledButton";
 
 import { connect } from "react-redux";
+import ImageUpload from "../components/ImageUploadComponent";
+import CustomTextField from "../components/CustomTextField";
 
 const api = axios.create({
   baseURL: `http://127.0.0.1:8000/ListingAccount/`,
@@ -88,8 +83,13 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
   ];
 
   const personalityTraits =
-    "Extroverted Outgoing Creative Private Quiet Introverted Open Analytical Laid-Back Adventurous".split(" ");
-  const interests = "Gardening Hiking Reading Puzzles Yoga Cooking Music Art Sports Cars".split(" ");
+    "Extroverted Outgoing Creative Private Quiet Introverted Open Analytical Laid-Back Adventurous".split(
+      " "
+    );
+  const interests =
+    "Gardening Hiking Reading Puzzles Yoga Cooking Music Art Sports Cars".split(
+      " "
+    );
 
   const [field_1, setField_1] = useState("");
   const [field_2, setField_2] = useState("");
@@ -98,16 +98,26 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
   const [field_5, setField_5] = useState("");
   const [field_6, setField_6] = useState("");
   const [field_7, setField_7] = useState("");
+  const [field_8, setField_8] = useState("");
 
-  const [traitsCheckedState, setTraitsCheckedState] = useState(new Array(personalityTraits.length).fill(false));
-  const [interestsCheckedState, setInterestsCheckedState] = useState(new Array(interests.length).fill(false));
+  const [traitsCheckedState, setTraitsCheckedState] = useState(
+    new Array(personalityTraits.length).fill(false)
+  );
+  const [interestsCheckedState, setInterestsCheckedState] = useState(
+    new Array(interests.length).fill(false)
+  );
 
   const handleTraitOnChange = (position) => {
-    const updatedCheckedState = traitsCheckedState.map((item, index) => (index === position ? !item : item));
+    const updatedCheckedState = traitsCheckedState.map((item, index) =>
+      index === position ? !item : item
+    );
     setTraitsCheckedState(updatedCheckedState);
   };
+
   const handleInterestOnChange = (position) => {
-    const updatedCheckedState = interestsCheckedState.map((item, index) => (index === position ? !item : item));
+    const updatedCheckedState = interestsCheckedState.map((item, index) =>
+      index === position ? !item : item
+    );
     setInterestsCheckedState(updatedCheckedState);
   };
 
@@ -119,8 +129,6 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     setField_5("");
     setField_6("");
     setField_7("");
-    // setTraitsCheckedState(new Array(personalityTraits.length).fill(false))
-    // setInterestsCheckedState(new Array(interests.length).fill(false))
   };
 
   const handleSubmit = () => {
@@ -138,19 +146,6 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     }
     // Submit here
     const accountFields = {
-      username: "",
-      first_name: "",
-      last_name: "",
-      email: "",
-      phone_number: "",
-      date_of_birth: null,
-      location: "",
-      age_range: "",
-      tell_us_about_yourself: "",
-      personal_traits: [],
-      interests: [],
-    };
-    accountFields = {
       id: 1,
       username: "George",
       account_type: "tenant",
@@ -162,12 +157,18 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
       location: "Toronto",
       age_range: "19-21",
       tell_us_about_yourself: "ahhhh",
-      profile_picture: "http://127.0.0.1:8000/media/profile_picture/43dfc696e92214af5868b2421604f4cd.jpg",
-      banner_picture: "http://127.0.0.1:8000/media/banner_picture/43dfc696e92214af5868b2421604f4cd.jpg",
-      display_picture_one: "http://127.0.0.1:8000/media/display_picture_one/43dfc696e92214af5868b2421604f4cd.jpg",
-      display_picture_two: "http://127.0.0.1:8000/media/display_picture_two/43dfc696e92214af5868b2421604f4cd.jpg",
-      display_picture_three: "http://127.0.0.1:8000/media/display_picture_three/43dfc696e92214af5868b2421604f4cd.jpg",
-      display_picture_four: "http://127.0.0.1:8000/media/display_picture_four/43dfc696e92214af5868b2421604f4cd.jpg",
+      profile_picture:
+        "http://127.0.0.1:8000/media/profile_picture/43dfc696e92214af5868b2421604f4cd.jpg",
+      banner_picture:
+        "http://127.0.0.1:8000/media/banner_picture/43dfc696e92214af5868b2421604f4cd.jpg",
+      display_picture_one:
+        "http://127.0.0.1:8000/media/display_picture_one/43dfc696e92214af5868b2421604f4cd.jpg",
+      display_picture_two:
+        "http://127.0.0.1:8000/media/display_picture_two/43dfc696e92214af5868b2421604f4cd.jpg",
+      display_picture_three:
+        "http://127.0.0.1:8000/media/display_picture_three/43dfc696e92214af5868b2421604f4cd.jpg",
+      display_picture_four:
+        "http://127.0.0.1:8000/media/display_picture_four/43dfc696e92214af5868b2421604f4cd.jpg",
       personal_traits: [],
       interests: [],
       notifications: [],
@@ -181,26 +182,48 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     handleReset();
   };
 
-  const styleTextField = {
-    background: "#E3E7EF",
-    borderRadius: "25px",
+  // testing purposes only
+  listingAccount = {
+    id: 1,
+    username: "Lyuda",
+    account_type: "tenant",
+    first_name: "LuDa",
+    last_name: "Yu",
+    email: "ludayu560@gmail.com",
+    phone_number: null,
+    date_of_birth: "2023-03-03",
+    location: null,
+    age_range: null,
+    occupation: null,
+    news_consent: true,
+    tell_us_about_yourself: null,
+    profile_picture: null,
+    banner_picture: null,
+    display_picture_one: null,
+    display_picture_two: null,
+    display_picture_three: null,
+    display_picture_four: null,
+    user: 1,
   };
-  const styleInput = {
-    style: {
-      color: "#737373FA",
-      borderRadius: "25px",
-      minWidth: "20vw",
-    },
+
+  const [value, setValue] = useState([400, 4000]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
-  return listingAccount == null ? (
-    <div>loading</div>
-  ) : (
+  // return listingAccount === null ? (
+  //   <div>loading</div>
+  // ) :
+  return (
     <>
       <Grid container spacing={8}>
         <Grid item xs={12}>
           <Typography variant="h2" padding={"3vw"} fontWeight={700}>
             <b>My Account</b>
-            <Divider variant="middle" sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }} />
+            <Divider
+              variant="middle"
+              sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }}
+            />
           </Typography>
         </Grid>
         <Grid item xs={3}>
@@ -208,20 +231,44 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
         </Grid>
         <Grid item xs={9}>
           <Grid item xs={12}>
-            <Box component="img" src={RectangleOne} />
+            <ImageUpload width="60vw" height="30vh" wide={true} />
+            <Box position={"relative"}>
+              <Box position={"absolute"} left={"50vw"} bottom={"-5vh"}>
+                <ImageUpload width="150px" />
+              </Box>
+            </Box>
           </Grid>
+
           <Grid item xs={11}>
-            <Typography variant="h2" align="center" color={colorTheme()} fontWeight="bold" marginTop={"2vmin"}>
+            <Typography
+              variant="h2"
+              align="center"
+              color={colorTheme()}
+              fontWeight="bold"
+              marginTop={"2vmin"}
+            >
               {listingAccount.account_type}
             </Typography>
           </Grid>
+
           <Grid container xs={9} spacing={2}>
             <Grid item xs={12}>
-              <Typography variant="h4" fontWeight={600} fontSize={40} marginTop={"2vmin"}>
+              <Typography
+                variant="h4"
+                fontWeight={600}
+                fontSize={40}
+                marginTop={"2vmin"}
+              >
                 Personal Details
                 <Divider
                   variant="left"
-                  sx={{ width: "7vw", border: "2px solid", color: colorTheme(), opacity: 100, marginY: "2vmin" }}
+                  sx={{
+                    width: "7vw",
+                    border: "2px solid",
+                    color: colorTheme(),
+                    opacity: 100,
+                    marginY: "2vmin",
+                  }}
                 />
               </Typography>
               <Typography variant="h5" marginTop={"2vmin"}>
@@ -231,82 +278,138 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
 
             <Grid container item spacing={4} xs={6}>
               <Grid item xs={12}>
-                <TextField
-                  onChange={(e) => setField_1(e.target.value)}
+                <CustomTextField
                   required
-                  value={field_1}
-                  placeholder="Username"
-                  style={styleTextField}
-                  InputProps={styleInput}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
                   onChange={(e) => setField_2(e.target.value)}
-                  required
-                  value={field_2}
-                  placeholder="Full Name"
-                  style={styleTextField}
-                  InputProps={styleInput}
-                />
+                  label="First Name"
+                  variant="myaccount"
+                ></CustomTextField>
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <CustomTextField
+                  required
+                  onChange={(e) => setField_2(e.target.value)}
+                  label="Last Name"
+                  variant="myaccount"
+                ></CustomTextField>
+              </Grid>
+              <Grid item xs={12}>
+                <CustomTextField
+                  required
+                  onChange={(e) => setField_1(e.target.value)}
+                  label="Username"
+                  variant="myaccount"
+                ></CustomTextField>
+              </Grid>
+              <Grid item xs={12}>
+                <CustomTextField
+                  required
                   onChange={(e) => setField_3(e.target.value)}
-                  required
-                  value={field_3}
-                  placeholder="Email"
-                  style={styleTextField}
-                  InputProps={styleInput}
-                />
+                  label="Email Address"
+                  variant="myaccount"
+                ></CustomTextField>
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <CustomTextField
+                  required
                   onChange={(e) => setField_4(e.target.value)}
-                  required
-                  value={field_4}
-                  placeholder="Phone"
-                  style={styleTextField}
-                  InputProps={styleInput}
-                />
+                  label="Phone"
+                  variant="myaccount"
+                ></CustomTextField>
               </Grid>
               <Grid item xs={12}>
-                <TextField
+                <CustomTextField
+                  required
                   onChange={(e) => setField_5(e.target.value)}
-                  required
-                  value={field_5}
-                  placeholder="Location"
-                  style={styleTextField}
-                  InputProps={styleInput}
-                />
+                  label="Location"
+                  variant="myaccount"
+                ></CustomTextField>
               </Grid>
+
               <Grid item xs={12}>
-                <TextField
+                <CustomTextField
+                  sx={{
+                    width: "20vw",
+                    input: {
+                      color: "black",
+                      background: "#E3E7EF",
+                      borderRadius: "30vmax",
+                    },
+                    "& label": { paddingLeft: (theme) => theme.spacing(2) },
+                    "& input": {
+                      paddingLeft: (theme) => theme.spacing(3.5),
+                      border: "0px",
+                    },
+                    "& fieldset": {
+                      paddingLeft: (theme) => theme.spacing(2.5),
+                      borderRadius: "30vmax",
+                    },
+                  }}
                   onChange={(e) => setField_6(e.target.value)}
                   required
                   select
                   value={field_6}
-                  placeholder="Age Range"
-                  style={styleTextField}
-                  InputProps={styleInput}>
+                  label="Age Range"
+                  style={{
+                    background: "#E3E7EF",
+                    borderRadius: "25px",
+                  }}
+                  InputProps={{
+                    sx: {
+                      ".MuiOutlinedInput-notchedOutline": {
+                        border: "none",
+                      },
+                    },
+                    style: {
+                      color: "#737373FA",
+                      borderRadius: "25px",
+                      minWidth: "20vw",
+                    },
+                  }}
+                >
                   {ranges.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
                       {option.value}
                     </MenuItem>
                   ))}
-                </TextField>
+                </CustomTextField>
+              </Grid>
+
+              <Grid item xs={12}>
+                <CustomTextField
+                  required
+                  onChange={(e) => setField_5(e.target.value)}
+                  label="Occupation"
+                  variant="myaccount"
+                ></CustomTextField>
               </Grid>
             </Grid>
 
             <Grid item xs={6} sx={{ minHeight: "40vh" }}>
-              <img src={AccountContent} />
+              <ImageUpload />
+              <Grid container spacing={2} marginTop={"10px"}>
+                <Grid item>
+                  <ImageUpload width="150px" />
+                </Grid>
+                <Grid item>
+                  <ImageUpload width="150px" />
+                </Grid>
+                <Grid item>
+                  <ImageUpload width="150px" />
+                </Grid>
+              </Grid>
             </Grid>
 
             {/*About youself */}
             {listingAccount.account_type !== "propertyowner" && (
               <>
                 <Grid container xs={12}>
-                  <Typography variant="h4" fontWeight={600} fontSize={40} marginTop={"2vmin"}>
+                  <Typography
+                    variant="h4"
+                    fontWeight={600}
+                    fontSize={40}
+                    marginTop={"2vmin"}
+                  >
                     About Yourself
                     <Divider
                       variant="left"
@@ -338,16 +441,27 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                         minWidth: "20vw",
                         minHeight: "20vh",
                       },
+                      sx: {
+                        ".MuiOutlinedInput-notchedOutline": {
+                          border: "none",
+                        },
+                      },
                     }}
                   />
                 </Grid>
               </>
             )}
             {/*Preferences */}
-            {(listingAccount.account_type === "tenant" || listingAccount.account_type === "homeowner") && (
+            {(listingAccount.account_type === "tenant" ||
+              listingAccount.account_type === "homeowner") && (
               <>
                 <Grid container xs={12}>
-                  <Typography variant="h4" fontWeight={600} fontSize={40} marginTop={"2vmin"}>
+                  <Typography
+                    variant="h4"
+                    fontWeight={600}
+                    fontSize={40}
+                    marginTop={"2vmin"}
+                  >
                     Preferences
                     <Divider
                       variant="left"
@@ -379,6 +493,11 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                         minWidth: "20vw",
                         minHeight: "20vh",
                       },
+                      sx: {
+                        ".MuiOutlinedInput-notchedOutline": {
+                          border: "none",
+                        },
+                      },
                     }}
                   />
                 </Grid>
@@ -388,25 +507,35 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
             {/*Price Range Slider*/}
             {listingAccount.account_type === "tenant" && (
               <Grid container xs={12}>
-                <Typography variant="h4" fontWeight={600} fontSize={40} marginTop={"2vmin"}>
+                <Typography
+                  variant="h4"
+                  fontWeight={600}
+                  fontSize={40}
+                  marginTop={"2vmin"}
+                >
                   Price Range Preference
                   <Divider
                     variant="left"
-                    sx={{ width: "7vw", border: "2px solid #F83E7D", opacity: 100, marginY: "2vmin" }}
+                    sx={{
+                      width: "7vw",
+                      border: "2px solid #F83E7D",
+                      opacity: 100,
+                      marginY: "2vmin",
+                    }}
                   />
                 </Typography>
                 <Container>
-                  <Typography marginBottom={"3vh"} gutterBottom fontWeight={700}>
-                    PLEASE REMAKE THIS SLIDER WITH PROPER STATE!
-                  </Typography>
                   <Slider
-                    value={ageRange}
-                    onChange={(event, age) => {
-                      setAge(age);
-                    }}
-                    valueLabelDisplay="on"
-                    max={100}
-                    min={16}
+                    value={value}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                    min={400}
+                    max={5000}
+                    step={100}
+                    marks={[
+                      { value: 400, label: "$400" },
+                      { value: 5000, label: "$4000+" },
+                    ]}
                     sx={CustomSliderStyles}
                   />
                 </Container>
@@ -414,7 +543,8 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
             )}
 
             {/*Personality Traits and Interests */}
-            {(listingAccount.account_type === "tenant" || listingAccount.account_type === "homeowner") && (
+            {(listingAccount.account_type === "tenant" ||
+              listingAccount.account_type === "homeowner") && (
               <Grid container marginTop={"2vmin"} spacing={1}>
                 <Grid item xs={6}>
                   <Grid container xs={12}>
@@ -443,10 +573,14 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                               control={
                                 <Checkbox
                                   onChange={() => handleTraitOnChange(index)}
-                                  sx={{ "&.Mui-checked": { color: colorTheme() } }}
+                                  sx={{
+                                    "&.Mui-checked": { color: colorTheme() },
+                                  }}
                                 />
                               }
-                              label={<Typography width="8vw">{name}</Typography>}
+                              label={
+                                <Typography width="8vw">{name}</Typography>
+                              }
                             />
                           );
                         })}
@@ -478,8 +612,14 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                           return (
                             <FormControlLabel
                               item
-                              control={<Checkbox onChange={() => handleTraitOnChange(index)} />}
-                              label={<Typography width="8vw">{name}</Typography>}
+                              control={
+                                <Checkbox
+                                  onChange={() => handleTraitOnChange(index)}
+                                />
+                              }
+                              label={
+                                <Typography width="8vw">{name}</Typography>
+                              }
                             />
                           );
                         })}
@@ -491,7 +631,12 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
             )}
             {/*Save button */}
             <Grid container xs={12} justifyContent="center" mt={10}>
-              <StyledButton variant="pinkBtn" text="Save" bgcolor={colorTheme()} width="246px" />
+              <StyledButton
+                variant="pinkBtn"
+                text="Save"
+                bgcolor={colorTheme()}
+                width="246px"
+              />
             </Grid>
           </Grid>
         </Grid>

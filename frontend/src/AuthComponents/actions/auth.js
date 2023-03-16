@@ -175,7 +175,7 @@ export const load_listing = (id) => async dispatch => {
             const config = {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Accept': 'multipart/form-data'
+                    'Accept': 'image/*'
                 }
             };
 

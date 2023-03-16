@@ -13,6 +13,7 @@ class SignUp extends React.Component {
     return (
       <TextField
         sx={{
+          width: "15vw",
           input: {
             color: "black",
           },
@@ -27,7 +28,7 @@ class SignUp extends React.Component {
         inputProps={{
           sx: {
             "&:-webkit-autofill": {
-              WebkitBoxShadow: "0 0 0 1000px white inset",
+              WebkitBoxShadow: "0 0 0 1000px transparent inset",
             },
           },
         }}
@@ -42,6 +43,7 @@ class MyAccount extends React.Component {
     return (
       <TextField
         sx={{
+          width: "20vw",
           input: {
             color: "black",
             background: "#E3E7EF",
@@ -57,7 +59,7 @@ class MyAccount extends React.Component {
         inputProps={{
           sx: {
             "&:-webkit-autofill": {
-              WebkitBoxShadow: "0 0 0 1000px grey inset",
+              WebkitBoxShadow: "0 0 0 1000px transparent inset",
             },
           },
         }}
@@ -81,8 +83,9 @@ export default function CustomTextField(props) {
   const { variant, ...rest } = props;
   return (
     <div>
-      {variant ? null : <MyAccount {...rest} />}
+      {variant ? null : <TextField {...rest} />}
       {variant === "signup" ? <SignUp {...rest} /> : null}
+      {variant === "myaccount" ? <MyAccount {...rest} /> : null}
     </div>
   );
 }
