@@ -46,12 +46,24 @@ export const create_listing_account = (listingAccount) => async dispatch => {
         formData.append('occupation', listingAccount.occupation);
         formData.append('news_consent', listingAccount.news_consent);
         formData.append('tell_us_about_yourself', listingAccount.tell_us_about_yourself);
-        formData.append('profile_picture', listingAccount.profile_picture);
-        formData.append('banner_picture', listingAccount.banner_picture);
-        formData.append('display_picture_one', listingAccount.display_picture_one);
-        formData.append('display_picture_two', listingAccount.display_picture_two);
-        formData.append('display_picture_three', listingAccount.display_picture_three);
-        formData.append('display_picture_four', listingAccount.display_picture_four);
+        if (listingAccount.profile_picture) {
+            formData.append('profile_picture', listingAccount.profile_picture);
+        }
+        if (listingAccount.banner_picture) {
+            formData.append('banner_picture', listingAccount.banner_picture);
+        }
+        if (listingAccount.display_picture_one) {
+            formData.append('display_picture_one', listingAccount.display_picture_one);
+        }
+        if (listingAccount.display_picture_two) {
+            formData.append('display_picture_two', listingAccount.display_picture_two);
+        }
+        if (listingAccount.display_picture_three) {
+            formData.append('display_picture_three', listingAccount.display_picture_three);
+        }
+        if (listingAccount.display_picture_four) {
+            formData.append('display_picture_four', listingAccount.display_picture_four);
+        }
         formData.append('user', listingAccount.user);
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/ListingAccount/`, formData, config);
         const PersonalTraitsformData = new FormData();
@@ -102,12 +114,24 @@ export const update_listing_account = (listingAccount) => async dispatch => {
         formData.append('occupation', listingAccount.occupation);
         formData.append('news_consent', listingAccount.news_consent);
         formData.append('tell_us_about_yourself', listingAccount.tell_us_about_yourself);
-        formData.append('profile_picture', listingAccount.profile_picture);
-        formData.append('banner_picture', listingAccount.banner_picture);
-        formData.append('display_picture_one', listingAccount.display_picture_one);
-        formData.append('display_picture_two', listingAccount.display_picture_two);
-        formData.append('display_picture_three', listingAccount.display_picture_three);
-        formData.append('display_picture_four', listingAccount.display_picture_four);
+        if (listingAccount.profile_picture) {
+            formData.append('profile_picture', listingAccount.profile_picture);
+        }
+        if (listingAccount.banner_picture) {
+            formData.append('banner_picture', listingAccount.banner_picture);
+        }
+        if (listingAccount.display_picture_one) {
+            formData.append('display_picture_one', listingAccount.display_picture_one);
+        }
+        if (listingAccount.display_picture_two) {
+            formData.append('display_picture_two', listingAccount.display_picture_two);
+        }
+        if (listingAccount.display_picture_three) {
+            formData.append('display_picture_three', listingAccount.display_picture_three);
+        }
+        if (listingAccount.display_picture_four) {
+            formData.append('display_picture_four', listingAccount.display_picture_four);
+        }
         formData.append('user', listingAccount.user);
         const res = await axios.put(`${process.env.REACT_APP_API_URL}/ListingAccount/${listingAccount.id}`, formData, config);
         const PTDeleteRES = await axios.delete(`${process.env.REACT_APP_API_URL}/PersonalTrait/${listingAccount.id}`, config);
