@@ -37,6 +37,7 @@ import Contact from "./components/pages/Contact";
 import HowItWorks from "./components/pages/HowItWorks";
 import RentalListingForm from "./components/pages/RentalListingForm";
 import CustomTextField from "./components/components/CustomTextField";
+import ImageUpload from "./components/components/ImageUploadComponent";
 
 function App() {
   const THEME = createTheme({
@@ -78,7 +79,7 @@ function App() {
               <Route exact path='/reset-password' element={<ResetPassword />} />
               <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
 
-              <Route exact path='/dev' element={<CustomTextField label="highest level prop call"/>} />
+              <Route exact path='/dev' element={<ImageUpload></ImageUpload>} />
 
             </Routes>
           </Layout>
