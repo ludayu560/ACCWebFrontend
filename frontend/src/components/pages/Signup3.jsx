@@ -64,40 +64,42 @@ function Page3({
         pageValueOne.passwordConfirm
       );
     }
-    if (signedup) {
-      const processedTraits = [];
-      const processedInterests = [];
-      traits.map((item) => processedTraits.append({ trait: item }));
-      interests.map((item) => processedInterests.append({ interest: item }));
-
-      const listingAccount = {
-        username: pageValueOne.username,
-        account_type: pageValueTwo,
-        first_name: pageValueOne.firstName,
-        last_name: pageValueOne.lastName,
-        email: pageValueOne.email,
-        phone_number: "",
-        date_of_birth: null,
-        location: location,
-        age_range: age,
-        occupation: occupation,
-        news_consent: true,
-        tell_us_about_yourself: "",
-        profile_picture: null,
-        banner_picture: null,
-        display_picture_one: null,
-        display_picture_two: null,
-        display_picture_three: null,
-        display_picture_four: null,
-        traits: processedTraits, // we need to process personal traits and interests before they are useable
-        interests: processedInterests,
-        notifications: [],
-        user_id: user.id,
-      }
-      create_listing_account(listingAccount)
-        window.location.replace("/");
-    }
   };
+
+  if (signedup) {
+    const processedTraits = [];
+    const processedInterests = [];
+    traits.map((item) => processedTraits.append({ trait: item }));
+    interests.map((item) => processedInterests.append({ interest: item }));
+
+    const listingAccount = {
+      username: pageValueOne.username,
+      account_type: pageValueTwo,
+      first_name: pageValueOne.firstName,
+      last_name: pageValueOne.lastName,
+      email: pageValueOne.email,
+      phone_number: "",
+      date_of_birth: null,
+      location: location,
+      age_range: age,
+      occupation: occupation,
+      news_consent: true,
+      tell_us_about_yourself: "",
+      profile_picture: null,
+      banner_picture: null,
+      display_picture_one: null,
+      display_picture_two: null,
+      display_picture_three: null,
+      display_picture_four: null,
+      traits: processedTraits, // we need to process personal traits and interests before they are useable
+      interests: processedInterests,
+      notifications: [],
+      user_id: user.id,
+    }
+    create_listing_account(listingAccount)
+    console.log(listingAccount)
+    // window.location.replace("/");
+  }
 
   return (
     <>
@@ -125,11 +127,7 @@ function Page3({
               variant="signup"
               onClick={(e) => setLocation(e.target.value)}
               label="Location"
-<<<<<<< HEAD
-              style={{ width: "23vw" }}
-=======
               style={{ width: '23vw' }}
->>>>>>> faa9d1a0aca3fd3bbf71bb93b92a89029123d42b
             >
               {" "}
             </CustomTextField>
@@ -144,11 +142,7 @@ function Page3({
               variant="signup"
               onClick={(e) => setOccupation(e.target.value)}
               label="Occupation*"
-<<<<<<< HEAD
-              style={{ width: "23vw" }}
-=======
               style={{ width: '23vw' }}
->>>>>>> faa9d1a0aca3fd3bbf71bb93b92a89029123d42b
             >
               {" "}
             </CustomTextField>
@@ -158,11 +152,7 @@ function Page3({
               onChange={(e) => setDOB(e.target.value)}
               label="Date of Birth"
               type="date"
-<<<<<<< HEAD
-              style={{ width: "25vw" }}
-=======
               style={{ width: '25vw' }}
->>>>>>> faa9d1a0aca3fd3bbf71bb93b92a89029123d42b
             >
               {" "}
             </CustomTextField>
