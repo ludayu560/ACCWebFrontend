@@ -32,8 +32,8 @@ import axios from "axios";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
-
+import { create_event } from "../../AuthComponents/actions/auth";
+import { connect } from "react-redux";
 const CustomCheckboxStyles = {
   // the box color when unchecked
   color: "#B9B9B9",
@@ -47,7 +47,7 @@ const CustomCheckboxStyles = {
   },
 };
 
-function Events(props) {
+function Events({create_event}) {
 
   const [image, setImage] = useState(null);
   const [form, setForm] = useState({
@@ -62,25 +62,16 @@ function Events(props) {
   const onChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (event) => {
-    const formData = new FormData();
-    formData.append('event_image', image);
-    formData.append('event_name', form.event_name);
-    formData.append('event_date_time', form.event_date_time);
-    formData.append('event_location', form.event_location);
-    formData.append('event_description', form.event_description);
-    formData.append('event_interested', 0);
-    formData.append('event_going', 0);
-
-    axios.post('http://127.0.0.1:8000/Events/', formData, {
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
-    }).then((res) => {
-        console.log(res)
-    }).catch((error) => {
-        return error.response;
-    });
-
+    const eventobject = {
+      event_image: image,
+      event_name: form.event_name,
+      event_date_time: form.event_date_time,
+      event_location: form.event_location,
+      event_description: form.event_description,
+      event_interested: 0,
+      event_going: 0
+    };
+    create_event(eventobject)
   }
 
   // const [foo, setFoo] = useState(null);
@@ -403,4 +394,4 @@ function Events(props) {
   );
 }
 
-export default Events;
+export default connect(null, {create_event});
