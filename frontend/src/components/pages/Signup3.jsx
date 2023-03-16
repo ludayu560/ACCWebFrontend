@@ -17,6 +17,7 @@ function Page3({
   signup,
   user,
   signedup,
+  create_listing_account
 }) {
   const api = axios.create({
     baseURL: `http://127.0.0.1:8000/ListingAccount/`,
@@ -63,40 +64,40 @@ function Page3({
         pageValueOne.passwordConfirm
       );
     }
-    if (signedup) {
-      const processedTraits = [];
-      const processedInterests = [];
-      traits.map((item) => processedTraits.append({ trait: item }));
-      interests.map((item) => processedInterests.append({ interest: item }));
-
-      const listingAccount = {
-        username: pageValueOne.username,
-        account_type: pageValueTwo,
-        first_name: pageValueOne.firstName,
-        last_name: pageValueOne.lastName,
-        email: pageValueOne.email,
-        phone_number: "",
-        date_of_birth: null,
-        location: location,
-        age_range: age,
-        occupation: occupation,
-        news_consent: true,
-        tell_us_about_yourself: "",
-        profile_picture: null,
-        banner_picture: null,
-        display_picture_one: null,
-        display_picture_two: null,
-        display_picture_three: null,
-        display_picture_four: null,
-        traits: processedTraits, // we need to process personal traits and interests before they are useable
-        interests: processedInterests,
-        notifications: [],
-        user: user.id,
-      }
-      create_listing_account(listingAccount)
-      setPage(1);
-    }
   };
+  if (signedup) {
+    const processedTraits = [];
+    const processedInterests = [];
+    traits.map((item) => processedTraits.append({ trait: item }));
+    interests.map((item) => processedInterests.append({ interest: item }));
+
+    const listingAccount = {
+      username: pageValueOne.username,
+      account_type: pageValueTwo,
+      first_name: pageValueOne.firstName,
+      last_name: pageValueOne.lastName,
+      email: pageValueOne.email,
+      phone_number: "",
+      date_of_birth: null,
+      location: location,
+      age_range: age,
+      occupation: occupation,
+      news_consent: true,
+      tell_us_about_yourself: "",
+      profile_picture: null,
+      banner_picture: null,
+      display_picture_one: null,
+      display_picture_two: null,
+      display_picture_three: null,
+      display_picture_four: null,
+      traits: processedTraits, // we need to process personal traits and interests before they are useable
+      interests: processedInterests,
+      notifications: [],
+      user: user.id,
+    }
+    create_listing_account(listingAccount)
+    setPage(1);
+  }
 
   return (
     <>
