@@ -9,7 +9,7 @@ import CustomTextField from "../components/CustomTextField";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
 import HouseLogoPink from "../components/HouseLogoPink";
 import axios from "axios";
-import { signup } from "../../AuthComponents/actions/auth";
+import { signup, create_listing_account} from "../../AuthComponents/actions/auth";
 import { connect } from "react-redux";
 function Page3({
   setPage,
@@ -70,8 +70,7 @@ function Page3({
       traits.map((item) => processedTraits.append({ trait: item }));
       interests.map((item) => processedInterests.append({ interest: item }));
 
-      api
-        .post("/", {
+      listingAccount = {
           username: pageValueOne.username,
           account_type: pageValueTwo,
           first_name: pageValueOne.firstName,
@@ -90,17 +89,12 @@ function Page3({
           display_picture_two: null,
           display_picture_three: null,
           display_picture_four: null,
-          personal_traits: processedTraits, // we need to process personal traits and interests before they are useable
+          traits: processedTraits, // we need to process personal traits and interests before they are useable
           interests: processedInterests,
           notifications: [],
           user_id: user.id,
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        }
+      create_listing_account(listingAccount)
         window.location.replace("/");
     }
   };
@@ -202,4 +196,4 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { signup })(Page3);
+export default connect(mapStateToProps, { signup, create_listing_account})(Page3);
