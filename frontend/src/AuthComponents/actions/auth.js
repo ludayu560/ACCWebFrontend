@@ -28,7 +28,7 @@ export const create_listing_account = (listingAccount) => async dispatch => {
         const config = {
             headers: {
                 'Content-Type': 'multipart/form-data',
-                'Accept': 'multipart/form-data'
+                'Accept': 'application/json'
             }
         };
         const formData = new FormData();
@@ -96,7 +96,7 @@ export const update_listing_account = (listingAccount) => async dispatch => {
         const config = {
             headers: {
                 'Content-Type': 'multipart/form-data',
-                'Accept': 'multipart/form-data'
+                'Accept': 'application/json'
             }
         };
         const formData = new FormData();
