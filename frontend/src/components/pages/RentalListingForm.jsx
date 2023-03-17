@@ -78,12 +78,12 @@ function RentalListingForm(props) {
   const [listing_available_bedrooms, setListing_available_bedrooms] = useState(null);
   const [listing_bathrooms, setListing_bathrooms] = useState(null);
   const [listing_housemates, setListing_housemates] = useState(null);
-  const [utilities, setUtilities] = useState("no");
-  const [furnished, setFurnished] = useState("no preference");
-  const [pets, setPets] = useState("no preference");
-  const [airCon, setAirCon] = useState("no preference");
-  const [smoking, setSmoking] = useState("no preference");
-  const [parking, setParking] = useState("no preference");
+  const [utilities, setUtilities] = useState([]);
+  const [furnished, setFurnished] = useState(false);
+  const [pets, setPets] = useState(false);
+  const [airCon, setAirCon] = useState(false);
+  const [smoking, setSmoking] = useState(false);
+  const [parking, setParking] = useState(false);
 
   //////////////////////////////////////////////////////////////
   const [image_1, setimage_1] = useState(null);
@@ -289,10 +289,10 @@ function RentalListingForm(props) {
                   }}
                   sx={{ flexWrap: "wrap" }}
                 >
-                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={true} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
-                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={false} sx={CustomToggleButtonStyles}>
                     No
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -312,10 +312,10 @@ function RentalListingForm(props) {
                   }}
                   sx={{ flexWrap: "wrap" }}
                 >
-                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={true} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
-                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={false} sx={CustomToggleButtonStyles}>
                     No
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -335,10 +335,10 @@ function RentalListingForm(props) {
                   }}
                   sx={{ flexWrap: "wrap" }}
                 >
-                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={true} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
-                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={false} sx={CustomToggleButtonStyles}>
                     No
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -358,10 +358,10 @@ function RentalListingForm(props) {
                   }}
                   sx={{ flexWrap: "wrap" }}
                 >
-                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={true} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
-                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={false} sx={CustomToggleButtonStyles}>
                     No
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -381,10 +381,10 @@ function RentalListingForm(props) {
                   }}
                   sx={{ flexWrap: "wrap" }}
                 >
-                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={true} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
-                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={false} sx={CustomToggleButtonStyles}>
                     No
                   </ToggleButton>
                 </ToggleButtonGroup>
