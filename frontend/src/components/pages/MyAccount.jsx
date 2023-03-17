@@ -10,6 +10,7 @@ import {
   TextField,
   Divider,
   Slider,
+  Stack
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
@@ -100,6 +101,33 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
   const [field_7, setField_7] = useState("");
   const [field_8, setField_8] = useState("");
 
+  const [formdata, setFormData] = useState({
+    first_name: "George",
+    last_name: "Li",
+    username: "George",
+    email: "g257li@uwaterloo.ca",
+    phone_number: "6476790885",
+    date_of_birth: "2002-09-26",
+    location: "Toronto",
+    age_range: "19-21",
+    tell_us_about_yourself: "ahhhh",
+    // preferences: ""
+    occupation: "Doctor",
+    profile_picture:
+      "http://127.0.0.1:8000/media/profile_picture/43dfc696e92214af5868b2421604f4cd.jpg",
+    banner_picture:
+      "http://127.0.0.1:8000/media/banner_picture/43dfc696e92214af5868b2421604f4cd.jpg",
+    display_picture_one:
+      "http://127.0.0.1:8000/media/display_picture_one/43dfc696e92214af5868b2421604f4cd.jpg",
+    display_picture_two:
+      "http://127.0.0.1:8000/media/display_picture_two/43dfc696e92214af5868b2421604f4cd.jpg",
+    display_picture_three:
+      "http://127.0.0.1:8000/media/display_picture_three/43dfc696e92214af5868b2421604f4cd.jpg",
+    display_picture_four:
+      "http://127.0.0.1:8000/media/display_picture_four/43dfc696e92214af5868b2421604f4cd.jpg",
+    personal_traits: [],
+    interests: [],
+  });
   const [traitsCheckedState, setTraitsCheckedState] = useState(
     new Array(personalityTraits.length).fill(false)
   );
@@ -182,30 +210,6 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     handleReset();
   };
 
-  // testing purposes only
-  // listingAccount = {
-  //   id: 1,
-  //   username: "Lyuda",
-  //   account_type: "tenant",
-  //   first_name: "LuDa",
-  //   last_name: "Yu",
-  //   email: "ludayu560@gmail.com",
-  //   phone_number: null,
-  //   date_of_birth: "2023-03-03",
-  //   location: null,
-  //   age_range: null,
-  //   occupation: null,
-  //   news_consent: true,
-  //   tell_us_about_yourself: null,
-  //   profile_picture: null,
-  //   banner_picture: null,
-  //   display_picture_one: null,
-  //   display_picture_two: null,
-  //   display_picture_three: null,
-  //   display_picture_four: null,
-  //   user: 1,
-  // };
-
   const [value, setValue] = useState([400, 4000]);
 
   const handleChange = (event, newValue) => {
@@ -213,8 +217,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
   };
   return listingAccount === null ? (
     <div>loading</div>
-  ) :(
-  // return (
+  ) : (
     <>
       <Grid container spacing={8}>
         <Grid item xs={12}>
@@ -280,7 +283,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               <Grid item xs={12}>
                 <CustomTextField
                   required
-                  onChange={(e) => setField_2(e.target.value)}
+                  onChange={(e) =>
+                    setFormData({ ...formdata, first_name: e.target.value })
+                  }
                   label="First Name"
                   variant="myaccount"
                 ></CustomTextField>
@@ -288,7 +293,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               <Grid item xs={12}>
                 <CustomTextField
                   required
-                  onChange={(e) => setField_2(e.target.value)}
+                  onChange={(e) =>
+                    setFormData({ ...formdata, last_name: e.target.value })
+                  }
                   label="Last Name"
                   variant="myaccount"
                 ></CustomTextField>
@@ -296,7 +303,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               <Grid item xs={12}>
                 <CustomTextField
                   required
-                  onChange={(e) => setField_1(e.target.value)}
+                  onChange={(e) =>
+                    setFormData({ ...formdata, username: e.target.value })
+                  }
                   label="Username"
                   variant="myaccount"
                 ></CustomTextField>
@@ -304,7 +313,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               <Grid item xs={12}>
                 <CustomTextField
                   required
-                  onChange={(e) => setField_3(e.target.value)}
+                  onChange={(e) =>
+                    setFormData({ ...formdata, email: e.target.value })
+                  }
                   label="Email Address"
                   variant="myaccount"
                 ></CustomTextField>
@@ -312,7 +323,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               <Grid item xs={12}>
                 <CustomTextField
                   required
-                  onChange={(e) => setField_4(e.target.value)}
+                  onChange={(e) =>
+                    setFormData({ ...formdata, phone_number: e.target.value })
+                  }
                   label="Phone"
                   variant="myaccount"
                 ></CustomTextField>
@@ -320,7 +333,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               <Grid item xs={12}>
                 <CustomTextField
                   required
-                  onChange={(e) => setField_5(e.target.value)}
+                  onChange={(e) =>
+                    setFormData({ ...formdata, location: e.target.value })
+                  }
                   label="Location"
                   variant="myaccount"
                 ></CustomTextField>
@@ -345,7 +360,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                       borderRadius: "30vmax",
                     },
                   }}
-                  onChange={(e) => setField_6(e.target.value)}
+                  onChange={(e) =>
+                    setFormData({ ...formdata, age_range: e.target.value })
+                  }
                   required
                   select
                   value={field_6}
@@ -378,7 +395,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               <Grid item xs={12}>
                 <CustomTextField
                   required
-                  onChange={(e) => setField_5(e.target.value)}
+                  onChange={(e) =>
+                    setFormData({ ...formdata, occupation: e.target.value })
+                  }
                   label="Occupation"
                   variant="myaccount"
                 ></CustomTextField>
@@ -387,17 +406,11 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
 
             <Grid item xs={6} sx={{ minHeight: "40vh" }}>
               <ImageUpload />
-              <Grid container spacing={2} marginTop={"10px"}>
-                <Grid item>
-                  <ImageUpload width="150px" />
-                </Grid>
-                <Grid item>
-                  <ImageUpload width="150px" />
-                </Grid>
-                <Grid item>
-                  <ImageUpload width="150px" />
-                </Grid>
-              </Grid>
+              <Stack direction="row" spacing={1} marginTop="8px">
+                <ImageUpload width="150px" />
+                <ImageUpload width="150px" />
+                <ImageUpload width="150px" />
+              </Stack>
             </Grid>
 
             {/*About youself */}
@@ -425,7 +438,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    onChange={(e) => setField_7(e.target.value)}
+                    onChange={(e) =>
+                      setFormData({ ...formdata, tell_us_about_yourself: e.target.value })
+                    }
                     required
                     value={field_7}
                     fullWidth="50vw"
@@ -477,7 +492,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    onChange={(e) => setField_7(e.target.value)}
+                    // onChange={(e) => setField_7(e.target.value)}
                     required
                     value={field_7}
                     fullWidth="50vw"

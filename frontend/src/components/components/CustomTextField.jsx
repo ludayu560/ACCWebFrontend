@@ -17,7 +17,7 @@ class SignUp extends React.Component {
           input: {
             color: "black",
           },
-          "& label": { paddingLeft: (theme) => theme.spacing(2)},
+          "& label": { paddingLeft: (theme) => theme.spacing(2) },
           "& input": { paddingLeft: (theme) => theme.spacing(3.5) },
           "& fieldset": {
             paddingLeft: (theme) => theme.spacing(2.5),
@@ -28,7 +28,7 @@ class SignUp extends React.Component {
         inputProps={{
           sx: {
             "&:-webkit-autofill": {
-              WebkitBoxShadow: "0 0 0 1000px transparent inset",
+              WebkitBoxShadow: "0 0 0 1000px white inset",
             },
           },
         }}
@@ -47,10 +47,13 @@ class MyAccount extends React.Component {
           input: {
             color: "black",
             background: "#E3E7EF",
-            borderRadius: "30vmax"
+            borderRadius: "30vmax",
           },
           "& label": { paddingLeft: (theme) => theme.spacing(2) },
-          "& input": { paddingLeft: (theme) => theme.spacing(3.5), border: '0px'},
+          "& input": {
+            paddingLeft: (theme) => theme.spacing(3.5),
+            border: "0px",
+          },
           "& fieldset": {
             paddingLeft: (theme) => theme.spacing(2.5),
             borderRadius: "30vmax",
@@ -59,7 +62,8 @@ class MyAccount extends React.Component {
         inputProps={{
           sx: {
             "&:-webkit-autofill": {
-              WebkitBoxShadow: "0 0 0 1000px white inset",
+              WebkitBoxShadow: "0 0 0 1000px #E3E7EF inset",
+              borderRadius: "30vmax",
             },
           },
         }}
@@ -67,9 +71,9 @@ class MyAccount extends React.Component {
           disableUnderline: true,
           sx: {
             ".MuiOutlinedInput-notchedOutline": {
-              border: "none"
-            }
-          }
+              border: "none",
+            },
+          },
         }}
         {...this.props}
       />

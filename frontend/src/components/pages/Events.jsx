@@ -394,4 +394,4 @@ function Events({create_event}) {
   );
 }
 
-export default connect(null, {create_event});
+export default connect(null, {create_event})(Events);

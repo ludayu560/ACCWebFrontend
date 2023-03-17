@@ -66,10 +66,6 @@ function Page3({
     }
   };
   if (signedup) {
-    // const processedTraits = [];
-    // const processedInterests = [];
-    // traits.map((item) => processedTraits.append({ trait: item }));
-    // interests.map((item) => processedInterests.append({ interest: item }));
     console.log(interests, traits)
     // new Date().toISOString().split('T')[0]
     const listingAccount = {
@@ -91,8 +87,8 @@ function Page3({
       display_picture_two: null,
       display_picture_three: null,
       display_picture_four: null,
-      // traits: traits, // we need to process personal traits and interests before they are useable
-      // interests: interests,
+      traits: traits,
+      interests: interests,
       traits: ['Quiet'],
       interests: ['Cooking'],
       notifications: [],

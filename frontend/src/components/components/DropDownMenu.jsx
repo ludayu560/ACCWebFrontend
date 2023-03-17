@@ -11,17 +11,6 @@ import {
 } from "@mui/material";
 import CustomTextField from "./CustomTextField";
 
-const LoginStyle = {
-  "& .MuiOutlinedInput-root": {
-    borderRadius: "100vmax",
-    border: "2px solid #73737380",
-    width: "36vw",
-  },
-  "& .label": {
-    color: "#000",
-  },
-};
-
 // A Function which renders an empty textbox with dropdown functionality.
 // Must be passed an array of items.
 function DropDownMenu(props) {
@@ -32,9 +21,6 @@ function DropDownMenu(props) {
 
   // state handler for each of the individual buttons. abstracted to array of T/F and will be mapped through later
   const [traits, setTraits] = useState(new Array(options.length).fill(false));
-
-  // state handler for the actual returned array of strings. mapped from traits and options
-  const [returnTraits, setReturnTraits] = useState([]);
 
   // interpolates the LOCATION of the anchor not being NULL to be True and flags open
   const open = Boolean(anchorEl);
@@ -49,17 +35,23 @@ function DropDownMenu(props) {
       index === position ? !item : item
     );
     setTraits(newTraits);
-    console.log("newtraits:"+newTraits);
-    const temp = [];
-    traits.map((item, index) => (item ? temp.push(options[index]) : null));
-    console.log("returntraits:"+returnTraits);
-    setReturnTraits(temp);
-    hook(returnTraits);
+  };
+
+  
+  const getSelectedStrings = () => {
+    const selectedStrings = [];
+    for (let i = 0; i < traits.length; i++) {
+      if (traits[i]) {
+        selectedStrings.push(options[i]);
+      }
+    }
+
+    return selectedStrings;
   };
 
   // when the popup is closed, map options and traits to set the new returned value. set anchor to null
   const handleClose = () => {
-
+    hook(getSelectedStrings())
     setAnchorEl(null);
   };
 
@@ -72,7 +64,7 @@ function DropDownMenu(props) {
             variant="signup"
             fullWidth={true}
             label={label}
-            value={returnTraits.join(", ")}
+            value={getSelectedStrings().join(", ")}
             style={{ width: "50vw" }}
           />
         </ListItem>

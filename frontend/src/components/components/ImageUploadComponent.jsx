@@ -3,15 +3,24 @@ import { Box } from "@mui/material";
 import axios from "axios";
 
 const ImageUpload = (props) => {
-  const {wide = false} = props
-  
+  const { wide = false } = props;
+
   const [selectedImage, setSelectedImage] = useState(null);
+
   const [previewImage, setPreviewImage] = useState(null);
   const [uniqueId, setUniqueId] = useState(null);
 
+  // generate uninque ID per instance
   useEffect(() => {
     setUniqueId(`image-upload-${Math.random().toString(36).substr(2, 9)}`);
   }, []);
+
+  // will call handleupload only after the image is properly given
+  useEffect(() => {
+    if (selectedImage) {
+      handleUpload();
+    };
+  }, [selectedImage]);
 
   const placeholderImageUrl = require("../../assets/images/missingImage.png");
   const placeholderImageUrlWide = require("../../assets/images/missingImageWide.png");
@@ -56,13 +65,20 @@ const ImageUpload = (props) => {
           alignItems="center"
           justifyContent="center"
           width={props.width ? props.width : "500px"}
-          height={props.height ? props.height : `calc(${props.width ? props.width : "500px"} * 0.64)`}
+          height={
+            props.height
+              ? props.height
+              : `calc(${props.width ? props.width : "500px"} * 0.64)`
+          }
           overflow="hidden"
           borderRadius="30px"
           position="relative"
         >
           <img
-            src={previewImage || (wide? placeholderImageUrlWide : placeholderImageUrl)}
+            src={
+              previewImage ||
+              (wide ? placeholderImageUrlWide : placeholderImageUrl)
+            }
             alt="upload"
             style={{
               cursor: "pointer",
@@ -77,7 +93,6 @@ const ImageUpload = (props) => {
           />
         </Box>
       </label>
-      {selectedImage && handleUpload()}
     </Box>
   );
 };
