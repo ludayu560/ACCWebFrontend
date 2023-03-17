@@ -145,7 +145,7 @@ export const create_event_attending = (event_id, listing_account) => async dispa
             const body = JSON.stringify({ event_id, listing_account });
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/EventAttending/`, body, config);
             dispatch({
-                type: EVENT_ATTENDING_CREATE_SUCCESS,
+                type: CREATE_EVENT_ATTENDING_SUCCESS,
                 payload: res.data
             });
         } catch (err) {

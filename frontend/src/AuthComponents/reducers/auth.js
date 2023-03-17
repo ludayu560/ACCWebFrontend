@@ -36,6 +36,8 @@ import {
     EVENTS_CREATED_LOAD_FAIL,
     FAVORITE_CREATE_SUCCESS,
     FAVORITE_CREATE_FAIL,
+    GET_FAVORITES_SUCCESS,
+    GET_FAVORITES_FAIL,
     CREATE_EVENT_ATTENDING_SUCCESS,
     CREATE_EVENT_ATTENDING_FAIL,
     GET_EVENTS_ATTENDING_SUCCESS,
@@ -75,11 +77,6 @@ export default function (state = initialState, action) {
                 attending_events: payload,
             }
         case GET_FAVORITES_SUCCESS:
-            return {
-                ...state,
-                favorites: action.payload
-            };
-        case FAVORITES_LOAD_SUCCESS:
             return {
                 ...state,
                 favorites: payload
@@ -199,7 +196,7 @@ export default function (state = initialState, action) {
         case EVENTS_CREATED_LOAD_FAIL:
         case FAVORITE_CREATE_SUCCESS:
         case FAVORITE_CREATE_FAIL:
-        case FAVORITES_LOAD_FAIL:
+        case GET_FAVORITES_FAIL:
         case CREATE_EVENT_ATTENDING_SUCCESS:
         case CREATE_EVENT_ATTENDING_FAIL:
         case GET_EVENTS_ATTENDING_FAIL:
