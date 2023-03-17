@@ -15,10 +15,11 @@ import StyledButton from "../components/StyledButton";
 import { ReactComponent as MissingImage } from "../../assets/Icons/missingImage.svg";
 import React, { useState } from "react";
 import axios from "axios";
+import { create_property_listing } from "../../AuthComponents/actions/auth";
 import { LOGIN_SUCCESS } from "../../AuthComponents/actions/types";
 import ImageUpload from "../components/ImageUploadComponent";
 import CustomTextField from "../components/CustomTextField";
-
+import { connect } from "react-redux";
 const CustomToggleButtonStyles = {
   "&.MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected":
     {
@@ -62,7 +63,7 @@ const CustomCheckboxStyles = {
   },
 };
 
-function RentalListingForm(props) {
+function RentalListingForm(props, create_property_listing) {
   const { returnHook } = props;
 
 
@@ -78,12 +79,13 @@ function RentalListingForm(props) {
   const [listing_available_bedrooms, setListing_available_bedrooms] = useState(null);
   const [listing_bathrooms, setListing_bathrooms] = useState(null);
   const [listing_housemates, setListing_housemates] = useState(null);
-  const [utilities, setUtilities] = useState([]);
-  const [furnished, setFurnished] = useState(false);
-  const [pets, setPets] = useState(false);
-  const [airCon, setAirCon] = useState(false);
-  const [smoking, setSmoking] = useState(false);
-  const [parking, setParking] = useState(false);
+  const [listing_description, setListing_description] = useState("");
+  const [utilities, setUtilities] = useState("no");
+  const [furnished, setFurnished] = useState("no preference");
+  const [pets, setPets] = useState("no preference");
+  const [airCon, setAirCon] = useState("no preference");
+  const [smoking, setSmoking] = useState("no preference");
+  const [parking, setParking] = useState("no preference");
 
   //////////////////////////////////////////////////////////////
   const [image_1, setimage_1] = useState(null);
@@ -95,33 +97,57 @@ function RentalListingForm(props) {
     event.preventDefault();
 
     const formData = new FormData();
-
-    formData.append("listing_city", listing_city);
-    formData.append("listing_postal", listing_postal);
-    formData.append("listing_province", listing_province);
-    formData.append("listing_availability_date", listing_availability_date);
-    formData.append("listing_type", listing_type);
-    formData.append("listing_total_bedrooms", listing_total_bedrooms);
-    formData.append("listing_den", listing_den);
-    formData.append("listing_rate", listing_rate);
-    formData.append("listing_women_homeowner", listing_women_homeowner);
-    formData.append("listing_available_bedrooms", listing_available_bedrooms);
-    formData.append("listing_bathrooms", listing_bathrooms);
-    formData.append("listing_housemates", listing_housemates);
-    formData.append("listing_parking", parking);
-    formData.append("listing_furnished", furnished);
-    formData.append("listing_smoking", smoking);
-    formData.append("listing_pets", pets);
-    formData.append("listing_ac", airCon);
-    formData.append("listing_description", "");
-    formData.append("listing_image_one", image_1);
-    formData.append("listing_image_two", image_2);
-    formData.append("listing_image_three", image_3);
-    formData.append("listing_image_four", image_4);
-    formData.append("listing_utilities", utilities);
-    for (const [key, value] of formData.entries()) {
-      console.log(`${key}: ${value}`);
+    const PropertyListing = {
+      listing_city: listing_city,
+      listing_postal: listing_postal,
+      listing_province: listing_province,
+      listing_availability_date: listing_availability_date,
+      listing_type: listing_type,
+      listing_total_bedrooms: listing_total_bedrooms,
+      listing_den: listing_den,
+      listing_rate: listing_rate,
+      listing_women_homeowner: listing_women_homeowner,
+      listing_available_bedrooms: listing_available_bedrooms,
+      listing_bathrooms: listing_bathrooms,
+      listing_housemates: listing_housemates,
+      listing_parking: parking,
+      listing_furnished: furnished,
+      listing_smoking: smoking,
+      listing_pets: pets,
+      listing_ac: airCon,
+      listing_description: listing_description,
+      listing_image_one: image_1,
+      listing_image_two: image_2,
+      listing_image_three: image_3,
+      listing_utilities: utilities,
     }
+    create_property_listing(PropertyListing);
+    // formData.append("listing_city", listing_city);
+    // formData.append("listing_postal", listing_postal);
+    // formData.append("listing_province", listing_province);
+    // formData.append("listing_availability_date", listing_availability_date);
+    // formData.append("listing_type", listing_type);
+    // formData.append("listing_total_bedrooms", listing_total_bedrooms);
+    // formData.append("listing_den", listing_den);
+    // formData.append("listing_rate", listing_rate);
+    // formData.append("listing_women_homeowner", listing_women_homeowner);
+    // formData.append("listing_available_bedrooms", listing_available_bedrooms);
+    // formData.append("listing_bathrooms", listing_bathrooms);
+    // formData.append("listing_housemates", listing_housemates);
+    // formData.append("listing_parking", parking);
+    // formData.append("listing_furnished", furnished);
+    // formData.append("listing_smoking", smoking);
+    // formData.append("listing_pets", pets);
+    // formData.append("listing_ac", airCon);
+    // formData.append("listing_description", "");
+    // formData.append("listing_image_one", image_1);
+    // formData.append("listing_image_two", image_2);
+    // formData.append("listing_image_three", image_3);
+    // formData.append("listing_image_four", image_4);
+    // formData.append("listing_utilities", utilities);
+    // for (const [key, value] of formData.entries()) {
+    //   console.log(`${key}: ${value}`);
+    // }
   };
   ///////////////////////////////////////////////////////////////////
 
@@ -289,10 +315,10 @@ function RentalListingForm(props) {
                   }}
                   sx={{ flexWrap: "wrap" }}
                 >
-                  <ToggleButton value={true} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
-                  <ToggleButton value={false} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
                     No
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -312,10 +338,10 @@ function RentalListingForm(props) {
                   }}
                   sx={{ flexWrap: "wrap" }}
                 >
-                  <ToggleButton value={true} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
-                  <ToggleButton value={false} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
                     No
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -335,10 +361,10 @@ function RentalListingForm(props) {
                   }}
                   sx={{ flexWrap: "wrap" }}
                 >
-                  <ToggleButton value={true} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
-                  <ToggleButton value={false} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
                     No
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -358,10 +384,10 @@ function RentalListingForm(props) {
                   }}
                   sx={{ flexWrap: "wrap" }}
                 >
-                  <ToggleButton value={true} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
-                  <ToggleButton value={false} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
                     No
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -381,10 +407,10 @@ function RentalListingForm(props) {
                   }}
                   sx={{ flexWrap: "wrap" }}
                 >
-                  <ToggleButton value={true} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
-                  <ToggleButton value={false} sx={CustomToggleButtonStyles}>
+                  <ToggleButton value={"no"} sx={CustomToggleButtonStyles}>
                     No
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -447,6 +473,7 @@ function RentalListingForm(props) {
             multiline
             rows={11}
             defaultValue=""
+            onChange={(e) => setListing_description(e.target.value)}
             variant="rlf"
             sx={{ width: "100%", mt: 4 }}
           />
@@ -477,4 +504,4 @@ function RentalListingForm(props) {
   );
 }
 
-export default RentalListingForm;
+export default connect(null, {create_property_listing})(RentalListingForm);

@@ -46,6 +46,8 @@ import {
     CREATE_EVENT_INTERESTED_FAIL,
     GET_EVENTS_INTERESTED_SUCCESS,
     GET_EVENTS_INTERESTED_FAIL,
+    // GET_EVENTS_INTERESTED_NUMBER_SUCCESS,
+    // GET_EVENTS_INTERESTED_NUMBER_FAIL,
     LOGOUT,
 } from './types';
 
@@ -76,6 +78,33 @@ export const create_event_interested = (event_id) => async dispatch => {
         });
     }
 };
+
+// export const get_events_number_interested = (id) => async dispatch => {
+//     const access = localStorage.getItem('access');
+//     if (access) {
+//         try {
+//             const config = {
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'Accept': 'application/json',
+//                 }
+//             };
+//             const res = await axios.get(`${process.env.REACT_APP_API_URL}/EventInterestedNumber/${id}/`, config);
+//             dispatch({
+//                 type: GET_EVENTS_INTERESTED_NUMBER_SUCCESS,
+//                 payload: res.data
+//             });
+//         } catch (err) {
+//             dispatch({
+//                 type: GET_EVENTS_INTERESTED_NUMBER_FAIL
+//             });
+//         }
+//     } else {
+//         dispatch({
+//             type: GET_EVENTS_INTERESTED_NUMBER_FAIL
+//         });
+//     }
+// };
 
 export const get_events_interested = (id) => async dispatch => {
     const access = localStorage.getItem('access');
