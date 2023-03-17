@@ -8,20 +8,23 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Typography,
-  Box, 
-  Stack
+  Box,
+  Stack,
 } from "@mui/material";
 import StyledButton from "../components/StyledButton";
-import {ReactComponent as MissingImage} from '../../assets/Icons/missingImage.svg'
+import { ReactComponent as MissingImage } from "../../assets/Icons/missingImage.svg";
 import React, { useState } from "react";
 import axios from "axios";
 import { LOGIN_SUCCESS } from "../../AuthComponents/actions/types";
+import ImageUpload from "../components/ImageUploadComponent";
+import CustomTextField from "../components/CustomTextField";
 
 const CustomToggleButtonStyles = {
-  "&.MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected": {
-    border: "3px solid #0045F1",
-    borderRadius: "100vmax",
-  },
+  "&.MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected":
+    {
+      border: "3px solid #0045F1",
+      borderRadius: "100vmax",
+    },
   "&.MuiButtonBase-root": {
     border: "3px solid #0045F1",
     borderColor: "#D9D9D9",
@@ -62,6 +65,19 @@ const CustomCheckboxStyles = {
 function RentalListingForm(props) {
   const { returnHook } = props;
 
+
+  const [listing_city, setListing_city] = useState("");
+  const [listing_postal, setListing_postal] = useState("");
+  const [listing_province, setListing_province] = useState("");
+  const [listing_availability_date, setListing_availability_date] = useState(null);
+  const [listing_type, setListing_type] = useState("");
+  const [listing_total_bedrooms, setListing_total_bedrooms] = useState(null);
+  const [listing_den, setListing_den] = useState(false);
+  const [listing_rate, setListing_rate] = useState(null);
+  const [listing_women_homeowner, setListing_women_homeowner] = useState(false);
+  const [listing_available_bedrooms, setListing_available_bedrooms] = useState(null);
+  const [listing_bathrooms, setListing_bathrooms] = useState(null);
+  const [listing_housemates, setListing_housemates] = useState(null);
   const [utilities, setUtilities] = useState("no");
   const [furnished, setFurnished] = useState("no preference");
   const [pets, setPets] = useState("no preference");
@@ -75,90 +91,46 @@ function RentalListingForm(props) {
   const [image_3, setimage_3] = useState(null);
   const [image_4, setimage_4] = useState(null);
 
-
   const HandleSubmit = async (event) => {
     event.preventDefault();
 
     const formData = new FormData();
 
-
-    formData.append('listing_city', '');
-    formData.append('listing_postal', '');
-    formData.append('listing_province', '');
-    formData.append('listing_availability_date', null);
-    formData.append('listing_type', '');
-    formData.append('listing_total_bedrooms', null);
-    formData.append('listing_den', false);
-    formData.append('listing_rate', null);
-    formData.append('listing_women_homeowner', false);
-    formData.append('listing_available_bedrooms', null);
-    formData.append('listing_bathrooms', null);
-    formData.append('listing_housemates', null);
-    formData.append('listing_parking', false);
-    formData.append('listing_furnished', false);
-    formData.append('listing_smoking', false);
-    formData.append('listing_pets', false);
-    formData.append('listing_ac', false);
-    formData.append('listing_description', '');
-    formData.append('listing_image_one', image_1);
-    formData.append('listing_image_two', image_2);
-    formData.append('listing_image_three', image_3);
-    formData.append('listing_image_four', image_4);
-    formData.append('listing_utilities', []);
-
-    const pseudoData = {
-      listing_image_one: null,
-      listing_image_two: null,
-      listing_image_three: null,
-      listing_image_four: null,
-      listing_city: "",
-      listing_postal: "",
-      listing_province: "",
-      listing_availability_date: null,
-      listing_type: "",
-      listing_total_bedrooms: null,
-      listing_den: false,
-      listing_rate: null,
-      listing_women_homeowner: false,
-      listing_available_bedrooms: null,
-      listing_bathrooms: null,
-      listing_housemates: null,
-      listing_parking: false,
-      listing_furnished: false,
-      listing_smoking: false,
-      listing_pets: false,
-      listing_ac: false,
-      listing_description: "",
-      listing_utilities: ""
+    formData.append("listing_city", "");
+    formData.append("listing_postal", "");
+    formData.append("listing_province", "");
+    formData.append("listing_availability_date", null);
+    formData.append("listing_type", "");
+    formData.append("listing_total_bedrooms", null);
+    formData.append("listing_den", false);
+    formData.append("listing_rate", null);
+    formData.append("listing_women_homeowner", false);
+    formData.append("listing_available_bedrooms", null);
+    formData.append("listing_bathrooms", null);
+    formData.append("listing_housemates", null);
+    formData.append("listing_parking", parking);
+    formData.append("listing_furnished", furnished);
+    formData.append("listing_smoking", smoking);
+    formData.append("listing_pets", pets);
+    formData.append("listing_ac", airCon);
+    formData.append("listing_description", "");
+    formData.append("listing_image_one", image_1);
+    formData.append("listing_image_two", image_2);
+    formData.append("listing_image_three", image_3);
+    formData.append("listing_image_four", image_4);
+    formData.append("listing_utilities", utilities);
+    for (const [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
     }
-
-    // const data = {};
-    // for (const [key, value] of formData.entries()) {
-    //   data[key] = value;
-    // }
-    
-    // const json = JSON.stringify(data);
-    // console.log(json);
-    const myNewModel = await axios
-    .post('http://127.0.0.1:8000/PropertyListing/', formData, {
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
-    }).then((res) => {
-        return res;
-    }).catch((error) => {
-        return error.response;
-    });
-    if (myNewModel.status === 201) {
-      console.log('success')
-    }
-    return myNewModel;
   };
   ///////////////////////////////////////////////////////////////////
 
   return (
     <>
-      <Typography variant="h2" sx={{ fontWeight: "bold", color: "#0045F1", p: 8 }}>
+      <Typography
+        variant="h2"
+        sx={{ fontWeight: "bold", color: "#0045F1", p: 8 }}
+      >
         Rental Listing Form
       </Typography>
 
@@ -187,25 +159,16 @@ function RentalListingForm(props) {
         <Grid item xs={6}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Box height="30vw">
-                <MissingImage/>
-                <input type="file" onChange={(event) => {setimage_1(event.target.files[0])}}/>
-              </Box>
+              <ImageUpload height="30vw" width="45vw" returnSelected={setimage_1}/>
             </Grid>
             <Grid item xs={4}>
-              <Box height="10vw">
-                <MissingImage/>
-              </Box>
+              <ImageUpload height="10vw" width="13vw" returnSelected={setimage_2}/>
             </Grid>
             <Grid item xs={4}>
-              <Box height="10vw">
-                <MissingImage/>
-              </Box>
+              <ImageUpload height="10vw" width="13vw" returnSelected={setimage_3}/>
             </Grid>
             <Grid item xs={4}>
-              <Box height="10vw">
-                <MissingImage/>
-              </Box>
+              <ImageUpload height="10vw" width="13vw" returnSelected={setimage_4}/>
             </Grid>
           </Grid>
         </Grid>
@@ -223,29 +186,90 @@ function RentalListingForm(props) {
               <Typography variant="h6" sx={{ mt: 4, fontWeight: "bold" }}>
                 ADDRESS
               </Typography>
-              <Typography variant="h5">*Address will not be visible in the public listing.</Typography>
+              <Typography variant="h5">
+                *Address will not be visible in the public listing.
+              </Typography>
             </Stack>
           </Stack>
         </Grid>
         <Grid item xs={4}>
-          <TextField variant="filled" label="City" style={{ backgroundColor: "white" }} required fullWidth />
+          <CustomTextField
+            variant="rlf"
+            label="City"
+            onChange={(e) => setListing_city(e.target.value)}
+            required
+            fullWidth
+          />
         </Grid>
         <Grid item xs={4}>
-          <TextField variant="filled" label="Postal Code" style={{ backgroundColor: "white" }} required fullWidth />
+          <CustomTextField
+            variant="rlf"
+            label="Postal Code"
+            onChange={(e) => setListing_postal(e.target.value)}
+            required
+            fullWidth
+          />
         </Grid>
         <Grid item xs={4}>
-          <TextField variant="filled" label="Province" style={{ backgroundColor: "white" }} required fullWidth />
+          <CustomTextField
+            variant="rlf"
+            label="Province"
+            onChange={(e) => setListing_province(e.target.value)}
+            required
+            fullWidth
+          />
         </Grid>
         <Grid item xs={5}>
           <Stack spacing={2}>
-            <TextField variant="filled" label="Date Available" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Unit Type" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Total # of Bedrooms in Property" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Rent Per Room" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="# of Bedrooms for Rent" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Total # of Bathrooms" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Total Anticipated Housemates" style={{ backgroundColor: "white" }} required fullWidth />
-
+            <CustomTextField
+              variant="rlf"
+              label="Date Available"
+              onChange={(e) => setListing_availability_date(e.target.value)}
+              required
+              fullWidth
+            />
+            <CustomTextField
+              variant="rlf"
+              label="Unit Type"
+              onChange={(e) => setListing_type(e.target.value)}
+              required
+              fullWidth
+            />
+            <CustomTextField
+              variant="rlf"
+              label="Total # of Bedrooms in Property"
+              onChange={(e) => setListing_total_bedrooms(e.target.value)}
+              required
+              fullWidth
+            />
+            <CustomTextField
+              variant="rlf"
+              label="Rent Per Room"
+              onChange={(e) => setListing_rate(e.target.value)}
+              required
+              fullWidth
+            />
+            <CustomTextField
+              variant="rlf"
+              label="# of Bedrooms for Rent"
+              onChange={(e) => setListing_available_bedrooms(e.target.value)}
+              required
+              fullWidth
+            />
+            <CustomTextField
+              variant="rlf"
+              label="Total # of Bathrooms"
+              onChange={(e) => setListing_bathrooms(e.target.value)}
+              required
+              fullWidth
+            />
+            <CustomTextField
+              variant="rlf"
+              label="Total Anticipated Housemates"
+              onChange={(e) => setListing_housemates(e.target.value)}
+              required
+              fullWidth
+            />
           </Stack>
         </Grid>
 
@@ -263,7 +287,8 @@ function RentalListingForm(props) {
                   onChange={(event, value) => {
                     setParking(value);
                   }}
-                  sx={{ flexWrap: "wrap" }}>
+                  sx={{ flexWrap: "wrap" }}
+                >
                   <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
@@ -285,7 +310,8 @@ function RentalListingForm(props) {
                   onChange={(event, value) => {
                     setFurnished(value);
                   }}
-                  sx={{ flexWrap: "wrap" }}>
+                  sx={{ flexWrap: "wrap" }}
+                >
                   <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
@@ -307,7 +333,8 @@ function RentalListingForm(props) {
                   onChange={(event, value) => {
                     setSmoking(value);
                   }}
-                  sx={{ flexWrap: "wrap" }}>
+                  sx={{ flexWrap: "wrap" }}
+                >
                   <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
@@ -329,7 +356,8 @@ function RentalListingForm(props) {
                   onChange={(event, value) => {
                     setPets(value);
                   }}
-                  sx={{ flexWrap: "wrap" }}>
+                  sx={{ flexWrap: "wrap" }}
+                >
                   <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
@@ -351,7 +379,8 @@ function RentalListingForm(props) {
                   onChange={(event, value) => {
                     setAirCon(value);
                   }}
-                  sx={{ flexWrap: "wrap" }}>
+                  sx={{ flexWrap: "wrap" }}
+                >
                   <ToggleButton value={"yes"} sx={CustomToggleButtonStyles}>
                     Yes
                   </ToggleButton>
@@ -372,8 +401,12 @@ function RentalListingForm(props) {
                   onChange={(event, value) => {
                     setUtilities(value);
                   }}
-                  sx={{ flexWrap: "wrap" }}>
-                  <ToggleButton value={"no preference"} sx={CustomToggleButtonStyles}>
+                  sx={{ flexWrap: "wrap" }}
+                >
+                  <ToggleButton
+                    value={"no preference"}
+                    sx={CustomToggleButtonStyles}
+                  >
                     No Preference
                   </ToggleButton>
                   <ToggleButton value={"none"} sx={CustomToggleButtonStyles}>
@@ -388,7 +421,10 @@ function RentalListingForm(props) {
                   <ToggleButton value={"water"} sx={CustomToggleButtonStyles}>
                     Water
                   </ToggleButton>
-                  <ToggleButton value={"electricity"} sx={CustomToggleButtonStyles}>
+                  <ToggleButton
+                    value={"electricity"}
+                    sx={CustomToggleButtonStyles}
+                  >
                     Electricity
                   </ToggleButton>
                 </ToggleButtonGroup>
@@ -405,13 +441,13 @@ function RentalListingForm(props) {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <CustomTextField
             id="filled-multiline-static"
             label="Provide a brief description about the listing..."
             multiline
             rows={11}
             defaultValue=""
-            variant="filled"
+            variant="rlf"
             sx={{ width: "100%", mt: 4 }}
           />
         </Grid>
@@ -422,8 +458,18 @@ function RentalListingForm(props) {
               label="I agree to Aisha Comfortable Coliving Terms & Conditions"
             />
 
-            <StyledButton variant="pinkBtn" text="Preview Listing" width="20vw" />
-            <StyledButton variant="pinkBtn" text="Submit" bgcolor="#0045F1" width="20vw" onClick={HandleSubmit}/>
+            <StyledButton
+              variant="pinkBtn"
+              text="Preview Listing"
+              width="20vw"
+            />
+            <StyledButton
+              variant="pinkBtn"
+              text="Submit"
+              bgcolor="#0045F1"
+              width="20vw"
+              onClick={HandleSubmit}
+            />
           </Stack>
         </Grid>
       </Grid>

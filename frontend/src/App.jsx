@@ -136,7 +136,7 @@ function App() {
                 element={
                   <>
                     <ImageUpload></ImageUpload>
-                    <CustomTextField variant="myaccount"></CustomTextField>
+                    <CustomTextField></CustomTextField>
                   </>
                 }
               />

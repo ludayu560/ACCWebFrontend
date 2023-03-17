@@ -80,6 +80,40 @@ class MyAccount extends React.Component {
     );
   }
 }
+// RLF
+class RLF extends React.Component {
+  render() {
+    return (
+      <TextField
+        sx={{
+          width: "20vw",
+          input: {
+            color: "black",
+            borderRadius: "30vmax",
+          },
+          "& label": { paddingLeft: (theme) => theme.spacing(2) },
+          "& input": {
+            paddingLeft: (theme) => theme.spacing(3.5),
+            border: "0px",
+          },
+          "& fieldset": {
+            paddingLeft: (theme) => theme.spacing(2.5),
+            borderRadius: "30vmax",
+          },
+        }}
+        inputProps={{
+          sx: {
+            "&:-webkit-autofill": {
+              WebkitBoxShadow: "0 0 0 1000px white inset",
+              borderRadius: "30vmax",
+            },
+          },
+        }}
+        {...this.props}
+      />
+    );
+  }
+}
 
 // This function handles the state and and logic of the textfields.
 export default function CustomTextField(props) {
@@ -87,9 +121,11 @@ export default function CustomTextField(props) {
   const { variant, ...rest } = props;
   return (
     <div>
-      {variant ? null : <TextField {...rest} />}
+      {variant ? null : <RLF {...rest} />}
       {variant === "signup" ? <SignUp {...rest} /> : null}
       {variant === "myaccount" ? <MyAccount {...rest} /> : null}
+      {variant === "rlf" ? <RLF {...rest} /> : null}
+
     </div>
   );
 }
