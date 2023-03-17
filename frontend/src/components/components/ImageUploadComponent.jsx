@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 
 const ImageUpload = (props) => {
-  const { wide = false, returnSelected } = props;
+  const { wide = false, returnSelected, defaultLink } = props;
 
   const [selectedImage, setSelectedImage] = useState(null);
 

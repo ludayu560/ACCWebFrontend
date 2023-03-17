@@ -96,12 +96,12 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     personal_traits: [],
     interests: [],
   });
-  const [profile_picture, setProfilePicture] = useState(null)
-  const [banner_picture, setBanner_picture] = useState(null)
-  const [display_picture_one, setDisplay_picture_one] = useState(null)
-  const [display_picture_two, setDisplay_picture_two] = useState(null)
-  const [display_picture_three, setDisplay_picture_three] = useState(null)
-  const [display_picture_four, setDisplay_picture_four] = useState(null)
+  const [profile_picture, setProfilePicture] = useState(null);
+  const [banner_picture, setBanner_picture] = useState(null);
+  const [display_picture_one, setDisplay_picture_one] = useState(null);
+  const [display_picture_two, setDisplay_picture_two] = useState(null);
+  const [display_picture_three, setDisplay_picture_three] = useState(null);
+  const [display_picture_four, setDisplay_picture_four] = useState(null);
   console.log({
     profile_picture,
     banner_picture,
@@ -109,7 +109,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     display_picture_two,
     display_picture_three,
     display_picture_four,
-  })
+  });
 
   const [traitsCheckedState, setTraitsCheckedState] = useState(
     new Array(personalityTraits.length).fill(false)
@@ -186,10 +186,39 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
       user_id: 3,
     };
 
-    api.post("/", {
-      params: { accountFields },
-    });
-    console.log("post", accountFields);
+    const id = 1;
+    const formData = new FormData();
+    formData.append("profile_picture", formdata.profile_picture);
+    formData.append("banner_picture", formdata);
+    formData.append("display_picture_one", formdata);
+    formData.append("display_picture_two", formdata);
+    formData.append("display_picture_three", formdata);
+    formData.append("display_picture_four", formdata);
+    formData.append("first_name", formdata.first_name);
+    formData.append("last_name", formdata.last_name);
+    formData.append("username", formdata.username);
+    formData.append("email", formdata.email);
+    formData.append("phone_number", formdata.phone_number);
+    formData.append("date_of_birth", formdata.date_of_birth);
+    formData.append("location", formdata.location);
+    formData.append("age_range", formdata.age_range);
+    formData.append("tell_us_about_yourself", formdata.tell_us_about_yourself);
+    formData.append("occupation", formdata.occupation);
+    formData.append("personal_traits", formdata.personal_traits);
+    formData.append("interests", formdata.interests);
+
+    axios
+      .post("http://localhost:8000/ListingAccount/"+{id}+"/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     handleReset();
   };
 
@@ -198,6 +227,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   return listingAccount === null ? (
     <div>loading</div>
   ) : (
@@ -222,10 +252,11 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               height="30vh"
               wide={true}
               returnSelected={setBanner_picture}
+              // defaultLink={}
             />
             <Box position={"relative"}>
               <Box position={"absolute"} left={"50vw"} bottom={"-5vh"}>
-                <ImageUpload width="150px" returnSelected={setProfilePicture}/>
+                <ImageUpload width="150px" returnSelected={setProfilePicture} />
               </Box>
             </Box>
           </Grid>
@@ -393,11 +424,20 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
             </Grid>
 
             <Grid item xs={6} sx={{ minHeight: "40vh" }}>
-              <ImageUpload returnSelected={setDisplay_picture_one}/>
+              <ImageUpload returnSelected={setDisplay_picture_one} />
               <Stack direction="row" spacing={1} marginTop="8px">
-                <ImageUpload width="150px" returnSelected={setDisplay_picture_two}/>
-                <ImageUpload width="150px" returnSelected={setDisplay_picture_three}/>
-                <ImageUpload width="150px" returnSelected={setDisplay_picture_four}/>
+                <ImageUpload
+                  width="150px"
+                  returnSelected={setDisplay_picture_two}
+                />
+                <ImageUpload
+                  width="150px"
+                  returnSelected={setDisplay_picture_three}
+                />
+                <ImageUpload
+                  width="150px"
+                  returnSelected={setDisplay_picture_four}
+                />
               </Stack>
             </Grid>
 
@@ -663,6 +703,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                 text="Save"
                 bgcolor={colorTheme()}
                 width="246px"
+                onClick={handleSubmit()}
               />
             </Grid>
           </Grid>
