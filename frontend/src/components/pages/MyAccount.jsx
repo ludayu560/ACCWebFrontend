@@ -353,7 +353,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                   }
                   required
                   select
-                  value={field_6}
+                  value={formdata.age_range}
                   label="Age Range"
                   style={{
                     background: "#E3E7EF",
@@ -432,8 +432,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                         tell_us_about_yourself: e.target.value,
                       })
                     }
+                    multiline
+                    rows={4}
                     required
-                    value={field_7}
                     fullWidth="50vw"
                     placeholder="Provide a brief description about yourself..."
                     style={{
@@ -484,8 +485,9 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                 <Grid item xs={12}>
                   <TextField
                     // onChange={(e) => setField_7(e.target.value)}
+                    multiline
+                    rows={4}
                     required
-                    value={field_7}
                     fullWidth="50vw"
                     placeholder="Provide what you’re looking for in  a rental or a housemate."
                     style={{
