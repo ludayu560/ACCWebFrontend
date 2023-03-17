@@ -96,18 +96,18 @@ function RentalListingForm(props) {
 
     const formData = new FormData();
 
-    formData.append("listing_city", "");
-    formData.append("listing_postal", "");
-    formData.append("listing_province", "");
-    formData.append("listing_availability_date", null);
-    formData.append("listing_type", "");
-    formData.append("listing_total_bedrooms", null);
-    formData.append("listing_den", false);
-    formData.append("listing_rate", null);
-    formData.append("listing_women_homeowner", false);
-    formData.append("listing_available_bedrooms", null);
-    formData.append("listing_bathrooms", null);
-    formData.append("listing_housemates", null);
+    formData.append("listing_city", listing_city);
+    formData.append("listing_postal", listing_postal);
+    formData.append("listing_province", listing_province);
+    formData.append("listing_availability_date", listing_availability_date);
+    formData.append("listing_type", listing_type);
+    formData.append("listing_total_bedrooms", listing_total_bedrooms);
+    formData.append("listing_den", listing_den);
+    formData.append("listing_rate", listing_rate);
+    formData.append("listing_women_homeowner", listing_women_homeowner);
+    formData.append("listing_available_bedrooms", listing_available_bedrooms);
+    formData.append("listing_bathrooms", listing_bathrooms);
+    formData.append("listing_housemates", listing_housemates);
     formData.append("listing_parking", parking);
     formData.append("listing_furnished", furnished);
     formData.append("listing_smoking", smoking);
