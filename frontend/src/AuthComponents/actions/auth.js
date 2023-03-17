@@ -47,7 +47,6 @@ import {
     GET_EVENTS_INTERESTED_SUCCESS,
     GET_EVENTS_INTERESTED_FAIL,
     LOGOUT,
-    GET_EVENTS_INTERESTED_SUCCESS
 } from './types';
 
 export const create_event_interested = (event_id) => async dispatch => {
@@ -146,7 +145,7 @@ export const create_event_attending = (event_id, listing_account) => async dispa
             const body = JSON.stringify({ event_id, listing_account });
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/EventAttending/`, body, config);
             dispatch({
-                type: EVENT_ATTENDING_CREATE_SUCCESS,
+                type: CREATE_EVENT_ATTENDING_SUCCESS,
                 payload: res.data
             });
         } catch (err) {
