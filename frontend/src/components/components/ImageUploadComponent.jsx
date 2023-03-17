@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
-import axios from "axios";
 
 const ImageUpload = (props) => {
-  const { wide = false } = props;
+  const { wide = false, returnSelected } = props;
 
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -15,11 +14,11 @@ const ImageUpload = (props) => {
     setUniqueId(`image-upload-${Math.random().toString(36).substr(2, 9)}`);
   }, []);
 
-  // will call handleupload only after the image is properly given
+  // will return the image up only after the image is properly given
   useEffect(() => {
     if (selectedImage) {
-      handleUpload();
-    };
+      returnSelected(selectedImage);
+    }
   }, [selectedImage]);
 
   const placeholderImageUrl = require("../../assets/images/missingImage.png");
@@ -30,24 +29,6 @@ const ImageUpload = (props) => {
       setSelectedImage(e.target.files[0]);
       setPreviewImage(URL.createObjectURL(e.target.files[0]));
     }
-  };
-
-  const handleUpload = (props) => {
-    const formData = new FormData();
-    formData.append("image", selectedImage);
-
-    axios
-      .post("http://127.0.0.1:8000/", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   };
 
   return (

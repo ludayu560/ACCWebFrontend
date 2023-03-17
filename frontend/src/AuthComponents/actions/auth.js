@@ -47,7 +47,6 @@ import {
     GET_EVENTS_INTERESTED_SUCCESS,
     GET_EVENTS_INTERESTED_FAIL,
     LOGOUT,
-    GET_EVENTS_INTERESTED_SUCCESS
 } from './types';
 
 export const create_event_interested = (event_id) => async dispatch => {

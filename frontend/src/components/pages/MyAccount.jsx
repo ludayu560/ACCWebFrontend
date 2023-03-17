@@ -10,9 +10,8 @@ import {
   TextField,
   Divider,
   Slider,
-  Stack
+  Stack,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import SideNav from "../components/SideNav";
 
@@ -27,30 +26,7 @@ const api = axios.create({
   baseURL: `http://127.0.0.1:8000/ListingAccount/`,
 });
 
-const CustomSliderStyles = {
-  // the entire range of possible values
-  "& .MuiSlider-rail": {
-    color: "#D9D9D9",
-  },
-  // the line between the two ends
-  "& .MuiSlider-track": {
-    color: "#F83E7D",
-  },
-  // the endpoints
-  "& .MuiSlider-thumb": {
-    color: "#F83E7D",
-  },
-  // the label displaying the current value
-  "& .MuiSlider-valueLabel": {
-    background: "transparent",
-    color: "#000",
-    padding: "0",
-  },
-};
-
 function MyAccount({ props, isAuthenticated, listingAccount }) {
-  const [ageRange, setAge] = useState([25, 40]);
-
   function colorTheme() {
     switch (listingAccount.account_type) {
       case "tenant":
@@ -92,15 +68,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
       " "
     );
 
-  const [field_1, setField_1] = useState("");
-  const [field_2, setField_2] = useState("");
-  const [field_3, setField_3] = useState("");
-  const [field_4, setField_4] = useState("");
-  const [field_5, setField_5] = useState("");
-  const [field_6, setField_6] = useState("");
-  const [field_7, setField_7] = useState("");
-  const [field_8, setField_8] = useState("");
-
+  // the overall state for the whole form
   const [formdata, setFormData] = useState({
     first_name: "George",
     last_name: "Li",
@@ -128,6 +96,21 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     personal_traits: [],
     interests: [],
   });
+  const [profile_picture, setProfilePicture] = useState(null)
+  const [banner_picture, setBanner_picture] = useState(null)
+  const [display_picture_one, setDisplay_picture_one] = useState(null)
+  const [display_picture_two, setDisplay_picture_two] = useState(null)
+  const [display_picture_three, setDisplay_picture_three] = useState(null)
+  const [display_picture_four, setDisplay_picture_four] = useState(null)
+  console.log({
+    profile_picture,
+    banner_picture,
+    display_picture_one,
+    display_picture_two,
+    display_picture_three,
+    display_picture_four,
+  })
+
   const [traitsCheckedState, setTraitsCheckedState] = useState(
     new Array(personalityTraits.length).fill(false)
   );
@@ -150,13 +133,13 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
   };
 
   const handleReset = () => {
-    setField_1("");
-    setField_2("");
-    setField_3("");
-    setField_4("");
-    setField_5("");
-    setField_6("");
-    setField_7("");
+    // setField_1("");
+    // setField_2("");
+    // setField_3("");
+    // setField_4("");
+    // setField_5("");
+    // setField_6("");
+    // setField_7("");
   };
 
   const handleSubmit = () => {
@@ -234,10 +217,15 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
         </Grid>
         <Grid item xs={9}>
           <Grid item xs={12}>
-            <ImageUpload width="60vw" height="30vh" wide={true} />
+            <ImageUpload
+              width="60vw"
+              height="30vh"
+              wide={true}
+              returnSelected={setBanner_picture}
+            />
             <Box position={"relative"}>
               <Box position={"absolute"} left={"50vw"} bottom={"-5vh"}>
-                <ImageUpload width="150px" />
+                <ImageUpload width="150px" returnSelected={setProfilePicture}/>
               </Box>
             </Box>
           </Grid>
@@ -405,11 +393,11 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
             </Grid>
 
             <Grid item xs={6} sx={{ minHeight: "40vh" }}>
-              <ImageUpload />
+              <ImageUpload returnSelected={setDisplay_picture_one}/>
               <Stack direction="row" spacing={1} marginTop="8px">
-                <ImageUpload width="150px" />
-                <ImageUpload width="150px" />
-                <ImageUpload width="150px" />
+                <ImageUpload width="150px" returnSelected={setDisplay_picture_two}/>
+                <ImageUpload width="150px" returnSelected={setDisplay_picture_three}/>
+                <ImageUpload width="150px" returnSelected={setDisplay_picture_four}/>
               </Stack>
             </Grid>
 
@@ -439,7 +427,10 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                 <Grid item xs={12}>
                   <TextField
                     onChange={(e) =>
-                      setFormData({ ...formdata, tell_us_about_yourself: e.target.value })
+                      setFormData({
+                        ...formdata,
+                        tell_us_about_yourself: e.target.value,
+                      })
                     }
                     required
                     value={field_7}
@@ -551,7 +542,26 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                       { value: 400, label: "$400" },
                       { value: 5000, label: "$4000+" },
                     ]}
-                    sx={CustomSliderStyles}
+                    sx={{
+                      // the entire range of possible values
+                      "& .MuiSlider-rail": {
+                        color: "#D9D9D9",
+                      },
+                      // the line between the two ends
+                      "& .MuiSlider-track": {
+                        color: "#F83E7D",
+                      },
+                      // the endpoints
+                      "& .MuiSlider-thumb": {
+                        color: "#F83E7D",
+                      },
+                      // the label displaying the current value
+                      "& .MuiSlider-valueLabel": {
+                        background: "transparent",
+                        color: "#000",
+                        padding: "0",
+                      },
+                    }}
                   />
                 </Container>
               </Grid>
