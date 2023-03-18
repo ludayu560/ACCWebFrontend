@@ -46,6 +46,10 @@ import {
     CREATE_EVENT_INTERESTED_FAIL,
     GET_EVENTS_INTERESTED_SUCCESS,
     GET_EVENTS_INTERESTED_FAIL,
+    LISTINGACCOUNT_LOAD_CURRENT_SUCCESS,
+    LISTINGACCOUNT_LOAD_CURRENT_FAIL,
+    PROPERTYLISTING_LOAD_CURRENT_SUCCESS,
+    PROPERTYLISTING_LOAD_CURRENT_FAIL,
     // GET_EVENTS_INTERESTED_NUMBER_SUCCESS,
     // GET_EVENTS_INTERESTED_NUMBER_FAIL,
     LOGOUT
@@ -63,11 +67,23 @@ const initialState = {
     attending_events: null,
     interested_events: null,
     favorites: null,
+    currentListingAccount: null,
+    currentPropertyListingExtra: null, // might be redundant stuff Shonn created, if remove, please remove PROPERTYLISTING_LOAD_CURRENT_SUCCESS and load property listing current in auth action
 };
 
 export default function (state = initialState, action) {
     const { type, payload } = action
     switch (type) {
+        case PROPERTYLISTING_LOAD_CURRENT_SUCCESS:
+            return {
+                ...state,
+                currentPropertyListingExtra: payload
+            };
+        case LISTINGACCOUNT_LOAD_CURRENT_SUCCESS:
+            return {
+                ...state,
+                currentListingAccount: payload
+            };
         case GET_EVENTS_INTERESTED_SUCCESS:
             return {
                 ...state,
@@ -173,6 +189,8 @@ export default function (state = initialState, action) {
                 listingAccount: null,
                 signedup: false,
                 currentPropertyListing: null,
+                currentListingAccount: null,
+                currentPropertyListingExtra: null,
                 eventsCreated: null,
                 attending_events: null,
                 interested_events: null,
@@ -205,6 +223,8 @@ export default function (state = initialState, action) {
         case CREATE_EVENT_INTERESTED_SUCCESS:
         case CREATE_EVENT_INTERESTED_FAIL:
         case GET_EVENTS_INTERESTED_FAIL:
+        case LISTINGACCOUNT_LOAD_CURRENT_FAIL:
+        case PROPERTYLISTING_LOAD_CURRENT_FAIL:
         case ACTIVATION_FAIL:
             return {
                 ...state

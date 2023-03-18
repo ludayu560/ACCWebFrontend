@@ -46,6 +46,10 @@ import {
     CREATE_EVENT_INTERESTED_FAIL,
     GET_EVENTS_INTERESTED_SUCCESS,
     GET_EVENTS_INTERESTED_FAIL,
+    LISTINGACCOUNT_LOAD_CURRENT_SUCCESS,
+    LISTINGACCOUNT_LOAD_CURRENT_FAIL,
+    PROPERTYLISTING_LOAD_CURRENT_SUCCESS,
+    PROPERTYLISTING_LOAD_CURRENT_FAIL,
     // GET_EVENTS_INTERESTED_NUMBER_SUCCESS,
     // GET_EVENTS_INTERESTED_NUMBER_FAIL,
     LOGOUT,
@@ -524,7 +528,7 @@ export const update_property_listing = (propertyListing) => async dispatch => {
         }
     } else {
         dispatch({
-            type: EVENT_LOAD_FAIL
+            type: PROPERTYLISTING_UPDATE_FAIL
         });
     }
 
@@ -562,7 +566,44 @@ export const load_property_listing = (id) => async dispatch => {
         }
     } else {
         dispatch({
-            type: EVENT_LOAD_FAIL
+            type: PROPERTYLISTING_LOAD_FAIL
+        });
+    }
+};
+
+
+export const load_property_listing_current = (id) => async dispatch => {
+    if (localStorage.getItem('access')) {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            };
+
+            // Make GET request to fetch the property listing by ID
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/get/${id}/`, config);
+            const propertyListing = res.data;
+
+            // Make GET request to fetch the utilities for the property listing
+            const utilitiesRes = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyUtilities/get/${id}/`, config);
+            const utilities = utilitiesRes.data;
+            propertyListing.listing_utilities = utilities;
+
+            dispatch({
+                type: PROPERTYLISTING_LOAD_CURRENT_SUCCESS,
+                payload: propertyListing
+            });
+        } catch (err) {
+            console.log(err);
+            dispatch({
+                type: PROPERTYLISTING_LOAD_CURRENT_FAIL
+            });
+        }
+    } else {
+        dispatch({
+            type: PROPERTYLISTING_LOAD_CURRENT_FAIL
         });
     }
 };
@@ -716,6 +757,45 @@ export const update_listing_account = (listingAccount) => async dispatch => {
     } else {
         dispatch({
             type: LISTINGACCOUNT_UPDATE_FAIL
+        });
+    }
+};
+
+
+export const load_listing_current = (id) => async dispatch => {
+    if (localStorage.getItem('access')) {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            };
+
+            // const body = JSON.stringify({ id });
+            // console.log(`id is ${id}`)
+            var res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/accountList/${id}/`, config);
+            var listingAccount = res.data[0];
+            const interests = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.user}/`, config);
+            const traits = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.user}/`, config);
+            listingAccount.traits = traits;
+            listingAccount.interests = interests;
+            dispatch({
+                type: LISTINGACCOUNT_LOAD_CURRENT_SUCCESS,
+                payload: listingAccount
+            });
+            dispatch(load_events_created(listingAccount.id));
+            dispatch(get_events_attending(listingAccount.id));
+            dispatch(get_events_interested(listingAccount.id));
+        } catch (err) {
+            console.log(err)
+            dispatch({
+                type: LISTINGACCOUNT_LOAD_CURRENT_FAIL
+            });
+        }
+    } else {
+        dispatch({
+            type: LISTINGACCOUNT_LOAD_CURRENT_FAIL
         });
     }
 };
