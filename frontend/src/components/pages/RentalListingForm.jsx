@@ -63,8 +63,7 @@ const CustomCheckboxStyles = {
   },
 };
 
-function RentalListingForm(props, create_property_listing) {
-  const { returnHook } = props;
+function RentalListingForm({create_property_listing}) {
 
 
   const [listing_city, setListing_city] = useState("");
@@ -101,7 +100,8 @@ function RentalListingForm(props, create_property_listing) {
       listing_city: listing_city,
       listing_postal: listing_postal,
       listing_province: listing_province,
-      listing_availability_date: listing_availability_date,
+      // listing_availability_date: listing_availability_date,
+      listing_availability_date: '2002-12-11',
       listing_type: listing_type,
       listing_total_bedrooms: listing_total_bedrooms,
       listing_den: listing_den,

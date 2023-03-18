@@ -429,7 +429,7 @@ export const create_property_listing = (propertyListing) => async dispatch => {
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/PropertyListing/`, formData, config);
             const utilityformData = new FormData();
             utilityformData.append('listing_utility', null);
-            utilityformData.append('property_listing_fk', res.data);
+            utilityformData.append('property_listing_fk', res.data.id);
             // Loop through the utilities list and append each one to the form data with the key 'listing_utility'
             if (propertyListing.listing_utilities) {
                 for (let i = 0; i < propertyListing.listing_utilities.length; i++) {
