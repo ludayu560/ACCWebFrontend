@@ -63,19 +63,19 @@ const CustomCheckboxStyles = {
   },
 };
 
-function RentalListingForm({create_property_listing}) {
-
-
+function RentalListingForm({ create_property_listing }) {
   const [listing_city, setListing_city] = useState("");
   const [listing_postal, setListing_postal] = useState("");
   const [listing_province, setListing_province] = useState("");
-  const [listing_availability_date, setListing_availability_date] = useState(null);
+  const [listing_availability_date, setListing_availability_date] =
+    useState(null);
   const [listing_type, setListing_type] = useState("");
   const [listing_total_bedrooms, setListing_total_bedrooms] = useState(null);
   const [listing_den, setListing_den] = useState(false);
   const [listing_rate, setListing_rate] = useState(null);
   const [listing_women_homeowner, setListing_women_homeowner] = useState(false);
-  const [listing_available_bedrooms, setListing_available_bedrooms] = useState(null);
+  const [listing_available_bedrooms, setListing_available_bedrooms] =
+    useState(null);
   const [listing_bathrooms, setListing_bathrooms] = useState(null);
   const [listing_housemates, setListing_housemates] = useState(null);
   const [listing_description, setListing_description] = useState("");
@@ -100,8 +100,7 @@ function RentalListingForm({create_property_listing}) {
       listing_city: listing_city,
       listing_postal: listing_postal,
       listing_province: listing_province,
-      // listing_availability_date: listing_availability_date,
-      listing_availability_date: '2002-12-11',
+      listing_availability_date: listing_availability_date,
       listing_type: listing_type,
       listing_total_bedrooms: listing_total_bedrooms,
       listing_den: listing_den,
@@ -120,7 +119,7 @@ function RentalListingForm({create_property_listing}) {
       listing_image_two: image_2,
       listing_image_three: image_3,
       listing_utilities: utilities,
-    }
+    };
     create_property_listing(PropertyListing);
     // formData.append("listing_city", listing_city);
     // formData.append("listing_postal", listing_postal);
@@ -185,16 +184,32 @@ function RentalListingForm({create_property_listing}) {
         <Grid item xs={6}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <ImageUpload height="30vw" width="45vw" returnSelected={setimage_1}/>
+              <ImageUpload
+                height="30vw"
+                width="45vw"
+                returnSelected={setimage_1}
+              />
             </Grid>
             <Grid item xs={4}>
-              <ImageUpload height="10vw" width="13vw" returnSelected={setimage_2}/>
+              <ImageUpload
+                height="10vw"
+                width="13vw"
+                returnSelected={setimage_2}
+              />
             </Grid>
             <Grid item xs={4}>
-              <ImageUpload height="10vw" width="13vw" returnSelected={setimage_3}/>
+              <ImageUpload
+                height="10vw"
+                width="13vw"
+                returnSelected={setimage_3}
+              />
             </Grid>
             <Grid item xs={4}>
-              <ImageUpload height="10vw" width="13vw" returnSelected={setimage_4}/>
+              <ImageUpload
+                height="10vw"
+                width="13vw"
+                returnSelected={setimage_4}
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -252,6 +267,8 @@ function RentalListingForm({create_property_listing}) {
               label="Date Available"
               onChange={(e) => setListing_availability_date(e.target.value)}
               required
+              InputLabelProps={{ shrink: true }}
+              type="date"
               fullWidth
             />
             <CustomTextField
@@ -504,4 +521,4 @@ function RentalListingForm({create_property_listing}) {
   );
 }
 
-export default connect(null, {create_property_listing})(RentalListingForm);
+export default connect(null, { create_property_listing })(RentalListingForm);

@@ -30,7 +30,16 @@ import { styled } from "@mui/material/styles";
 import SideNav from "../components/SideNav";
 import { connect } from "react-redux";
 
-function MyAccountEvents({eventCreated, attending_events, interested_events}) {
+function MyAccountEvents({
+  eventCreated,
+  attending_events,
+  interested_events,
+}) {
+  console.log("attending events:", attending_events);
+  console.log("created events:", eventCreated);
+  console.log("interested events:", interested_events);
+
+  const attendingEvents = [];
   return (
     <>
       {/* <Mainbar></Mainbar> */}
@@ -64,15 +73,16 @@ function MyAccountEvents({eventCreated, attending_events, interested_events}) {
               </Typography>
             </Grid>
             <Grid container spacing={8} p={10}>
-              <Grid item xs='auto'>
-                <ECard variant='event'></ECard>
-              </Grid>
-              <Grid item xs='auto'>
-                <ECard variant='event'></ECard>
-              </Grid>
-              <Grid item xs='auto'>
-                <ECard variant='event'></ECard>
-              </Grid>
+              {attendingEvents.map((item) => (
+                <Grid>
+                  <ECard
+                    variant="event"
+                    name={item.event_name}
+                    location={item.event_location}
+                    description={item.event_description}
+                  ></ECard>
+                </Grid>
+              ))}
             </Grid>
           </Grid>
 
@@ -92,11 +102,11 @@ function MyAccountEvents({eventCreated, attending_events, interested_events}) {
               </Typography>
             </Grid>
             <Grid container spacing={8} p={10}>
-              <Grid item xs='auto'>
-                <ECard variant='event'></ECard>
+              <Grid item xs="auto">
+                <ECard variant="event"></ECard>
               </Grid>
-              <Grid item xs='auto'>
-                <ECard variant='event'></ECard>
+              <Grid item xs="auto">
+                <ECard variant="event"></ECard>
               </Grid>
             </Grid>
           </Grid>
@@ -117,11 +127,11 @@ function MyAccountEvents({eventCreated, attending_events, interested_events}) {
               </Typography>
             </Grid>
             <Grid container spacing={8} p={10}>
-              <Grid item xs='auto'>
-                <ECard variant='event'></ECard>
+              <Grid item xs="auto">
+                <ECard variant="event"></ECard>
               </Grid>
-              <Grid item xs='auto'>
-                <ECard variant='event'></ECard>
+              <Grid item xs="auto">
+                <ECard variant="event"></ECard>
               </Grid>
             </Grid>
           </Grid>
@@ -138,4 +148,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(MyAccountEvents);
-
