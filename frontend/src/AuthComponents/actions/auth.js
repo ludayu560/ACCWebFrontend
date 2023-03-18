@@ -742,6 +742,9 @@ export const load_listing = (id) => async dispatch => {
                 type: LISTINGACCOUNT_LOAD_SUCCESS,
                 payload: listingAccount
             });
+            dispatch(load_events_created(listingAccount.id));
+            dispatch(get_events_attending(listingAccount.id));
+            dispatch(get_events_interested(listingAccount.id));
         } catch (err) {
             console.log(err)
             dispatch({

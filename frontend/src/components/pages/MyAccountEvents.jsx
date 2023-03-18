@@ -28,8 +28,9 @@ import Mainbar from "../components/MainBar";
 import ECard from "../components/ECard";
 import { styled } from "@mui/material/styles";
 import SideNav from "../components/SideNav";
+import { connect } from "react-redux";
 
-function MyAccountEvents(props) {
+function MyAccountEvents({eventCreated, attending_events, interested_events}) {
   return (
     <>
       {/* <Mainbar></Mainbar> */}
@@ -130,4 +131,11 @@ function MyAccountEvents(props) {
   );
 }
 
-export default MyAccountEvents;
+const mapStateToProps = (state) => ({
+  eventCreated: state.auth.eventsCreated,
+  attending_events: state.auth.attending_events,
+  interested_events: state.auth.interested_events,
+});
+
+export default connect(mapStateToProps)(MyAccountEvents);
+
