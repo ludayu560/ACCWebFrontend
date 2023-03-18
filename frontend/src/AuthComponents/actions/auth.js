@@ -825,6 +825,7 @@ export const load_listing = (id) => async dispatch => {
             dispatch(load_events_created(listingAccount.id));
             dispatch(get_events_attending(listingAccount.id));
             dispatch(get_events_interested(listingAccount.id));
+            dispatch(get_favorites(listingAccount.id));
         } catch (err) {
             console.log(err)
             dispatch({

@@ -35,8 +35,9 @@ import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import LocalActivityIcon from "@mui/icons-material/LocalActivity";
 import FAQ from "../components/FAQ";
+import { connect } from "react-redux";
 
-function MyAccountFavourites(props) {
+function MyAccountFavourites({favorites}) {
   return (
     <>
       {/* <Mainbar></Mainbar> */}
@@ -88,5 +89,10 @@ function MyAccountFavourites(props) {
     </>
   );
 }
+const mapStateToProps = (state) => ({
+  favorites: state.auth.favorites,
+});
 
-export default MyAccountFavourites;
+export default connect(mapStateToProps)(MyAccountFavourites);
+
+// export default MyAccountFavourites;
