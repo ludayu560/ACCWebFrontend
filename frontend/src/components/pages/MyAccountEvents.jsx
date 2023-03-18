@@ -1,48 +1,50 @@
-import {
-  Container,
-  Button,
-  Grid,
-  Box,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  MenuItem,
-  Typography,
-  Stack,
-  Paper,
-  TextField,
-  ImageListItem,
-  Divider,
-  Switch,
-} from "@mui/material";
-import { Link } from "react-router-dom";
+import { Grid, Typography, Divider } from "@mui/material";
 import React, { useState } from "react";
-import RectangleOne from "../../assets/Rectangle1.svg";
-import AccountContent from "../../assets/AccountContent.svg";
-import NavBar from "../components/NavBar";
-import axios from "axios";
-import { borderRadius } from "@mui/system";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import Mainbar from "../components/MainBar";
 import ECard from "../components/ECard";
-import { styled } from "@mui/material/styles";
 import SideNav from "../components/SideNav";
 import { connect } from "react-redux";
+import { load_property_listing } from "../../AuthComponents/actions/auth";
 
 function MyAccountEvents({
   eventCreated,
   attending_events,
   interested_events,
+  load_property_listing,
 }) {
   console.log("attending events:", attending_events);
   console.log("created events:", eventCreated);
   console.log("interested events:", interested_events);
 
-  const attendingEvents = [];
+  const attendingEvents = [
+    {
+      id: 1,
+      event_name: "test event",
+      event_location: "test island",
+      event_description: "proctored exam",
+      event_date_time: "2023-03-13T09:21:00Z",
+      event_image:
+        "https://cdn-cjhkj.nitrocdn.com/krXSsXVqwzhduXLVuGLToUwHLNnSxUxO/assets/images/optimized/rev-e8927aa/wp-content/uploads/2020/07/Hero-1.jpg",
+    },
+    {
+      id: 2,
+      event_name: "test event2",
+      event_location: "test island",
+      event_description: "proctored exam",
+      event_date_time: "2023-03-13T09:21:00Z",
+    },
+  ];
+  const createdEvents = attendingEvents;
+  const interestedEvents = attendingEvents;
+
+  const handleEventClick = (id) => {
+    load_property_listing(id);
+    window.location.href = "http://localhost:3000/events"
+
+    // console.log(load_property_listing(id))
+  };
+
   return (
     <>
-      {/* <Mainbar></Mainbar> */}
       <Grid container spacing={8}>
         <Grid item xs={12}>
           <Typography variant="h2" padding={"3vw"} fontWeight={700}>
@@ -74,12 +76,14 @@ function MyAccountEvents({
             </Grid>
             <Grid container spacing={8} p={10}>
               {attendingEvents.map((item) => (
-                <Grid>
+                <Grid item onClick={() => handleEventClick(item.id)}>
                   <ECard
                     variant="event"
                     name={item.event_name}
                     location={item.event_location}
                     description={item.event_description}
+                    time={item.event_date_time}
+                    image={item.event_image}
                   ></ECard>
                 </Grid>
               ))}
@@ -102,12 +106,17 @@ function MyAccountEvents({
               </Typography>
             </Grid>
             <Grid container spacing={8} p={10}>
-              <Grid item xs="auto">
-                <ECard variant="event"></ECard>
-              </Grid>
-              <Grid item xs="auto">
-                <ECard variant="event"></ECard>
-              </Grid>
+              {interestedEvents.map((item) => (
+                <Grid item onClick={() => handleEventClick(item.id)}>
+                  <ECard
+                    variant="event"
+                    name={item.event_name}
+                    location={item.event_location}
+                    description={item.event_description}
+                    time={item.event_date_time}
+                  ></ECard>
+                </Grid>
+              ))}
             </Grid>
           </Grid>
 
@@ -127,12 +136,17 @@ function MyAccountEvents({
               </Typography>
             </Grid>
             <Grid container spacing={8} p={10}>
-              <Grid item xs="auto">
-                <ECard variant="event"></ECard>
-              </Grid>
-              <Grid item xs="auto">
-                <ECard variant="event"></ECard>
-              </Grid>
+              {createdEvents.map((item) => (
+                <Grid item onClick={() => handleEventClick(item.id)}>
+                  <ECard
+                    variant="event"
+                    name={item.event_name}
+                    location={item.event_location}
+                    description={item.event_description}
+                    time={item.event_date_time}
+                  ></ECard>
+                </Grid>
+              ))}
             </Grid>
           </Grid>
         </Grid>
@@ -147,4 +161,6 @@ const mapStateToProps = (state) => ({
   interested_events: state.auth.interested_events,
 });
 
-export default connect(mapStateToProps)(MyAccountEvents);
+export default connect(mapStateToProps, { load_property_listing })(
+  MyAccountEvents
+);

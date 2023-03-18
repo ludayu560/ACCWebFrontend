@@ -26,19 +26,19 @@ import GppGoodIcon from "@mui/icons-material/GppGood";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 function ECard(props) {
-  const { variant, themeColor, date, time, name, location, interested, going } = props;
+  const { variant, themeColor, date, time, name, location, interested, going, image } = props;
 
   return (
     <>
       {variant === "event" && (
         <Card raised="true" sx={{ borderRadius: 4, width: "350px" }}>
           <CardActionArea>
-            <CardMedia component="img" height="250px" src={bbq} />
+            <CardMedia component="img" height="250px" src={image? image : bbq} />
             <CardContent>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                    {time ? time : "Date: N/A"}
+                    {time ? time.substring(0, 10) : "Date: N/A"}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
