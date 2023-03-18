@@ -774,7 +774,7 @@ export const load_listing_current = (id) => async dispatch => {
 
             // const body = JSON.stringify({ id });
             // console.log(`id is ${id}`)
-            var res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/accountList/${id}/`, config);
+            var res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/ListingAccount/${id}/`, config);
             var listingAccount = res.data[0];
             const interests = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.user}/`, config);
             const traits = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.user}/`, config);
