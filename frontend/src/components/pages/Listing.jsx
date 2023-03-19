@@ -87,7 +87,7 @@ function Listing({connect, load_property_listing}) {
   }
 
   const handleOnClick = (id) => {
-    
+    console.log('handle onclick: ' + id)
   }
 
   return (
@@ -138,9 +138,9 @@ function Listing({connect, load_property_listing}) {
 
         {/*Listing Card Area*/}
         <Grid container px={10} pb={2} spacing={10}>
-          {listings
-            ? listings.map((item) => (
-                <Grid item xs="auto" onClick={handleOnClick(item.id)}>
+          { listings ? 
+            listings.map((item) => (
+                <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
                   <ECard 
                     variant="listing"
                     location={item.listing_city + ", " + item.listing_province} 

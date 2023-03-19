@@ -25,13 +25,20 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function ECard(props) {
   const {
     variant,
     themeColor,
     date,
     time,
-    name,
+    name = "N/A",
+    role = "N/A",
+    occupation = "N/A",
+    age = "N/A",
     location = "N/A",
     interested,
     going,
@@ -311,7 +318,7 @@ function ECard(props) {
 
       {variant === "housemate" && (
         <Card raised="true" sx={{ borderRadius: 5, width: "367px" }}>
-          <CardMedia component="img" height="172px" image={livingSpace} />
+          <CardMedia component="img" height="172px" image={image? image : livingSpace} />
           <Stack alignItems="right" alignContent="right" justifyContent="right">
             <Box display="flex" justifyContent="flex-end" mt={-20}>
               <IconButton
@@ -332,27 +339,27 @@ function ECard(props) {
                     sx={{ fontWeight: "bold" }}
                     align="center"
                   >
-                    OliveTree12
+                    {name}
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
                   <Typography variant="h6" align="center">
-                    Tenant
+                    {capitalizeFirstLetter(role)}
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
                   <Typography variant="h6" align="center">
-                    Nurse
+                    {capitalizeFirstLetter(occupation)}
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
                   <Typography variant="h6" align="center">
-                    Toronto
+                    {capitalizeFirstLetter(location)}
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <Typography variant="h6" align="center">
-                    25-30 Age Group
+                    {"Age Group: " +age} 
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>

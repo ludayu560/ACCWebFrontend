@@ -36,13 +36,17 @@ function MyAccountEvents({
   var attendingEvents = []
   var createdEvents = []
   var interestedEvents = []
-  useEffect(() => {
-    console.log('useeffect')
-    attendingEvents = attending_events
-    createdEvents = eventCreated
-    interestedEvents = interested_events
-  }
-  , [eventCreated,attending_events,interested_events])
+  // useEffect(() => {
+  //   console.log('useeffect')
+  //   attendingEvents = attending_events
+  //   createdEvents = eventCreated
+  //   interestedEvents = interested_events
+  // }
+  // , [eventCreated,attending_events,interested_events])
+
+  attendingEvents = attending_events
+  createdEvents = eventCreated
+  interestedEvents = interested_events
 
   const handleEventClick = (id) => {
     load_property_listing(id);
