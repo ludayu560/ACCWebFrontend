@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 
-
 import { load_property_listing } from "../../AuthComponents/actions/auth";
 function Listing({connect, load_property_listing}) {
   const [newQuery, setNewQuery] = useState(true);
