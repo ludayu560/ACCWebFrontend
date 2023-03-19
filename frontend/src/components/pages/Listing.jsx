@@ -90,6 +90,7 @@ function Listing({connect, load_property_listing}) {
   },[query])
 
   const handleOnClick = (id) => {
+    console.log('handle onclick: ' + id)
     console.log('handleOnclick execute')
     load_property_listing(id)
     // window.location.href = "http://localhost:3000/ListingDetail";
@@ -143,9 +144,9 @@ function Listing({connect, load_property_listing}) {
 
         {/*Listing Card Area*/}
         <Grid container px={10} pb={2} spacing={10}>
-          {listings
-            ? listings.map((item) => (
-                <Grid item xs="auto">
+          { listings ? 
+            listings.map((item) => (
+                <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
                   <ECard 
                     onClick={handleOnClick(item.id)}
                     variant="listing"
