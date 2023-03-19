@@ -15,6 +15,7 @@ import { connect } from "react-redux";
 import { load_property_listing } from "../../AuthComponents/actions/auth";
 function Listing({connect, load_property_listing}) {
   const [newQuery, setNewQuery] = useState(true);
+  const [query, setQuery] = useState();
   // If number of bedrooms, bathrooms, or housemates === 0 => no preference
   // If number of bedrooms === 5, bathrooms === 4, housemates === 4 => that number or more.
   const [filterParams, setFilterParams] = useState({
@@ -56,7 +57,6 @@ function Listing({connect, load_property_listing}) {
   ];
   const [listings, setListings] = useState([]);
   // Query section
-  console.log(newQuery)
   if (newQuery) {
     setNewQuery(false);
     const query =
@@ -75,20 +75,25 @@ function Listing({connect, load_property_listing}) {
       (filterParams.listing_ac === "unknown")? '' : "&listing_ac=" + filterParams.listing_ac +
       (filterParams.listing_smoking === "unknown")? '' : "&listing_smoking=" + filterParams.listing_smoking +
       (filterParams.utilities === "unknown")? '' : "&utilities=" + filterParams.utilities;
-
-    axios
-      .get("http://127.0.0.1:8000/PropertyListing/filter?" + query)
-      .then((response) => {
-        console.log("Data:", response.data);
-        setListings(response.data)
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+      setQuery(query)
   }
 
+  useEffect(()=>{
+    axios
+    .get("http://127.0.0.1:8000/PropertyListing/filter?" + query)
+    .then((response) => {
+      console.log("Data:", response.data);
+      setListings(response.data)
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+  },[query])
+
   const handleOnClick = (id) => {
-    
+    console.log('handleOnclick execute')
+    load_property_listing(id)
+    // window.location.href = "http://localhost:3000/ListingDetail";
   }
 
   return (
@@ -141,8 +146,9 @@ function Listing({connect, load_property_listing}) {
         <Grid container px={10} pb={2} spacing={10}>
           {listings
             ? listings.map((item) => (
-                <Grid item xs="auto" onClick={handleOnClick(item.id)}>
+                <Grid item xs="auto">
                   <ECard 
+                    onClick={handleOnClick(item.id)}
                     variant="listing"
                     location={item.listing_city + ", " + item.listing_province} 
                     bedrooms={item.listing_total_bedrooms}
