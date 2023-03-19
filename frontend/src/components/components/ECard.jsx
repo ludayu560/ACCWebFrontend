@@ -57,7 +57,7 @@ function ECard(props) {
             <CardMedia
               component="img"
               height="250px"
-              src={image ? image : bbq}
+              src={image ? 'http://127.0.0.1:8000/' + image : bbq}
             />
             <CardContent>
               <Grid container spacing={3}>

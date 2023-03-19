@@ -11,51 +11,20 @@ function MyAccountEvents({
   interested_events,
   load_property_listing,
 }) {
-  console.log("interested events:", interested_events);
-  console.log("interested events:", typeof interested_events);
-  console.log("eventCreated events:", eventCreated);
-  console.log("eventCreated events:", typeof eventCreated);
-  console.log("attendingEvents events:", attendingEvents);
-  console.log("attendingEvents events:", typeof attendingEvents);
-  const tempValues = [
-    {
-      id: 1,
-      event_name: "test event",
-      event_location: "test island",
-      event_description: "proctored exam",
-      event_date_time: "2023-03-13T09:21:00Z",
-      event_image:
-        "https://cdn-cjhkj.nitrocdn.com/krXSsXVqwzhduXLVuGLToUwHLNnSxUxO/assets/images/optimized/rev-e8927aa/wp-content/uploads/2020/07/Hero-1.jpg",
-    },
-    {
-      id: 2,
-      event_name: "test event2",
-      event_location: "test island",
-      event_description: "proctored exam",
-      event_date_time: "2023-03-13T09:21:00Z",
-    },
-  ];
+  const [attendingEvents, setAttendingEvents] = useState([]);
+  const [createdEvents, setCreatedEvents] = useState([]);
+  const [interestedEvents, setInterestedEvents] = useState([]);
 
-  var attendingEvents = []
-  var createdEvents = []
-  var interestedEvents = []
-  // useEffect(() => {
-  //   console.log('useeffect')
-  //   attendingEvents = attending_events
-  //   createdEvents = eventCreated
-  //   interestedEvents = interested_events
-  // }
-  // , [eventCreated,attending_events,interested_events])
-
-  // attendingEvents = attending_events
-  createdEvents = eventCreated
-  // interestedEvents = interested_events
+  useEffect(() => {
+    if (eventCreated && attendingEvents && interestedEvents) {
+      setAttendingEvents(attending_events);
+      setCreatedEvents(eventCreated);
+      setInterestedEvents(interested_events);
+    }
+  }, [eventCreated, attending_events, interested_events]);
 
   const handleEventClick = (id) => {
-    load_property_listing(id);
-    window.location.href = "http://localhost:3000/events";
 
-    // console.log(load_property_listing(id))
   };
 
   return (
@@ -129,6 +98,7 @@ function MyAccountEvents({
                     location={item.event_location}
                     description={item.event_description}
                     time={item.event_date_time}
+                    image={item.event_image}
                   ></ECard>
                 </Grid>
               ))}
@@ -159,6 +129,7 @@ function MyAccountEvents({
                     location={item.event_location}
                     description={item.event_description}
                     time={item.event_date_time}
+                    image={item.event_image}
                   ></ECard>
                 </Grid>
               ))}
