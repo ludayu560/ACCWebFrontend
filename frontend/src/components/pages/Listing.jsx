@@ -9,6 +9,7 @@ import Tags from "../components/Tags";
 import ListingFilterPanel from "../components/ListingFilterPanel";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 
 import { load_property_listing } from "../../AuthComponents/actions/auth";
 function Listing(props) {
