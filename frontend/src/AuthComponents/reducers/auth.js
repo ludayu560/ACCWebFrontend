@@ -85,11 +85,13 @@ export default function (state = initialState, action) {
                 currentListingAccount: payload
             };
         case GET_EVENTS_INTERESTED_SUCCESS:
+            console.log(payload)
             return {
                 ...state,
                 interested_events: payload
             };
         case GET_EVENTS_ATTENDING_SUCCESS:
+            console.log(payload)
             return {
                 ...state,
                 attending_events: payload,
@@ -100,6 +102,7 @@ export default function (state = initialState, action) {
                 favorites: payload
             };
         case EVENTS_CREATED_LOAD_SUCCESS:
+            console.log(payload)
             return {
                 ...state,
                 eventsCreated: payload
