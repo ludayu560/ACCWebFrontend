@@ -300,7 +300,8 @@ export const create_event = (event) => async dispatch => {
             if (event.event_image) {
                 formData.append('event_image', event.event_image);
             }
-            formData.append('create_listing_account', event.create_listing_account);
+            console.log(event.create_listing_account)
+            formData.append('creator_listing_account', event.create_listing_account);
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/Events/`, formData, config);
 
             dispatch({
