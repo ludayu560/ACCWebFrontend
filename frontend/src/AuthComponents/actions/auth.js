@@ -820,6 +820,8 @@ export const load_listing = (id) => async dispatch => {
                 payload: listingAccount
             });
             console.log(`listing account id: ${listingAccount.id}`);
+            console.log(`listing account user: ${listingAccount.user}`);
+
             dispatch(load_events_created(listingAccount.id));
             dispatch(get_events_attending(listingAccount.id));
             dispatch(get_events_interested(listingAccount.id));

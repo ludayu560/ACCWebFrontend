@@ -43,6 +43,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { create_event } from "../../AuthComponents/actions/auth";
 import { connect } from "react-redux";
 import ImageUpload from "../components/ImageUploadComponent";
+import Listing from "./Listing";
 const CustomCheckboxStyles = {
   // the box color when unchecked
   color: "#B9B9B9",
@@ -56,7 +57,7 @@ const CustomCheckboxStyles = {
   },
 };
 
-function Events({ create_event, listiingAccount}) {
+function Events({ create_event, listingAccount}) {
   const [image, setImage] = useState(null);
   const [form, setForm] = useState({
     event_name: "",
@@ -70,6 +71,7 @@ function Events({ create_event, listiingAccount}) {
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (event) => {
+    console.log(listingAccount)
     const eventobject = {
       event_image: image,
       event_name: form.event_name,
@@ -78,7 +80,7 @@ function Events({ create_event, listiingAccount}) {
       event_description: form.event_description,
       event_interested: 0,
       event_going: 0,
-      create_listing_account: listiingAccount.id, 
+      create_listing_account: listingAccount.id, 
     };
     create_event(eventobject);
   };
@@ -602,7 +604,7 @@ function Events({ create_event, listiingAccount}) {
 
 
 const mapStateToProps = (state) => ({
-  listiingAccount: state.auth.listiingAccount,
+  listingAccount: state.auth.listingAccount,
 });
 
 
