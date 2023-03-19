@@ -71,7 +71,6 @@ function Events({ create_event, listingAccount}) {
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (event) => {
-    console.log(listingAccount)
     const eventobject = {
       event_image: image,
       event_name: form.event_name,

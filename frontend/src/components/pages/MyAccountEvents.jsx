@@ -13,7 +13,10 @@ function MyAccountEvents({
 }) {
   console.log("interested events:", interested_events);
   console.log("interested events:", typeof interested_events);
-
+  console.log("eventCreated events:", eventCreated);
+  console.log("eventCreated events:", typeof eventCreated);
+  console.log("attendingEvents events:", attendingEvents);
+  console.log("attendingEvents events:", typeof attendingEvents);
   const tempValues = [
     {
       id: 1,
@@ -44,9 +47,9 @@ function MyAccountEvents({
   // }
   // , [eventCreated,attending_events,interested_events])
 
-  attendingEvents = attending_events
+  // attendingEvents = attending_events
   createdEvents = eventCreated
-  interestedEvents = interested_events
+  // interestedEvents = interested_events
 
   const handleEventClick = (id) => {
     load_property_listing(id);
