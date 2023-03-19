@@ -12,7 +12,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 
 import { load_property_listing } from "../../AuthComponents/actions/auth";
-function Listing(props) {
+function Listing({connect, load_property_listing}) {
   const [newQuery, setNewQuery] = useState(true);
   // If number of bedrooms, bathrooms, or housemates === 0 => no preference
   // If number of bedrooms === 5, bathrooms === 4, housemates === 4 => that number or more.

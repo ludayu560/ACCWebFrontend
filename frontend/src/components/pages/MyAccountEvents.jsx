@@ -1,5 +1,5 @@
 import { Grid, Typography, Divider } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ECard from "../components/ECard";
 import SideNav from "../components/SideNav";
 import { connect } from "react-redux";
@@ -11,11 +11,10 @@ function MyAccountEvents({
   interested_events,
   load_property_listing,
 }) {
-  console.log("attending events:", attending_events);
-  console.log("created events:", eventCreated);
   console.log("interested events:", interested_events);
+  console.log("interested events:", typeof interested_events);
 
-  const attendingEvents = [
+  const tempValues = [
     {
       id: 1,
       event_name: "test event",
@@ -33,12 +32,21 @@ function MyAccountEvents({
       event_date_time: "2023-03-13T09:21:00Z",
     },
   ];
-  const createdEvents = attendingEvents;
-  const interestedEvents = attendingEvents;
+
+  var attendingEvents = []
+  var createdEvents = []
+  var interestedEvents = []
+  useEffect(() => {
+    console.log('useeffect')
+    attendingEvents = attending_events
+    createdEvents = eventCreated
+    interestedEvents = interested_events
+  }
+  , [eventCreated,attending_events,interested_events])
 
   const handleEventClick = (id) => {
     load_property_listing(id);
-    window.location.href = "http://localhost:3000/events"
+    window.location.href = "http://localhost:3000/events";
 
     // console.log(load_property_listing(id))
   };
