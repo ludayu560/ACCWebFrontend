@@ -56,7 +56,7 @@ const CustomCheckboxStyles = {
   },
 };
 
-function Events({ create_event }) {
+function Events({ create_event, listiingAccount}) {
   const [image, setImage] = useState(null);
   const [form, setForm] = useState({
     event_name: "",
@@ -65,6 +65,7 @@ function Events({ create_event }) {
     event_description: "",
     event_interested: 0,
     event_going: 0,
+    create_listing_account: listiingAccount.id, 
   });
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -599,4 +600,10 @@ function Events({ create_event }) {
   );
 }
 
-export default connect(null, { create_event })(Events);
+
+const mapStateToProps = (state) => ({
+  listiingAccount: state.auth.listiingAccount,
+});
+
+
+export default connect(mapStateToProps, { create_event })(Events);
