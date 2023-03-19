@@ -65,7 +65,6 @@ function Events({ create_event, listiingAccount}) {
     event_description: "",
     event_interested: 0,
     event_going: 0,
-    create_listing_account: listiingAccount.id, 
   });
 
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -79,6 +78,7 @@ function Events({ create_event, listiingAccount}) {
       event_description: form.event_description,
       event_interested: 0,
       event_going: 0,
+      create_listing_account: listiingAccount.id, 
     };
     create_event(eventobject);
   };
