@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Stack, Box, Hidden } from "@mui/material";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 function ImageCarousel(props) {
-  const { images } = props;
+  const [images, setImages] = useState()
+  console.log(props.images)
+  useEffect(() => {
+    if (props.images.join() !== '') {
+      setImages(props.images)
+    }
+  }, [props.images])
 
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -17,26 +23,26 @@ function ImageCarousel(props) {
   };
 
   return (
-    <div>
+    (images?     <div>
       <Stack direction={'row'} alignContent={'center'} justifyContent={'center'} height={'50vh'} marginBottom={'10vh'} overflow={'hidden'}>
         {images.map((image, index) => {
           if (index === activeIndex) {
             return (
-              <Box marginX={'2vw'} component={'img'} src={image.src} height={'100%'}/>
+              <Box marginX={'2vw'} component={'img'} src={image} height={'100%'}/>
             );
           } else if (
             index === (activeIndex + 1) % images.length ||
             (activeIndex === images.length - 1 && index === 0)
           ) {
             return (
-              <Box marginX={'2vw'} component={'img'} src={image.src} height={'90%'}/>
+              <Box marginX={'2vw'} component={'img'} src={image} height={'90%'}/>
             );
           } else if (
             index === (activeIndex - 1 + images.length) % images.length ||
             (activeIndex === 0 && index === images.length - 1)
           ) {
             return (
-              <Box marginX={'2vw'} component={'img'} src={image.src} height={'90%'}/>
+              <Box marginX={'2vw'} component={'img'} src={image} height={'90%'}/>
             );
           } else {
             return null;
@@ -51,8 +57,8 @@ function ImageCarousel(props) {
           <NavigateNextIcon fontSize="large"/>
         </Button>
       </div>
-    </div>
-  );
+    </div>: <div>loading</div>)
+  )  
 }
 
 export default ImageCarousel;

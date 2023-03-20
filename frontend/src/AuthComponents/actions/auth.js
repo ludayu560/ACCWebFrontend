@@ -604,11 +604,15 @@ export const load_property_listing = (id) => async dispatch => {
             };
 
             // Make GET request to fetch the property listing by ID
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/get/${id}/`, config);
+            // const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/get/${id}/`, config);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/${id}/`, config);
+
             const propertyListing = res.data;
 
             // Make GET request to fetch the utilities for the property listing
+            // const utilitiesRes = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyUtilities/get/${id}/`, config);
             const utilitiesRes = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyUtilities/get/${id}/`, config);
+
             const utilities = utilitiesRes.data;
             propertyListing.listing_utilities = utilities;
 
@@ -641,7 +645,9 @@ export const load_property_listing_current = (id) => async dispatch => {
             };
 
             // Make GET request to fetch the property listing by ID
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/get/${id}/`, config);
+            // const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/get/${id}/`, config);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/${id}/`, config);
+
             const propertyListing = res.data;
 
             // Make GET request to fetch the utilities for the property listing

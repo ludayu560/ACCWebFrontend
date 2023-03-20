@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import { load_property_listing, get_housemates } from "../../AuthComponents/actions/auth";
 import { useNavigate } from "react-router";
 function Listing({load_property_listing, get_housemates}) {
+  const navigate = useNavigate();
   const [newQuery, setNewQuery] = useState(true);
   const [query, setQuery] = useState();
   // If number of bedrooms, bathrooms, or housemates === 0 => no preference
@@ -22,7 +23,7 @@ function Listing({load_property_listing, get_housemates}) {
     listing_city: "unknown",
     listing_province: "unknown",
     listing_type: "unknown",
-    listing_rate__gte: 700,
+    listing_rate__gte: 400,
     listing_rate__lte: 1500,
     listing_women_homeowner: "unknown",
     listing_total_bedrooms: 0, // int
@@ -91,9 +92,7 @@ function Listing({load_property_listing, get_housemates}) {
   },[query])
 
   const handleOnClick = (id) => {
-    const navigate = useNavigate();
-    console.log('handle onclick: ' + id)
-    console.log('handleOnclick execute')
+
     load_property_listing(id);
     get_housemates(id);
     navigate("/ListingDetails")
@@ -151,8 +150,7 @@ function Listing({load_property_listing, get_housemates}) {
           { listings ? 
             listings.map((item) => (
                 <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
-                  <ECard 
-                    onClick={handleOnClick(item.id)}
+                  <ECard
                     variant="listing"
                     location={item.listing_city + ", " + item.listing_province} 
                     bedrooms={item.listing_total_bedrooms}
