@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import background from "../../assets/background1.png";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import Tags from "../components/Tags";
+import { connect } from "react-redux";
 
 function MyAccountProfile(currentListingAccount) {
   const [ultSelected, setUltSelected] = useState(true);
@@ -36,7 +37,7 @@ function MyAccountProfile(currentListingAccount) {
           mt={-15}>
           <Grid container p={2}>
             <Grid item xs={4}>
-              <Typography variant="h5">18-25 Age Group</Typography>
+              <Typography variant="h5">{currentListingAccount.age_range} Age Group</Typography>
             </Grid>
             <Grid item xs={5}></Grid>
 
@@ -63,15 +64,7 @@ function MyAccountProfile(currentListingAccount) {
           <Stack spacing={4}>
             <Typography variant="h2">About Me</Typography>
             <Typography>
-              Lectus a, mi, vulputate cursus. At faucibus vulputate lacus ultricies sit quisque. Condimentum amet
-              euismod dapibus eros, arcu. Porttitor aliquam, etiam eu, felis quis nibh convallis. Elementum, placerat
-              donec eros, sit. Nunc cras dignissim nibh nunc facilisis curabitur eget tellus. Diam quis scelerisque eget
-              pretium, morbi tincidunt. Amet bibendum vulputate sollicitudin vel quis ac arcu quam eu. Tortor, venenatis
-              accumsan ornare adipiscing mauris viverra etiam eget. Lectus duis nulla nibh varius eget velit egestas.
-              Tellus cras sit natoque suspendisse sed ultrices sit. Morbi odio semper eget pellentesque elit odio at
-              pharetra tellus. Diam sit at est purus a nisl. Quam luctus at sapien tempor vitae. Condimentum nunc nisl
-              erat ipsum. Sodales turpis diam at sit lacus elementum massa tempus aenean. Elementum aliquet nisi lacus,
-              gravida porttitor purus mi.
+              {currentListingAccount.tell_use_about_yourself}
             </Typography>
           </Stack>
         </Grid>
@@ -101,15 +94,7 @@ function MyAccountProfile(currentListingAccount) {
           <Stack spacing={4}>
             <Typography variant="h2">What I’m Looking For</Typography>
             <Typography>
-              Lectus a, mi, vulputate cursus. At faucibus vulputate lacus ultricies sit quisque. Condimentum amet
-              euismod dapibus eros, arcu. Porttitor aliquam, etiam eu, felis quis nibh convallis. Elementum, placerat
-              donec eros, sit. Nunc cras dignissim nibh nunc facilisis curabitur eget tellus. Diam quis scelerisque eget
-              pretium, morbi tincidunt. Amet bibendum vulputate sollicitudin vel quis ac arcu quam eu. Tortor, venenatis
-              accumsan ornare adipiscing mauris viverra etiam eget. Lectus duis nulla nibh varius eget velit egestas.
-              Tellus cras sit natoque suspendisse sed ultrices sit. Morbi odio semper eget pellentesque elit odio at
-              pharetra tellus. Diam sit at est purus a nisl. Quam luctus at sapien tempor vitae. Condimentum nunc nisl
-              erat ipsum. Sodales turpis diam at sit lacus elementum massa tempus aenean. Elementum aliquet nisi lacus,
-              gravida porttitor purus mi.
+              TBD, needs input for acocunt
             </Typography>
           </Stack>
         </Grid>
