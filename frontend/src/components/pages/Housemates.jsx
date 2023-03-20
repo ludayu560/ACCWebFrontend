@@ -17,6 +17,10 @@ import ECard from "../components/ECard";
 import Tags from "../components/Tags";
 
 import axios from "axios";
+import { connect } from "react-redux";
+
+import { load_listing_current } from "../../AuthComponents/actions/auth";
+import { useNavigate } from "react-router";
 
 const traitList = [
   "Extroverted",
@@ -43,14 +47,15 @@ const interestList = [
   "Cars",
 ];
 
-function Housemates(props) {
+function Housemates({load_listing_current, listingAccount}) {
+  const navigate = useNavigate();
   const [newQuery, setNewQuery] = useState(true);
   const [filterParams, setFilterParams] = useState({
     traits: [],
     interests: [],
     ageRange: [16, 100],
     priceRange: [400, 4000],
-    housemateType: "",
+    housemateType: "Tenant",
   });
   const data = [
     "$" + filterParams.priceRange[0] + " - $" + filterParams.priceRange[1],
@@ -67,19 +72,26 @@ function Housemates(props) {
     const query =
       "account_type=" +
       filterParams.housemateType.toLowerCase() +
-      "&age_min=" +
-      filterParams.ageRange[0] +
-      "&age_max=" +
-      filterParams.ageRange[1] +
-      "&personal_traits=" +
-      filterParams.traits.map((word) => word.toLowerCase()).join("%2C") +
-      "&interests=" +
-      filterParams.interests.map((word) => word.toLowerCase()).join("%2C");
+      (filterParams.ageRange[0] <= 16
+        ? ""
+        : "&age_min=" + filterParams.ageRange[0]) +
+      (filterParams.ageRange[1] >= 100
+        ? ""
+        : "&age_max=" + filterParams.ageRange[1]) +
+      (filterParams.traits != ""
+        ? "&personal_traits=" +
+          filterParams.traits.map((word) => word.toLowerCase()).join("%2C")
+        : "") +
+      (filterParams.interests != ""
+        ? "&interests=" +
+          filterParams.interests.map((word) => word.toLowerCase()).join("%2C")
+        : "");
 
     axios
       .get("http://127.0.0.1:8000/ListingAccount/filter?" + query)
       .then((response) => {
         console.log("Data:", response.data);
+        console.log(query);
         setHousemates(response.data);
       })
       .catch((error) => {
@@ -88,80 +100,59 @@ function Housemates(props) {
   }
 
   const handleOnClick = (id) => {
-    console.log("handle onclick: " + id);
+    load_listing_current(id)
+    navigate("/account-profile")
   };
-
-  //   {
-  //     "id": 1,
-  //     "username": "LuDa Yu",
-  //     "account_type": "propertyowner",
-  //     "first_name": "LuDa",
-  //     "last_name": "Yu",
-  //     "email": "ludayu560@gmail.com",
-  //     "phone_number": null,
-  //     "date_of_birth": "2023-03-15",
-  //     "location": null,
-  //     "age_range": "18-25",
-  //     "occupation": null,
-  //     "news_consent": true,
-  //     "tell_us_about_yourself": null,
-  //     "profile_picture": null,
-  //     "banner_picture": null,
-  //     "display_picture_one": null,
-  //     "display_picture_two": null,
-  //     "display_picture_three": null,
-  //     "display_picture_four": null,
-  //     "user": 1
-  // }
-
+  
   return (
-    <>
-      <Stack>
-        <Stack alignItems="center" p={6} spacing={5} mt={15}>
-          <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-            Matching By Housemates
-          </Typography>
-          <SearchBar variant="location" />
-        </Stack>
+    listingAccount?  <>
+    <Stack>
+      <Stack alignItems="center" p={6} spacing={5} mt={15}>
+        <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+          Matching By Housemates
+        </Typography>
+        <SearchBar variant="location" />
+      </Stack>
 
-        <Divider sx={{ p: 0.1, mx: 20 }} />
-        <Grid container p={4} px={10}>
-          <Grid item xs={9}>
-            <Grid container spacing={2}>
-              <Grid item>
-                <HousemateFilterPanel
-                  returnHook={setFilterParams}
-                  query={setNewQuery}
-                  traitList={traitList}
-                  interestList={interestList}
-                />
-              </Grid>
-              {data.map((id) =>
-                id === "" ? null : (
-                  <Grid item xs="auto">
-                    <Tags variant="filter" text={id}></Tags>
-                  </Grid>
-                )
-              )}
-            </Grid>
-          </Grid>
-          <Grid item xs={3} px={10}>
-            <Stack spacing={15} alignItems="center">
-              <Typography align="center">
-                Showing 1 - 21of 242 results{" "}
-              </Typography>
-              <StyledButton
-                variant="pinkBtn"
-                text="Newest First"
-                width="15vw"
+      <Divider sx={{ p: 0.1, mx: 20 }} />
+      <Grid container p={4} px={10}>
+        <Grid item xs={9}>
+          <Grid container spacing={2}>
+            <Grid item>
+              <HousemateFilterPanel
+                returnHook={setFilterParams}
+                query={setNewQuery}
+                traitList={traitList}
+                interestList={interestList}
               />
-            </Stack>
+            </Grid>
+            {data.map((id) =>
+              id === "" ? null : (
+                <Grid item xs="auto">
+                  <Tags variant="filter" text={id}></Tags>
+                </Grid>
+              )
+            )}
           </Grid>
         </Grid>
+        <Grid item xs={3} px={10}>
+          <Stack spacing={15} alignItems="center">
+            <Typography align="center">
+              Showing 1 - 21of 242 results{" "}
+            </Typography>
+            <StyledButton
+              variant="pinkBtn"
+              text="Newest First"
+              width="15vw"
+            />
+          </Stack>
+        </Grid>
+      </Grid>
 
-        {/*Housemate Card Area*/}
-        <Grid container px={10} py={2} spacing={10}>
-          {housemates.map((item) => (
+      {/*Housemate Card Area*/}
+      <Grid container px={10} py={2} spacing={10}>
+        {housemates.map((item) =>
+          item.id === listingAccount.id ? null : (
             <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
               <ECard
                 variant="housemate"
@@ -173,31 +164,35 @@ function Housemates(props) {
                 image={item.banner_picture}
               />
             </Grid>
-          ))}
-        </Grid>
+          )
+        )}
+      </Grid>
 
-        {/*Pink Area*/}
-        <Stack
-          style={{ background: "white" }}
-          p={8}
-          pb={20}
-          spacing={3}
-          alignItems="center"
-        >
-          <Box display="flex" m="auto" style={{ alignItems: "center" }}>
-            <Typography variant="h5" sx={{ textAlign: "center" }}>
-              PAGE 1
-            </Typography>
-            <IconButton type="button" sx={{ m: "10px" }} aria-label="search">
-              <KeyboardArrowRightIcon sx={{ fontSize: 40 }} />
-            </IconButton>
-          </Box>
-        </Stack>
-
-        <Footer></Footer>
+      {/*Pink Area*/}
+      <Stack
+        style={{ background: "white" }}
+        p={8}
+        pb={20}
+        spacing={3}
+        alignItems="center"
+      >
+        <Box display="flex" m="auto" style={{ alignItems: "center" }}>
+          <Typography variant="h5" sx={{ textAlign: "center" }}>
+            PAGE 1
+          </Typography>
+          <IconButton type="button" sx={{ m: "10px" }} aria-label="search">
+            <KeyboardArrowRightIcon sx={{ fontSize: 40 }} />
+          </IconButton>
+        </Box>
       </Stack>
-    </>
+
+      <Footer></Footer>
+    </Stack>
+  </> : null
   );
 }
+const mapStateToProps = (state) => ({
+  listingAccount: state.auth.listingAccount,
+});
 
-export default Housemates;
+export default connect(mapStateToProps, {load_listing_current})(Housemates);

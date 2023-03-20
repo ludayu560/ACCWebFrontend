@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 
 import { load_property_listing, get_housemates } from "../../AuthComponents/actions/auth";
 import { useNavigate } from "react-router";
+
 function Listing({load_property_listing, get_housemates}) {
   const navigate = useNavigate();
   const [newQuery, setNewQuery] = useState(true);
@@ -92,7 +93,6 @@ function Listing({load_property_listing, get_housemates}) {
   },[query])
 
   const handleOnClick = (id) => {
-
     load_property_listing(id);
     get_housemates(id);
     navigate("/ListingDetails")

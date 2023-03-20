@@ -26,7 +26,9 @@ import GppGoodIcon from "@mui/icons-material/GppGood";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 function capitalizeFirstLetter(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  if (str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 }
 
 function ECard(props) {

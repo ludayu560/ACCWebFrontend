@@ -73,7 +73,7 @@ function RentalListingForm({ create_property_listing }) {
   const [listing_den, setListing_den] = useState(false);
   const [listing_rate, setListing_rate] = useState(null);
   const [listing_women_homeowner, setListing_women_homeowner] = useState(false);
-  const [listing_available_bedrooms, setListing_available_bedrooms] = useState(null);
+  const [listing_available_bedrooms, setListing_available_bedrooms] = useState(1);
   const [listing_bathrooms, setListing_bathrooms] = useState(null);
   const [listing_housemates, setListing_housemates] = useState(null);
   const [listing_description, setListing_description] = useState("");

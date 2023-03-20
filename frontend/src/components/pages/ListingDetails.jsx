@@ -1,16 +1,19 @@
 import Mainbar from "../components/MainBar";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import { Checkbox } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import ReviewComponent from "../components/PropDetailReviewComponent";
 import HousemateComponent from "../components/PropDetailHousemateComponent";
 import ImageCarousel from "../components/ImageCarousel";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
+import { create_favorite } from "../../AuthComponents/actions/auth";
 
-function ListingDetails({ currentPropertyListing, listingAccount }) {
+function ListingDetails({ create_favorite, currentPropertyListing, listingAccount }) {
   const [listing, setListing] = useState({
     id: null,
     listing_city: "",
@@ -37,14 +40,14 @@ function ListingDetails({ currentPropertyListing, listingAccount }) {
     listing_image_four: "",
     creator_listing_account: null,
   });
-  const [carouselImages, setCarouselImages] = useState([])
+  const [carouselImages, setCarouselImages] = useState([]);
 
   useEffect(() => {
     if (currentPropertyListing) {
       setListing(currentPropertyListing);
-  
+
       let tempCarouselImages = [];
-  
+
       if (currentPropertyListing.listing_image_one) {
         tempCarouselImages.push(currentPropertyListing.listing_image_one);
       }
@@ -57,7 +60,7 @@ function ListingDetails({ currentPropertyListing, listingAccount }) {
       if (currentPropertyListing.listing_image_four) {
         tempCarouselImages.push(currentPropertyListing.listing_image_four);
       }
-  
+
       setCarouselImages(tempCarouselImages);
     }
   }, [currentPropertyListing]);
@@ -124,7 +127,13 @@ function ListingDetails({ currentPropertyListing, listingAccount }) {
   };
   reviewArray.push(exampleReview, exampleReview, exampleReview);
 
-  console.log('carousel images: ',carouselImages)
+  const [isFavourited, setIsFavourited] = useState(false);
+
+  useEffect(() => {
+    if(isFavourited) {
+        create_favorite(currentPropertyListing.id, listingAccount.id)
+    }
+  },[isFavourited])
 
   // POST:
   // favorite the listing for this account
@@ -156,9 +165,28 @@ function ListingDetails({ currentPropertyListing, listingAccount }) {
               /Month
             </Typography>
           </Typography>
+
           <Typography fontSize={48} fontWeight={700}>
-            {listingName}
+            listingName
           </Typography>
+
+          <Checkbox
+            onClick={(event) => {
+              setIsFavourited(event.target.checked);
+            }}
+            icon={
+              <FavoriteBorderIcon
+                style={{ fontSize: 60 }}
+                sx={{ color: "gray" }}
+              />
+            }
+            checkedIcon={
+              <FavoriteIcon
+                style={{ fontSize: 60 }}
+                sx={{ color: "#F83E7D" }}
+              />
+            }
+          />
         </Box>
         <ImageCarousel images={carouselImages} />
         <Box marginLeft={"5vw"}>
@@ -232,4 +260,4 @@ const mapStateToProps = (state) => ({
   listingAccount: state.auth.listingAccount,
 });
 
-export default connect(mapStateToProps)(ListingDetails);
+export default connect(mapStateToProps, {create_favorite})(ListingDetails);

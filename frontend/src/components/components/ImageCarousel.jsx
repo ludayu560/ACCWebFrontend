@@ -5,7 +5,6 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 function ImageCarousel(props) {
   const [images, setImages] = useState()
-  console.log(props.images)
   useEffect(() => {
     if (props.images.join() !== '') {
       setImages(props.images)

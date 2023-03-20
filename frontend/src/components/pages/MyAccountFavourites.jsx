@@ -7,17 +7,23 @@ import React, { useEffect, useState } from "react";
 import ECard from "../components/ECard";
 import SideNav from "../components/SideNav";
 import { connect } from "react-redux";
+import { load_property_listing, get_housemates } from "../../AuthComponents/actions/auth";
+import { useNavigate } from "react-router";
 
-function MyAccountFavourites({ favorites }) {
+function MyAccountFavourites({ favorites, load_property_listing, get_housemates }) {
+  const navigate = useNavigate();
   const [favoritesArray, setFavoritesArray] = useState([]);
   useEffect(() => {
     if (favorites) {
       setFavoritesArray(favorites);
+      console.log(favorites)
     }
   }, [favorites]);
 
   const handleOnClick = (id) => {
-
+    load_property_listing(id);
+    get_housemates(id);
+    navigate("/ListingDetails")
   }
   return (
     <>
@@ -54,14 +60,13 @@ function MyAccountFavourites({ favorites }) {
               {favoritesArray.map((item) => (
                 <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
                   <ECard
-                    onClick={handleOnClick(item.id)}
                     variant="listing"
                     location={item.listing_city + ", " + item.listing_province}
                     bedrooms={item.listing_total_bedrooms}
                     bathrooms={item.listing_bathrooms}
                     roomsAvailable={item.listing_available_bedrooms}
                     price={item.listing_rate}
-                    image={item.listing_image_one}
+                    image={'http://127.0.0.1:8000'+ item.listing_image_one}
                   />
                 </Grid>
               ))}
@@ -76,6 +81,4 @@ const mapStateToProps = (state) => ({
   favorites: state.auth.favorites,
 });
 
-export default connect(mapStateToProps)(MyAccountFavourites);
-
-// export default MyAccountFavourites;
+export default connect(mapStateToProps, {load_property_listing, get_housemates})(MyAccountFavourites);

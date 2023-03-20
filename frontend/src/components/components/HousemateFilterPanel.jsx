@@ -52,7 +52,7 @@ function HousemateFilterPanel(props) {
   // manage states here
   const [ageRange, setAge] = useState([25, 40]);
   const [priceRange, setPrice] = useState([700, 1500]);
-  const [housemateType, setHousemateType] = useState('');
+  const [housemateType, setHousemateType] = useState('Tenant');
   const [traitArray, setTraitArray] = useState(new Array(traitList.length).fill(false))
   const [interestArray, setInterestArray] = useState(new Array(interestList.length).fill(false))
 
@@ -91,9 +91,7 @@ function HousemateFilterPanel(props) {
 
   // Handle the selection of the Housemate type
   const handleHousemateChange = (event, type) => {
-    if (type === housemateType){
-        setHousemateType('')
-    } else if (type === "Tenant") {
+    if (type === "Tenant") {
         setHousemateType(type)
     } else if (type === "Homeowner") {
         setHousemateType(type)

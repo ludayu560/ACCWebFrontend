@@ -290,7 +290,7 @@ export const get_favorites = (user) => async dispatch => {
                     'Accept': 'application/json'
                 }
             };
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/Favorites/listingAccount/${user}/`, config);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/Favorites/propertyGet/${user}/`, config);
             dispatch({
                 type: GET_FAVORITES_SUCCESS,
                 payload: res.data
