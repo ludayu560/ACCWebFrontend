@@ -11,8 +11,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 
-import { load_property_listing } from "../../AuthComponents/actions/auth";
-function Listing({connect, load_property_listing}) {
+import { load_property_listing, get_housemates } from "../../AuthComponents/actions/auth";
+import { useNavigate } from "react-router";
+function Listing({load_property_listing, get_housemates}) {
   const [newQuery, setNewQuery] = useState(true);
   const [query, setQuery] = useState();
   // If number of bedrooms, bathrooms, or housemates === 0 => no preference
@@ -90,9 +91,12 @@ function Listing({connect, load_property_listing}) {
   },[query])
 
   const handleOnClick = (id) => {
+    const navigate = useNavigate();
     console.log('handle onclick: ' + id)
     console.log('handleOnclick execute')
-    load_property_listing(id)
+    load_property_listing(id);
+    get_housemates(id);
+    navigate("/ListingDetails")
     // window.location.href = "http://localhost:3000/ListingDetail";
   }
 
@@ -185,4 +189,4 @@ function Listing({connect, load_property_listing}) {
   );
 }
 
-export default connect(null, { load_property_listing })(Listing);
+export default connect(null, { load_property_listing, get_housemates})(Listing);

@@ -50,6 +50,10 @@ import {
     LISTINGACCOUNT_LOAD_CURRENT_FAIL,
     PROPERTYLISTING_LOAD_CURRENT_SUCCESS,
     PROPERTYLISTING_LOAD_CURRENT_FAIL,
+    CREATE_HOUSEMATE_SUCCESS,
+    CREATE_HOUSEMATE_FAIL,
+    GET_HOUSEMATE_SUCCESS,
+    GET_HOUSEMATE_FAIL,
     // GET_EVENTS_INTERESTED_NUMBER_SUCCESS,
     // GET_EVENTS_INTERESTED_NUMBER_FAIL,
     LOGOUT
@@ -67,6 +71,7 @@ const initialState = {
     attending_events: null,
     interested_events: null,
     favorites: null,
+    housemates: null,
     currentListingAccount: null,
     currentPropertyListingExtra: null, // might be redundant stuff Shonn created, if remove, please remove PROPERTYLISTING_LOAD_CURRENT_SUCCESS and load property listing current in auth action
 };
@@ -74,6 +79,12 @@ const initialState = {
 export default function (state = initialState, action) {
     const { type, payload } = action
     switch (type) {
+        case GET_HOUSEMATE_SUCCESS:
+            return {
+                ...state,
+                housemates: payload
+            };
+
         case PROPERTYLISTING_LOAD_CURRENT_SUCCESS:
             return {
                 ...state,
@@ -197,7 +208,8 @@ export default function (state = initialState, action) {
                 eventsCreated: null,
                 attending_events: null,
                 interested_events: null,
-                favorites: null
+                favorites: null,
+                housemates: null
             }
         case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:
@@ -228,6 +240,9 @@ export default function (state = initialState, action) {
         case GET_EVENTS_INTERESTED_FAIL:
         case LISTINGACCOUNT_LOAD_CURRENT_FAIL:
         case PROPERTYLISTING_LOAD_CURRENT_FAIL:
+        case CREATE_HOUSEMATE_SUCCESS:
+        case CREATE_HOUSEMATE_FAIL:
+            case GET_HOUSEMATE_FAIL:
         case ACTIVATION_FAIL:
             return {
                 ...state

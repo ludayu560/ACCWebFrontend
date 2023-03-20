@@ -7,9 +7,10 @@ import Divider from "@mui/material/Divider";
 import ReviewComponent from "../components/PropDetailReviewComponent";
 import HousemateComponent from "../components/PropDetailHousemateComponent";
 import ImageCarousel from "../components/ImageCarousel";
+import { connect } from "react-redux";
 
 
-function ListingDetails(props) {
+function ListingDetails({currentListingAccount, listingAccount}) {
 
 // API Calls:
 // GET:
@@ -168,4 +169,10 @@ reviewArray.push(exampleReview, exampleReview, exampleReview)
     )
 }
 
-export default ListingDetails
+const mapStateToProps = (state) => ({
+    currentPropertyListing: state.auth.currentPropertyListing,
+    listingAccount: state.auth.listingAccount,
+  });
+  
+  export default connect(mapStateToProps)(ListingDetails);
+  
