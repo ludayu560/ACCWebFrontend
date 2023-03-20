@@ -12,7 +12,7 @@ import background from "../../assets/background1.png";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import Tags from "../components/Tags";
 
-function MyAccountProfile(props) {
+function MyAccountProfile(currentListingAccount) {
   const [ultSelected, setUltSelected] = useState(true);
   return (
     <>
@@ -165,4 +165,10 @@ function MyAccountProfile(props) {
   );
 }
 
-export default MyAccountProfile;
+// export default connect(MyAccountProfile);
+
+const mapStateToProps = (state) => ({
+  currentListingAccount: state.auth.currentListingAccount,
+});
+
+export default connect(mapStateToProps)(MyAccountProfile);
