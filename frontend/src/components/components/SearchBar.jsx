@@ -3,19 +3,19 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import DirectionsIcon from "@mui/icons-material/Directions";
-import { Button, ButtonBase } from "@mui/material";
+import { ButtonBase } from "@mui/material";
 import StyledTextField from "./StyledTextField";
 import { Box, Stack } from "@mui/system";
 import StyledButton from "./StyledButton";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 export default function SearchBar(props) {
-  const { disabled, variant, placeholder, width, height, value, color, hook } = props;
-  const [online, setOnline] = useState();
+  const { variant, width } = props;
 
+  // const eventInterestedIn = ''
+  // const eventCategory = ''
+  // const eventLocation = ''
 
   return (
     <>

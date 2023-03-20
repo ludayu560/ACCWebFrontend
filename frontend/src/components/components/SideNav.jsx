@@ -17,13 +17,33 @@ import {
   Switch,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { borderRadius } from "@mui/system";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import { styled } from "@mui/material/styles";
+import { load_listing_current } from "../../AuthComponents/actions/auth";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router";
+import { logout } from "../../AuthComponents/actions/auth";
 
-function SideNav(props) {
+
+function SideNav({load_listing_current, listingAccount, logout}, props) {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    console.log("onclick", listingAccount)
+    if (listingAccount) {
+      load_listing_current(listingAccount.id)
+      navigate("/account-profile")
+    }
+  }
+  const handlelogoutclick = () => {
+    logout()
+    
+    navigate("/")
+  }
+
   return (
     <Stack
       marginLeft={10}
@@ -35,9 +55,9 @@ function SideNav(props) {
       }}
       bgcolor='white'
     >
-      <Button
+      <Button 
+        onClick={handleClick}
         variant="text"
-        href={`/account-profile`}
         size="large"
         sx={{ color: "black", padding: 3 }}
       >
@@ -93,6 +113,7 @@ function SideNav(props) {
         Help
       </Button>
       <Button
+        onClick={handlelogoutclick}
         variant="text"
         to={`/account-${props.name}`}
         size="large"
@@ -103,5 +124,8 @@ function SideNav(props) {
     </Stack>
   );
 }
+const mapStateToProps = (state) => ({
+  listingAccount: state.auth.listingAccount,
+});
 
-export default SideNav;
+export default connect(mapStateToProps, {load_listing_current, logout})(SideNav);

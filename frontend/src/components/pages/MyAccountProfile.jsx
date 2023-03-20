@@ -13,9 +13,9 @@ import GppGoodIcon from "@mui/icons-material/GppGood";
 import Tags from "../components/Tags";
 import { connect } from "react-redux";
 
-function MyAccountProfile(currentListingAccount) {
+function MyAccountProfile({currentListingAccount}) {
   const [ultSelected, setUltSelected] = useState(true);
-  return (
+  return ( (currentListingAccount)? 
     <>
       {/* <Mainbar></Mainbar> */}
       <Grid container>
@@ -51,7 +51,7 @@ function MyAccountProfile(currentListingAccount) {
             <Grid item xs={12}>
               <Box display="flex" justifyContent="center" alignItems="center" pt={10}>
                 <Typography variant="h5" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-                  User Name
+                  {currentListingAccount.username}
                 </Typography>
               </Box>
             </Grid>
@@ -146,7 +146,7 @@ function MyAccountProfile(currentListingAccount) {
           </Box>
         </Grid>
       </Grid>
-    </>
+    </> : null
   );
 }
 

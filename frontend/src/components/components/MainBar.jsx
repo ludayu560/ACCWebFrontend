@@ -15,12 +15,16 @@ import {
   IconButton,
 } from "@mui/material";
 import Logo from "../../assets/Aisha Logo.svg";
+import { useNavigate } from "react-router";
 
 function Mainbar({logout, setNav}) {
+  const navigate = useNavigate()
+
   const trigger = useScrollTrigger();
   const logout_user = () => {
     logout();
     setNav(false)
+    navigate("/")
 };
   return (
     <Slide appear={false} direction="down" in={!trigger}>
@@ -38,7 +42,7 @@ function Mainbar({logout, setNav}) {
           <Box sx={{ flexGrow: 1 }} />
 
           <Stack direction="row" spacing={2}>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/dashboard">
               Home
             </Button>
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/events">
@@ -65,7 +69,9 @@ function Mainbar({logout, setNav}) {
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/contact">
               Contact
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} onClick={logout_user}>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} onClick={
+              logout_user
+              }>
               Logout
             </Button>
             <IconButton href="/account">

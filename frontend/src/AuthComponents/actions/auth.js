@@ -838,12 +838,13 @@ export const load_listing_current = (id) => async dispatch => {
 
             // const body = JSON.stringify({ id });
             // console.log(`id is ${id}`)
-            var res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/ListingAccount/${id}/`, config);
-            var listingAccount = res.data[0];
-            const interests = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.user}/`, config);
-            const traits = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.user}/`, config);
+            var res = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/${id}/`, config);
+            var listingAccount = res.data;
+            const interests = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.id}/`, config);
+            const traits = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.id}/`, config);
             listingAccount.traits = traits;
             listingAccount.interests = interests;
+
             dispatch({
                 type: LISTINGACCOUNT_LOAD_CURRENT_SUCCESS,
                 payload: listingAccount
@@ -1094,6 +1095,7 @@ export const reset_password_confirm = (uid, token, new_password, re_new_password
 };
 
 export const logout = () => dispatch => {
+    console.log('logout called')
     dispatch({
         type: LOGOUT
     });
