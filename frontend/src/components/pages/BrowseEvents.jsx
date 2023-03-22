@@ -36,7 +36,7 @@ const traitList = [
 ];
 const interestList = ["Gardening", "Cooking", "Hiking", "Music", "Reading", "Art", "Puzzles", "Sports", "Yoga", "Cars"];
 
-function Housemates({ load_listing_current, listingAccount }) {
+function BrowseEvents({ load_listing_current, listingAccount }) {
   const navigate = useNavigate();
   const [newQuery, setNewQuery] = useState(true);
   const [filterParams, setFilterParams] = useState({
@@ -91,10 +91,10 @@ function Housemates({ load_listing_current, listingAccount }) {
     <>
       <Stack>
         <Stack alignItems="center" p={6} spacing={5} mt={15}>
-          <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-            Matching By Housemates
+          <Typography variant="h1" sx={{ fontWeight: "bold", color: "#F83E7D" }}>
+            Browse Events
           </Typography>
-          <SearchBar variant="location" />
+          <SearchBar variant="event" />
         </Stack>
 
         <Divider sx={{ p: 0.1, mx: 20 }} />
@@ -132,7 +132,7 @@ function Housemates({ load_listing_current, listingAccount }) {
             item.id === listingAccount.id ? null : (
               <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
                 <ECard
-                  variant="housemate"
+                  variant="event"
                   role={item.account_type}
                   name={item.username}
                   occupation={item.occupation}
@@ -166,4 +166,4 @@ const mapStateToProps = (state) => ({
   listingAccount: state.auth.listingAccount,
 });
 
-export default connect(mapStateToProps, { load_listing_current })(Housemates);
+export default connect(mapStateToProps, { load_listing_current })(BrowseEvents);

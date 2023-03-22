@@ -38,6 +38,7 @@ import RentalListingForm from "./components/pages/RentalListingForm";
 import CustomTextField from "./components/components/CustomTextField";
 import ImageUpload from "./components/components/ImageUploadComponent";
 import EventDetails from "./components/pages/EventDetails";
+import BrowseEvents from "./components/pages/BrowseEvents";
 
 function App() {
   const THEME = createTheme({
@@ -75,6 +76,7 @@ function App() {
               <Route exact path="/homeowners" element={<Homeowners />} />
               <Route exact path="/tenanthome" element={<TenantHome />} />
               <Route exact path="/events" element={<Events />} />
+              <Route exact path="/browseevents" element={<BrowseEvents/>} />
               <Route exact path="/" element={<Landing />} />
               <Route exact path="/activate/:uid/:token" element={<Activate />} />
               <Route exact path="/reset-password" element={<ResetPassword />} />
