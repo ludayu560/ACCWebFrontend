@@ -36,38 +36,40 @@ const ResetPasswordConfirm = ({ reset_password_confirm }) => {
   return (
     <div style={{ overflowX: "hidden" }}>
       <Stack alignItems="center" pt={20} spacing={5} px={10}>
-        <Typography variant="h3" fontWeight='bold' sx={{ color: "#0045F1" }}>
+        <Typography variant="h3" fontWeight="bold" sx={{ color: "#0045F1" }}>
           Set a New Password
         </Typography>
         <Typography variant="h5">Please enter a new password for your account.</Typography>
         <form onSubmit={(e) => onSubmit(e)}>
-          <TextField
-            variant="filled"
-            label="New Password"
-            style={{ backgroundColor: "white" }}
-            required
-            className="form-control"
-            type="password"
-            placeholder="New Password"
-            name="new_password"
-            value={new_password}
-            onChange={(e) => onChange(e)}
-            minLength="6"
-          />
-          <TextField
-            variant="filled"
-            label="Confirm Password"
-            style={{ backgroundColor: "white" }}
-            required
-            className="form-control"
-            type="password"
-            placeholder="Confirm New Password"
-            name="re_new_password"
-            value={re_new_password}
-            onChange={(e) => onChange(e)}
-            minLength="6"
-          />
-        <StyledButton variant="pinkBtn" text="Submit" type="submit" width='20vw'/>
+          <Stack alignItems="center" spacing={5} px={10}>
+            <TextField
+              variant="filled"
+              label="New Password"
+              style={{ backgroundColor: "white" }}
+              required
+              className="form-control"
+              type="password"
+              placeholder="New Password"
+              name="new_password"
+              value={new_password}
+              onChange={(e) => onChange(e)}
+              minLength="6"
+            />
+            <TextField
+              variant="filled"
+              label="Confirm Password"
+              style={{ backgroundColor: "white" }}
+              required
+              className="form-control"
+              type="password"
+              placeholder="Confirm New Password"
+              name="re_new_password"
+              value={re_new_password}
+              onChange={(e) => onChange(e)}
+              minLength="6"
+            />
+            <StyledButton variant="pinkBtn" text="Submit" type="submit" width="20vw" />
+          </Stack>
         </form>
         <Box component="img" src={MainLogo} width="5vw" pt={5} />
       </Stack>
