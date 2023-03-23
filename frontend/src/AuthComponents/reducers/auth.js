@@ -123,7 +123,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 listingAccount: payload,
-                account_type: listingAccount.account_type
+                account_type: payload.account_type
             }
         case LISTINGACCOUNT_UPDATE_SUCCESS:
             return {

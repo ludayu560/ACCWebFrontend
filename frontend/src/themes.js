@@ -1,7 +1,29 @@
-export const tenant = {
-    primary_color: "#000"
-}
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-export const homeowner = {
-    primary_color: "#000"
-}
+export const tenant = createTheme({
+  palette: {
+    primary: {
+      main: "#000",
+    },
+    secondary: {
+      main: "#000",
+    },
+  },
+  typography: {
+    fontFamily: `"Open Sans", sans-serif`,
+  },
+});
+
+export const homeowner = createTheme({
+  palette: {
+    primary: {
+      main: "#000",
+    },
+    secondary: {
+      main: "#000",
+    },
+  },
+  typography: {
+    fontFamily: `"Open Sans", sans-serif`,
+  },
+});
