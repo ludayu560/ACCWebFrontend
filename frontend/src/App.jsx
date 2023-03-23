@@ -39,17 +39,26 @@ import CustomTextField from "./components/components/CustomTextField";
 import ImageUpload from "./components/components/ImageUploadComponent";
 import EventDetails from "./components/pages/EventDetails";
 import BrowseEvents from "./components/pages/BrowseEvents";
-
-function App() {
-  const THEME = createTheme({
-    typography: {
-      fontFamily: `"Open Sans", sans-serif`,
-    },
-  });
+import { connect } from "react-redux";
+import { tenant, homeowner } from "./themes";
+function App({account_type}) {
+  const [theme, setTheme] = useState(tenant);
+  if (account_type) {
+    if (account_type === "tenant") {
+      setTheme(tenant);
+    } else if (account_type === "homeowner") {
+      setTheme(homeowner);
+    }
+  }
+  //  const THEME = createTheme({
+  //   typography: {
+  //     fontFamily: `"Open Sans", sans-serif`,
+  //   },
+  // });
 
   return (
     <Provider store={store}>
-      <ThemeProvider theme={THEME}>
+      <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Layout>
             <Routes>
@@ -99,4 +108,11 @@ function App() {
     </Provider>
   );
 }
-export default App;
+
+
+const mapStateToProps = (state) => ({
+  account_type: state.auth.account_type,
+});
+
+
+export default connect(mapStateToProps, { account_type })(App);
