@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import SideNav from "../components/SideNav";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import axios from "axios";
 import StyledButton from "../components/StyledButton";
@@ -40,6 +41,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
         return "#C5265C";
     }
   }
+
 
   const ranges = [
     {
@@ -434,7 +436,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               </Grid>
             </Grid>
 
-            <Grid item xs={6} sx={{ minHeight: "40vh" }}>
+            <Grid item xs={6}   sx={{ minHeight: "40vh" }}>
               <ImageUpload returnSelected={setDisplay_picture_one} />
               <Stack direction="row" spacing={1} marginTop="8px">
                 <ImageUpload

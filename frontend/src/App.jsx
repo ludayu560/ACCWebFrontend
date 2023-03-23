@@ -37,6 +37,7 @@ import HowItWorks from "./components/pages/HowItWorks";
 import RentalListingForm from "./components/pages/RentalListingForm";
 import CustomTextField from "./components/components/CustomTextField";
 import ImageUpload from "./components/components/ImageUploadComponent";
+import ImageGallery from "./components/pages/dev";
 
 function App() {
   const THEME = createTheme({
@@ -135,8 +136,7 @@ function App() {
                 path="/dev"
                 element={
                   <>
-                    <ImageUpload></ImageUpload>
-                    <CustomTextField></CustomTextField>
+                  <ImageGallery/>
                   </>
                 }
               />
