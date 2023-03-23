@@ -14,10 +14,9 @@ import DashboardWHBG from "../../assets/DashboardWHBG.png";
 import DashboardPOBG from "../../assets/DashboardPOBG.png";
 import DashboardOtherBG from "../../assets/DashboardOtherBG.png";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-function Dashboard({variant, isAuthenticated, listingAccount}) {
-
+function Dashboard({ variant, isAuthenticated, listingAccount }) {
   const data = ["1", "2", "3", "4"];
 
   function renderBGImage() {
@@ -33,20 +32,9 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
     }
   }
 
-  function colorTheme() {
-    switch (listingAccount.account_type) {
-      case "tenant":
-        return "#F83E7D";
-      case "homeowner":
-        return "#0045F1";
-      case "propertyowner":
-        return "#113170";
-      default:
-        return "#C5265C";
-    }
-  }
-
-  return listingAccount === null ? (<div>loading</div>) : (
+  return listingAccount === null ? (
+    <div>loading</div>
+  ) : (
     <>
       <Stack>
         <Box component="img" src={renderBGImage()}></Box>
@@ -70,7 +58,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
 
         {/*Welcome Back*/}
         <Stack style={{ background: "white" }} p={8} pb={10} spacing={3} alignItems="center">
-          <Typography variant="h1" sx={{ textAlign: "center", color: colorTheme() }}>
+          <Typography variant="h1" sx={{ textAlign: "center", color: "primary.main" }}>
             Welcome Back!
           </Typography>
           <Typography variant="h3" sx={{ textAlign: "center" }}>
@@ -80,8 +68,8 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
 
         {/*Welcome Back*/}
         <Stack style={{ background: "white" }} pb={20} spacing={5} alignItems="center">
-          <ECard variant="long" themeColor={colorTheme()}></ECard>
-          <ECard variant="long" themeColor={colorTheme()}></ECard>
+          <ECard variant="long" themeColor={"primary.main"}></ECard>
+          <ECard variant="long" themeColor={"primary.main"}></ECard>
         </Stack>
 
         {/*Saved Matches*/}
@@ -179,58 +167,57 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
   );
 }
 
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  listingAccount: state.auth.listingAccount
+  listingAccount: state.auth.listingAccount,
 });
 
 export default connect(mapStateToProps)(Dashboard);
 
-  // const [curImage, setCurImage] = useState(DashboardOtherBG);
-  // const [curColor, setColor] = useState("#C5265C");
-  // if (listingAccount) {
-  //   switch (listingAccount.account_type) {
-  //     case "tenant":
-  //       setCurImage(DashboardTenantBG);
-  //     case "homeowner":
-  //       setCurImage(DashboardWHBG);
-  //       // return DashboardWHBG;
-  //     case "propertyowner":
-  //       setCurImage(DashboardPOBG);
-  //       // return DashboardPOBG;
-  //     default:
-  //       setCurImage(DashboardOtherBG);
-  //       // return DashboardOtherBG;
-  //   }
-  //   switch (listingAccount.account_type) {
-  //     case "tenant":
-  //       setColor("#F83E7D");
-  //     case "homeowner":
-  //       setColor("#0045F1");
-  //     case "propertyowner":
-  //       setColor("#113170");
-  //       // return "#113170";
-  //     default:
-  //       setColor("#C5265C");
-  //       return "#C5265C";
-  //   }
+// const [curImage, setCurImage] = useState(DashboardOtherBG);
+// const [curColor, setColor] = useState("#C5265C");
+// if (listingAccount) {
+//   switch (listingAccount.account_type) {
+//     case "tenant":
+//       setCurImage(DashboardTenantBG);
+//     case "homeowner":
+//       setCurImage(DashboardWHBG);
+//       // return DashboardWHBG;
+//     case "propertyowner":
+//       setCurImage(DashboardPOBG);
+//       // return DashboardPOBG;
+//     default:
+//       setCurImage(DashboardOtherBG);
+//       // return DashboardOtherBG;
+//   }
+//   switch (listingAccount.account_type) {
+//     case "tenant":
+//       setColor("#F83E7D");
+//     case "homeowner":
+//       setColor("#0045F1");
+//     case "propertyowner":
+//       setColor("#113170");
+//       // return "#113170";
+//     default:
+//       setColor("#C5265C");
+//       return "#C5265C";
+//   }
 
-  // }
-  // function renderBGImage() {
-  //   {/*listingAccount.account_type*/}
-  // }
+// }
+// function renderBGImage() {
+//   {/*listingAccount.account_type*/}
+// }
 
-  // function colorTheme() {
-  //   {/*listingAccount.account_type*/}
-  //   switch (variant) {
-  //     case "tenant":
-  //       return "#F83E7D";
-  //     case "homeowner":
-  //       return "#0045F1";
-  //     case "propertyowner":
-  //       return "#113170";
-  //     default:
-  //       return "#C5265C";
-  //   }
-  // }
+// function "primary.main" {
+//   {/*listingAccount.account_type*/}
+//   switch (variant) {
+//     case "tenant":
+//       return "#F83E7D";
+//     case "homeowner":
+//       return "#0045F1";
+//     case "propertyowner":
+//       return "#113170";
+//     default:
+//       return "#C5265C";
+//   }
+// }
