@@ -32,6 +32,7 @@ import Partner from "../../assets/Partner.png";
 import AishaSignaturePink from "../../assets/AishaSignaturePink.svg";
 import Hands from "../../assets/Hands.png";
 import quote1 from "../../assets/Quote 1.svg";
+import quote2 from "../../assets/quote2.png";
 import img20 from "../../assets/image 20.png";
 import img13 from "../../assets/image 13.png";
 import img12 from "../../assets/image 12.png";
@@ -190,7 +191,7 @@ function Landing({isAuthenticated}) {
               <Box component="img" src={quote1} sx={{ width: "45vw" }} />
             </Grid>
             <Grid item xs={6} mt={15}>
-              <Box component="img" src={quote1} sx={{ width: "45vw" }} />
+              <Box component="img" src={quote2} sx={{ width: "45vw" }} />
               <Stack alignItems="center">
                 <StyledButton variant="pinkBtn" text="Learn More" />
               </Stack>
