@@ -47,13 +47,16 @@ function App({ account_type }) {
     if (account_type) {
       switch (account_type) {
         case "tenant":
-          return setTheme(tenant);
+          setTheme(tenant);
+          break
         case "homeowner":
-          return setTheme(homeowner);
+          setTheme(homeowner);
+          break
         case "propertyowner":
-          return setTheme(propertyowner);
+          setTheme(propertyowner);
+          break
         default:
-          return setTheme(others);
+          setTheme(others);
       }
     }
   }, [account_type]);

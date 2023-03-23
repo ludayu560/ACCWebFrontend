@@ -226,7 +226,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
             <b>My Account</b>
             <Divider
               variant="middle"
-              sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }}
+              sx={{ width: "15vw", border: "2px solid", color: 'primary.main', opacity: 100 }}
             />
           </Typography>
         </Grid>
@@ -554,7 +554,8 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                     variant="left"
                     sx={{
                       width: "7vw",
-                      border: "2px solid #F83E7D",
+                      border: "2px solid",
+                      color: "primary.main",
                       opacity: 100,
                       marginY: "2vmin",
                     }}
@@ -579,11 +580,11 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                       },
                       // the line between the two ends
                       "& .MuiSlider-track": {
-                        color: "#F83E7D",
+                        color: "primary.main",
                       },
                       // the endpoints
                       "& .MuiSlider-thumb": {
-                        color: "#F83E7D",
+                        color: "primary.main",
                       },
                       // the label displaying the current value
                       "& .MuiSlider-valueLabel": {

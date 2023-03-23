@@ -10,7 +10,7 @@ export default function FAQ() {
     <>
       <Accordion sx={{ boxShadow: 0 }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "#F83E7D" }} />}
+          expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "primary.main" }} />}
           aria-controls="panel1a-content"
           id="panel1a-header">
           <Typography variant="h4" sx={{ ml: 10, pt: 4 }}>
@@ -27,7 +27,7 @@ export default function FAQ() {
 
       <Accordion sx={{ boxShadow: 0 }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "#F83E7D" }} />}
+          expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "primary.main" }} />}
           aria-controls="panel2a-content"
           id="panel2a-header">
           <Typography variant="h4" sx={{ ml: 10, pt: 4 }}>
@@ -44,7 +44,7 @@ export default function FAQ() {
 
       <Accordion sx={{ boxShadow: 0 }}>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "#F83E7D" }} />}
+          expandIcon={<ExpandMoreIcon style={{ fontSize: 50 }} sx={{ color: "primary.main" }} />}
           aria-controls="panel3a-content"
           id="panel3a-header">
           <Typography variant="h4" sx={{ ml: 10, pt: 4 }}>

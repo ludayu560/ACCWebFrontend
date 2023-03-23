@@ -68,12 +68,12 @@ function Dashboard({ variant, isAuthenticated, listingAccount }) {
 
         {/*Welcome Back*/}
         <Stack style={{ background: "white" }} pb={20} spacing={5} alignItems="center">
-          <ECard variant="long" themeColor={"primary.main"}></ECard>
-          <ECard variant="long" themeColor={"primary.main"}></ECard>
+          <ECard variant="long" themeColor={"primary.main"}/>
+          <ECard variant="long" themeColor={"primary.main"}/>
         </Stack>
 
         {/*Saved Matches*/}
-        {(variant === "tenant" || variant === "womenHomeOwner") && (
+        {(listingAccount.account_type === "tenant" || listingAccount.account_type === "homeowner") && (
           <Stack style={{ background: "#113170" }} pt={10} spacing={3} alignItems="center">
             <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "white", fontWeight: "bold" }}>
               Saved Matches
@@ -89,7 +89,7 @@ function Dashboard({ variant, isAuthenticated, listingAccount }) {
         )}
 
         {/*Listing*/}
-        {variant === "tenant" && (
+        {listingAccount.account_type === "tenant" && (
           <Stack direction="row" alignItems="center" p={10} spacing={5}>
             <Stack spacing={2}>
               <Typography variant="h2" sx={{ fontWeight: "bold" }}>
@@ -108,7 +108,7 @@ function Dashboard({ variant, isAuthenticated, listingAccount }) {
             </IconButton>
           </Stack>
         )}
-        {(variant === "womenHomeOwner" || variant === "propertyOwner") && (
+        {listingAccount.account_type === "homeowner" && (
           <Stack direction="row" alignItems="center" p={10} spacing={5}>
             <Stack spacing={2}>
               <Typography variant="h2" sx={{ fontWeight: "bold" }}>
@@ -127,9 +127,25 @@ function Dashboard({ variant, isAuthenticated, listingAccount }) {
             </IconButton>
           </Stack>
         )}
+        {listingAccount.account_type === "propertyowner" && (
+          <Stack direction="row" alignItems="center" p={10} spacing={5}>
+            <Stack spacing={2}>
+              <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+                Your Listings
+              </Typography>
+            </Stack>
+            <Box sx={{ flexGrow: 1 }} />
+            <IconButton type="button" sx={{ m: "10px", bgcolor: "white" }} aria-label="search">
+              <ArrowBackIosNewIcon sx={{ fontSize: 60 }} />
+            </IconButton>
+            <IconButton type="button" sx={{ m: "10px", bgcolor: "white" }} aria-label="search">
+              <ArrowForwardIosIcon sx={{ fontSize: 60 }} />
+            </IconButton>
+          </Stack>
+        )}
 
         {/*Housemate Card Area*/}
-        {variant === "tenant" && (
+        {listingAccount.account_type === "tenant" && (
           <Grid container px={10} py={2} spacing={10} mb={20}>
             {data.map((id) => (
               <Grid item xs="auto">
@@ -138,7 +154,7 @@ function Dashboard({ variant, isAuthenticated, listingAccount }) {
             ))}
           </Grid>
         )}
-        {(variant === "womenHomeOwner" || variant === "propertyOwner") && (
+        {listingAccount.account_type === "homeowner" && (
           <Grid container px={10} py={2} spacing={10} mb={20}>
             {data.map((id) => (
               <Grid item xs="auto">
@@ -147,19 +163,32 @@ function Dashboard({ variant, isAuthenticated, listingAccount }) {
             ))}
           </Grid>
         )}
-        {variant !== "tenant" && variant !== "womenHomeOwner" && variant !== "propertyOwner" && (
-          <Stack spacing={4} my={4} px={20} pb={20}>
-            <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-              Recent Notifcations
-            </Typography>
-
+        {listingAccount.account_type === "propertyowner" && (
+          <Grid container px={10} py={2} spacing={10} mb={20}>
             {data.map((id) => (
-              <Box bgcolor="white" p={3} sx={{ border: 1, borderRadius: 5, textAlign: "left", boxShadow: 3 }}>
-                {id}
-              </Box>
+              <Grid item xs="auto">
+                <ECard variant="listing" />
+              </Grid>
             ))}
-          </Stack>
+          </Grid>
         )}
+
+        {/* Notifications */}
+        {listingAccount.account_type !== "tenant" &&
+          listingAccount.account_type !== "homeowner" &&
+          listingAccount.account_type !== "propertyowner" && (
+            <Stack spacing={4} my={4} px={20} pb={20}>
+              <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+                Recent Notifcations
+              </Typography>
+
+              {data.map((id) => (
+                <Box bgcolor="white" p={3} sx={{ border: 1, borderRadius: 5, textAlign: "left", boxShadow: 3 }}>
+                  {id}
+                </Box>
+              ))}
+            </Stack>
+          )}
 
         <Footer></Footer>
       </Stack>
