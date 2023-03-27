@@ -62,6 +62,7 @@ import {
 const initialState = {
     access: localStorage.getItem('access'),
     refresh: localStorage.getItem('refresh'),
+    account_type: null,
     isAuthenticated: null,
     user: null,
     listingAccount: null,
@@ -121,7 +122,8 @@ export default function (state = initialState, action) {
         case LISTINGACCOUNT_LOAD_SUCCESS:
             return {
                 ...state,
-                listingAccount: payload
+                listingAccount: payload,
+                account_type: payload.account_type
             }
         case LISTINGACCOUNT_UPDATE_SUCCESS:
             return {
@@ -209,7 +211,8 @@ export default function (state = initialState, action) {
                 attending_events: null,
                 interested_events: null,
                 favorites: null,
-                housemates: null
+                housemates: null,
+                account_type: null
             }
         case PASSWORD_RESET_SUCCESS:
         case PASSWORD_RESET_FAIL:

@@ -35,22 +35,22 @@ const ResetPassword = ({ reset_password }) => {
         <Typography variant="h3" fontWeight="bold" sx={{ color: "#0045F1" }}>
           Request Password Reset:
         </Typography>
-        <Typography variant="h5">
-          Please enter your email to send a password reset request
-        </Typography>
+        <Typography variant="h5">Please enter your email to send a password reset request</Typography>
         <form onSubmit={(e) => onSubmit(e)}>
-          <TextField
-            variant="filled"
-            style={{ backgroundColor: "white" }}
-            required
-            label="Email"
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={email}
-            onChange={(e) => onChange(e)}
-          />
-          <StyledButton variant="pinkBtn" text="Submit" type="submit"/>
+          <Stack alignItems="center" spacing={5} px={10}>
+            <TextField
+              variant="filled"
+              style={{ backgroundColor: "white" }}
+              required
+              label="Email"
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={(e) => onChange(e)}
+            />
+            <StyledButton variant="pinkBtn" text="Submit" type="submit" />
+          </Stack>
         </form>
         <Box component="img" src={MainLogo} width="5vw" pt={5} />
       </Stack>
