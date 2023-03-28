@@ -131,3 +131,5 @@ function App() {
     </ConnectedThemeProvider>
   );
 }
+
+export default App;
