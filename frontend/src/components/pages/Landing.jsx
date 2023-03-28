@@ -38,20 +38,20 @@ import img13 from "../../assets/image 13.png";
 import img12 from "../../assets/image 12.png";
 import img11 from "../../assets/image 11.png";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import SearchBar from "../components/SearchBar";
 
-function Landing({isAuthenticated}) {
+function Landing({ isAuthenticated }) {
   return (
     <div style={{ overflowX: "hidden" }}>
       <Stack>
         <Grid container py={10}>
           <Grid item xs={7}>
             <Stack>
-              <Typography variant="h1" color="primary" px={10} sx={{ typography: { xs: "h4", sm: "h2", lg: "h1" } }}>
+              <Typography variant="h1" color="#0045F1" px={10} sx={{ typography: { xs: "h4", sm: "h2", lg: "h1" } }}>
                 Want To Colive
               </Typography>
-              <Typography variant="h1" color="primary" px={10} sx={{ typography: { xs: "h4", sm: "h2", lg: "h1" } }}>
+              <Typography variant="h1" color="#0045F1" px={10} sx={{ typography: { xs: "h4", sm: "h2", lg: "h1" } }}>
                 With Other
               </Typography>
               <Typography variant="h1" color="#F83E7D" px={10} sx={{ typography: { xs: "h4", sm: "h2", lg: "h1" } }}>
@@ -63,17 +63,17 @@ function Landing({isAuthenticated}) {
                 all women.
               </Typography>
               <Stack direction="row" spacing={20} px={10} alignItems="center">
-                {isAuthenticated ? 
+                {isAuthenticated ? (
                   <>
-                    <StyledButton variant="pinkBtn" text="Find Rental" link="/listings"/>
-                    <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/RLF"/>
+                    <StyledButton variant="pinkBtn" text="Find Rental" link="/listings" />
+                    <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/RLF" />
                   </>
-                : 
+                ) : (
                   <>
-                    <StyledButton variant="pinkBtn" text="Find Rental" link="/"/>
-                    <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/"/>
+                    <StyledButton variant="pinkBtn" text="Find Rental" link="/" />
+                    <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/" />
                   </>
-                }
+                )}
               </Stack>
             </Stack>
           </Grid>
@@ -100,7 +100,7 @@ function Landing({isAuthenticated}) {
           </Typography>
           <Grid container spacing={6} justifyContent="center">
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5 }} raised="true">
+              <Card sx={{ width: "294px", borderRadius: 5 }} raised>
                 <Box bgcolor="#F83E7D" sx={{ width: "294px", height: "20px" }} />
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <FavoriteBorderIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7DCC" }} />
@@ -115,7 +115,7 @@ function Landing({isAuthenticated}) {
               </Card>
             </Grid>
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5 }} raised="true">
+              <Card sx={{ width: "294px", borderRadius: 5 }} raised>
                 <Box bgcolor="#113170" sx={{ width: "294px", height: "20px" }} />
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <PaidOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#113170" }} />
@@ -130,7 +130,7 @@ function Landing({isAuthenticated}) {
               </Card>
             </Grid>
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5 }} raised="true">
+              <Card sx={{ width: "294px", borderRadius: 5 }} raised>
                 <Box bgcolor="#0045F1" sx={{ width: "294px", height: "20px" }} />
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <ForestOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#0045F1" }} />
@@ -145,7 +145,7 @@ function Landing({isAuthenticated}) {
               </Card>
             </Grid>
             <Grid item>
-              <Card sx={{ width: "294px", borderRadius: 5 }} raised="true">
+              <Card sx={{ width: "294px", borderRadius: 5 }} raised>
                 <Box bgcolor="#0094FF" sx={{ width: "294px", height: "20px" }} />
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <AccountCircleOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#0094FF" }} />
@@ -220,7 +220,7 @@ function Landing({isAuthenticated}) {
           </Typography>
           <Grid container spacing={6} mt={5} pb={10} justifyContent="center">
             <Grid item>
-              <Card sx={{ width: "294px", height: "501px", borderRadius: 5 }} raised="true">
+              <Card sx={{ width: "294px", height: "501px", borderRadius: 5 }} raised>
                 <Box bgcolor="#0045F1" sx={{ width: "294px", height: "20px" }} />
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <HouseIcon style={{ fontSize: 100 }} sx={{ color: "#0045F1" }} />
@@ -236,7 +236,7 @@ function Landing({isAuthenticated}) {
               </Card>
             </Grid>
             <Grid item>
-              <Card sx={{ width: "294px", height: "501px", borderRadius: 5 }} raised="true">
+              <Card sx={{ width: "294px", height: "501px", borderRadius: 5 }} raised>
                 <Box bgcolor="#F83E7D" sx={{ width: "294px", height: "20px" }} />
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <PeopleIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7DCC" }} />
@@ -252,7 +252,7 @@ function Landing({isAuthenticated}) {
               </Card>
             </Grid>
             <Grid item>
-              <Card sx={{ width: "294px", height: "501px", borderRadius: 5 }} raised="true">
+              <Card sx={{ width: "294px", height: "501px", borderRadius: 5 }} raised>
                 <Box bgcolor="#113170" sx={{ width: "294px", height: "20px" }} />
                 <Stack p={5} align="center" spacing={4} alignItems="center">
                   <GppGoodIcon style={{ fontSize: 100 }} sx={{ color: "#113170" }} />
@@ -621,8 +621,8 @@ function Landing({isAuthenticated}) {
   );
 }
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(Landing);

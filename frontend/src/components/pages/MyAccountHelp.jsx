@@ -44,7 +44,7 @@ function MyAccountHelp(props) {
         <Grid item xs={12}>
           <Typography variant="h2" padding={"3vw"} fontWeight={700}>
             <b>My Account</b>
-            <Divider variant="middle" sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }} />
+            <Divider variant="middle" sx={{ width: "15vw", border: "2px solid", color: "primary.main", opacity: 100 }} />
           </Typography>
         </Grid>
         <Grid item xs={3}>
@@ -60,7 +60,8 @@ function MyAccountHelp(props) {
                   sx={{
                     m: 2,
                     width: "18vw",
-                    border: "2px solid #F83E7D",
+                    border: "2px solid",
+                    color: "primary.main",
                     opacity: 100,
                   }}
                 />
@@ -74,7 +75,7 @@ function MyAccountHelp(props) {
                 <Card raised="true" sx={{ borderRadius: 4 }}>
                   <CardActionArea>
                     <Stack direction="row">
-                      <HeadsetMicIcon style={{ fontSize: 150 }} sx={{ color: "#F83E7D", mr: "10vw", p: 4 }} />
+                      <HeadsetMicIcon style={{ fontSize: 150 }} sx={{ color: "primary.main", mr: "10vw", p: 4 }} />
                       <Box display="flex" style={{ alignContent: "center", alignItems: "center" }}>
                         <Typography variant="h5" align="right">
                           Call: +1-647-777-7777
@@ -86,7 +87,7 @@ function MyAccountHelp(props) {
                 <Card raised="true" sx={{ borderRadius: 4 }}>
                   <CardActionArea>
                     <Stack direction="row">
-                      <AlternateEmailIcon style={{ fontSize: 150 }} sx={{ color: "#F83E7D", mr: "5vw", p: 4 }} />
+                      <AlternateEmailIcon style={{ fontSize: 150 }} sx={{ color: "primary.main", mr: "5vw", p: 4 }} />
                       <Box display="flex" style={{ alignContent: "center", alignItems: "center" }}>
                         <Typography variant="h5" align="right">
                           aisha@comfortablecoliving.com
@@ -101,7 +102,7 @@ function MyAccountHelp(props) {
             <Grid item xs={4}>
               <Card raised="true" sx={{ borderRadius: 4 }}>
                 <CardActionArea>
-                  <LocalActivityIcon style={{ fontSize: 220 }} sx={{ color: "#F83E7D", p: 8 }} />
+                  <LocalActivityIcon style={{ fontSize: 220 }} sx={{ color: "primary.main", p: 8 }} />
                   <Typography variant="h5" sx={{ pb: 9.5 }}>
                     Support Ticket
                   </Typography>

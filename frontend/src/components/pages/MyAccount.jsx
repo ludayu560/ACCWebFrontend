@@ -29,18 +29,6 @@ const api = axios.create({
 });
 
 function MyAccount({ props, isAuthenticated, listingAccount }) {
-  function colorTheme() {
-    switch (listingAccount.account_type) {
-      case "tenant":
-        return "#F83E7D";
-      case "homeowner":
-        return "#0045F1";
-      case "propertyowner":
-        return "#113170";
-      default:
-        return "#C5265C";
-    }
-  }
 
 
   const ranges = [
@@ -251,7 +239,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
             <b>My Account</b>
             <Divider
               variant="middle"
-              sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }}
+              sx={{ width: "15vw", border: "2px solid", color: 'primary.main', opacity: 100 }}
             />
           </Typography>
         </Grid>
@@ -278,7 +266,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
             <Typography
               variant="h2"
               align="center"
-              color={colorTheme()}
+              color={"primary.main"}
               fontWeight="bold"
               marginTop={"2vmin"}
             >
@@ -300,7 +288,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                   sx={{
                     width: "7vw",
                     border: "2px solid",
-                    color: colorTheme(),
+                    color: "primary.main",
                     opacity: 100,
                     marginY: "2vmin",
                   }}
@@ -470,7 +458,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                       sx={{
                         width: "7vw",
                         border: "2px solid",
-                        color: colorTheme(),
+                        color: "primary.main",
                         opacity: 100,
                         marginY: "2vmin",
                       }}
@@ -528,7 +516,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                       sx={{
                         width: "7vw",
                         border: "2px solid",
-                        color: colorTheme(),
+                        color: "primary.main",
                         opacity: 100,
                         marginY: "2vmin",
                       }}
@@ -579,7 +567,8 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                     variant="left"
                     sx={{
                       width: "7vw",
-                      border: "2px solid #F83E7D",
+                      border: "2px solid",
+                      color: "primary.main",
                       opacity: 100,
                       marginY: "2vmin",
                     }}
@@ -604,11 +593,11 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                       },
                       // the line between the two ends
                       "& .MuiSlider-track": {
-                        color: "#F83E7D",
+                        color: "primary.main",
                       },
                       // the endpoints
                       "& .MuiSlider-thumb": {
-                        color: "#F83E7D",
+                        color: "primary.main",
                       },
                       // the label displaying the current value
                       "& .MuiSlider-valueLabel": {
@@ -635,7 +624,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                         sx={{
                           width: "7vw",
                           border: "2px solid",
-                          color: colorTheme(),
+                          color: "primary.main",
                           opacity: 100,
                           marginY: "2vmin",
                         }}
@@ -654,7 +643,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                                 <Checkbox
                                   onChange={() => handleTraitOnChange(index)}
                                   sx={{
-                                    "&.Mui-checked": { color: colorTheme() },
+                                    "&.Mui-checked": { color: "primary.main" },
                                   }}
                                 />
                               }
@@ -677,7 +666,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                         sx={{
                           width: "7vw",
                           border: "2px solid",
-                          color: colorTheme(),
+                          color: "primary.main",
                           opacity: 100,
                           marginY: "2vmin",
                         }}
@@ -714,7 +703,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               <StyledButton
                 variant="pinkBtn"
                 text="Save"
-                bgcolor={colorTheme()}
+                bgcolor={"primary.main"}
                 width="246px"
                 onClick={handleSubmit}
               />

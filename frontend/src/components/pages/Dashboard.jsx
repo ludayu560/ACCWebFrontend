@@ -14,10 +14,9 @@ import DashboardWHBG from "../../assets/DashboardWHBG.png";
 import DashboardPOBG from "../../assets/DashboardPOBG.png";
 import DashboardOtherBG from "../../assets/DashboardOtherBG.png";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-function Dashboard({variant, isAuthenticated, listingAccount}) {
-
+function Dashboard({ variant, isAuthenticated, listingAccount }) {
   const data = ["1", "2", "3", "4"];
 
   function renderBGImage() {
@@ -33,20 +32,9 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
     }
   }
 
-  function colorTheme() {
-    switch (listingAccount.account_type) {
-      case "tenant":
-        return "#F83E7D";
-      case "homeowner":
-        return "#0045F1";
-      case "propertyowner":
-        return "#113170";
-      default:
-        return "#C5265C";
-    }
-  }
-
-  return listingAccount === null ? (<div>loading</div>) : (
+  return listingAccount === null ? (
+    <div>loading</div>
+  ) : (
     <>
       <Stack>
         <Box component="img" src={renderBGImage()}></Box>
@@ -70,7 +58,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
 
         {/*Welcome Back*/}
         <Stack style={{ background: "white" }} p={8} pb={10} spacing={3} alignItems="center">
-          <Typography variant="h1" sx={{ textAlign: "center", color: colorTheme() }}>
+          <Typography variant="h1" sx={{ textAlign: "center", color: "primary.main" }}>
             Welcome Back!
           </Typography>
           <Typography variant="h3" sx={{ textAlign: "center" }}>
@@ -80,12 +68,12 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
 
         {/*Welcome Back*/}
         <Stack style={{ background: "white" }} pb={20} spacing={5} alignItems="center">
-          <ECard variant="long" themeColor={colorTheme()}></ECard>
-          <ECard variant="long" themeColor={colorTheme()}></ECard>
+          <ECard variant="long" themeColor={"primary.main"}/>
+          <ECard variant="long" themeColor={"primary.main"}/>
         </Stack>
 
         {/*Saved Matches*/}
-        {(variant === "tenant" || variant === "womenHomeOwner") && (
+        {(listingAccount.account_type === "tenant" || listingAccount.account_type === "homeowner") && (
           <Stack style={{ background: "#113170" }} pt={10} spacing={3} alignItems="center">
             <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "white", fontWeight: "bold" }}>
               Saved Matches
@@ -101,7 +89,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
         )}
 
         {/*Listing*/}
-        {variant === "tenant" && (
+        {listingAccount.account_type === "tenant" && (
           <Stack direction="row" alignItems="center" p={10} spacing={5}>
             <Stack spacing={2}>
               <Typography variant="h2" sx={{ fontWeight: "bold" }}>
@@ -120,7 +108,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
             </IconButton>
           </Stack>
         )}
-        {(variant === "womenHomeOwner" || variant === "propertyOwner") && (
+        {listingAccount.account_type === "homeowner" && (
           <Stack direction="row" alignItems="center" p={10} spacing={5}>
             <Stack spacing={2}>
               <Typography variant="h2" sx={{ fontWeight: "bold" }}>
@@ -139,9 +127,25 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
             </IconButton>
           </Stack>
         )}
+        {listingAccount.account_type === "propertyowner" && (
+          <Stack direction="row" alignItems="center" p={10} spacing={5}>
+            <Stack spacing={2}>
+              <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+                Your Listings
+              </Typography>
+            </Stack>
+            <Box sx={{ flexGrow: 1 }} />
+            <IconButton type="button" sx={{ m: "10px", bgcolor: "white" }} aria-label="search">
+              <ArrowBackIosNewIcon sx={{ fontSize: 60 }} />
+            </IconButton>
+            <IconButton type="button" sx={{ m: "10px", bgcolor: "white" }} aria-label="search">
+              <ArrowForwardIosIcon sx={{ fontSize: 60 }} />
+            </IconButton>
+          </Stack>
+        )}
 
         {/*Housemate Card Area*/}
-        {variant === "tenant" && (
+        {listingAccount.account_type === "tenant" && (
           <Grid container px={10} py={2} spacing={10} mb={20}>
             {data.map((id) => (
               <Grid item xs="auto">
@@ -150,7 +154,7 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
             ))}
           </Grid>
         )}
-        {(variant === "womenHomeOwner" || variant === "propertyOwner") && (
+        {listingAccount.account_type === "homeowner" && (
           <Grid container px={10} py={2} spacing={10} mb={20}>
             {data.map((id) => (
               <Grid item xs="auto">
@@ -159,19 +163,32 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
             ))}
           </Grid>
         )}
-        {variant !== "tenant" && variant !== "womenHomeOwner" && variant !== "propertyOwner" && (
-          <Stack spacing={4} my={4} px={20} pb={20}>
-            <Typography variant="h2" sx={{ fontWeight: "bold" }}>
-              Recent Notifcations
-            </Typography>
-
+        {listingAccount.account_type === "propertyowner" && (
+          <Grid container px={10} py={2} spacing={10} mb={20}>
             {data.map((id) => (
-              <Box bgcolor="white" p={3} sx={{ border: 1, borderRadius: 5, textAlign: "left", boxShadow: 3 }}>
-                {id}
-              </Box>
+              <Grid item xs="auto">
+                <ECard variant="listing" />
+              </Grid>
             ))}
-          </Stack>
+          </Grid>
         )}
+
+        {/* Notifications */}
+        {listingAccount.account_type !== "tenant" &&
+          listingAccount.account_type !== "homeowner" &&
+          listingAccount.account_type !== "propertyowner" && (
+            <Stack spacing={4} my={4} px={20} pb={20}>
+              <Typography variant="h2" sx={{ fontWeight: "bold" }}>
+                Recent Notifcations
+              </Typography>
+
+              {data.map((id) => (
+                <Box bgcolor="white" p={3} sx={{ border: 1, borderRadius: 5, textAlign: "left", boxShadow: 3 }}>
+                  {id}
+                </Box>
+              ))}
+            </Stack>
+          )}
 
         <Footer></Footer>
       </Stack>
@@ -179,58 +196,57 @@ function Dashboard({variant, isAuthenticated, listingAccount}) {
   );
 }
 
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  listingAccount: state.auth.listingAccount
+  listingAccount: state.auth.listingAccount,
 });
 
 export default connect(mapStateToProps)(Dashboard);
 
-  // const [curImage, setCurImage] = useState(DashboardOtherBG);
-  // const [curColor, setColor] = useState("#C5265C");
-  // if (listingAccount) {
-  //   switch (listingAccount.account_type) {
-  //     case "tenant":
-  //       setCurImage(DashboardTenantBG);
-  //     case "homeowner":
-  //       setCurImage(DashboardWHBG);
-  //       // return DashboardWHBG;
-  //     case "propertyowner":
-  //       setCurImage(DashboardPOBG);
-  //       // return DashboardPOBG;
-  //     default:
-  //       setCurImage(DashboardOtherBG);
-  //       // return DashboardOtherBG;
-  //   }
-  //   switch (listingAccount.account_type) {
-  //     case "tenant":
-  //       setColor("#F83E7D");
-  //     case "homeowner":
-  //       setColor("#0045F1");
-  //     case "propertyowner":
-  //       setColor("#113170");
-  //       // return "#113170";
-  //     default:
-  //       setColor("#C5265C");
-  //       return "#C5265C";
-  //   }
+// const [curImage, setCurImage] = useState(DashboardOtherBG);
+// const [curColor, setColor] = useState("#C5265C");
+// if (listingAccount) {
+//   switch (listingAccount.account_type) {
+//     case "tenant":
+//       setCurImage(DashboardTenantBG);
+//     case "homeowner":
+//       setCurImage(DashboardWHBG);
+//       // return DashboardWHBG;
+//     case "propertyowner":
+//       setCurImage(DashboardPOBG);
+//       // return DashboardPOBG;
+//     default:
+//       setCurImage(DashboardOtherBG);
+//       // return DashboardOtherBG;
+//   }
+//   switch (listingAccount.account_type) {
+//     case "tenant":
+//       setColor("#F83E7D");
+//     case "homeowner":
+//       setColor("#0045F1");
+//     case "propertyowner":
+//       setColor("#113170");
+//       // return "#113170";
+//     default:
+//       setColor("#C5265C");
+//       return "#C5265C";
+//   }
 
-  // }
-  // function renderBGImage() {
-  //   {/*listingAccount.account_type*/}
-  // }
+// }
+// function renderBGImage() {
+//   {/*listingAccount.account_type*/}
+// }
 
-  // function colorTheme() {
-  //   {/*listingAccount.account_type*/}
-  //   switch (variant) {
-  //     case "tenant":
-  //       return "#F83E7D";
-  //     case "homeowner":
-  //       return "#0045F1";
-  //     case "propertyowner":
-  //       return "#113170";
-  //     default:
-  //       return "#C5265C";
-  //   }
-  // }
+// function "primary.main" {
+//   {/*listingAccount.account_type*/}
+//   switch (variant) {
+//     case "tenant":
+//       return "#F83E7D";
+//     case "homeowner":
+//       return "#0045F1";
+//     case "propertyowner":
+//       return "#113170";
+//     default:
+//       return "#C5265C";
+//   }
+// }

@@ -55,7 +55,7 @@ function ECard(props) {
   return (
     <>
       {variant === "event" && (
-        <Card raised="true" sx={{ borderRadius: 4, width: "350px" }}>
+        <Card raised sx={{ borderRadius: 4, width: "350px" }}>
           <CardActionArea>
             <CardMedia component="img" height="250px" src={image ? "http://127.0.0.1:8000/" + image : bbq} />
             <CardContent>
@@ -106,7 +106,7 @@ function ECard(props) {
       )}
 
       {variant === "eventSchedule" && (
-        <Card raised="true" sx={{ borderRadius: 4, width: "80vw", height: "15vw" }}>
+        <Card raised sx={{ borderRadius: 4, width: "80vw", height: "15vw" }}>
           <CardActionArea>
             <Grid container>
               <Grid item xs={2} bgcolor="#F83E7D">
@@ -173,7 +173,7 @@ function ECard(props) {
       )}
 
       {variant === "favourite" && (
-        <Card raised="true" sx={{ borderRadius: 5, width: 470 }}>
+        <Card raised sx={{ borderRadius: 5, width: 470 }}>
           <CardActionArea>
             <Grid container>
               <Grid item xs={8.5}></Grid>
@@ -234,7 +234,7 @@ function ECard(props) {
       )}
 
       {variant === "housemate" && (
-        <Card raised="true" sx={{ borderRadius: 5, width: "367px" }}>
+        <Card raised sx={{ borderRadius: 5, width: "367px" }}>
           <CardMedia component="img" height="172px" image={image ? image : livingSpace} />
           <Stack alignItems="right" alignContent="right" justifyContent="right">
             <Box display="flex" justifyContent="flex-end" mt={-20}>
@@ -291,7 +291,7 @@ function ECard(props) {
       )}
 
       {variant === "housemate2" && (
-        <Card raised="true" sx={{ borderRadius: 15, width: "367px", border: 4, borderColor: "#F83E7D" }}>
+        <Card raised sx={{ borderRadius: 15, width: "367px", border: 4, borderColor: "#F83E7D" }}>
           <CardActionArea>
             <CardContent>
               <Grid container spacing={2} py={2}>
@@ -340,7 +340,7 @@ function ECard(props) {
       )}
 
       {variant === "listing" && (
-        <Card raised="true" sx={{ borderRadius: 5, width: "367px" }}>
+        <Card raised sx={{ borderRadius: 5, width: "367px" }}>
           <CardMedia component="img" height="277px" image={image ? image : livingSpace} />
           <Stack alignItems="right" alignContent="right" justifyContent="right">
             <Box display="flex" justifyContent="flex-end" mt={-4}>
@@ -396,7 +396,7 @@ function ECard(props) {
       )}
 
       {variant === "long" && (
-        <Card raised="true" sx={{ borderRadius: 5, width: "60vw" }}>
+        <Card raised sx={{ borderRadius: 5, width: "60vw" }}>
           <Stack direction="row">
             <Stack p={4}>
               <Typography variant="h6" sx={{ color: themeColor, fontSize: 15 }}>
