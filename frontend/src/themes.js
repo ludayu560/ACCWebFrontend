@@ -1,6 +1,15 @@
+import React, { useEffect, useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { connect } from "react-redux";
 
-export const tenant = createTheme({
+const baseTheme = createTheme({
+  typography: {
+    fontFamily: `"Open Sans", sans-serif`,
+  },
+});
+
+const tenant = createTheme({
+  ...baseTheme,
   palette: {
     primary: {
       main: "#F83E7D",
@@ -9,12 +18,10 @@ export const tenant = createTheme({
       main: "#000",
     },
   },
-  typography: {
-    fontFamily: `"Open Sans", sans-serif`,
-  },
 });
 
-export const homeowner = createTheme({
+const homeowner = createTheme({
+  ...baseTheme,
   palette: {
     primary: {
       main: "#0045F1",
@@ -23,12 +30,10 @@ export const homeowner = createTheme({
       main: "#000",
     },
   },
-  typography: {
-    fontFamily: `"Open Sans", sans-serif`,
-  },
 });
 
-export const propertyowner = createTheme({
+const propertyowner = createTheme({
+  ...baseTheme,
   palette: {
     primary: {
       main: "#113170",
@@ -37,12 +42,10 @@ export const propertyowner = createTheme({
       main: "#000",
     },
   },
-  typography: {
-    fontFamily: `"Open Sans", sans-serif`,
-  },
 });
 
-export const others = createTheme({
+const others = createTheme({
+  ...baseTheme,
   palette: {
     primary: {
       main: "#C5265C",
@@ -51,7 +54,33 @@ export const others = createTheme({
       main: "#000",
     },
   },
-  typography: {
-    fontFamily: `"Open Sans", sans-serif`,
-  },
 });
+
+const selectTheme = (account_type) => {
+  switch (account_type) {
+    case "tenant":
+      return tenant;
+    case "homeowner":
+      return homeowner;
+    case "propertyowner":
+      return propertyowner;
+    default:
+      return others;
+  }
+};
+
+const ConnectedThemeProvider = ({ children, account_type }) => {
+  const [selectedTheme, setSelectedTheme] = useState(others);
+
+  useEffect(() => {
+    setSelectedTheme(selectTheme(account_type));
+  }, [account_type]);
+
+  return <ThemeProvider theme={selectedTheme}>{children}</ThemeProvider>;
+};
+
+const mapStateToProps = (state) => ({
+  account_type: state.auth.account_type,
+});
+
+export default connect(mapStateToProps)(ConnectedThemeProvider);

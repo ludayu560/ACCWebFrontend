@@ -39,57 +39,67 @@ import ImageUpload from "./components/components/ImageUploadComponent";
 import ImageGallery from "./components/pages/dev";
 import EventDetails from "./components/pages/EventDetails";
 import BrowseEvents from "./components/pages/BrowseEvents";
-import { connect } from "react-redux";
-import { tenant, homeowner, propertyowner, others } from "./themes";
+import ConnectedThemeProvider from "./themes"
 
-function App({ account_type }) {
-  const [theme, setTheme] = useState(others);
-  useEffect(() => {
-    if (account_type) {
-      switch (account_type) {
-        case "tenant":
-          setTheme(tenant);
-          break
-        case "homeowner":
-          setTheme(homeowner);
-          break
-        case "propertyowner":
-          setTheme(propertyowner);
-          break
-        default:
-          setTheme(others);
-      }
-    }
-  }, [account_type]);
-
-  //  const THEME = createTheme({
-  //   typography: {
-  //     fontFamily: `"Open Sans", sans-serif`,
-  //   },
-  // });
-
+function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ConnectedThemeProvider>
       <BrowserRouter>
         <Layout>
           <Routes>
             <Route exact path="/listingdetails" element={<ListingDetails />} />
             <Route exact path="/eventdetails" element={<EventDetails />} />
             <Route exact path="/account-help" element={<MyAccountHelp />} />
-            <Route exact path="/account-mysubscriptions" element={<MyAccountMySubscriptions />} />
-            <Route exact path="/account-billsummary" element={<MyAccountBillSummary />} />
-            <Route exact path="/account-subscribe" element={<MyAccountSubscribe />} />
-            <Route exact path="/account-billing" element={<MyAccountBilling />} />
-            <Route exact path="/account-favourites" element={<MyAccountFavourites />} />
-            <Route exact path="/account-settings" element={<MyAccountSettings />} />
+            <Route
+              exact
+              path="/account-mysubscriptions"
+              element={<MyAccountMySubscriptions />}
+            />
+            <Route
+              exact
+              path="/account-billsummary"
+              element={<MyAccountBillSummary />}
+            />
+            <Route
+              exact
+              path="/account-subscribe"
+              element={<MyAccountSubscribe />}
+            />
+            <Route
+              exact
+              path="/account-billing"
+              element={<MyAccountBilling />}
+            />
+            <Route
+              exact
+              path="/account-favourites"
+              element={<MyAccountFavourites />}
+            />
+            <Route
+              exact
+              path="/account-settings"
+              element={<MyAccountSettings />}
+            />
             <Route exact path="/account-events" element={<MyAccountEvents />} />
-            <Route exact path="/account-notifications" element={<MyAccountNotifications />} />
-            <Route exact path="/account-profile" element={<MyAccountProfile />} />
+            <Route
+              exact
+              path="/account-notifications"
+              element={<MyAccountNotifications />}
+            />
+            <Route
+              exact
+              path="/account-profile"
+              element={<MyAccountProfile />}
+            />
             <Route exact path="/account" element={<MyAccount />} />
             <Route exact path="/howItWorks" element={<HowItWorks />} />
             <Route exact path="/contact" element={<Contact />} />
             <Route exact path="/about" element={<About />} />
-            <Route exact path="/dashboard" element={<Dashboard variant="propertyOwner" />} />
+            <Route
+              exact
+              path="/dashboard"
+              element={<Dashboard variant="propertyOwner" />}
+            />
             <Route exact path="/RLF" element={<RentalListingForm />} />
             <Route exact path="/listings" element={<Listing />} />
             <Route exact path="/housemates" element={<Housemates />} />
@@ -100,27 +110,24 @@ function App({ account_type }) {
             <Route exact path="/" element={<Landing />} />
             <Route exact path="/activate/:uid/:token" element={<Activate />} />
             <Route exact path="/reset-password" element={<ResetPassword />} />
-            <Route exact path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
+            <Route
+              exact
+              path="/password/reset/confirm/:uid/:token"
+              element={<ResetPasswordConfirm />}
+            />
 
-              <Route
-                exact
-                path="/dev"
-                element={
-                  <>
-                  <ImageGallery/>
-                  </>
-                }
-              />
-            </Routes>
-          </Layout>
-        </BrowserRouter>
-      </ThemeProvider>
-    // </Provider>
+            <Route
+              exact
+              path="/dev"
+              element={
+                <>
+                  <ImageGallery />
+                </>
+              }
+            />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </ConnectedThemeProvider>
   );
 }
-
-const mapStateToProps = (state) => ({
-  account_type: state.auth.account_type,
-});
-
-export default connect(mapStateToProps)(App);

@@ -9,18 +9,18 @@ import DashboardOtherBG from "../../assets/DashboardOtherBG.png";
 const ActionConfirmed = ({ trigger, onActionCompleted }) => {
   const [open, setOpen] = useState(false);
 
-  function renderBGImage() {
-    switch (listingAccount.account_type) {
-      case "tenant":
-        return DashboardTenantBG;
-      case "homeowner":
-        return DashboardWHBG;
-      case "propertyowner":
-        return DashboardPOBG;
-      default:
-        return DashboardOtherBG;
-    }
-  }
+  // function renderBGImage() {
+  //   switch (listingAccount.account_type) {
+  //     case "tenant":
+  //       return DashboardTenantBG;
+  //     case "homeowner":
+  //       return DashboardWHBG;
+  //     case "propertyowner":
+  //       return DashboardPOBG;
+  //     default:
+  //       return DashboardOtherBG;
+  //   }
+  // }
 
   useEffect(() => {
     if (trigger) {
