@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import SideNav from "../components/SideNav";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 import axios from "axios";
 import StyledButton from "../components/StyledButton";
@@ -21,12 +22,14 @@ import StyledButton from "../components/StyledButton";
 import { connect } from "react-redux";
 import ImageUpload from "../components/ImageUploadComponent";
 import CustomTextField from "../components/CustomTextField";
+import ActionConfirmed from "../components/ActionConfirmed";
 
 const api = axios.create({
   baseURL: `http://127.0.0.1:8000/ListingAccount/`,
 });
 
 function MyAccount({ props, isAuthenticated, listingAccount }) {
+
 
   const ranges = [
     {
@@ -130,7 +133,12 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     // setField_7("");
   };
 
+  const [triggerConfirmed, setTriggerConfirmed] = useState(false);
+
   const handleSubmit = () => {
+    setTriggerConfirmed(true)
+    console.log("snackbar triggered ")
+
     const returnTraits = [];
     for (let i = 0; i <= personalityTraits.length; i++) {
       if (traitsCheckedState[i]) {
@@ -195,19 +203,19 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     formData.append("personal_traits", formdata.personal_traits);
     formData.append("interests", formdata.interests);
 
-    axios
-      .post("http://localhost:8000/ListingAccount/"+{id}+"/", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    handleReset();
+    // axios
+    //   .post("http://localhost:8000/ListingAccount/" + { id } + "/", formData, {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //     },
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+    // handleReset();
   };
 
   const [value, setValue] = useState([400, 4000]);
@@ -216,11 +224,16 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     setValue(newValue);
   };
 
+
   return listingAccount === null ? (
     <div>loading</div>
   ) : (
     <>
       <Grid container spacing={8}>
+      <ActionConfirmed
+        trigger={triggerConfirmed}
+        onActionCompleted={() => setTriggerConfirmed(false)}
+      />
         <Grid item xs={12}>
           <Typography variant="h2" padding={"3vw"} fontWeight={700}>
             <b>My Account</b>
@@ -411,7 +424,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               </Grid>
             </Grid>
 
-            <Grid item xs={6} sx={{ minHeight: "40vh" }}>
+            <Grid item xs={6}   sx={{ minHeight: "40vh" }}>
               <ImageUpload returnSelected={setDisplay_picture_one} />
               <Stack direction="row" spacing={1} marginTop="8px">
                 <ImageUpload
@@ -692,7 +705,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
                 text="Save"
                 bgcolor={"primary.main"}
                 width="246px"
-                onClick={handleSubmit()}
+                onClick={handleSubmit}
               />
             </Grid>
           </Grid>

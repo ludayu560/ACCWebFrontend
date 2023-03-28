@@ -44,6 +44,7 @@ import { create_event } from "../../AuthComponents/actions/auth";
 import { connect } from "react-redux";
 import ImageUpload from "../components/ImageUploadComponent";
 import Listing from "./Listing";
+import { useNavigate } from "react-router";
 const CustomCheckboxStyles = {
   // the box color when unchecked
   color: "#B9B9B9",
@@ -58,6 +59,7 @@ const CustomCheckboxStyles = {
 };
 
 function Events({ create_event, listingAccount}) {
+  const navigate = useNavigate();
   const [image, setImage] = useState(null);
   const [form, setForm] = useState({
     event_name: "",
@@ -82,6 +84,7 @@ function Events({ create_event, listingAccount}) {
       create_listing_account: listingAccount.id, 
     };
     create_event(eventobject);
+    navigate('/events')
   };
 
   const data = ["1", "2", "3", "4", "5", "6"];
