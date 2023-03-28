@@ -11,7 +11,9 @@ import {
   TextareaAutosize,
   Button,
   Slider,
+  Grid,
 } from "@mui/material";
+import ActionConfirmed from "../components/ActionConfirmed";
 
 const api = axios.create({
   baseURL: `http://127.0.0.1:8000/ListingAccount/`,
@@ -42,11 +44,19 @@ function ImageGallery(props) {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    setTriggerConfirmed(true)
+  }
   console.log(errors);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Grid>
+      <ActionConfirmed
+        trigger={triggerConfirmed}
+        onActionCompleted={() => setTriggerConfirmed(false)}
+      />
+      <form onSubmit={handleSubmit(onSubmit)}>
       <CustomTextField
         variant="myaccount"
         label="FirstName"
@@ -192,6 +202,7 @@ function ImageGallery(props) {
         Submit
       </Button>
     </form>
+    </Grid>
   );
 }
 
