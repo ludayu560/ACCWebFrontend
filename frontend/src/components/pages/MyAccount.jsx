@@ -14,8 +14,6 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import SideNav from "../components/SideNav";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-
 import axios from "axios";
 import StyledButton from "../components/StyledButton";
 
@@ -28,8 +26,8 @@ const api = axios.create({
   baseURL: `http://127.0.0.1:8000/ListingAccount/`,
 });
 
-function MyAccount({ props, isAuthenticated, listingAccount }) {
-
+function MyAccount(props) {
+const {isAuthenticated, listingAccount} = props
 
   const ranges = [
     {
@@ -703,7 +701,7 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
               <StyledButton
                 variant="pinkBtn"
                 text="Save"
-                bgcolor={"primary.main"}
+                color={"primary"}
                 width="246px"
                 onClick={handleSubmit}
               />
