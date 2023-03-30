@@ -26,6 +26,8 @@ import {
     PROPERTYLISTING_CREATE_FAIL,
     PROPERTYLISTING_UPDATE_SUCCESS,
     PROPERTYLISTING_UPDATE_FAIL,
+    PROPERTYLISTING_CREATED_LOAD_SUCCESS,
+    PROPERTYLISTING_CREATED_LOAD_FAIL,
     EVENT_LOAD_SUCCESS,
     EVENT_LOAD_FAIL,
     EVENT_CREATE_SUCCESS,
@@ -672,6 +674,34 @@ export const load_property_listing_current = (id) => async dispatch => {
     }
 };
 
+export const load_propertylistings_created = (id) => async dispatch => {
+    if (localStorage.getItem('access')) {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            };
+
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/CreatorProperty/get/${id}/`, config);
+            const propertyCreated = res.data;
+            dispatch({
+                type: PROPERTYLISTING_CREATED_LOAD_SUCCESS,
+                payload: propertyCreated
+            });
+        } catch (err) {
+            console.log(err)
+            dispatch({
+                type: PROPERTYLISTING_CREATED_LOAD_FAIL
+            });
+        }
+    } else {
+        dispatch({
+            type: PROPERTYLISTING_CREATED_LOAD_FAIL
+        });
+    }
+};
 
 //
 // listing account
@@ -887,6 +917,7 @@ export const load_listing = (id) => async dispatch => {
             console.log(`listing account id: ${listingAccount.id}`);
             console.log(`listing account user: ${listingAccount.user}`);
 
+            dispatch(load_propertylistings_created(listingAccount.id));
             dispatch(load_events_created(listingAccount.id));
             dispatch(get_events_attending(listingAccount.id));
             dispatch(get_events_interested(listingAccount.id));

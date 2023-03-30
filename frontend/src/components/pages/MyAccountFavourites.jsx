@@ -10,6 +10,12 @@ import { connect } from "react-redux";
 import { load_property_listing, get_housemates } from "../../AuthComponents/actions/auth";
 import { useNavigate } from "react-router";
 
+export const handleOnClick = (id, load_property_listing, get_housemates, navigate) => {
+  load_property_listing(id);
+  get_housemates(id);
+  navigate("/ListingDetails");
+};
+
 function MyAccountFavourites({ favorites, load_property_listing, get_housemates }) {
   const navigate = useNavigate();
   const [favoritesArray, setFavoritesArray] = useState([]);
@@ -20,11 +26,6 @@ function MyAccountFavourites({ favorites, load_property_listing, get_housemates 
     }
   }, [favorites]);
 
-  const handleOnClick = (id) => {
-    load_property_listing(id);
-    get_housemates(id);
-    navigate("/ListingDetails")
-  }
   return (
     <>
       <Grid container spacing={8}>
