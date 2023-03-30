@@ -45,14 +45,28 @@ function MyAccountSubscribe(props) {
   const [basicSelected, setBasicSelected] = useState(false);
   const [premiumSelected, setPremiumSelected] = useState(false);
   const [ultSelected, setUltSelected] = useState(false);
+
+  const handleLink = () => {
+    if (basicSelected) {
+      return 'price_1MqKV9IbS9zGmxyRdliovSvC';
+    } else if (premiumSelected) {
+      return 'price_1MqKW5IbS9zGmxyRRceRY2Vt';
+    } else if (ultSelected) {
+      return 'price_1MqKWrIbS9zGmxyRKEx7Vmah';
+    }
+    return;
+  };
+
   return (
     <>
-      {/* <Mainbar></Mainbar> */}
       <Grid container spacing={8}>
         <Grid item xs={12}>
           <Typography variant="h2" padding={"3vw"} fontWeight={700}>
             <b>My Account</b>
-            <Divider variant="middle" sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }} />
+            <Divider
+              variant="middle"
+              sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }}
+            />
           </Typography>
         </Grid>
 
@@ -78,22 +92,42 @@ function MyAccountSubscribe(props) {
 
           <Grid item xs={12} mb={3}>
             <Box display="flex" justifyContent="center" alignItems="center">
-              <Typography variant="h4">Get Unlimited Access to Aisha Community Events</Typography>
+              <Typography variant="h4">
+                Get Unlimited Access to Aisha Community Events
+              </Typography>
             </Box>
             <Box display="flex" justifyContent="center" alignItems="center">
-              <Typography variant="h6">Choose a subscription package to get started!</Typography>
+              <Typography variant="h6">
+                Choose a subscription package to get started!
+              </Typography>
             </Box>
           </Grid>
 
           <Grid item xs={12} sm={12} md={4}>
             <Card
               raised="true"
-              sx={{ borderRadius: 5, border: 5, borderColor: basicSelected ? "#F83E7D" : "transparent" }}>
+              sx={{
+                borderRadius: 5,
+                border: 5,
+                borderColor: basicSelected ? "#F83E7D" : "transparent",
+              }}
+            >
               <CardContent bgcolor="red">
-                <Box display="flex" alignContent="center" justifyContent="center" p={4}>
+                <Box
+                  display="flex"
+                  alignContent="center"
+                  justifyContent="center"
+                  p={4}
+                >
                   <Typography variant="h3">Basic</Typography>
                 </Box>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" p={4}>
+                <Box
+                  display="flex"
+                  alignContent="center"
+                  justifyContent="center"
+                  alignItems="center"
+                  p={4}
+                >
                   <Typography variant="h2">$35</Typography>
                   <Typography variant="h5">/month</Typography>
                 </Box>
@@ -102,7 +136,12 @@ function MyAccountSubscribe(props) {
                   <AddIcon variant="start" text="test"></AddIcon>
                   <AddIcon variant="start" text="test"></AddIcon>
                 </Stack>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center">
+                <Box
+                  display="flex"
+                  alignContent="center"
+                  justifyContent="center"
+                  alignItems="center"
+                >
                   <Checkbox
                     sx={{
                       "&.Mui-checked": {
@@ -125,12 +164,28 @@ function MyAccountSubscribe(props) {
           <Grid item xs={12} sm={12} md={4}>
             <Card
               raised="true"
-              sx={{ borderRadius: 5, border: 5, borderColor: premiumSelected ? "#F83E7D" : "transparent" }}>
+              sx={{
+                borderRadius: 5,
+                border: 5,
+                borderColor: premiumSelected ? "#F83E7D" : "transparent",
+              }}
+            >
               <CardContent bgcolor="red">
-                <Box display="flex" alignContent="center" justifyContent="center" p={4}>
+                <Box
+                  display="flex"
+                  alignContent="center"
+                  justifyContent="center"
+                  p={4}
+                >
                   <Typography variant="h3">Premium</Typography>
                 </Box>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" p={4}>
+                <Box
+                  display="flex"
+                  alignContent="center"
+                  justifyContent="center"
+                  alignItems="center"
+                  p={4}
+                >
                   <Typography variant="h2">$100</Typography>
                   <Typography variant="h5">/quarter</Typography>
                 </Box>
@@ -141,7 +196,12 @@ function MyAccountSubscribe(props) {
                   <AddIcon variant="start" text="test"></AddIcon>
                   <AddIcon variant="start" text="test"></AddIcon>
                 </Stack>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center">
+                <Box
+                  display="flex"
+                  alignContent="center"
+                  justifyContent="center"
+                  alignItems="center"
+                >
                   <Checkbox
                     sx={{
                       "&.Mui-checked": {
@@ -164,12 +224,28 @@ function MyAccountSubscribe(props) {
           <Grid item xs={12} sm={12} md={4}>
             <Card
               raised="true"
-              sx={{ borderRadius: 5, border: 5, borderColor: ultSelected ? "#F83E7D" : "transparent" }}>
+              sx={{
+                borderRadius: 5,
+                border: 5,
+                borderColor: ultSelected ? "#F83E7D" : "transparent",
+              }}
+            >
               <CardContent bgcolor="red">
-                <Box display="flex" alignContent="center" justifyContent="center" p={4}>
+                <Box
+                  display="flex"
+                  alignContent="center"
+                  justifyContent="center"
+                  p={4}
+                >
                   <Typography variant="h3">ULTIMATE</Typography>
                 </Box>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" p={4}>
+                <Box
+                  display="flex"
+                  alignContent="center"
+                  justifyContent="center"
+                  alignItems="center"
+                  p={4}
+                >
                   <Typography variant="h2">$275</Typography>
                   <Typography variant="h5">/year</Typography>
                 </Box>
@@ -182,7 +258,12 @@ function MyAccountSubscribe(props) {
                   <AddIcon variant="start" text="test"></AddIcon>
                   <AddIcon variant="start" text="test"></AddIcon>
                 </Stack>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center">
+                <Box
+                  display="flex"
+                  alignContent="center"
+                  justifyContent="center"
+                  alignItems="center"
+                >
                   <Checkbox
                     sx={{
                       "&.Mui-checked": {
@@ -209,9 +290,24 @@ function MyAccountSubscribe(props) {
           </Grid>
 
           <Grid item xs={12} mb={4}>
-            <Box display="flex" justifyContent="center" alignItems="center">
-              <StyledButton variant="signup" text="Proceed" link={`/account-billing`}/>
-            </Box>
+            <form
+              action={`http://localhost:8000/subscription/create-subscription/`}
+              method="POST"
+            >
+              <input
+                type="hidden"
+                name="price_id"
+                value={handleLink()}
+              />
+              <Box display="flex" justifyContent="center" alignItems="center">
+                <StyledButton
+                  variant="signup"
+                  text="Proceed"
+                  type="submit"
+                  color="primary.main"
+                />
+              </Box>
+            </form>
           </Grid>
         </Grid>
       </Grid>
