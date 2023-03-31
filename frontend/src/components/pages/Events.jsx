@@ -83,7 +83,7 @@ function Events({ create_event, listingAccount }) {
   const [onlineSelected, setOnlineSelected] = useState(true);
   const [inpersonSelected, setInpersonSelected] = useState(false);
 
-  return listingAccount === null ? (
+  return listingAccount !== null ? (
     <div style={{ overflowX: "hidden" }}>
       <Box component="img" src={require("../../assets/image 31.png")} />
       <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw" mt={-80}>
