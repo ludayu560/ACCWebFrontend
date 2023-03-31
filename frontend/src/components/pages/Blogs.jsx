@@ -48,30 +48,26 @@ function Blogs({ props, isAuthenticated }) {
     <div style={{ overflowX: "hidden" }}>
       <Stack>
         {/*Check Out Our Blog*/}
-        <Grid container bgcolor="#FF87B0" sx={{ p: 10, pb: 30 }}>
-          <Grid item xs={5.5}>
-            <Typography variant="h4" sx={{ color: "#C5265C", fontWeight: "bold" }}>
-              Aisha Community Blog
+        <Box component="img" src={require("../../assets/image 58.png")} />
+        <Grid container sx={{ p: 10, pb: 30, mt: -80 }}>
+          <Grid item xs={5.5} pb={5}>
+            <Typography variant="h3" sx={{ color: "#C5265C", fontWeight: "bold" }}>
+              Blog Corner
             </Typography>
           </Grid>
           <Grid item xs={5.5}></Grid>
           <Grid item xs={1}>
-            <Box component="img" src={LogoVariant2} />
+            <Box component="img" src={LogoVariant2} width="140px" pr={6}/>
           </Grid>
-          <Grid item xs={4}>
-            <Typography variant="h3" sx={{ color: "white" }}>
-              See what’s happening in the Aisha Community
+          <Grid item xs={6}>
+            <Typography variant="h3" sx={{ color: "white" }} pb={5}>
+              See what’s happening in the Aisha Community by checking our Blog
+            </Typography>
+            <Typography variant="h6" sx={{ color: "#C5265C", fontWeight: "bold" }}>
+              Click the box below to see a category of blog.
             </Typography>
           </Grid>
           <Grid item xs={3}></Grid>
-          <Grid item xs={5}>
-            <Stack mt={10}>
-              <Typography variant="h6" sx={{ color: "white" }}>
-                Sign up for the Aisha community weekly newsletter.
-              </Typography>
-              <TextField variant="filled" label="Email" style={{ backgroundColor: "white" }} required />
-            </Stack>
-          </Grid>
         </Grid>
         {/*Blog Grid*/}
         <Grid container spacing={10} alignContent="center" justifyContent="center" mt={-30} pb={20}>
