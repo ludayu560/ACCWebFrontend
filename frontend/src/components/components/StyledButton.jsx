@@ -15,6 +15,17 @@ function StyledButton(props) {
     color: textColor ? textColor : "white",
   };
 
+  const tagStyle = {
+    minWidth: width ? width : "",
+    padding: 15,
+    paddingLeft: 20,
+    paddingRight: 20,
+    borderRadius: "100vmax",
+    textTransform: "none",
+    background: bgcolor ? bgcolor : "#C5265CBF",
+    color: textColor ? textColor : "white",
+  };
+
   const emptyStyle = {
     width: width ? width : "12vw",
     height: "6vh",
@@ -104,7 +115,16 @@ function StyledButton(props) {
 
       {variant === "pinkBtn" && (
         <Button variant="contained" style={signupStyle} href={link} {...props}>
-          <Typography variant="h5"sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
+          <Typography variant="h5" sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
+            {text}
+            {props.children}
+          </Typography>
+        </Button>
+      )}
+
+      {variant === "tag" && (
+        <Button variant="contained" style={tagStyle} {...props} disabled>
+          <Typography variant="h6" fontSize="12px">
             {text}
             {props.children}
           </Typography>

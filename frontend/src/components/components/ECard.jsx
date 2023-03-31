@@ -25,6 +25,7 @@ import StyledButton from "./StyledButton";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import blogsDefault from "../../assets/image 69.png";
 
 function capitalizeFirstLetter(str) {
   if (str) {
@@ -50,10 +51,45 @@ function ECard(props) {
     bathrooms = "N/A",
     roomsAvailable = "N/A",
     price = "N/A",
+    commentCount = 0,
+    author = "By ACC",
+    category="LIFESTYLE & WELLNESS"
   } = props;
 
   return (
     <>
+      {variant === "blog" && (
+        <Card raised sx={{ borderRadius: 4, width: "350px" }}>
+          <CardActionArea>
+            <CardMedia component="img" height="250px" src={image ? "http://127.0.0.1:8000/" + image : blogsDefault} />
+            <CardContent>
+              <Box mt={-9} pb={5}>
+                <StyledButton variant="tag" text={category}></StyledButton>
+              </Box>
+              <Grid container spacing={3} px={2}>
+                <Grid item xs={12}>
+                  <Typography variant="h5" align="center" pb={2}>
+                    {name}
+                  </Typography>
+                  <Divider />
+                </Grid>
+                <Grid item xs={8}>
+                  <Typography variant="h6">{time ? time.substring(0, 10) : "Date: N/A"}</Typography>
+                </Grid>
+                <Grid item xs={4}>
+                  <Typography variant="h6" align="right">
+                    {author}
+                  </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="h6">{commentCount} comments</Typography>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      )}
+
       {variant === "event" && (
         <Card raised sx={{ borderRadius: 4, width: "350px" }}>
           <CardActionArea>
