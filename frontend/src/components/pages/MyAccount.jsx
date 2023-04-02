@@ -202,20 +202,6 @@ function MyAccount({ props, isAuthenticated, listingAccount }) {
     formData.append("occupation", formdata.occupation);
     formData.append("personal_traits", formdata.personal_traits);
     formData.append("interests", formdata.interests);
-
-    // axios
-    //   .post("http://localhost:8000/ListingAccount/" + { id } + "/", formData, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //     },
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-    // handleReset();
   };
 
   const [value, setValue] = useState([400, 4000]);
