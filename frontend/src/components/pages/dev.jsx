@@ -1,28 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import {
-  TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  TextareaAutosize,
-  Button,
-  Slider,
-  Grid,
-  Stack,
-  Typography,
-  Divider,
-  Box,
-  Container,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
+import { Controller, useForm } from "react-hook-form";
+import { connect } from "react-redux";
+
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Slider from "@mui/material/Slider";
+import Divider from "@mui/material/Divider";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import FormControlLabel from "@mui/material/FormControlLabel";
+
+import ImageUpload from "../components/ImageUploadComponent";
 import ActionConfirmed from "../components/ActionConfirmed";
 import SideNav from "../components/SideNav";
-import ImageUpload from "../components/ImageUploadComponent";
-import StyledButton from "../components/StyledButton";
-import { Form } from "react-router-dom";
 
 const personalityTraits =
   "Extroverted Outgoing Creative Private Quiet Introverted Open Analytical Laid-Back Adventurous".split(
@@ -32,24 +29,115 @@ const interests =
   "Gardening Hiking Reading Puzzles Yoga Fitness Cooking Music Art Sports Cars Travel".split(
     " "
   );
+const ageRanges = ["<18", "18-25", "26-35", "46-55", "56-65", "65+"];
 
 function ImageGallery(props) {
-  const { isAuthenticated, listingAccount } = props;
+  const { listingAccount } = props;
 
   // Trigger state for 'action confirmed' popup
   const [triggerConfirmed, setTriggerConfirmed] = useState(false);
 
-  // States for profile and banner picture
-  const [profile_picture, setProfilePicture] = useState(null);
-  const [banner_picture, setBanner_picture] = useState(null);
+  // get the account type from the redux store
+  const [accountType, setAccountType] = useState("tenant");
+  useEffect(() => {
+    if (listingAccount) {
+      setAccountType(listingAccount.account_type);
+    }
+  }, [listingAccount]);
 
   // react-hook-form state management
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => setTriggerConfirmed(true);
+    watch,
+  } = useForm({
+    // add default values for form fields from get request
+    // TODO: add proper default values for checkboxes. default null right now.
+    defaultValues: {
+      About: listingAccount ? listingAccount.tell_us_about_yourself : "",
+      Age: listingAccount ? listingAccount.age_range : undefined,
+      Location: listingAccount ? listingAccount.location : "",
+      Name: listingAccount ? listingAccount.name : "",
+      Occupation: listingAccount ? listingAccount.occupation : "",
+      Phone: listingAccount ? listingAccount.phone_number : "",
+      Preferences: listingAccount ? listingAccount.preferences : "",
+      Username: listingAccount ? listingAccount.username : "",
+      "checkbox-interests-Art": false,
+      "checkbox-interests-Cars": false,
+      "checkbox-interests-Cooking": false,
+      "checkbox-interests-Fitness": false,
+      "checkbox-interests-Gardening": false,
+      "checkbox-interests-Hiking": false,
+      "checkbox-interests-Music": false,
+      "checkbox-interests-Puzzles": false,
+      "checkbox-interests-Reading": false,
+      "checkbox-interests-Sports": false,
+      "checkbox-interests-Travel": false,
+      "checkbox-interests-Yoga": false,
+      "checkbox-personality-Adventurous": false,
+      "checkbox-personality-Analytical": false,
+      "checkbox-personality-Creative": false,
+      "checkbox-personality-Extroverted": false,
+      "checkbox-personality-Introverted": false,
+      "checkbox-personality-Laid-Back": false,
+      "checkbox-personality-Open": false,
+      "checkbox-personality-Outgoing": false,
+      "checkbox-personality-Private": false,
+      "checkbox-personality-Quiet": false,
+      "image-banner": listingAccount ? listingAccount.banner_picture : null,
+      "image-main": listingAccount ? listingAccount.display_picture_one : null,
+      "image-profile": listingAccount ? listingAccount.profile_picture : null,
+      // not yet implemented in backend
+      priceRange: [600, 1500],
+    },
+  });
+
+  const onSubmit = (data) => {
+    // Append personality traits and interests
+    const personalityTraits = [];
+    const interests = [];
+    for (const key in data) {
+      if (key.slice(0, 8) === "checkbox" && data[key]) {
+        if (key.slice(0, 18) === "checkbox-interests") {
+          interests.push(key.slice(19));
+        } else if (key.slice(0, 20) === "checkbox-personality") {
+          personalityTraits.push(key.slice(21));
+        }
+      }
+    }
+
+    const formData = new FormData();
+    // Commented out fields are not yet implemented in the backend
+    formData.append("tell_us_about_yourself", data.About);
+    formData.append("age_range", data.Age);
+    formData.append("location", data.Location);
+    // formData.append("name", data.Name);
+    formData.append("occupation", data.Occupation);
+    formData.append("phone_number", data.Phone);
+    // formData.append("preferences", data.Preferences);
+    formData.append("username", data.Username);
+    formData.append("profile_picture", data["image-profile"]);
+    formData.append("banner_picture", data["image-banner"]);
+    formData.append("display_picture_one", data["image-main"]);
+    formData.append("personality_traits", personalityTraits);
+    formData.append("interests", interests);
+
+    // console.log formData for debugging
+    for (var pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
+    setTriggerConfirmed(true);
+
+    // call update_listing_account here
+  };
+
+  // debug console.log for watched values
+  const watchedValues = watch();
+  useEffect(() => {
+    console.log("Current form values:", watchedValues);
+  }, [watchedValues]);
 
   return (
     <>
@@ -104,20 +192,34 @@ function ImageGallery(props) {
           </Box>
           {/* Form component */}
           <Stack marginX="3vw">
-            <ImageUpload
-              width="73vw"
-              height="30vh"
-              wide={true}
-              returnSelected={setBanner_picture}
+            <Controller
+              name="image-banner"
+              control={control}
+              defaultValue={null}
+              render={({ field }) => (
+                <ImageUpload
+                  width="73vw"
+                  height="30vh"
+                  wide={true}
+                  returnSelected={(e) => field.onChange(e)}
+                />
+              )}
             />
             <Box position={"relative"}>
               <Box position={"absolute"} right={"5vw"} bottom={"-100px"}>
-                <ImageUpload
-                  width="180px"
-                  height="180px"
-                  returnSelected={setProfilePicture}
-                  borderRadius="100vmax"
-                  border="4px solid white"
+                <Controller
+                  name="image-profile"
+                  control={control}
+                  defaultValue={null}
+                  render={({ field }) => (
+                    <ImageUpload
+                      width="180px"
+                      height="180px"
+                      returnSelected={(e) => field.onChange(e)}
+                      borderRadius="100vmax"
+                      border="4px solid white"
+                    />
+                  )}
                 />
               </Box>
             </Box>
@@ -130,7 +232,7 @@ function ImageGallery(props) {
               marginTop={"2vmin"}
               width={"75vw"}
             >
-              tenant
+              {accountType.charAt(0).toUpperCase() + accountType.slice(1)}
             </Typography>
             <SectionHeader>Personal Details</SectionHeader>
             <Typography
@@ -148,11 +250,14 @@ function ImageGallery(props) {
                 type="text"
                 placeholder="Name"
                 {...register("Name", { required: true })}
+                error={errors.Name}
               />
               <MyAccountTextfield
                 type="text"
                 placeholder="Username"
                 {...register("Username", { required: true })}
+                rules={{ required: "Username is required" }}
+                error={errors.Username}
               />
             </Stack>
             <Stack direction="row">
@@ -167,11 +272,13 @@ function ImageGallery(props) {
                   placeholder="Location"
                   {...register("Location", { required: true })}
                 />
-                <MyAccountTextfield
-                  type="text"
-                  placeholder="Age Range "
-                  {...register("Age Range ", {})}
+
+                <MyAccountDropdown
+                  placeholder="Age"
+                  {...register("Age", { required: true })}
+                  items={ageRanges}
                 />
+
                 <MyAccountTextfield
                   type="text"
                   placeholder="Occupation"
@@ -179,35 +286,79 @@ function ImageGallery(props) {
                 />
               </Box>
               <Box marginTop="40px">
-                <ImageUpload />
+                <Controller
+                  name="image-main"
+                  control={control}
+                  defaultValue={null}
+                  render={({ field }) => (
+                    <ImageUpload returnSelected={(e) => field.onChange(e)} />
+                  )}
+                />
               </Box>
             </Stack>
+            {accountType !== "propertyowner" ? (
+              <>
+                <SectionHeader>About Yourself</SectionHeader>
+                <MyAccountMultilineField
+                  placeholder="Provide a brief description about yourself..."
+                  {...register("About")}
+                  error={errors.About}
+                />
+              </>
+            ) : null}
 
-            <SectionHeader>About Yourself</SectionHeader>
-            <MyAccountMultilineField placeholder="Provide a brief description about yourself..." />
-            <SectionHeader>Preferences</SectionHeader>
-            <MyAccountMultilineField placeholder="Provide what you’re looking for in  a rental or a housemate." />
-            <SectionHeader>Price Range Preference</SectionHeader>
-            <Box width="60vw">
-              <MyAccountSlider></MyAccountSlider>
-            </Box>
-            <Stack direction="row">
-              <Box width="50%">
-                <SectionHeader>Personality Traits</SectionHeader>
-                <Box width="100%">
-                  <MyAccountCheckBoxes options={personalityTraits} />
+            {accountType === "tenant" || accountType === "homeowner" ? (
+              <>
+                <SectionHeader>Preferences</SectionHeader>
+                <MyAccountMultilineField
+                  placeholder="Provide what you’re looking for in  a rental or a housemate."
+                  {...register("Preferences")}
+                  error={errors.Preferences}
+                />
+              </>
+            ) : null}
+
+            {accountType === "tenant" ? (
+              <>
+                <SectionHeader>Price Range Preference</SectionHeader>
+                <Box width="60vw">
+                  <MyAccountSlider
+                    control={control}
+                    name="priceRange"
+                    rules={{ required: "Price range is required" }}
+                  />
                 </Box>
-              </Box>
-              <Box width="50%">
-                <SectionHeader>Interests</SectionHeader>
-                <Box width="100%">
-                  <MyAccountCheckBoxes options={interests} />
-                </Box>
-              </Box>
-            </Stack>
+              </>
+            ) : null}
+
+            {accountType === "homeowner" || accountType === "tenant" ? (
+              <>
+                <Stack direction="row">
+                  <Box width="50%">
+                    <SectionHeader>Personality Traits</SectionHeader>
+                    <Box width="100%">
+                      <MyAccountCheckBoxes
+                        MenuItems={personalityTraits}
+                        control={control}
+                        prefix="personality"
+                      />
+                    </Box>
+                  </Box>
+                  <Box width="50%">
+                    <SectionHeader>Interests</SectionHeader>
+                    <Box width="100%">
+                      <MyAccountCheckBoxes
+                        MenuItems={interests}
+                        control={control}
+                        prefix="interests"
+                      />
+                    </Box>
+                  </Box>
+                </Stack>
+              </>
+            ) : null}
           </Stack>
         </Stack>
-        {/* centered Box component */}
         <Box
           display="flex"
           justifyContent="center"
@@ -253,9 +404,11 @@ function SectionHeader(props) {
   );
 }
 
-function MyAccountTextfield(props) {
+const MyAccountTextfield = React.forwardRef((props, ref) => {
   return (
     <TextField
+      label={props.placeholder.length < 20 ? props.placeholder : ""}
+      inputRef={ref}
       sx={{
         marginY: "20px",
         marginRight: "100px",
@@ -291,15 +444,97 @@ function MyAccountTextfield(props) {
           },
         },
       }}
+      InputLabelProps={{ shrink: true }}
       {...props}
     />
   );
+});
+
+function MyAccountDropdown(props) {
+  const { value, onChange, children, placeholder, items } = props;
+  return (
+    <FormControl
+      variant="outlined"
+      sx={{
+        marginY: "20px",
+        marginRight: "100px",
+        width: "25vw",
+      }}
+    >
+      <InputLabel
+        shrink={true}
+        placeholder={placeholder}
+        sx={{
+          paddingLeft: (theme) => theme.spacing(2),
+          paddingRight: (theme) => theme.spacing(2),
+        }}
+      >
+        {placeholder}
+      </InputLabel>
+      <Box
+        sx={{
+          background: "#E3E7EF",
+          borderRadius: "30vmax",
+          width: "25vw",
+        }}
+      >
+        <Select
+          value={value}
+          onChange={onChange}
+          label={placeholder}
+          sx={{
+            "& .MuiOutlinedInput-input": {
+              color: "black",
+              paddingLeft: (theme) => theme.spacing(3.5),
+            },
+            "& .MuiOutlinedInput-notchedOutline": {
+              border: "none",
+            },
+            "& .MuiSelect-icon": {
+              color: "primary.main",
+            },
+            paddingRight: 2,
+            borderRadius: "30vmax",
+            minWidth: "25vw",
+          }}
+          MenuProps={{
+            PaperProps: {
+              sx: {
+                background: "#E3E7EF",
+                borderRadius: "20px",
+                boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)",
+              },
+            },
+          }}
+          {...props}
+        >
+          {items.map((child, index) => (
+            <MenuItem
+              key={index}
+              value={child}
+              sx={{
+                "&:not(:last-child)": {
+                  borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+                },
+                "&:hover": {
+                  background: "rgba(0, 0, 0, 0.08)",
+                },
+              }}
+            >
+              {child}
+            </MenuItem>
+          ))}
+        </Select>
+      </Box>
+    </FormControl>
+  );
 }
 
-function MyAccountMultilineField(props) {
+const MyAccountMultilineField = React.forwardRef((props, ref) => {
   const { placeholder, ...rest } = props;
   return (
     <MyAccountTextfield
+      ref={ref}
       multiline
       rows={4}
       required
@@ -328,48 +563,55 @@ function MyAccountMultilineField(props) {
       {...rest}
     />
   );
-}
+});
 
-function MyAccountSlider(props) {
+function MyAccountSlider({ control, name, rules }) {
   return (
-    <Slider
-      type="range"
-      value={[600, 1500]}
-      // onChange={handleChange}
-      valueLabelDisplay="auto"
-      min={400}
-      max={5000}
-      step={100}
-      marks={[
-        { value: 400, label: "$400" },
-        { value: 5000, label: "$5000+" },
-      ]}
-      sx={{
-        // the entire range of possible values
-        "& .MuiSlider-rail": {
-          color: "#D9D9D9",
-        },
-        // the line between the two ends
-        "& .MuiSlider-track": {
-          color: "primary.main",
-        },
-        // the endpoints
-        "& .MuiSlider-thumb": {
-          color: "primary.main",
-        },
-        // the label displaying the current value
-        "& .MuiSlider-valueLabel": {
-          background: "transparent",
-          color: "#000",
-          padding: "0",
-        },
-      }}
+    <Controller
+      control={control}
+      name={name}
+      rules={rules}
+      defaultValue={[600, 1500]}
+      render={({ field }) => (
+        <Slider
+          {...field}
+          type="range"
+          valueLabelDisplay="auto"
+          min={400}
+          max={5000}
+          step={100}
+          marks={[
+            { value: 400, label: "$400" },
+            { value: 5000, label: "$5000+" },
+          ]}
+          sx={{
+            // the entire range of possible values
+            "& .MuiSlider-rail": {
+              color: "#D9D9D9",
+            },
+            // the line between the two ends
+            "& .MuiSlider-track": {
+              color: "primary.main",
+            },
+            // the endpoints
+            "& .MuiSlider-thumb": {
+              color: "primary.main",
+            },
+            // the label displaying the current value
+            "& .MuiSlider-valueLabel": {
+              background: "transparent",
+              color: "#000",
+              padding: "0",
+            },
+          }}
+        />
+      )}
     />
   );
 }
 
 function MyAccountCheckBoxes(props) {
-  const { options } = props;
+  const { MenuItems, control, prefix } = props;
   // define checkbox Icons here so they can be reused
   const boxSize = 35;
   const boxRadius = 1;
@@ -425,40 +667,42 @@ function MyAccountCheckBoxes(props) {
 
   return (
     <Grid container>
-      {options.map((name, index) => {
+      {MenuItems.map((name, index) => {
         return (
-          <FormControlLabel
-            item
-            control={
-              <Checkbox
-                icon={BpIcon}
-                checkedIcon={BpCheckedIcon}
-                sx={{
-                  "&.Mui-checked": {
-                    color: "primary.main",
-                    "& .MuiSvgIcon-root": {
-                      fill: "primary.main",
-                      stroke: "none",
-                    },
-                  },
-                  "& .MuiSvgIcon-root": {
-                    fontSize: "40px",
-                    fill: "#E3E7EF",
-                    stroke: "none",
-                  },
-                }}
+          <Controller
+            key={index}
+            name={`checkbox-${prefix}-${name}`}
+            control={control}
+            defaultValue={false}
+            render={({ field }) => (
+              <FormControlLabel
+                item
+                control={
+                  <Checkbox
+                    {...field}
+                    icon={BpIcon}
+                    checkedIcon={BpCheckedIcon}
+                    // styling
+                  />
+                }
+                label={
+                  <Typography fontWeight={400} width="10vw" marginLeft={"5px"}>
+                    {name}
+                  </Typography>
+                }
+                sx={{ marginBottom: 2 }}
               />
-            }
-            label={
-              <Typography fontWeight={400} width="10vw" marginLeft={"5px"}>
-                {name}
-              </Typography>
-            }
-            sx={{ marginBottom: 2 }}
+            )}
           />
         );
       })}
     </Grid>
   );
 }
-export default ImageGallery;
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  listingAccount: state.auth.listingAccount,
+});
+
+export default connect(mapStateToProps)(ImageGallery);
