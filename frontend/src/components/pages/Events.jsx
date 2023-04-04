@@ -37,6 +37,7 @@ import { connect } from "react-redux";
 import ImageUpload from "../components/ImageUploadComponent";
 import Listing from "./Listing";
 import { useNavigate } from "react-router";
+import EventConfirm from "./EventConfirm";
 const CustomCheckboxStyles = {
   // the box color when unchecked
   color: "#B9B9B9",
@@ -83,8 +84,9 @@ function Events({ create_event, listingAccount }) {
   const [onlineSelected, setOnlineSelected] = useState(true);
   const [inpersonSelected, setInpersonSelected] = useState(false);
 
-  return listingAccount === null ? (
+  return listingAccount !== null ? (
     <div style={{ overflowX: "hidden" }}>
+      
       <Box component="img" src={require("../../assets/image 31.png")} />
       <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw" mt={-80}>
         <Stack pr={20} pt={10} pb={10}>
@@ -97,7 +99,7 @@ function Events({ create_event, listingAccount }) {
           <Typography variant="h1" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
             Lives Community.
           </Typography>
-
+          <EventConfirm/>
           <Grid container spacing={10} pt={5}>
             <Grid item>
               <StyledButton variant="pinkBtn" text="Browse Events" width="15vw" bgcolor="white" textColor="#F83E7D" />

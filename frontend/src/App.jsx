@@ -42,6 +42,7 @@ import BrowseEvents from "./components/pages/BrowseEvents";
 import ConnectedThemeProvider from "./themes"
 import Blogs from "./components/pages/Blogs";
 import BlogsCategory from "./components/pages/BlogsCategory";
+import EventConfirm from "./components/pages/EventConfirm";
 
 function App() {
   return (
@@ -113,6 +114,7 @@ function App() {
             <Route exact path="/tenanthome" element={<TenantHome />} />
             <Route exact path="/events" element={<Events />} />
             <Route exact path="/browseevents" element={<BrowseEvents />} />
+            <Route exact path="/eventconfirm" element={<EventConfirm />} />
             <Route exact path="/" element={<Landing />} />
             <Route exact path="/activate/:uid/:token" element={<Activate />} />
             <Route exact path="/reset-password" element={<ResetPassword />} />
