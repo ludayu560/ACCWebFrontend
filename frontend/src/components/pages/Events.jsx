@@ -1,5 +1,5 @@
 import { Box, Stack } from "@mui/system";
-import { Button, Card, Checkbox, FormControlLabel, Grid, Paper, Typography } from "@mui/material";
+import { Button, Card, Checkbox, Divider, FormControlLabel, Grid, Paper, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import HomePhoto from "../../assets/HomePhoto.png";
 import NavBar from "../components/NavBar";
@@ -83,7 +83,7 @@ function Events({ create_event, listingAccount }) {
   const [onlineSelected, setOnlineSelected] = useState(true);
   const [inpersonSelected, setInpersonSelected] = useState(false);
 
-  return listingAccount !== null ? (
+  return listingAccount === null ? (
     <div style={{ overflowX: "hidden" }}>
       <Box component="img" src={require("../../assets/image 31.png")} />
       <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw" mt={-80}>
@@ -165,10 +165,12 @@ function Events({ create_event, listingAccount }) {
       </Stack>
 
       {/*Pink Area*/}
-      <Stack style={{ background: "white" }} p={8} pb={10} spacing={3} alignItems="center">
-        <Typography variant="h3" sx={{ textAlign: "center", fontWeight: "bold", color: "#0045F1" }}>
+      <Stack p={8} pb={15} spacing={3} alignItems="center">
+        <Divider sx={{ width: "40%", color: "#323232" }} />
+        <Typography variant="h3" sx={{ textAlign: "center", fontWeight: "bold", color: "#0045F1", pt: 3 }}>
           Welcome to Our Community
         </Typography>
+
         <Typography variant="h5" sx={{ textAlign: "center", px: 25 }}>
           We organize events so that you can meet women in your community. Our community is open to all women and those
           who identify as woman, whether you colive or not.
@@ -278,15 +280,6 @@ function Events({ create_event, listingAccount }) {
         </Grid>
       </Stack>
 
-      <Stack style={{ background: "white" }} p={6} pb={15} spacing={3} alignItems="center">
-        <Typography variant="h3" sx={{ textAlign: "center", color: "#F83E7D", fontWeight: "bold" }}>
-          And Most Importantly,
-        </Typography>
-        <Typography variant="h3" sx={{ textAlign: "center", color: "#F83E7D", fontWeight: "bold" }}>
-          To Have Fun!
-        </Typography>
-      </Stack>
-
       {/*Events Square thingy*/}
       <Stack style={{ background: "#FFF6F6" }} sx={{ p: 10, pb: 20 }}>
         <Typography variant="h2" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2} mr="30vw">
@@ -294,12 +287,27 @@ function Events({ create_event, listingAccount }) {
         </Typography>
         <Grid container justifyContent="center">
           <Grid item xs={7} mt={15}>
-            <Box component="img" src={require("../../assets/Event Quote.png")} />
+            <Box component="img" src={require("../../assets/Component 2.png")} />
           </Grid>
           <Grid item xs={5} mt={10}>
-            <Box component="img" src={require("../../assets/image 2.png")} />
+            <Box component="img" src={require("../../assets/image 32 (1).png")} />
           </Grid>
         </Grid>
+      </Stack>
+
+      {/*Blue Stack */}
+      <Stack style={{ background: "#0045F1" }} sx={{ px: 15, py: 10 }} alignItems="center">
+        <Typography variant="h4" color="white" pb={10}>
+          Interested in planning a private event for you and your friends? Aisha Comfortable Coliving makes organizing
+          an event quick and easy, so you can just focus on having fun.
+        </Typography>
+        <StyledButton
+          variant="pinkBtn"
+          text="Host your private event"
+          width="15vw"
+          bgcolor="white"
+          textColor="#0045F1"
+        />
       </Stack>
 
       {/*Upcoming Events*/}
@@ -346,25 +354,44 @@ function Events({ create_event, listingAccount }) {
       </Stack>
 
       {/*Events Grid */}
-      <Grid
-        container
-        spacing={10}
-        alignContent="center"
-        justifyContent="center"
-        mt={-45}
-        pt={10}
-        bgcolor="#DEECF5"
-        px={10}>
-        {onlineSelected && (
-          <>
+      {onlineSelected && (
+        <>
+          <Box component="img" src={require("../../assets/image 31 (1).png")} width="100%" mt={-45} />
+          <Typography variant="h1" align="center" fontWeight="bold" sx={{ color: "white" }} mt={-30}>
+            Coming Soon!
+          </Typography>
+
+          <Grid container spacing={10} alignContent="center" justifyContent="center" pt={10} bgcolor="#DEECF5" px={10}>
+            <Grid item xs={12}>
+              <Typography variant="h4" align="center" fontWeight="bold" sx={{ color: "#0045F1" }} pt={25}>
+                New things are coming… check out our in-person events.
+              </Typography>
+            </Grid>
             {data.map((id) => (
               <Grid item xs="auto">
                 <ECard variant="event" />
               </Grid>
             ))}
-          </>
-        )}
-      </Grid>
+          </Grid>
+        </>
+      )}
+      {inpersonSelected && (
+        <Grid
+          container
+          spacing={10}
+          alignContent="center"
+          justifyContent="center"
+          mt={-45}
+          pt={10}
+          bgcolor="#DEECF5"
+          px={10}>
+          {data.map((id) => (
+            <Grid item xs="auto">
+              <ECard variant="event" />
+            </Grid>
+          ))}
+        </Grid>
+      )}
 
       {/*Don’t see what you’re looking for? Create your own event!*/}
       <Stack style={{ background: "linear-gradient(#DEECF5, white)" }} sx={{ p: 15, pb: 40 }} alignItems="center">
