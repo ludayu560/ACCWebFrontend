@@ -291,7 +291,7 @@ function MyAccountSubscribe(props) {
 
           <Grid item xs={12} mb={4}>
             <form
-              action={`http://localhost:8000/subscription/create-subscription/`}
+              action={`${process.env.REACT_APP_API_URL}/subscription/create-subscription/`}
               method="POST"
             >
               <input
