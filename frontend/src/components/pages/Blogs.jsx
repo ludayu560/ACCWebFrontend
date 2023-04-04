@@ -44,6 +44,7 @@ import ECard from "../components/ECard";
 
 function Blogs({ props, isAuthenticated }) {
   const data = ["1", "2", "3", "4", "5", "6"];
+ 
   return (
     <div style={{ overflowX: "hidden" }}>
       <Stack>
@@ -57,7 +58,7 @@ function Blogs({ props, isAuthenticated }) {
           </Grid>
           <Grid item xs={5.5}></Grid>
           <Grid item xs={1}>
-            <Box component="img" src={LogoVariant2} width="140px" pr={6}/>
+            <Box component="img" src={LogoVariant2} width="140px" pr={6} />
           </Grid>
           <Grid item xs={6}>
             <Typography variant="h3" sx={{ color: "white" }} pb={5}>
@@ -73,7 +74,7 @@ function Blogs({ props, isAuthenticated }) {
         <Grid container spacing={10} alignContent="center" justifyContent="center" mt={-30} pb={20}>
           <Grid item xs="auto">
             <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-              <CardActionArea>
+              <CardActionArea href="/blogsCategory">
                 <CardMedia component="img" image={require("../../assets/image 14.png")}></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
@@ -87,7 +88,7 @@ function Blogs({ props, isAuthenticated }) {
           </Grid>
           <Grid item xs="auto">
             <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-              <CardActionArea>
+              <CardActionArea href="/blogsCategory">
                 <CardMedia component="img" image={require("../../assets/image 15.png")}></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
@@ -101,7 +102,7 @@ function Blogs({ props, isAuthenticated }) {
           </Grid>
           <Grid item xs="auto">
             <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-              <CardActionArea>
+              <CardActionArea href="/blogsCategory">
                 <CardMedia component="img" image={require("../../assets/image 16.png")}></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
@@ -115,7 +116,7 @@ function Blogs({ props, isAuthenticated }) {
           </Grid>
           <Grid item xs="auto">
             <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-              <CardActionArea>
+              <CardActionArea href="/blogsCategory">
                 <CardMedia component="img" image={require("../../assets/image 17.png")}></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
@@ -129,7 +130,7 @@ function Blogs({ props, isAuthenticated }) {
           </Grid>
           <Grid item xs="auto">
             <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-              <CardActionArea>
+              <CardActionArea href="/blogsCategory">
                 <CardMedia component="img" image={require("../../assets/image 18.png")}></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
@@ -143,7 +144,7 @@ function Blogs({ props, isAuthenticated }) {
           </Grid>
           <Grid item xs="auto">
             <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-              <CardActionArea>
+              <CardActionArea href="/blogsCategory">
                 <CardMedia component="img" image={require("../../assets/image 19 (1).png")}></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
