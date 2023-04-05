@@ -73,7 +73,7 @@ function Footer() {
         <Stack spacing={1} pt={2}>
           <TextField variant="filled" label="Name" style={{ backgroundColor: "white" }} required />
           <TextField variant="filled" label="Email" style={{ backgroundColor: "white" }} required />
-          <StyledButton variant="pinkBtn" text="Subscribe" />
+          <StyledButton variant="pinkBtn" text="Subscribe" bgcolor="#F83E7D" />
         </Stack>
       </Grid>
       <Grid item xs={12}>
