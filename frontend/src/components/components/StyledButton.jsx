@@ -72,6 +72,7 @@ function StyledButton(props) {
           endIcon={noArrow ? null : <ArrowForwardIcon />}
           href={link}
           type={type}
+          sx={{backgroundColor: "primary.main"}}
           {...props}>
           <Typography variant="h5" fontWeight={600} sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
             {text}

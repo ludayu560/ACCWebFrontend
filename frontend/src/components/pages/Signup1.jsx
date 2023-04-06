@@ -144,6 +144,7 @@ function Page1({ setPage, returnHook }) {
                 onClick={onClickNextButton}
                 variant="signup"
                 text="Next"
+                bgcolor="#F83E7D"
               />
             </Grid>
             <Typography variant="h6" fontWeight={700}>
