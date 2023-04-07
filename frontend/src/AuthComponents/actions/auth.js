@@ -490,6 +490,21 @@ export const create_property_listing = (propertyListing) => async dispatch => {
             if (propertyListing.listing_image_four) {
                 formData.append('listing_image_four', propertyListing.listing_image_four);
             }
+            if (propertyListing.listing_image_five) {
+                formData.append('listing_image_five', propertyListing.listing_image_five);
+            }
+            if (propertyListing.listing_image_six) {
+                formData.append('listing_image_six', propertyListing.listing_image_six);
+            }
+            if (propertyListing.listing_image_seven) {
+                formData.append('listing_image_seven', propertyListing.listing_image_seven);
+            }
+            if (propertyListing.listing_image_eight) {
+                formData.append('listing_image_eight', propertyListing.listing_image_eight);
+            }
+            if (propertyListing.listing_image_nine) {
+                formData.append('listing_image_nine', propertyListing.listing_image_nine);
+            }
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/PropertyListing/`, formData, config);
             const utilityformData = new FormData();
             utilityformData.append('listing_utility', null);
@@ -559,6 +574,21 @@ export const update_property_listing = (propertyListing) => async dispatch => {
             }
             if (propertyListing.listing_image_four) {
                 formData.append('listing_image_four', propertyListing.listing_image_four);
+            }
+            if (propertyListing.listing_image_five) {
+                formData.append('listing_image_five', propertyListing.listing_image_five);
+            }
+            if (propertyListing.listing_image_six) {
+                formData.append('listing_image_six', propertyListing.listing_image_six);
+            }
+            if (propertyListing.listing_image_seven) {
+                formData.append('listing_image_seven', propertyListing.listing_image_seven);
+            }
+            if (propertyListing.listing_image_eight) {
+                formData.append('listing_image_eight', propertyListing.listing_image_eight);
+            }
+            if (propertyListing.listing_image_nine) {
+                formData.append('listing_image_nine', propertyListing.listing_image_nine);
             }
             const res = await axios.put(`${process.env.REACT_APP_API_URL}/PropertyListing/${propertyListing.id}/`, formData, config);
             // Delete existing utilities for the property listing
@@ -719,8 +749,7 @@ export const create_listing_account = (listingAccount) => async dispatch => {
         const formData = new FormData();
         formData.append('username', listingAccount.username);
         formData.append('account_type', listingAccount.account_type);
-        formData.append('first_name', listingAccount.first_name);
-        formData.append('last_name', listingAccount.last_name);
+        formData.append('full_name', listingAccount.full_name);
         formData.append('email', listingAccount.email);
         formData.append('phone_number', listingAccount.phone_number);
         formData.append('date_of_birth', listingAccount.date_of_birth);
@@ -735,18 +764,11 @@ export const create_listing_account = (listingAccount) => async dispatch => {
         if (listingAccount.banner_picture) {
             formData.append('banner_picture', listingAccount.banner_picture);
         }
-        if (listingAccount.display_picture_one) {
-            formData.append('display_picture_one', listingAccount.display_picture_one);
+        if (listingAccount.display_picture) {
+            formData.append('display_picture', listingAccount.display_picture);
         }
-        if (listingAccount.display_picture_two) {
-            formData.append('display_picture_two', listingAccount.display_picture_two);
-        }
-        if (listingAccount.display_picture_three) {
-            formData.append('display_picture_three', listingAccount.display_picture_three);
-        }
-        if (listingAccount.display_picture_four) {
-            formData.append('display_picture_four', listingAccount.display_picture_four);
-        }
+        formData.append('preferences', listingAccount.preferences);
+        formData.append('price_range', listingAccount.price_range);
         formData.append('user', listingAccount.user);
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/ListingAccount/`, formData, config);
         const PersonalTraitsformData = new FormData();
@@ -790,8 +812,7 @@ export const update_listing_account = (listingAccount) => async dispatch => {
             const formData = new FormData();
             formData.append('username', listingAccount.username);
             formData.append('account_type', listingAccount.account_type);
-            formData.append('first_name', listingAccount.first_name);
-            formData.append('last_name', listingAccount.last_name);
+            formData.append('full_name', listingAccount.first_name);
             formData.append('email', listingAccount.email);
             formData.append('phone_number', listingAccount.phone_number);
             formData.append('date_of_birth', listingAccount.date_of_birth);
@@ -806,18 +827,11 @@ export const update_listing_account = (listingAccount) => async dispatch => {
             if (listingAccount.banner_picture) {
                 formData.append('banner_picture', listingAccount.banner_picture);
             }
-            if (listingAccount.display_picture_one) {
-                formData.append('display_picture_one', listingAccount.display_picture_one);
+            if (listingAccount.display_picture) {
+                formData.append('display_picture', listingAccount.display_picture);
             }
-            if (listingAccount.display_picture_two) {
-                formData.append('display_picture_two', listingAccount.display_picture_two);
-            }
-            if (listingAccount.display_picture_three) {
-                formData.append('display_picture_three', listingAccount.display_picture_three);
-            }
-            if (listingAccount.display_picture_four) {
-                formData.append('display_picture_four', listingAccount.display_picture_four);
-            }
+            formData.append('preferences', listingAccount.preferences);
+            formData.append('price_range', listingAccount.price_range);
             formData.append('user', listingAccount.user);
             const res = await axios.put(`${process.env.REACT_APP_API_URL}/ListingAccount/${listingAccount.user}`, formData, config);
             const PTDeleteRES = await axios.delete(`${process.env.REACT_APP_API_URL}/PersonalTrait/${listingAccount.user}`, config);
