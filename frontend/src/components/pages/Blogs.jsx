@@ -44,7 +44,7 @@ import ECard from "../components/ECard";
 
 function Blogs({ props, isAuthenticated }) {
   const data = ["1", "2", "3", "4", "5", "6"];
- 
+
   return (
     <div style={{ overflowX: "hidden" }}>
       <Stack>
@@ -68,7 +68,10 @@ function Blogs({ props, isAuthenticated }) {
               Click the box below to see a category of blog.
             </Typography>
           </Grid>
-          <Grid item xs={3}></Grid>
+          <Grid item xs={9} />
+          <Grid item xs={3} mt={-5}>
+            <StyledButton variant="pinkBtn" text="Create new blog" bgcolor="#0045F1" href="/blogscreate"/>
+          </Grid>
         </Grid>
         {/*Blog Grid*/}
         <Grid container spacing={10} alignContent="center" justifyContent="center" mt={-30} pb={20}>
