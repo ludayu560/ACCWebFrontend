@@ -525,9 +525,12 @@ function DragImageUpload(props) {
           </Typography>
         )}
       </Box>
-      <div style={{ display: "flex", flexWrap: "wrap", marginTop: "20px" }}>
+      <Box display="flex" flexWrap="wrap" mt={2} paddingX={"10vw"}>
         {images.map((image) => (
-          <Box key={image.name} onClick={() => handleRemoveImage(image)}>
+          <Box
+            key={image.name}
+            onClick={() => handleRemoveImage(image)}
+          >
             <label htmlFor={image.name}>
               <Box
                 display="flex"
@@ -557,10 +560,10 @@ function DragImageUpload(props) {
             </label>
           </Box>
         ))}
-      </div>
+      </Box>
       <Snackbar
         open={openSnackbar}
-        autoHideDuration={600}
+        autoHideDuration={6000}
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
       >
