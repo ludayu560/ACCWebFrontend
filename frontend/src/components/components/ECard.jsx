@@ -63,9 +63,11 @@ function ECard(props) {
           <CardActionArea>
             <CardMedia component="img" height="250px" src={image ? "http://127.0.0.1:8000/" + image : blogsDefault} />
             <CardContent>
+              {/*Category Tag */}
               <Box mt={-9} pb={5}>
                 <StyledButton variant="tag" text={category}></StyledButton>
               </Box>
+              {/*Rest of Card Content */}
               <Grid container spacing={3} px={2}>
                 <Grid item xs={12}>
                   <Typography variant="h5" align="center" pb={2}>

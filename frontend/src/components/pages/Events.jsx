@@ -99,7 +99,6 @@ function Events({ create_event, listingAccount }) {
           <Typography variant="h1" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
             Lives Community.
           </Typography>
-          <EventConfirm/>
           <Grid container spacing={10} pt={5}>
             <Grid item>
               <StyledButton variant="pinkBtn" text="Browse Events" width="15vw" bgcolor="white" textColor="#F83E7D" />
