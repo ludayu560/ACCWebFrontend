@@ -749,7 +749,8 @@ export const create_listing_account = (listingAccount) => async dispatch => {
         const formData = new FormData();
         formData.append('username', listingAccount.username);
         formData.append('account_type', listingAccount.account_type);
-        formData.append('full_name', listingAccount.full_name);
+        formData.append('first_name', listingAccount.first_name);
+        formData.append('last_name', listingAccount.last_name);
         formData.append('email', listingAccount.email);
         formData.append('phone_number', listingAccount.phone_number);
         formData.append('date_of_birth', listingAccount.date_of_birth);
@@ -813,7 +814,8 @@ export const update_listing_account = (listingAccount) => async dispatch => {
             const formData = new FormData();
             formData.append('username', listingAccount.username);
             formData.append('account_type', listingAccount.account_type);
-            formData.append('full_name', listingAccount.first_name);
+            formData.append('first_name', listingAccount.first_name);
+            formData.append('last_name', listingAccount.last_name);
             formData.append('email', listingAccount.email);
             formData.append('phone_number', listingAccount.phone_number);
             formData.append('date_of_birth', listingAccount.date_of_birth);
