@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import StyledButton from "../components/StyledButton";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import { create_property_listing } from "../../AuthComponents/actions/auth";
@@ -90,10 +90,7 @@ function RentalListingForm({ create_property_listing }) {
   const [parking, setParking] = useState("no preference");
 
   //////////////////////////////////////////////////////////////
-  const [image_1, setimage_1] = useState(null);
-  const [image_2, setimage_2] = useState(null);
-  const [image_3, setimage_3] = useState(null);
-  const [image_4, setimage_4] = useState(null);
+  const [imageArray, setImageArray] = useState([]);
 
   const HandleSubmit = async (event) => {
     event.preventDefault();
@@ -118,9 +115,15 @@ function RentalListingForm({ create_property_listing }) {
       listing_pets: pets,
       listing_ac: airCon,
       listing_description: listing_description,
-      listing_image_one: image_1,
-      listing_image_two: image_2,
-      listing_image_three: image_3,
+      listing_image_one: imageArray[0],
+      listing_image_two: imageArray[1],
+      listing_image_three: imageArray[2],
+      listing_image_four: imageArray[3],
+      listing_image_five: imageArray[4],
+      listing_image_six: imageArray[5],
+      listing_image_seven: imageArray[6],
+      listing_image_eight: imageArray[7],
+      listing_image_nine: imageArray[8],
       listing_utilities: utilities,
     };
     create_property_listing(PropertyListing);
@@ -159,7 +162,7 @@ function RentalListingForm({ create_property_listing }) {
           </Stack>
         </Grid>
         {/* Image upload carousel */}
-        <DragImageUpload></DragImageUpload>
+        <DragImageUpload setImageArray={setImageArray}></DragImageUpload>
       </Grid>
 
       {/*Add details container */}
@@ -469,6 +472,7 @@ function RentalListingForm({ create_property_listing }) {
 }
 
 function DragImageUpload(props) {
+  const { setImageArray } = props;
   const [images, setImages] = useState([]);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
@@ -485,12 +489,22 @@ function DragImageUpload(props) {
           )
         )
       );
+      setImageArray((prevImages) =>
+        prevImages.concat(
+          acceptedFiles.map((file) =>
+            Object.assign(file, { preview: URL.createObjectURL(file) })
+          )
+        )
+      );
     },
     [images]
   );
 
   const handleRemoveImage = (imageToRemove) => {
     setImages((prevImages) =>
+      prevImages.filter((image) => image !== imageToRemove)
+    );
+    setImageArray((prevImages) =>
       prevImages.filter((image) => image !== imageToRemove)
     );
   };
@@ -527,10 +541,7 @@ function DragImageUpload(props) {
       </Box>
       <Box display="flex" flexWrap="wrap" mt={2} paddingX={"10vw"}>
         {images.map((image) => (
-          <Box
-            key={image.name}
-            onClick={() => handleRemoveImage(image)}
-          >
+          <Box key={image.name} onClick={() => handleRemoveImage(image)}>
             <label htmlFor={image.name}>
               <Box
                 display="flex"
