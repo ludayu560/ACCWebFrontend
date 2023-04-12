@@ -71,6 +71,7 @@ const selectTheme = (account_type) => {
 
 const ConnectedThemeProvider = ({ children, account_type }) => {
   const [selectedTheme, setSelectedTheme] = useState(others);
+  console.log(selectedTheme.palette.primary.main)
 
   useEffect(() => {
     setSelectedTheme(selectTheme(account_type));
