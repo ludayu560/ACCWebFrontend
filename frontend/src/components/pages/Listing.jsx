@@ -17,6 +17,7 @@ import { useNavigate } from "react-router";
 function Listing({load_property_listing, get_housemates}) {
   const navigate = useNavigate();
   const [newQuery, setNewQuery] = useState(true);
+
   const [query, setQuery] = useState();
   // If number of bedrooms, bathrooms, or housemates === 0 => no preference
   // If number of bedrooms === 5, bathrooms === 4, housemates === 4 => that number or more.
@@ -78,6 +79,8 @@ function Listing({load_property_listing, get_housemates}) {
       (filterParams.listing_smoking === "unknown")? '' : "&listing_smoking=" + filterParams.listing_smoking +
       (filterParams.utilities === "unknown")? '' : "&utilities=" + filterParams.utilities;
       setQuery(query)
+  console.log(query)
+
   }
 
   useEffect(()=>{
