@@ -40,6 +40,10 @@ import ImageGallery from "./components/pages/dev";
 import EventDetails from "./components/pages/EventDetails";
 import BrowseEvents from "./components/pages/BrowseEvents";
 import ConnectedThemeProvider from "./themes"
+import Blogs from "./components/pages/Blogs";
+import BlogsCategory from "./components/pages/BlogsCategory";
+import EventConfirm from "./components/pages/EventConfirm";
+import BlogsCreate from "./components/pages/BlogsCreate";
 
 function App() {
   return (
@@ -92,6 +96,11 @@ function App() {
               element={<MyAccountProfile />}
             />
             <Route exact path="/account" element={<MyAccount />} />
+
+            <Route exact path="/blogs" element={<Blogs/>} />
+            <Route exact path="/blogsCategory" element={<BlogsCategory/>} />
+            <Route exact path="/blogsCreate" element={<BlogsCreate/>} />
+            
             <Route exact path="/howItWorks" element={<HowItWorks />} />
             <Route exact path="/contact" element={<Contact />} />
             <Route exact path="/about" element={<About />} />
@@ -107,6 +116,7 @@ function App() {
             <Route exact path="/tenanthome" element={<TenantHome />} />
             <Route exact path="/events" element={<Events />} />
             <Route exact path="/browseevents" element={<BrowseEvents />} />
+            <Route exact path="/eventconfirm" element={<EventConfirm />} />
             <Route exact path="/" element={<Landing />} />
             <Route exact path="/activate/:uid/:token" element={<Activate />} />
             <Route exact path="/reset-password" element={<ResetPassword />} />

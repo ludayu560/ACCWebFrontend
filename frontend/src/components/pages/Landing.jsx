@@ -65,12 +65,12 @@ function Landing({ isAuthenticated }) {
               <Stack direction="row" spacing={20} px={10} alignItems="center">
                 {isAuthenticated ? (
                   <>
-                    <StyledButton variant="pinkBtn" text="Find Rental" link="/listings" />
+                    <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/listings" />
                     <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/RLF" />
                   </>
                 ) : (
                   <>
-                    <StyledButton variant="pinkBtn" text="Find Rental" link="/" />
+                    <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/" />
                     <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/" />
                   </>
                 )}
@@ -193,7 +193,7 @@ function Landing({ isAuthenticated }) {
             <Grid item xs={6} mt={15}>
               <Box component="img" src={quote2} sx={{ width: "45vw" }} />
               <Stack alignItems="center">
-                <StyledButton variant="pinkBtn" text="Learn More" />
+                <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D"/>
               </Stack>
             </Grid>
             <Grid item xs={6}>
@@ -318,7 +318,7 @@ function Landing({ isAuthenticated }) {
             For a more in-depth explanation of how Aisha Comfortable Coliving works as a tenant, woman homeowner, or
             property owner:
           </Typography>
-          <StyledButton variant="pinkBtn" text="Learn More" />
+          <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D"/>
         </Stack>
 
         {/*Partner with Us*/}

@@ -32,6 +32,7 @@ function Tags(props) {
           </Typography>
         </Box>
       )}
+
     </>
   );
 }

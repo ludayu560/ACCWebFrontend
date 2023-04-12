@@ -26,6 +26,8 @@ import {
     PROPERTYLISTING_CREATE_FAIL,
     PROPERTYLISTING_UPDATE_SUCCESS,
     PROPERTYLISTING_UPDATE_FAIL,
+    PROPERTYLISTING_CREATED_LOAD_SUCCESS,
+    PROPERTYLISTING_CREATED_LOAD_FAIL,
     EVENT_LOAD_SUCCESS,
     EVENT_LOAD_FAIL,
     EVENT_CREATE_SUCCESS,
@@ -488,6 +490,21 @@ export const create_property_listing = (propertyListing) => async dispatch => {
             if (propertyListing.listing_image_four) {
                 formData.append('listing_image_four', propertyListing.listing_image_four);
             }
+            if (propertyListing.listing_image_five) {
+                formData.append('listing_image_five', propertyListing.listing_image_five);
+            }
+            if (propertyListing.listing_image_six) {
+                formData.append('listing_image_six', propertyListing.listing_image_six);
+            }
+            if (propertyListing.listing_image_seven) {
+                formData.append('listing_image_seven', propertyListing.listing_image_seven);
+            }
+            if (propertyListing.listing_image_eight) {
+                formData.append('listing_image_eight', propertyListing.listing_image_eight);
+            }
+            if (propertyListing.listing_image_nine) {
+                formData.append('listing_image_nine', propertyListing.listing_image_nine);
+            }
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/PropertyListing/`, formData, config);
             const utilityformData = new FormData();
             utilityformData.append('listing_utility', null);
@@ -557,6 +574,21 @@ export const update_property_listing = (propertyListing) => async dispatch => {
             }
             if (propertyListing.listing_image_four) {
                 formData.append('listing_image_four', propertyListing.listing_image_four);
+            }
+            if (propertyListing.listing_image_five) {
+                formData.append('listing_image_five', propertyListing.listing_image_five);
+            }
+            if (propertyListing.listing_image_six) {
+                formData.append('listing_image_six', propertyListing.listing_image_six);
+            }
+            if (propertyListing.listing_image_seven) {
+                formData.append('listing_image_seven', propertyListing.listing_image_seven);
+            }
+            if (propertyListing.listing_image_eight) {
+                formData.append('listing_image_eight', propertyListing.listing_image_eight);
+            }
+            if (propertyListing.listing_image_nine) {
+                formData.append('listing_image_nine', propertyListing.listing_image_nine);
             }
             const res = await axios.put(`${process.env.REACT_APP_API_URL}/PropertyListing/${propertyListing.id}/`, formData, config);
             // Delete existing utilities for the property listing
@@ -672,6 +704,34 @@ export const load_property_listing_current = (id) => async dispatch => {
     }
 };
 
+export const load_propertylistings_created = (id) => async dispatch => {
+    if (localStorage.getItem('access')) {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            };
+
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/CreatorProperty/get/${id}/`, config);
+            const propertyCreated = res.data;
+            dispatch({
+                type: PROPERTYLISTING_CREATED_LOAD_SUCCESS,
+                payload: propertyCreated
+            });
+        } catch (err) {
+            console.log(err)
+            dispatch({
+                type: PROPERTYLISTING_CREATED_LOAD_FAIL
+            });
+        }
+    } else {
+        dispatch({
+            type: PROPERTYLISTING_CREATED_LOAD_FAIL
+        });
+    }
+};
 
 //
 // listing account
@@ -689,8 +749,7 @@ export const create_listing_account = (listingAccount) => async dispatch => {
         const formData = new FormData();
         formData.append('username', listingAccount.username);
         formData.append('account_type', listingAccount.account_type);
-        formData.append('first_name', listingAccount.first_name);
-        formData.append('last_name', listingAccount.last_name);
+        formData.append('full_name', listingAccount.full_name);
         formData.append('email', listingAccount.email);
         formData.append('phone_number', listingAccount.phone_number);
         formData.append('date_of_birth', listingAccount.date_of_birth);
@@ -705,18 +764,11 @@ export const create_listing_account = (listingAccount) => async dispatch => {
         if (listingAccount.banner_picture) {
             formData.append('banner_picture', listingAccount.banner_picture);
         }
-        if (listingAccount.display_picture_one) {
-            formData.append('display_picture_one', listingAccount.display_picture_one);
+        if (listingAccount.display_picture) {
+            formData.append('display_picture', listingAccount.display_picture);
         }
-        if (listingAccount.display_picture_two) {
-            formData.append('display_picture_two', listingAccount.display_picture_two);
-        }
-        if (listingAccount.display_picture_three) {
-            formData.append('display_picture_three', listingAccount.display_picture_three);
-        }
-        if (listingAccount.display_picture_four) {
-            formData.append('display_picture_four', listingAccount.display_picture_four);
-        }
+        formData.append('preferences', listingAccount.preferences);
+        formData.append('price_range', listingAccount.price_range);
         formData.append('user', listingAccount.user);
         const res = await axios.post(`${process.env.REACT_APP_API_URL}/ListingAccount/`, formData, config);
         const PersonalTraitsformData = new FormData();
@@ -760,8 +812,7 @@ export const update_listing_account = (listingAccount) => async dispatch => {
             const formData = new FormData();
             formData.append('username', listingAccount.username);
             formData.append('account_type', listingAccount.account_type);
-            formData.append('first_name', listingAccount.first_name);
-            formData.append('last_name', listingAccount.last_name);
+            formData.append('full_name', listingAccount.first_name);
             formData.append('email', listingAccount.email);
             formData.append('phone_number', listingAccount.phone_number);
             formData.append('date_of_birth', listingAccount.date_of_birth);
@@ -776,18 +827,11 @@ export const update_listing_account = (listingAccount) => async dispatch => {
             if (listingAccount.banner_picture) {
                 formData.append('banner_picture', listingAccount.banner_picture);
             }
-            if (listingAccount.display_picture_one) {
-                formData.append('display_picture_one', listingAccount.display_picture_one);
+            if (listingAccount.display_picture) {
+                formData.append('display_picture', listingAccount.display_picture);
             }
-            if (listingAccount.display_picture_two) {
-                formData.append('display_picture_two', listingAccount.display_picture_two);
-            }
-            if (listingAccount.display_picture_three) {
-                formData.append('display_picture_three', listingAccount.display_picture_three);
-            }
-            if (listingAccount.display_picture_four) {
-                formData.append('display_picture_four', listingAccount.display_picture_four);
-            }
+            formData.append('preferences', listingAccount.preferences);
+            formData.append('price_range', listingAccount.price_range);
             formData.append('user', listingAccount.user);
             const res = await axios.put(`${process.env.REACT_APP_API_URL}/ListingAccount/${listingAccount.user}`, formData, config);
             const PTDeleteRES = await axios.delete(`${process.env.REACT_APP_API_URL}/PersonalTrait/${listingAccount.user}`, config);
@@ -887,6 +931,7 @@ export const load_listing = (id) => async dispatch => {
             console.log(`listing account id: ${listingAccount.id}`);
             console.log(`listing account user: ${listingAccount.user}`);
 
+            dispatch(load_propertylistings_created(listingAccount.id));
             dispatch(load_events_created(listingAccount.id));
             dispatch(get_events_attending(listingAccount.id));
             dispatch(get_events_interested(listingAccount.id));

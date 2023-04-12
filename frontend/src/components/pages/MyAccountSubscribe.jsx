@@ -40,19 +40,43 @@ import PayPalLogo from "../../assets/PayPalLogo.png";
 import VisaLogo from "../../assets/VisaLogo.png";
 import StyledButton from "../components/StyledButton";
 import AddIcon from "../components/AddIcon";
+import flameIcon from "../../assets/Icons/Group 4.svg";
+import { connect } from "react-redux";
 
-function MyAccountSubscribe(props) {
+function MyAccountSubscribe({
+  variant,
+  isAuthenticated,
+  listingAccount,
+  propertyListingCreated,
+  load_propertylistings_created,
+}) {
   const [basicSelected, setBasicSelected] = useState(false);
   const [premiumSelected, setPremiumSelected] = useState(false);
   const [ultSelected, setUltSelected] = useState(false);
-  return (
+
+  const handleLink = () => {
+    if (basicSelected) {
+      return "price_1MqKV9IbS9zGmxyRdliovSvC";
+    } else if (premiumSelected) {
+      return "price_1MqKW5IbS9zGmxyRRceRY2Vt";
+    } else if (ultSelected) {
+      return "price_1MqKWrIbS9zGmxyRKEx7Vmah";
+    }
+    return;
+  };
+
+  return listingAccount !== null ? (
+    <div>loading</div>
+  ) : (
     <>
-      {/* <Mainbar></Mainbar> */}
       <Grid container spacing={8}>
         <Grid item xs={12}>
           <Typography variant="h2" padding={"3vw"} fontWeight={700}>
             <b>My Account</b>
-            <Divider variant="middle" sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }} />
+            <Divider
+              variant="middle"
+              sx={{ width: "15vw", border: "2px solid", borderColor: "primary.main", opacity: 100 }}
+            />
           </Typography>
         </Grid>
 
@@ -60,163 +84,262 @@ function MyAccountSubscribe(props) {
           <SideNav></SideNav>
         </Grid>
 
+        {/*Subscriptions Container */}
         <Grid container xs={9} px={6} spacing={2}>
           <Grid item xs={12} align="center">
-            <Typography variant="h3" color="#000" fontWeight={700} mb={5}>
+            <Typography variant="h3" fontWeight={700} mb={5}>
               Subscriptions
               <Divider
                 variant="fullWidth"
                 sx={{
                   m: 2,
                   width: "10vw",
-                  border: "2px solid #F83E7D",
+                  border: "2px solid",
+                  borderColor: "primary.main",
                   opacity: 100,
                 }}
               />
             </Typography>
           </Grid>
 
-          <Grid item xs={12} mb={3}>
-            <Box display="flex" justifyContent="center" alignItems="center">
-              <Typography variant="h4">Get Unlimited Access to Aisha Community Events</Typography>
-            </Box>
-            <Box display="flex" justifyContent="center" alignItems="center">
-              <Typography variant="h6">Choose a subscription package to get started!</Typography>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} sm={12} md={4}>
-            <Card
-              raised="true"
-              sx={{ borderRadius: 5, border: 5, borderColor: basicSelected ? "#F83E7D" : "transparent" }}>
-              <CardContent bgcolor="red">
-                <Box display="flex" alignContent="center" justifyContent="center" p={4}>
-                  <Typography variant="h3">Basic</Typography>
-                </Box>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" p={4}>
-                  <Typography variant="h2">$35</Typography>
-                  <Typography variant="h5">/month</Typography>
-                </Box>
-                <Divider></Divider>
-                <Stack ml={4} p={3} sx={{ minHeight: "35vh" }}>
-                  <AddIcon variant="start" text="test"></AddIcon>
-                  <AddIcon variant="start" text="test"></AddIcon>
+          {/*Homeonwer service package*/}
+          {(listingAccount.account_type === "homeowner" || listingAccount.account_type === "propertyowner") && (
+            <>
+              <Grid item xs={12} mb={3}>
+                <Stack spacing={2}>
+                  <Typography variant="h3" align="center" fontWeight="bold" color="primary.main">
+                    Homeowner Service Package
+                  </Typography>
+                  <Typography variant="h4" align="center">
+                    What’s Included?
+                  </Typography>
                 </Stack>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center">
-                  <Checkbox
-                    sx={{
-                      "&.Mui-checked": {
-                        color: "#F83E7D",
-                      },
-                      "& .MuiSvgIcon-root": { fontSize: 68 },
-                    }}
-                    checked={basicSelected}
-                    onClick={() => {
-                      setBasicSelected(!basicSelected);
-                      setPremiumSelected(false);
-                      setUltSelected(false);
-                    }}
+                <Stack px={15} pt={5}>
+                  <AddIcon variant="start" text="Background check" />
+                  <AddIcon variant="start" text="Credit Check" />
+                  <AddIcon
+                    variant="start"
+                    text="Dedicated Coliving Expert to support you during the entire rental process"
                   />
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} sm={12} md={4}>
-            <Card
-              raised="true"
-              sx={{ borderRadius: 5, border: 5, borderColor: premiumSelected ? "#F83E7D" : "transparent" }}>
-              <CardContent bgcolor="red">
-                <Box display="flex" alignContent="center" justifyContent="center" p={4}>
-                  <Typography variant="h3">Premium</Typography>
-                </Box>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" p={4}>
-                  <Typography variant="h2">$100</Typography>
-                  <Typography variant="h5">/quarter</Typography>
-                </Box>
-                <Divider></Divider>
-                <Stack ml={4} p={3} sx={{ minHeight: "35vh" }}>
-                  <AddIcon variant="start" text="test"></AddIcon>
-                  <AddIcon variant="start" text="test"></AddIcon>
-                  <AddIcon variant="start" text="test"></AddIcon>
-                  <AddIcon variant="start" text="test"></AddIcon>
+                  <AddIcon variant="start" text="Custom advertisements featured on our social media platforms" />
+                  <AddIcon variant="start" text="Video reels highlighting the property" />
+                  <AddIcon variant="start" text="Personalized outreach initiatives to showcase your unit." />
+                  <AddIcon variant="start" text="Matching Housemates" />
+                  <AddIcon variant="start" text="Working with you to schedule viewings " />
+                  <AddIcon variant="start" text="Self-Mediation Plan" />
                 </Stack>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center">
-                  <Checkbox
-                    sx={{
-                      "&.Mui-checked": {
-                        color: "#F83E7D",
-                      },
-                      "& .MuiSvgIcon-root": { fontSize: 68 },
-                    }}
-                    checked={premiumSelected}
-                    onClick={() => {
-                      setBasicSelected(false);
-                      setPremiumSelected(!premiumSelected);
-                      setUltSelected(false);
-                    }}
-                  />
-                </Box>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          <Grid item xs={12} sm={12} md={4}>
-            <Card
-              raised="true"
-              sx={{ borderRadius: 5, border: 5, borderColor: ultSelected ? "#F83E7D" : "transparent" }}>
-              <CardContent bgcolor="red">
-                <Box display="flex" alignContent="center" justifyContent="center" p={4}>
-                  <Typography variant="h3">ULTIMATE</Typography>
-                </Box>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" p={4}>
-                  <Typography variant="h2">$275</Typography>
-                  <Typography variant="h5">/year</Typography>
-                </Box>
-                <Divider></Divider>
-                <Stack ml={4} p={3} sx={{ minHeight: "35vh" }}>
-                  <AddIcon variant="start" text="test"></AddIcon>
-                  <AddIcon variant="start" text="test"></AddIcon>
-                  <AddIcon variant="start" text="test"></AddIcon>
-                  <AddIcon variant="start" text="test"></AddIcon>
-                  <AddIcon variant="start" text="test"></AddIcon>
-                  <AddIcon variant="start" text="test"></AddIcon>
+                <Stack alignItems="center" pt={10}>
+                  <Divider width="30%" />
                 </Stack>
-                <Box display="flex" alignContent="center" justifyContent="center" alignItems="center">
-                  <Checkbox
-                    sx={{
-                      "&.Mui-checked": {
-                        color: "#F83E7D",
-                      },
-                      "& .MuiSvgIcon-root": { fontSize: 68 },
-                    }}
-                    checked={ultSelected}
-                    onClick={() => {
-                      setBasicSelected(false);
-                      setPremiumSelected(false);
-                      setUltSelected(!ultSelected);
-                    }}
-                  />
+              </Grid>
+
+              <Grid item xs={12} mb={3}>
+                <Stack spacing={2}>
+                  <Typography variant="h4" align="center" fontWeight="bold" color="primary.main" pb={5}>
+                    Ready to get started?
+                  </Typography>
+                  <Typography variant="h5" align="center" fontWeight="bold">
+                    One time fee of half of the first month rent paid by the homeowner
+                  </Typography>
+                  <Typography variant="h3" align="center" fontWeight="bold" color="primary.main">
+                    +
+                  </Typography>
+                  <Typography variant="h5" align="center" fontWeight="bold">
+                    5% markup of the monthly rent paid by the tenant
+                  </Typography>
+                  <Typography variant="h5" align="center">
+                    *Don’t worry our services are completely free until a match is made.
+                  </Typography>
+                </Stack>
+
+                <Stack alignItems="center" py={10} spacing={10}>
+                  <StyledButton variant="pinkBtn" text="Proceed"></StyledButton>
+                  <Divider width="30%" />
+                </Stack>
+              </Grid>
+            </>
+          )}
+
+          {/*Community Events package */}
+          {listingAccount.account_type !== "propertyowner" && (
+            <>
+              <Grid item xs={12} mb={3}>
+                <Stack alignItems="center" spacing={4}>
+                  <Typography variant="h3" fontWeight="bold" color="primary.main">
+                    Community Events Package
+                  </Typography>
+
+                  <Typography variant="h5" align="center">
+                    Community means everything to us at Aisha Comfortable Coliving. Currently all women are welcome to
+                    enjoy our virtual events free of charge! Stay tuned for in-person events!
+                  </Typography>
+                </Stack>
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={4} mt="35px">
+                <Card
+                  raised="true"
+                  sx={{
+                    borderRadius: 3,
+                    border: 5,
+                    borderColor: basicSelected ? "primary.main" : "transparent",
+                  }}>
+                  <CardContent bgcolor="red">
+                    <Stack spacing={3} pb={4}>
+                      <Box display="flex" alignContent="center" justifyContent="center" px={4}>
+                        <Typography variant="h4">BASIC</Typography>
+                      </Box>
+                      <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" px={4}>
+                        <Typography variant="h2">$35</Typography>
+                        <Typography variant="h5">/month</Typography>
+                      </Box>
+                    </Stack>
+                    <Divider></Divider>
+
+                    <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" pt={4}>
+                      <Checkbox
+                        sx={{
+                          "&.Mui-checked": {
+                            color: "primary.main",
+                          },
+                          "& .MuiSvgIcon-root": { fontSize: 68 },
+                        }}
+                        checked={basicSelected}
+                        onClick={() => {
+                          setBasicSelected(!basicSelected);
+                          setPremiumSelected(false);
+                          setUltSelected(false);
+                        }}
+                      />
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={4}>
+                <Stack bgcolor="primary.main" height="35px" sx={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}>
+                  <Typography color="white" align="center" fontWeight="bold" p={1}>
+                    MOST POPULAR
+                  </Typography>
+                </Stack>
+                <Card
+                  raised="true"
+                  sx={{
+                    borderBottomLeftRadius: 10,
+                    borderBottomRightRadius: 10,
+                    border: 5,
+                    borderColor: premiumSelected ? "primary.main" : "transparent",
+                  }}>
+                  <CardContent>
+                    <Stack spacing={3} pb={4}>
+                      <Box display="flex" alignContent="center" justifyContent="center" px={4}>
+                        <Typography variant="h4" fontWeight="bold">
+                          PREMIUM
+                        </Typography>
+                      </Box>
+                      <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" px={4}>
+                        <Typography variant="h2">$100</Typography>
+                        <Typography variant="h5">/quarter</Typography>
+                      </Box>
+                    </Stack>
+
+                    <Divider></Divider>
+
+                    <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" pt={4}>
+                      <Checkbox
+                        sx={{
+                          "&.Mui-checked": {
+                            color: "primary.main",
+                          },
+                          "& .MuiSvgIcon-root": { fontSize: 68 },
+                        }}
+                        checked={premiumSelected}
+                        onClick={() => {
+                          setBasicSelected(false);
+                          setPremiumSelected(!premiumSelected);
+                          setUltSelected(false);
+                        }}
+                      />
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+
+              <Grid item xs={12} sm={12} md={4}>
+                <Stack bgcolor="primary.main" height="35px" sx={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}>
+                  <Typography color="white" align="center" fontWeight="bold" p={1}>
+                    BEST VALUE
+                  </Typography>
+                </Stack>
+                <Card
+                  raised="true"
+                  sx={{
+                    borderBottomLeftRadius: 10,
+                    borderBottomRightRadius: 10,
+                    border: 5,
+                    borderColor: ultSelected ? "primary.main" : "transparent",
+                  }}>
+                  <CardContent bgcolor="red">
+                    <Stack spacing={3} pb={4}>
+                      <Box display="flex" alignContent="center" justifyContent="center" px={4}>
+                        <Typography variant="h4" fontWeight="bold">
+                          ULTIMATE
+                        </Typography>
+                      </Box>
+                      <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" px={4}>
+                        <Typography variant="h2">$275</Typography>
+                        <Typography variant="h5">/year</Typography>
+                      </Box>
+                    </Stack>
+
+                    <Divider></Divider>
+
+                    <Box display="flex" alignContent="center" justifyContent="center" alignItems="center" pt={4}>
+                      <Checkbox
+                        sx={{
+                          "&.Mui-checked": {
+                            color: "primary.main",
+                          },
+                          "& .MuiSvgIcon-root": { fontSize: 68 },
+                        }}
+                        checked={ultSelected}
+                        onClick={() => {
+                          setBasicSelected(false);
+                          setPremiumSelected(false);
+                          setUltSelected(!ultSelected);
+                        }}
+                      />
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+
+              <Grid item xs={12} my={3}>
+                <Box display="flex" justifyContent="center" alignItems="center">
+                  <Typography variant="h6">Cancel Anytime</Typography>
                 </Box>
-              </CardContent>
-            </Card>
-          </Grid>
+              </Grid>
 
-          <Grid item xs={12} my={3}>
-            <Box display="flex" justifyContent="center" alignItems="center">
-              <Typography variant="h6">Cancel Anytime</Typography>
-            </Box>
-          </Grid>
-
-          <Grid item xs={12} mb={4}>
-            <Box display="flex" justifyContent="center" alignItems="center">
-              <StyledButton variant="signup" text="Proceed" link={`/account-billing`}/>
-            </Box>
-          </Grid>
+              <Grid item xs={12} mb={4} pb={20}>
+                <form action={`${process.env.REACT_APP_API_URL}/subscription/create-subscription/`} method="POST">
+                  <input type="hidden" name="price_id" value={handleLink()} />
+                  <Box display="flex" justifyContent="center" alignItems="center">
+                    <StyledButton variant="pinkBtn" text="Proceed" type="submit" />
+                  </Box>
+                </form>
+              </Grid>
+            </>
+          )}
         </Grid>
       </Grid>
     </>
   );
 }
 
-export default MyAccountSubscribe;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  listingAccount: state.auth.listingAccount,
+  propertyListingCreated: state.auth.propertyListingCreated,
+});
+
+export default connect(mapStateToProps)(MyAccountSubscribe);

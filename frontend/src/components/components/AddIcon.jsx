@@ -16,7 +16,7 @@ function AddIcon(props) {
             flexWrap: "wrap",
           }}>
           <Box p={2}>
-            <CheckIcon sx={{ color: "#F83E7D" }}></CheckIcon>
+            <CheckIcon sx={{ color: "primary.main" }}></CheckIcon>
           </Box>
           <Typography variant="h6">{text}</Typography>
         </Box>

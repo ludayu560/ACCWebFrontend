@@ -1,9 +1,10 @@
 import { Button, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForwardIos";
 
+
 function StyledButton(props) {
   const { variant, link, text, content, textColor, onClick, noArrow, width, bgcolor, type } = props;
-
+ 
   const signupStyle = {
     minWidth: width ? width : "",
     padding: 20,
@@ -11,7 +12,18 @@ function StyledButton(props) {
     paddingRight: 40,
     borderRadius: "100vmax",
     textTransform: "none",
-    background: bgcolor ? bgcolor : "#F83E7D",
+    background: bgcolor,
+    color: textColor ? textColor : "white",
+  };
+
+  const tagStyle = {
+    minWidth: width ? width : "",
+    padding: 15,
+    paddingLeft: 20,
+    paddingRight: 20,
+    borderRadius: "100vmax",
+    textTransform: "none",
+    background: bgcolor ? bgcolor : "#C5265CBF",
     color: textColor ? textColor : "white",
   };
 
@@ -60,6 +72,7 @@ function StyledButton(props) {
           endIcon={noArrow ? null : <ArrowForwardIcon />}
           href={link}
           type={type}
+          sx={{backgroundColor: "primary.main"}}
           {...props}>
           <Typography variant="h5" fontWeight={600} sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
             {text}
@@ -103,8 +116,17 @@ function StyledButton(props) {
       )}
 
       {variant === "pinkBtn" && (
-        <Button variant="contained" style={signupStyle} href={link} {...props}>
-          <Typography variant="h5"sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
+        <Button variant="contained" sx={{backgroundColor: "primary.main"}} style={signupStyle} href={link} {...props}>
+          <Typography variant="h5" sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
+            {text}
+            {props.children}
+          </Typography>
+        </Button>
+      )}
+
+      {variant === "tag" && (
+        <Button variant="contained" style={tagStyle} {...props} disabled>
+          <Typography variant="h6" fontSize="12px">
             {text}
             {props.children}
           </Typography>

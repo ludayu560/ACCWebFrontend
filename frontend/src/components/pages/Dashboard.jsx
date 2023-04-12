@@ -7,17 +7,28 @@ import StyledButton from "../components/StyledButton";
 import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
 import ECard from "../components/ECard";
+import React, { useEffect, useState } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import DashboardTenantBG from "../../assets/DashboardTenantBG.png";
 import DashboardWHBG from "../../assets/DashboardWHBG.png";
 import DashboardPOBG from "../../assets/DashboardPOBG.png";
 import DashboardOtherBG from "../../assets/DashboardOtherBG.png";
-
+import { load_propertylistings_created } from "../../AuthComponents/actions/auth";
+import { handleOnClick } from "./MyAccountFavourites";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router";
 
-function Dashboard({ variant, isAuthenticated, listingAccount }) {
+function Dashboard({ variant, isAuthenticated, listingAccount, propertyListingCreated, load_propertylistings_created }) {
   const data = ["1", "2", "3", "4"];
+  const navigate = useNavigate();
+  const [createdPropertyArray, setPropertyArray] = useState([]);
+  useEffect(() => {
+    if (propertyListingCreated) {
+      setPropertyArray(propertyListingCreated);
+      console.log(propertyListingCreated)
+    }
+  }, [propertyListingCreated]);
 
   function renderBGImage() {
     switch (listingAccount.account_type) {
@@ -165,11 +176,24 @@ function Dashboard({ variant, isAuthenticated, listingAccount }) {
         )}
         {listingAccount.account_type === "propertyowner" && (
           <Grid container px={10} py={2} spacing={10} mb={20}>
-            {data.map((id) => (
+            {createdPropertyArray.map((item) => (
+                <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
+                  <ECard
+                    variant="listing"
+                    location={item.listing_city + ", " + item.listing_province}
+                    bedrooms={item.listing_total_bedrooms}
+                    bathrooms={item.listing_bathrooms}
+                    roomsAvailable={item.listing_available_bedrooms}
+                    price={item.listing_rate}
+                    image={'http://127.0.0.1:8000'+ item.listing_image_one}
+                  />
+                </Grid>
+              ))}
+            {/* {data.map((id) => (
               <Grid item xs="auto">
                 <ECard variant="listing" />
               </Grid>
-            ))}
+            ))} */}
           </Grid>
         )}
 
@@ -199,9 +223,10 @@ function Dashboard({ variant, isAuthenticated, listingAccount }) {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   listingAccount: state.auth.listingAccount,
+  propertyListingCreated: state.auth.propertyListingCreated,
 });
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, {load_propertylistings_created})(Dashboard);
 
 // const [curImage, setCurImage] = useState(DashboardOtherBG);
 // const [curColor, setColor] = useState("#C5265C");

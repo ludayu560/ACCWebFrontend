@@ -109,6 +109,7 @@ function MyAccount(props) {
     }
 
     const formData = new FormData();
+
     // Commented out fields are not yet implemented in the backend
     formData.append("tell_us_about_yourself", data.About);
     formData.append("age_range", data.Age);
@@ -129,6 +130,7 @@ function MyAccount(props) {
       console.log(pair[0] + ", " + pair[1]);
     }
     setTriggerConfirmed(true);
+
 
     // call update_listing_account here
   };

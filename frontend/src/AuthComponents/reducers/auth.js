@@ -26,6 +26,8 @@ import {
     PROPERTYLISTING_CREATE_FAIL,
     PROPERTYLISTING_UPDATE_SUCCESS,
     PROPERTYLISTING_UPDATE_FAIL,
+    PROPERTYLISTING_CREATED_LOAD_SUCCESS,
+    PROPERTYLISTING_CREATED_LOAD_FAIL,
     EVENT_LOAD_SUCCESS,
     EVENT_LOAD_FAIL,
     EVENT_CREATE_SUCCESS,
@@ -68,6 +70,7 @@ const initialState = {
     listingAccount: null,
     signedup: null,
     currentPropertyListing: null,
+    propertyListingCreated: null,
     eventsCreated: null,
     attending_events: null,
     interested_events: null,
@@ -140,6 +143,11 @@ export default function (state = initialState, action) {
                 ...state,
                 currentPropertyListing: payload
             }
+        case PROPERTYLISTING_CREATED_LOAD_SUCCESS:
+            return {
+                ...state,
+                propertyListingCreated: payload
+            }
         case EVENT_LOAD_SUCCESS:
             return {
                 ...state,
@@ -207,6 +215,7 @@ export default function (state = initialState, action) {
                 currentPropertyListing: null,
                 currentListingAccount: null,
                 currentPropertyListingExtra: null,
+                propertyListingCreated: null,
                 eventsCreated: null,
                 attending_events: null,
                 interested_events: null,
@@ -227,6 +236,7 @@ export default function (state = initialState, action) {
         case PROPERTYLISTING_CREATE_SUCCESS:
         case PROPERTYLISTING_CREATE_FAIL:
         case PROPERTYLISTING_UPDATE_FAIL:
+        case PROPERTYLISTING_CREATED_LOAD_FAIL:
         case EVENT_LOAD_FAIL:
         case EVENT_CREATE_SUCCESS:
         case EVENT_CREATE_FAIL:

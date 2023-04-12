@@ -115,20 +115,6 @@ function HowItWorks(props) {
     },
     {
       count: 13,
-      text: "Third Party Mediation",
-      info: "If the conflict is not resolved with self-mediation, our team will provide Third Party Mediation. Our team will work closely with housemates to help resolve the conflict.",
-      color: "#F83E7D",
-      icon: icon13,
-    },
-    {
-      count: 14,
-      text: "Exit Strategy",
-      info: "If the mediation is still unsuccessful, our team will work with all parties to develop an exit strategy.",
-      color: "#113170",
-      icon: icon14,
-    },
-    {
-      count: 15,
       text: "Community",
       info: "We provide a variety of opportunities to build a sense of community for women. Regular online events are hosted that housemates can enjoy while connecting with other women in the community.",
       color: "#0094FF",

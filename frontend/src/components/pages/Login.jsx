@@ -51,7 +51,7 @@ const Login = ({ login, isAuthenticated, user, listingAccount }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     login(email, password);
-    console.log(email,password)
+    console.log(email,password);
   };
 
   // dialog handler
