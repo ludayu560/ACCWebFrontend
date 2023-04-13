@@ -20,7 +20,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import ImageUpload from "../components/ImageUploadComponent";
 import ActionConfirmed from "../components/ActionConfirmed";
 import SideNav from "../components/SideNav";
-import { update_listing_account } from "../../AuthComponents/actions/auth";
+import { update_listing_account } from "../../Redux/actions/listingAccount";
 
 const personalityTraits =
   "Extroverted Outgoing Creative Private Quiet Introverted Open Analytical Laid-Back Adventurous".split(

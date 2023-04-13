@@ -11,7 +11,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 
-import { load_property_listing, get_housemates } from "../../Redux/actions/auth";
+import { load_property_listing } from "../../Redux/actions/propertyListing";
+import { get_housemates } from "../../Redux/actions/housemate";
 import { useNavigate } from "react-router";
 
 function Listing({load_property_listing, get_housemates}) {
