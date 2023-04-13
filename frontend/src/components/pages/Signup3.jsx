@@ -67,7 +67,6 @@ function Page3({
   };
   if (signedup) {
     console.log(interests, traits)
-    // new Date().toISOString().split('T')[0]
     const listingAccount = {
       username: pageValueOne.username,
       account_type: pageValueTwo,
@@ -83,18 +82,40 @@ function Page3({
       tell_us_about_yourself: "",
       profile_picture: null,
       banner_picture: null,
-      display_picture_one: null,
-      display_picture_two: null,
-      display_picture_three: null,
-      display_picture_four: null,
+      display_picture: null,
+      preferences: "",
+      price_range_min: 0,
+      price_range_max: 700,
       traits: traits,
       interests: interests,
-      traits: ['Quiet'],
-      interests: ['Cooking'],
-      notifications: [],
       user: user.id,
     }
+    const tempdata = {
+      "id": 3,
+      "username": "geoorgge",
+      "account_type": "tenant",
+      "first_name": "George",
+      "last_name": "Li",
+      "email": "georgeli293@gmail.com",
+      "phone_number": "6476790885",
+      "date_of_birth": "2002-09-26",
+      "location": "Toronto",
+      "age_range": "18-22",
+      "occupation": "Doctor",
+      "news_consent": true,
+      "tell_us_about_yourself": "blehhhh",
+      "profile_picture": null,
+      "banner_picture": null,
+      "display_picture": null,
+      "preferences": "",
+      "price_range_min": "1300.00",
+      "price_range_max": "2000.00",
+      "subscription_type": "none",
+      "user": 1
+  }
     create_listing_account(listingAccount)
+    // create_listing_account(tempdata)
+
     setPage(1);
   }
   // console.log(new Date(dob).toISOString().split('T')[0])
