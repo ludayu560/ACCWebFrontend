@@ -46,7 +46,7 @@ export const change_private_event_attendee_invited_status = (private_event_invit
 };
 
 
-export const create_private_event = (creator_id, private_event) => async dispatch => {
+export const create_private_event = (private_event) => async dispatch => {
     const access = localStorage.getItem('access');
     if (access) {
         try {
