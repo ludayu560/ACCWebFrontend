@@ -66,8 +66,12 @@ import {
     BLOG_CREATE_SUCCESS,
     GET_RECENT_BLOGS_SUCCESS,
     GET_RECENT_BLOGS_FAIL,
+    GET_CATEGORY_BLOGS_SUCCESS,
+    GET_CATEGORY_BLOGS_FAIL,
     BLOG_UPDATE_SUCCESS,
     BLOG_UPDATE_FAIL,
+    BLOG_SET_CURRENT_SUCCESS,
+    BLOG_SET_CURRENT_FAIL,
     LOGOUT
 } from '../actions/types';
 
@@ -88,6 +92,7 @@ const initialState = {
     housemates: null,
     currentBlog: null,
     recentBlogs: null,
+    categoryBlogs: null,
     currentListingAccount: null,
     currentPropertyListingExtra: null, // might be redundant stuff Shonn created, if remove, please remove PROPERTYLISTING_LOAD_CURRENT_SUCCESS and load property listing current in auth action
 };
@@ -95,6 +100,16 @@ const initialState = {
 export default function (state = initialState, action) {
     const { type, payload } = action
     switch (type) {
+        case BLOG_SET_CURRENT_SUCCESS:
+            return {
+                ...state,
+                currentBlog: payload
+            };
+        case GET_CATEGORY_BLOGS_SUCCESS:
+            return {
+                ...state,
+                categoryBlogs: payload
+            };
         case GET_RECENT_BLOGS_SUCCESS:
             return {
                 ...state,
@@ -240,6 +255,9 @@ export default function (state = initialState, action) {
                 eventsCreated: null,
                 attending_events: null,
                 interested_events: null,
+                currentBlog: null,
+                recentBlogs: null,
+                categoryBlogs: null,
                 favorites: null,
                 housemates: null,
                 account_type: null
@@ -287,6 +305,8 @@ export default function (state = initialState, action) {
         case BLOG_UPDATE_FAIL:
         case BLOG_UPDATE_SUCCESS:
         case GET_RECENT_BLOGS_FAIL:
+        case GET_CATEGORY_BLOGS_FAIL:
+        case BLOG_SET_CURRENT_FAIL:
         case ACTIVATION_FAIL:
             return {
                 ...state

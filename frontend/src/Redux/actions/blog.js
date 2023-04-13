@@ -6,6 +6,10 @@ import {
     GET_RECENT_BLOGS_FAIL,
     BLOG_UPDATE_SUCCESS,
     BLOG_UPDATE_FAIL,
+    BLOG_SET_CURRENT_SUCCESS,
+    BLOG_SET_CURRENT_FAIL,
+    GET_CATEGORY_BLOGS_SUCCESS,
+    GET_CATEGORY_BLOGS_FAIL,
 } from './types';
 
 
@@ -61,10 +65,10 @@ export const update_blog = (blog) => async dispatch => {
         formData.append('created', blog.created);
         formData.append('author', blog.author); // listing account id
         const res = await axios.udpate(`${process.env.REACT_APP_API_URL}/Blogs/${blog.id}`, formData, config);
-
+        const resDelete = await axios.delete(`${process.env.REACT_APP_API_URL}/Blogs/BlogTags/${blog.id}`, config);
         // console.log(blog.traits)
         const TagsformData = new FormData();
-        TagsformData.append('blog_fk', res.data.id);
+        TagsformData.append('blog_fk', blog.id);
         for (let i = 0; i < blog.tags.length; i++) {
             TagsformData.set('blog_tag', blog.tags[i]);
             const res = axios.post(`${process.env.REACT_APP_API_URL}/BlogTags/`, TagsformData, config);
@@ -81,7 +85,7 @@ export const update_blog = (blog) => async dispatch => {
 };
 
 
-export const get_recent_blog_ = () => async dispatch => {
+export const get_recent_blog = () => async dispatch => {
     if (localStorage.getItem('access')) {
         try {
             const config = {
@@ -90,7 +94,6 @@ export const get_recent_blog_ = () => async dispatch => {
                     'Accept': 'application/json'
                 }
             };
-
             // Make GET request to fetch the property listing by ID
             // const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/get/${id}/`, config);
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/Blogs/recent/`, config);
@@ -113,6 +116,38 @@ export const get_recent_blog_ = () => async dispatch => {
 };
 
 
+export const get_category_blog = (category_type) => async dispatch => {
+    if (localStorage.getItem('access')) {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            };
+            // Make GET request to fetch the property listing by ID
+            // const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/get/${id}/`, config);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/Blogs/filter/?category_type=${category_type}`, config);
+            const blogs = res.data;
+            dispatch({
+                type: GET_CATEGORY_BLOGS_SUCCESS,
+                payload: blogs
+            });
+        } catch (err) {
+            console.log(err);
+            dispatch({
+                type: GET_CATEGORY_BLOGS_FAIL
+            });
+        }
+    } else {
+        dispatch({
+            type: GET_CATEGORY_BLOGS_FAIL
+        });
+    }
+};
+
+
+
 export const load_blog_current = (id) => async dispatch => {
     if (localStorage.getItem('access')) {
         try {
@@ -127,26 +162,25 @@ export const load_blog_current = (id) => async dispatch => {
             // const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/get/${id}/`, config);
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/Blogs/${id}/`, config);
 
-            const blog = res.data;
-
+            var blog = res.data
             // Make GET request to fetch the utilities for the property listing
-            const utilitiesRes = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyUtilities/get/${id}/`, config);
-            const utilities = utilitiesRes.data;
-            propertyListing.listing_utilities = utilities;
+            const blogTagRes = await axios.get(`${process.env.REACT_APP_API_URL}/Blogs/BlogTags/${id}/`, config);
+            const tags = blogTagRes.data;
+            blog.tags = tags;
 
             dispatch({
-                type: PROPERTYLISTING_LOAD_CURRENT_SUCCESS,
-                payload: propertyListing
+                type: BLOG_SET_CURRENT_SUCCESS,
+                payload: blog
             });
         } catch (err) {
             console.log(err);
             dispatch({
-                type: PROPERTYLISTING_LOAD_CURRENT_FAIL
+                type: BLOG_SET_CURRENT_FAIL
             });
         }
     } else {
         dispatch({
-            type: PROPERTYLISTING_LOAD_CURRENT_FAIL
+            type: BLOG_SET_CURRENT_FAIL
         });
     }
 };
