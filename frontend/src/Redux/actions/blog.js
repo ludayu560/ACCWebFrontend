@@ -2,6 +2,10 @@ import axios from 'axios';
 import {
     BLOG_CREATE_FAIL,
     BLOG_CREATE_SUCCESS,
+    GET_RECENT_BLOGS_SUCCESS,
+    GET_RECENT_BLOGS_FAIL,
+    BLOG_UPDATE_SUCCESS,
+    BLOG_UPDATE_FAIL,
 } from './types';
 
 
@@ -66,17 +70,47 @@ export const update_blog = (blog) => async dispatch => {
             const res = axios.post(`${process.env.REACT_APP_API_URL}/BlogTags/`, TagsformData, config);
         }
         dispatch({
-            type: BLOG_CREATE_SUCCESS
+            type: BLOG_UPDATE_SUCCESS
         });
     } catch (err) {
         console.log(err)
         dispatch({
-            type: BLOG_CREATE_FAIL
+            type: BLOG_UPDATE_FAIL
         });
     }
 };
 
 
+export const get_recent_blog_ = () => async dispatch => {
+    if (localStorage.getItem('access')) {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            };
+
+            // Make GET request to fetch the property listing by ID
+            // const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/get/${id}/`, config);
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/Blogs/recent/`, config);
+            const blog = res.data;
+            dispatch({
+                type: GET_RECENT_BLOGS_SUCCESS,
+                payload: blog
+            });
+        } catch (err) {
+            console.log(err);
+            dispatch({
+                type: GET_RECENT_BLOGS_FAIL
+            });
+        }
+    } else {
+        dispatch({
+            type: GET_RECENT_BLOGS_FAIL
+        });
+    }
+};
 
 
 export const load_blog_current = (id) => async dispatch => {

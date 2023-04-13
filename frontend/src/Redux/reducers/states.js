@@ -60,6 +60,12 @@ import {
     CREATE_EVENT_PRIVATE_FAIL,
     UPDATE_EVENT_PRIVATE_SUCCESS,
     UPDATE_EVENT_PRIVATE_FAIL,
+    BLOG_CREATE_FAIL,
+    BLOG_CREATE_SUCCESS,
+    GET_RECENT_BLOGS_SUCCESS,
+    GET_RECENT_BLOGS_FAIL,
+    BLOG_UPDATE_SUCCESS,
+    BLOG_UPDATE_FAIL,
     LOGOUT
 } from '../actions/types';
 
@@ -78,6 +84,8 @@ const initialState = {
     interested_events: null,
     favorites: null,
     housemates: null,
+    currentBlog: null,
+    recentBlogs: null,
     currentListingAccount: null,
     currentPropertyListingExtra: null, // might be redundant stuff Shonn created, if remove, please remove PROPERTYLISTING_LOAD_CURRENT_SUCCESS and load property listing current in auth action
 };
@@ -85,12 +93,16 @@ const initialState = {
 export default function (state = initialState, action) {
     const { type, payload } = action
     switch (type) {
+        case GET_RECENT_BLOGS_SUCCESS:
+            return {
+                ...state,
+                recentBlogs: payload
+            };
         case GET_HOUSEMATE_SUCCESS:
             return {
                 ...state,
                 housemates: payload
             };
-
         case PROPERTYLISTING_LOAD_CURRENT_SUCCESS:
             return {
                 ...state,
@@ -262,6 +274,11 @@ export default function (state = initialState, action) {
         case UPDATE_EVENT_PRIVATE_SUCCESS:
         case UPDATE_EVENT_PRIVATE_FAIL:
         case GET_HOUSEMATE_FAIL:
+        case BLOG_CREATE_FAIL:
+        case BLOG_CREATE_SUCCESS:
+        case BLOG_UPDATE_FAIL:
+        case BLOG_UPDATE_SUCCESS:
+        case GET_RECENT_BLOGS_FAIL:
         case ACTIVATION_FAIL:
             return {
                 ...state
