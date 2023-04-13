@@ -5,6 +5,7 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  Divider,
   Grid,
   Icon,
   Paper,
@@ -45,24 +46,30 @@ function Landing({ isAuthenticated }) {
   return (
     <div style={{ overflowX: "hidden" }}>
       <Stack>
-        <Grid container py={10}>
-          <Grid item xs={7}>
-            <Stack>
-              <Typography variant="h1" color="#0045F1" px={10} sx={{ typography: { xs: "h4", sm: "h2", lg: "h1" } }}>
-                Want To Colive
-              </Typography>
-              <Typography variant="h1" color="#0045F1" px={10} sx={{ typography: { xs: "h4", sm: "h2", lg: "h1" } }}>
-                With Other
-              </Typography>
-              <Typography variant="h1" color="#F83E7D" px={10} sx={{ typography: { xs: "h4", sm: "h2", lg: "h1" } }}>
-                Women?
-              </Typography>
-              <Typography variant="h5" p={10} color="#113170" sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
+        <Grid container py={10} px={15}>
+          <Grid item xs={8}>
+            <Stack spacing={5} pt={5}>
+              <Stack>
+                <Typography variant="h1" color="#0045F1" sx={{ fontWeight: "bold" }}>
+                  Want To{" "}
+                  <Box component="span" color="#F83E7D" fontFamily="Montserrat">
+                    Colive
+                  </Box>
+                </Typography>
+                <Typography variant="h1" color="#0045F1" sx={{ fontWeight: "bold" }}>
+                  With Other
+                </Typography>
+                <Typography variant="h1" color="#F83E7D" sx={{ fontWeight: "bold" }}>
+                  Women?
+                </Typography>
+              </Stack>
+              <Divider width="50%" />
+              <Typography variant="h6" color="#113170" pr={18}>
                 Aisha Comfortable Coliving is a platform that works to empower women by matching like-minded women to
                 colive in a safe and enjoyable space. We strive to build an inclusive, supportive, and fun community for
                 all women.
               </Typography>
-              <Stack direction="row" spacing={20} px={10} alignItems="center">
+              <Stack direction="row" spacing={20} alignItems="center">
                 {isAuthenticated ? (
                   <>
                     <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/listings" />
@@ -77,11 +84,12 @@ function Landing({ isAuthenticated }) {
               </Stack>
             </Stack>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={4}>
             <Box
               component="img"
               sx={{
-                width: "40vw",
+                width: "30vw",
+                height: "50vw",
                 borderRadius: 5,
                 boxShadow: 12,
               }}
@@ -160,29 +168,29 @@ function Landing({ isAuthenticated }) {
               </Card>
             </Grid>
           </Grid>
-          <Typography variant="h5" align="center" pb={10}>
+          <Typography variant="h5" align="center" py={10} px={35}>
             Watch this short video to hear Wendy and Innes talk about how they began coliving and how their lives have
             changed since.
           </Typography>
-          <Box sx={{ width: "739px", height: "418px", bgcolor: "gray" }}>video</Box>
+          <Box sx={{ width: "739px", height: "418px", bgcolor: "gray", borderRadius: 5, p: 4 }}>video</Box>
         </Stack>
 
         {/*Testimonials*/}
         <Stack style={{ background: "linear-gradient(white, #FFC7DA, white)" }} sx={{ p: 15, pb: 30 }}>
-          <Typography variant="h3" align="center" sx={{ color: "#C5265C", fontWeight: "bold" }} p={2}>
+          <Typography variant="h3" align="center" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2}>
             Testimonials
           </Typography>
-          <Typography variant="h5" align="center" sx={{ color: "#C5265C" }}>
+          <Typography variant="h5" align="center">
             See what women have shared about their coliving experiences.
           </Typography>
           <Grid container pt={10}>
             <Grid item xs={6}>
               <Stack alignItems="center" spacing={2}>
-                <Typography variant="h4" sx={{ color: "#C5265C", fontWeight: "bold" }}>
+                <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
                   Kathleen & Laura
                 </Typography>
                 <Box component="img" src={KathleenLaura} sx={{ width: "417px", height: "517.55px" }} />
-                <Typography variant="h4" sx={{ color: "#C5265C", fontWeight: "bold" }}>
+                <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
                   Calgary, AB
                 </Typography>
               </Stack>
@@ -193,16 +201,16 @@ function Landing({ isAuthenticated }) {
             <Grid item xs={6} mt={15}>
               <Box component="img" src={quote2} sx={{ width: "45vw" }} />
               <Stack alignItems="center">
-                <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D"/>
+                <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
               </Stack>
             </Grid>
             <Grid item xs={6}>
               <Stack alignItems="center" spacing={2}>
-                <Typography variant="h4" sx={{ color: "#C5265C", fontWeight: "bold" }}>
+                <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
                   Kathryn
                 </Typography>
                 <Box component="img" src={Kathryn} sx={{ width: "417px", height: "517.55px" }} />
-                <Typography variant="h4" sx={{ color: "#C5265C", fontWeight: "bold" }}>
+                <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
                   Toronto, ON
                 </Typography>
               </Stack>
@@ -273,7 +281,7 @@ function Landing({ isAuthenticated }) {
         </Stack>
 
         {/*How it Works*/}
-        <Stack style={{ background: "white" }} alignItems="center">
+        <Stack style={{ background: "white" }} alignItems="center" pb={5}>
           <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2}>
             How it Works
           </Typography>
@@ -281,7 +289,7 @@ function Landing({ isAuthenticated }) {
             Just a few steps to get started.
           </Typography>
         </Stack>
-        <Grid container justifyContent="center" spacing={10}>
+        <Grid container justifyContent="center" spacing={15} pb={15}>
           <Grid item xs="auto">
             <Stack sx={{ width: "294px" }} p={5} align="center" spacing={4} alignItems="center">
               <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
@@ -318,7 +326,7 @@ function Landing({ isAuthenticated }) {
             For a more in-depth explanation of how Aisha Comfortable Coliving works as a tenant, woman homeowner, or
             property owner:
           </Typography>
-          <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D"/>
+          <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
         </Stack>
 
         {/*Partner with Us*/}
@@ -367,7 +375,7 @@ function Landing({ isAuthenticated }) {
           </Grid>
           <Grid item xs={6}>
             <Stack sx={{ width: "50vw", p: 7, px: 10 }} spacing={4}>
-              <Typography variant="h3" sx={{ color: "#C5265C", fontWeight: "bold" }} mb={-4}>
+              <Typography variant="h3" sx={{ color: "#F83E7D", fontWeight: "bold" }} mb={-4}>
                 Tenants
               </Typography>
               <Typography variant="h5">Independence with companionship</Typography>
@@ -383,7 +391,7 @@ function Landing({ isAuthenticated }) {
                 Being independent does not mean being alone.
               </Typography>
               <Stack alignItems="center">
-                <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#C5265C" />
+                <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
               </Stack>
             </Stack>
           </Grid>
@@ -449,19 +457,19 @@ function Landing({ isAuthenticated }) {
           </Typography>
         </Stack>
         {/*Community Events Content*/}
-        <Grid container pb={10} px={10} justifyContent="center" spacing={10}>
+        <Grid container pb={10} px={15} justifyContent="center" spacing={10}>
           <Grid item xs={6}>
-            <Stack spacing={4}>
-              <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+            <Stack spacing={4} pt={5}>
+              <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                 Welcome to our community.
               </Typography>
-              <Typography variant="h5" sx={{}}>
+              <Typography variant="h6" sx={{}}>
                 We provide engaging and fun events where friendship can grow and lifelong memories can be made.
               </Typography>
-              <Typography variant="h5" sx={{}}>
+              <Typography variant="h6" sx={{}}>
                 Being a member of the Aisha Community provides supportive and inclusive networking opportunities.
               </Typography>
-              <Typography variant="h5" sx={{}}>
+              <Typography variant="h6" sx={{}}>
                 At Aisha Comfortable Coliving, community, friendship, care, and support form part of our values. We
                 organize activities and provide a space to foster friendships and enjoy life together.
               </Typography>
@@ -471,14 +479,14 @@ function Landing({ isAuthenticated }) {
             </Stack>
           </Grid>
           <Grid item xs={6}>
-            <Box component="img" src={img13} sx={{ width: "40vw" }} />
+            <Box component="img" src={img13} sx={{ width: "40vw", pt: 5 }} />
           </Grid>
         </Grid>
 
         {/*Check Out Our Blog*/}
         <Grid container bgcolor="#FF87B0" sx={{ p: 10, pb: 30 }}>
           <Grid item xs={5.5}>
-            <Typography variant="h4" sx={{ color: "#C5265C", fontWeight: "bold" }}>
+            <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
               Aisha Community Blog
             </Typography>
           </Grid>
@@ -597,19 +605,19 @@ function Landing({ isAuthenticated }) {
           sx={{ p: 10, px: 40 }}
           spacing={10}>
           <Typography variant="h2" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }}>
-            Learn More Aisha Comfortable Coliving
+            Learn More About Aisha Comfortable Coliving
           </Typography>
           <Typography variant="h5" align="center">
             Discover how Aisha Comfortable Coliving can best serve you individually. Have all your questions answered
             and let us help you live your dream.
           </Typography>
         </Stack>
-        <Stack alignItems="center" p={10} spacing={10} mb={20}>
+        <Stack alignItems="center" spacing={10} mb={20}>
           <Stack direction="row" spacing={20}>
-            <VideocamOutlinedIcon style={{ fontSize: 300 }} sx={{ color: "#0094FF" }} />
-            <PhoneInTalkIcon style={{ fontSize: 300 }} sx={{ color: "#0094FF" }} />
+            <VideocamOutlinedIcon style={{ fontSize: 200 }} sx={{ color: "#0094FF" }} />
+            <PhoneInTalkIcon style={{ fontSize: 200 }} sx={{ color: "#0094FF" }} />
           </Stack>
-          <Typography variant="h5">
+          <Typography variant="h5" px={20} align="center" fontWeight="bold">
             Let's chat! Whether you're looking for your next tenant or searching for a new housemate, we're here to
             help!
           </Typography>

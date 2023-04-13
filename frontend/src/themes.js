@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { connect } from "react-redux";
+import "@fontsource/montserrat";
 
 const baseTheme = createTheme({
   typography: {
-    fontFamily: `"Open Sans", sans-serif`,
+    fontFamily: "Montserrat, sans-serif",
+    body1: {
+      fontFamily: "Montserrat, sans-serif", // Use Montserrat for body text
+    },
+    body2: {
+      fontFamily: "Montserrat, sans-serif", // Use Montserrat for body text
+    },
+  },
+  box: {
+    fontFamily: "Montserrat, sans-serif",
   },
 });
 
@@ -71,7 +81,7 @@ const selectTheme = (account_type) => {
 
 const ConnectedThemeProvider = ({ children, account_type }) => {
   const [selectedTheme, setSelectedTheme] = useState(others);
-  console.log(selectedTheme.palette.primary.main)
+  console.log(selectedTheme.palette.primary.main);
 
   useEffect(() => {
     setSelectedTheme(selectTheme(account_type));
