@@ -22,13 +22,16 @@ import { useNavigate } from "react-router";
 function Dashboard({ variant, isAuthenticated, listingAccount, propertyListingCreated, propertyListingRecent, load_propertylistings_created, load_propertylistings_recent }) {
   const data = ["1", "2", "3", "4"];
   const navigate = useNavigate();
-  const [createdPropertyArray, recentPropertyArray, setPropertyArray] = useState([]);
+  const [createdPropertyArray, setPropertyArray] = useState([]);
+  const [propertyRecentArray, setPropertyRecent] = useState([]);
   useEffect(() => {
+    load_propertylistings_recent()
     if (propertyListingCreated) {
       setPropertyArray(propertyListingCreated);
       console.log(propertyListingCreated)
-    }else if (propertyListingRecent) {
-      setPropertyArray(propertyListingRecent);
+    }
+    if (propertyListingRecent) {
+      setPropertyRecent(propertyListingRecent);
       console.log(propertyListingRecent)
     }
   }, [propertyListingCreated]);
@@ -161,7 +164,7 @@ function Dashboard({ variant, isAuthenticated, listingAccount, propertyListingCr
         {/*Housemate Card Area*/}
         {listingAccount.account_type === "tenant" && (
           <Grid container px={10} py={2} spacing={10} mb={20}>
-            {recentPropertyArray.map((item) => (
+            {propertyRecentArray.map((item) => (
                 <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
                   <ECard
                     variant="listing"
