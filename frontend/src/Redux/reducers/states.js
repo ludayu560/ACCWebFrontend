@@ -28,6 +28,8 @@ import {
     PROPERTYLISTING_UPDATE_FAIL,
     PROPERTYLISTING_CREATED_LOAD_SUCCESS,
     PROPERTYLISTING_CREATED_LOAD_FAIL,
+    PROPERTYLISTING_RECENT_SUCCESS,
+    PROPERTYLISTING_RECENT_FAIL,
     EVENT_LOAD_SUCCESS,
     EVENT_LOAD_FAIL,
     EVENT_CREATE_SUCCESS,
@@ -162,6 +164,11 @@ export default function (state = initialState, action) {
                 ...state,
                 propertyListingCreated: payload
             }
+        case PROPERTYLISTING_RECENT_SUCCESS:
+            return {
+                ...state,
+                propertyListingRecent: payload
+            }
         case EVENT_LOAD_SUCCESS:
             return {
                 ...state,
@@ -251,6 +258,7 @@ export default function (state = initialState, action) {
         case PROPERTYLISTING_CREATE_FAIL:
         case PROPERTYLISTING_UPDATE_FAIL:
         case PROPERTYLISTING_CREATED_LOAD_FAIL:
+        case PROPERTYLISTING_RECENT_FAIL:
         case EVENT_LOAD_FAIL:
         case EVENT_CREATE_SUCCESS:
         case EVENT_CREATE_FAIL:

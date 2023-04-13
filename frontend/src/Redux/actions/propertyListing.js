@@ -10,6 +10,8 @@ import {
     PROPERTYLISTING_CREATED_LOAD_FAIL,
     PROPERTYLISTING_LOAD_CURRENT_SUCCESS,
     PROPERTYLISTING_LOAD_CURRENT_FAIL,
+    PROPERTYLISTING_RECENT_SUCCESS,
+    PROPERTYLISTING_RECENT_FAIL
 } from './types';
 
 
@@ -297,6 +299,35 @@ export const load_propertylistings_created = (id) => async dispatch => {
     } else {
         dispatch({
             type: PROPERTYLISTING_CREATED_LOAD_FAIL
+        });
+    }
+};
+
+export const load_propertylistings_recent = () => async dispatch => {
+    if (localStorage.getItem('access')) {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            };
+
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/PropertyListing/recent/`, config);
+            const propertyRecent = res.data;
+            dispatch({
+                type: PROPERTYLISTING_RECENT_SUCCESS,
+                payload: propertyRecent
+            });
+        } catch (err) {
+            console.log(err)
+            dispatch({
+                type: PROPERTYLISTING_RECENT_FAIL
+            });
+        }
+    } else {
+        dispatch({
+            type: PROPERTYLISTING_RECENT_FAIL
         });
     }
 };
