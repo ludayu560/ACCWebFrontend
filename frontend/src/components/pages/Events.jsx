@@ -32,7 +32,7 @@ import axios from "axios";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { create_event } from "../../AuthComponents/actions/auth";
+import { create_event } from "../../Redux/actions/event";
 import { connect } from "react-redux";
 import ImageUpload from "../components/ImageUploadComponent";
 import Listing from "./Listing";

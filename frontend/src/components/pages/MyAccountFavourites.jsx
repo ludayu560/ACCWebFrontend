@@ -7,7 +7,8 @@ import React, { useEffect, useState } from "react";
 import ECard from "../components/ECard";
 import SideNav from "../components/SideNav";
 import { connect } from "react-redux";
-import { load_property_listing, get_housemates } from "../../AuthComponents/actions/auth";
+import { load_property_listing } from "../../Redux/actions/propertyListing";
+import { get_housemates } from "../../Redux/actions/housemate";
 import { useNavigate } from "react-router";
 
 export const handleOnClick = (id, load_property_listing, get_housemates, navigate) => {

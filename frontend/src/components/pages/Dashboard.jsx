@@ -14,7 +14,7 @@ import DashboardTenantBG from "../../assets/DashboardTenantBG.png";
 import DashboardWHBG from "../../assets/DashboardWHBG.png";
 import DashboardPOBG from "../../assets/DashboardPOBG.png";
 import DashboardOtherBG from "../../assets/DashboardOtherBG.png";
-import { load_propertylistings_created } from "../../AuthComponents/actions/auth";
+import { load_propertylistings_created } from "../../Redux/actions/propertyListing";
 import { handleOnClick } from "./MyAccountFavourites";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";

@@ -12,8 +12,8 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
 //auth
-import { load_listing, login } from "../../AuthComponents/actions/auth";
-
+import { login } from "../../Redux/actions/auth";
+import { load_listing } from "../../Redux/actions/listingAccount";
 import StyledTextField from "../components/StyledTextField";
 import StyledButton from "../components/StyledButton";
 

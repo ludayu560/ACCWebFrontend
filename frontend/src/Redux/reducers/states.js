@@ -56,8 +56,10 @@ import {
     CREATE_HOUSEMATE_FAIL,
     GET_HOUSEMATE_SUCCESS,
     GET_HOUSEMATE_FAIL,
-    // GET_EVENTS_INTERESTED_NUMBER_SUCCESS,
-    // GET_EVENTS_INTERESTED_NUMBER_FAIL,
+    CREATE_EVENT_PRIVATE_SUCCESS,
+    CREATE_EVENT_PRIVATE_FAIL,
+    UPDATE_EVENT_PRIVATE_SUCCESS,
+    UPDATE_EVENT_PRIVATE_FAIL,
     LOGOUT
 } from '../actions/types';
 
@@ -255,7 +257,11 @@ export default function (state = initialState, action) {
         case PROPERTYLISTING_LOAD_CURRENT_FAIL:
         case CREATE_HOUSEMATE_SUCCESS:
         case CREATE_HOUSEMATE_FAIL:
-            case GET_HOUSEMATE_FAIL:
+        case CREATE_EVENT_PRIVATE_SUCCESS:
+        case CREATE_EVENT_PRIVATE_FAIL:
+        case UPDATE_EVENT_PRIVATE_SUCCESS:
+        case UPDATE_EVENT_PRIVATE_FAIL:
+        case GET_HOUSEMATE_FAIL:
         case ACTIVATION_FAIL:
             return {
                 ...state

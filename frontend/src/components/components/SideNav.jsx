@@ -22,10 +22,10 @@ import axios from "axios";
 import { borderRadius } from "@mui/system";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import { styled } from "@mui/material/styles";
-import { load_listing_current } from "../../AuthComponents/actions/auth";
+import { load_listing_current } from "../../Redux/actions/listingAccount";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
-import { logout } from "../../AuthComponents/actions/auth";
+import { logout } from "../../Redux/actions/auth";
 
 
 function SideNav({load_listing_current, listingAccount, logout}, props) {

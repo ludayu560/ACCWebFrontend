@@ -19,7 +19,7 @@ import Tags from "../components/Tags";
 import axios from "axios";
 import { connect } from "react-redux";
 
-import { load_listing_current } from "../../AuthComponents/actions/auth";
+import { load_listing_current } from "../../Redux/actions/listingAccount";
 import { useNavigate } from "react-router";
 
 const traitList = [

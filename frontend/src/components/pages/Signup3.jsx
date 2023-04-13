@@ -8,7 +8,8 @@ import CustomTextField from "../components/CustomTextField";
 import SignupProgressionIcon from "../components/SignupProgressIcon";
 import HouseLogoPink from "../components/HouseLogoPink";
 import axios from "axios";
-import { signup, create_listing_account } from "../../AuthComponents/actions/auth";
+import { signup} from "../../Redux/actions/auth";
+import { create_listing_account } from "../../Redux/actions/listingAccount";
 import { connect } from "react-redux";
 function Page3({
   setPage,

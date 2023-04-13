@@ -4,10 +4,10 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 // login set up
 import { Provider } from "react-redux";
-import Activate from "./AuthComponents/Activate";
-import ResetPassword from "./AuthComponents/ResetPassword";
-import ResetPasswordConfirm from "./AuthComponents/ResetPasswordConfirm";
-import Layout from "./AuthComponents/Layout";
+import Activate from "./Redux/Activate";
+import ResetPassword from "./Redux/ResetPassword";
+import ResetPasswordConfirm from "./Redux/ResetPasswordConfirm";
+import Layout from "./Redux/Layout";
 
 import MyAccount from "./components/pages/MyAccount";
 import MyAccountBilling from "./components/pages/MyAccountBilling";

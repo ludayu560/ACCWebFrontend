@@ -11,7 +11,7 @@ import HousemateComponent from "../components/PropDetailHousemateComponent";
 import ImageCarousel from "../components/ImageCarousel";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { create_favorite } from "../../AuthComponents/actions/auth";
+import { create_favorite } from "../../Redux/actions/favorites";
 
 function ListingDetails({ create_favorite, currentPropertyListing, listingAccount }) {
   const [listing, setListing] = useState({

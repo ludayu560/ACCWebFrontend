@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { logout } from "../../AuthComponents/actions/auth";
+import { logout } from "../../Redux/actions/auth";
 import { connect } from 'react-redux';
 import {
   AppBar,
