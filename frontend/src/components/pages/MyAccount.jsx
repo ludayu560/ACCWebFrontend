@@ -20,6 +20,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import ImageUpload from "../components/ImageUploadComponent";
 import ActionConfirmed from "../components/ActionConfirmed";
 import SideNav from "../components/SideNav";
+import { update_listing_account } from "../../AuthComponents/actions/auth";
 
 const personalityTraits =
   "Extroverted Outgoing Creative Private Quiet Introverted Open Analytical Laid-Back Adventurous".split(
@@ -32,7 +33,10 @@ const interests =
 const ageRanges = ["<18", "18-25", "26-35", "46-55", "56-65", "65+"];
 
 function MyAccount(props) {
-  const { listingAccount } = props;
+  const { listingAccount, update_listing_account } = props;
+
+  // State to track the loading status of the API call
+  const [loading, setLoading] = useState(true);
 
   // Trigger state for 'action confirmed' popup
   const [triggerConfirmed, setTriggerConfirmed] = useState(false);
@@ -43,23 +47,16 @@ function MyAccount(props) {
     if (listingAccount) {
       setAccountType(listingAccount.account_type);
     }
-  }, [listingAccount]);
 
-  // react-hook-form state management
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-    watch,
-  } = useForm({
     // add default values for form fields from get request
     // TODO: add proper default values for checkboxes. default null right now.
-    defaultValues: {
+    reset({
       About: listingAccount ? listingAccount.tell_us_about_yourself : "",
       Age: listingAccount ? listingAccount.age_range : undefined,
       Location: listingAccount ? listingAccount.location : "",
-      Name: listingAccount ? listingAccount.name : "",
+      Name: listingAccount
+        ? listingAccount.first_name + " " + listingAccount.last_name
+        : "",
       Occupation: listingAccount ? listingAccount.occupation : "",
       Phone: listingAccount ? listingAccount.phone_number : "",
       Preferences: listingAccount ? listingAccount.preferences : "",
@@ -87,12 +84,25 @@ function MyAccount(props) {
       "checkbox-personality-Private": false,
       "checkbox-personality-Quiet": false,
       "image-banner": listingAccount ? listingAccount.banner_picture : null,
-      "image-main": listingAccount ? listingAccount.display_picture_one : null,
+      "image-main": listingAccount ? listingAccount.display_picture : null,
       "image-profile": listingAccount ? listingAccount.profile_picture : null,
       // not yet implemented in backend
-      priceRange: [600, 1500],
-    },
-  });
+      priceRange: [
+        listingAccount ? listingAccount.price_range_min : 400,
+        listingAccount ? listingAccount.price_range_max : 1200,
+      ],
+    });
+    console.log("listingAccount: ", listingAccount);
+  }, [listingAccount]);
+
+  // react-hook-form state management
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+    reset,
+  } = useForm({});
 
   const onSubmit = (data) => {
     // Append personality traits and interests
@@ -108,38 +118,33 @@ function MyAccount(props) {
       }
     }
 
-    const formData = new FormData();
+    listingAccount.About = data.About;
+    listingAccount.Age = data.Age;
+    listingAccount.Location = data.Location;
+    listingAccount.Occupation = data.Occupation;
+    listingAccount.Phone = data.Phone;
+    listingAccount.Preferences = data.Preferences;
+    listingAccount.profile_picture = data["image-profile"];
+    listingAccount.banner_picture = data["image-banner"];
+    listingAccount.display_picture = data["image-main"];
+    listingAccount.price_range_min = data.priceRange[0];
+    listingAccount.price_range_max = data.priceRange[1];
+    listingAccount.personalityTraits = personalityTraits;
+    listingAccount.interests = interests;
 
-    // Commented out fields are not yet implemented in the backend
-    formData.append("tell_us_about_yourself", data.About);
-    formData.append("age_range", data.Age);
-    formData.append("location", data.Location);
-    // formData.append("name", data.Name);
-    formData.append("occupation", data.Occupation);
-    formData.append("phone_number", data.Phone);
-    // formData.append("preferences", data.Preferences);
-    formData.append("username", data.Username);
-    formData.append("profile_picture", data["image-profile"]);
-    formData.append("banner_picture", data["image-banner"]);
-    formData.append("display_picture_one", data["image-main"]);
-    formData.append("personality_traits", personalityTraits);
-    formData.append("interests", interests);
-
-    // console.log formData for debugging
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
+    console.log("listingAccount: ", listingAccount);
     setTriggerConfirmed(true);
 
-
     // call update_listing_account here
+    console.log("update_listing_account: ", listingAccount);
+    update_listing_account(listingAccount);
   };
 
   // debug console.log for watched values
-  const watchedValues = watch();
-  useEffect(() => {
-    console.log("Current form values:", watchedValues);
-  }, [watchedValues]);
+  // const watchedValues = watch();
+  // useEffect(() => {
+  //   console.log("Current form values:", watchedValues);
+  // }, [watchedValues]);
 
   return (
     <>
@@ -251,14 +256,13 @@ function MyAccount(props) {
               <MyAccountTextfield
                 type="text"
                 placeholder="Name"
-                {...register("Name", { required: true })}
+                {...register("Name")}
                 error={errors.Name}
               />
               <MyAccountTextfield
                 type="text"
                 placeholder="Username"
-                {...register("Username", { required: true })}
-                rules={{ required: "Username is required" }}
+                {...register("Username")}
                 error={errors.Username}
               />
             </Stack>
@@ -702,10 +706,9 @@ function MyAccountCheckBoxes(props) {
   );
 }
 
-
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   listingAccount: state.auth.listingAccount,
 });
 
-export default connect(mapStateToProps)(MyAccount);
+export default connect(mapStateToProps, { update_listing_account })(MyAccount);
