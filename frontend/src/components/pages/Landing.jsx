@@ -41,6 +41,7 @@ import img11 from "../../assets/image 11.png";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
 import { connect } from "react-redux";
 import SearchBar from "../components/SearchBar";
+import '../pageStyles/styles.css'
 
 function Landing({ isAuthenticated }) {
   return (
@@ -48,27 +49,24 @@ function Landing({ isAuthenticated }) {
       <Stack>
         <Grid container py={10} px={15}>
           <Grid item xs={8}>
-            <Stack spacing={5} pt={5}>
-              <Stack>
-                <Typography variant="h1" color="#0045F1" sx={{ fontWeight: "bold" }}>
-                  Want To{" "}
-                  <Box component="span" color="#F83E7D" fontFamily="Montserrat">
-                    Colive
-                  </Box>
-                </Typography>
-                <Typography variant="h1" color="#0045F1" sx={{ fontWeight: "bold" }}>
-                  With Other
-                </Typography>
-                <Typography variant="h1" color="#F83E7D" sx={{ fontWeight: "bold" }}>
-                  Women?
-                </Typography>
-              </Stack>
-              <Divider width="50%" />
-              <Typography variant="h6" color="#113170" pr={18}>
+
+            <div>
+              <h1 className="headerBlue">
+                Want To <span className="h1 headerPink">Colive</span>
+              </h1>
+              <h1 className="headerBlue">With Other</h1>
+              <h1 className="headerPink">
+                Women?
+              </h1>
+              <Divider style={{marginBottom: '2rem'}} width="50%" />
+              <div style={{marginBottom:'2rem'}}>
+
+              <h6 className="accText">
                 Aisha Comfortable Coliving is a platform that works to empower women by matching like-minded women to
                 colive in a safe and enjoyable space. We strive to build an inclusive, supportive, and fun community for
                 all women.
-              </Typography>
+              </h6>
+              </div>
               <Stack direction="row" spacing={20} alignItems="center">
                 {isAuthenticated ? (
                   <>
@@ -82,19 +80,14 @@ function Landing({ isAuthenticated }) {
                   </>
                 )}
               </Stack>
-            </Stack>
+            </div>
+
+
           </Grid>
           <Grid item xs={4}>
-            <Box
-              component="img"
-              sx={{
-                width: "30vw",
-                height: "50vw",
-                borderRadius: 5,
-                boxShadow: 12,
-              }}
-              src={require("../../assets/HomePhoto.png")}
-            />
+            <div>
+              <img className="img-wrapper" alt="Lady on hompage" src={require("../../assets/HomePhoto.png")} />
+            </div>
           </Grid>
         </Grid>
 
