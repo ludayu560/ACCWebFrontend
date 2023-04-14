@@ -62,7 +62,7 @@ export const create_listing_account = (listingAccount) => async dispatch => {
         PersonalTraitsformData.append('trait', null);
         PersonalTraitsformData.append('listing_account', res.data.id)
         for (let i = 0; i < listingAccount.traits.length; i++) {
-            PersonalTraitsformData.set('interest', listingAccount.traits[i]);
+            PersonalTraitsformData.set('trait', listingAccount.traits[i]);
             const res = axios.post(`${process.env.REACT_APP_API_URL}/PersonalTraits/`, PersonalTraitsformData, config);
         }
         const interestformData = new FormData();
@@ -120,15 +120,15 @@ export const update_listing_account = (listingAccount) => async dispatch => {
             formData.append('price_range_max', listingAccount.price_range_max);
             formData.append('price_range_min', listingAccount.price_range_max);
             formData.append('user', listingAccount.user);
-            const res = await axios.put(`${process.env.REACT_APP_API_URL}/ListingAccount/${listingAccount.user}`, formData, config);
-            const PTDeleteRES = await axios.delete(`${process.env.REACT_APP_API_URL}/PersonalTrait/${listingAccount.user}`, config);
-            const IDeleteRes = await axios.delete(`${process.env.REACT_APP_API_URL}/Interest/${listingAccount.user}`, config);
+            const res = await axios.put(`${process.env.REACT_APP_API_URL}/ListingAccount/${listingAccount.user}/`, formData, config);
+            const PTDeleteRES = await axios.delete(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.user}/`, config);
+            const IDeleteRes = await axios.delete(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.user}/`, config);
 
             const PersonalTraitsformData = new FormData();
             PersonalTraitsformData.append('trait', null);
             PersonalTraitsformData.append('listing_account', listingAccount.user)
             for (let i = 0; i < listingAccount.traits.length; i++) {
-                PersonalTraitsformData.set('interest', listingAccount.traits[i]);
+                PersonalTraitsformData.set('trait', listingAccount.traits[i]);
                 const res = axios.post(`${process.env.REACT_APP_API_URL}/PersonalTraits/`, PersonalTraitsformData, config);
             }
             const interestformData = new FormData();
