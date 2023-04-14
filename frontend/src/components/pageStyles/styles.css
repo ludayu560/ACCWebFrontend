@@ -4,9 +4,12 @@
     font-size: 16px;
     font-family: 'Montserrat';
 }
-
+img{
+    max-width: 100%;
+    height: auto;
+}
 .acc-container {
-    max-width: 1440px;
+    max-width: 1700px;
 }
 
 .acc-section {
@@ -14,8 +17,16 @@
     flex-direction: column;
     align-items: center;
 }
+.btn-wrapper{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
 .blue-grad-bg{
     background: linear-gradient(white, #D7F3FF)
+}
+.pink-grad-bg{
+    background: linear-gradient(white, #FFC7DA, white);
 }
 
 h1 {
@@ -43,17 +54,16 @@ h1 {
     color: #0045F1
 }
 
-.accText {
+.accTextcolor {
     color: #113170;
-    font-size: 1.5rem;
 }
 
 .img-wrapper {
-    max-width: 100%;
-    height: auto;
+    width: 30rem;
+    
 }
-
-.textBox {
-    padding: 2rem;
-    margin-bottom: 2rem;
+.header-txt-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
 }

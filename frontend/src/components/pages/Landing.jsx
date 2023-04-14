@@ -50,7 +50,7 @@ function Landing({ isAuthenticated }) {
         <div className="acc-container">
           <Grid container py={10} px={15}>
             <Grid item xs={8}>
-              <div>
+              <div className="header-txt-wrapper">
                 <h1 className="headerBlue">
                   Want To <span className="h1 headerPink">Colive</span>
                 </h1>
@@ -59,31 +59,33 @@ function Landing({ isAuthenticated }) {
                   Women?
                 </h1>
                 <Divider style={{ marginBottom: '2rem' }} width="50%" />
-                <div className="textBox" style={{ marginBottom: '2rem' }}>
-                  <h6 className="accText">
+                <div>
+                  <Typography className="accTextcolor" variant="h5">
                     Aisha Comfortable Coliving is a platform that works to empower women by matching like-minded women to
                     colive in a safe and enjoyable space. We strive to build an inclusive, supportive, and fun community for
                     all women.
-                  </h6>
+                  </Typography>
                 </div>
-                <Stack direction="row" spacing={20} alignItems="center">
-                  {isAuthenticated ? (
-                    <>
-                      <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/listings" />
-                      <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/RLF" />
-                    </>
-                  ) : (
-                    <>
-                      <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/" />
-                      <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/" />
-                    </>
-                  )}
-                </Stack>
+                <div className="btn-wrapper">
+                  <Stack direction="row" spacing={10} alignItems="center">
+                    {isAuthenticated ? (
+                      <>
+                        <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/listings" />
+                        <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/RLF" />
+                      </>
+                    ) : (
+                      <>
+                        <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/" />
+                        <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/" />
+                      </>
+                    )}
+                  </Stack>
+                </div>
               </div>
             </Grid>
             <Grid item xs={4}>
-              <div>
-                <img className="img-wrapper" alt="Lady on hompage" src={require("../../assets/HomePhoto.png")} />
+              <div className="img-wrapper">
+                <img alt="Lady on hompage" src={require("../../assets/HomePhoto2.png")} />
               </div>
             </Grid>
           </Grid>
@@ -95,22 +97,22 @@ function Landing({ isAuthenticated }) {
       <div className="acc-section blue-grad-bg">
         <div className="acc-container ">
           <Stack p={6} pb={20} spacing={3} alignItems="center">
-            <Typography variant="h3" sx={{ textAlign: "center", color: "#0045F1", fontWeight: "bold" }}>
+            <Typography variant="h2" sx={{ textAlign: "center", color: "#0045F1", fontWeight: "bold" }}>
               Why Coliving?
             </Typography>
-            <Typography variant="h5" sx={{ textAlign: "center" }}>
+            <Typography className="accTextcolor" variant="h5" sx={{ textAlign: "center" }}>
               Coliving is the new way of wellness living
             </Typography>
             <Grid container spacing={6} justifyContent="center">
               <Grid item>
-                <Card sx={{ width: "294px", borderRadius: 5 }} raised>
-                  <Box bgcolor="#F83E7D" sx={{ width: "294px", height: "20px" }} />
+                <Card sx={{ width: "300px", borderRadius: 5, height: '420px' }} raised>
+                  <Box bgcolor="#F83E7D" sx={{ width: "300px", height: "20px" }} />
                   <Stack p={5} align="center" spacing={4} alignItems="center">
                     <FavoriteBorderIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7DCC" }} />
-                    <Typography variant="h6" sx={{ color: "#F83E7DCC" }}>
+                    <Typography variant="h5" sx={{ color: "#F83E7DCC" }}>
                       Social Support
                     </Typography>
-                    <Typography variant="p" fontSize={10}>
+                    <Typography className="accTextcolor" variant="p" fontSize={'1rem'}>
                       Living in a safe and inclusive community enables you to enjoy a higher standard of living with
                       mental and emotional support.
                     </Typography>
@@ -118,14 +120,14 @@ function Landing({ isAuthenticated }) {
                 </Card>
               </Grid>
               <Grid item>
-                <Card sx={{ width: "294px", borderRadius: 5 }} raised>
-                  <Box bgcolor="#113170" sx={{ width: "294px", height: "20px" }} />
+                <Card sx={{ width: "300px", borderRadius: 5, height: '420px' }} raised>
+                  <Box bgcolor="#113170" sx={{ width: "300px", height: "20px" }} />
                   <Stack p={5} align="center" spacing={4} alignItems="center">
                     <PaidOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#113170" }} />
                     <Typography variant="h6" sx={{ color: "#113170" }}>
                       Money Saving
                     </Typography>
-                    <Typography variant="p" fontSize={10}>
+                    <Typography className="accTextcolor" variant="p" fontSize={'1 rem'}>
                       Coliving enables you to have more economic security, time, and freedom to enjoy all the good things
                       that life has to offer.
                     </Typography>
@@ -133,14 +135,14 @@ function Landing({ isAuthenticated }) {
                 </Card>
               </Grid>
               <Grid item>
-                <Card sx={{ width: "294px", borderRadius: 5 }} raised>
+                <Card sx={{ width: "294px", borderRadius: 5, height: '420px' }} raised>
                   <Box bgcolor="#0045F1" sx={{ width: "294px", height: "20px" }} />
                   <Stack p={5} align="center" spacing={4} alignItems="center">
                     <ForestOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#0045F1" }} />
                     <Typography variant="h6" sx={{ color: "#0045F1" }}>
                       Sustainable Living
                     </Typography>
-                    <Typography variant="p" fontSize={10}>
+                    <Typography className="accTextcolor" variant="p" fontSize={'1 rem'}>
                       Sharing resources reduces consumption and carbon emissions. Coliving provides socially responsible
                       and sustainable development.
                     </Typography>
@@ -148,14 +150,14 @@ function Landing({ isAuthenticated }) {
                 </Card>
               </Grid>
               <Grid item>
-                <Card sx={{ width: "294px", borderRadius: 5 }} raised>
-                  <Box bgcolor="#0094FF" sx={{ width: "294px", height: "20px" }} />
+                <Card sx={{ width: "300px", borderRadius: 5, height: '420px' }} raised>
+                  <Box bgcolor="#0094FF" sx={{ width: "300px", height: "20px" }} />
                   <Stack p={5} align="center" spacing={4} alignItems="center">
                     <AccountCircleOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#0094FF" }} />
                     <Typography variant="h6" sx={{ color: "#0094FF" }}>
                       Network Building
                     </Typography>
-                    <Typography variant="p" fontSize={10}>
+                    <Typography className="accTextcolor" variant="p" fontSize={'1 rem'}>
                       Community is at the heart of coliving. Coliving helps you make new friends, network, and establish
                       connections that help you grow.
                     </Typography>
@@ -163,7 +165,7 @@ function Landing({ isAuthenticated }) {
                 </Card>
               </Grid>
             </Grid>
-            <Typography variant="h5" align="center" py={10} px={35}>
+            <Typography className="accTextcolor" variant="h5" align="center" py={10} px={35}>
               Watch this short video to hear Wendy and Innes talk about how they began coliving and how their lives have
               changed since.
             </Typography>
@@ -175,47 +177,51 @@ function Landing({ isAuthenticated }) {
 
 
       {/*Testimonials*/}
-      <Stack style={{ background: "linear-gradient(white, #FFC7DA, white)" }} sx={{ p: 15, pb: 30 }}>
-        <Typography variant="h3" align="center" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2}>
-          Testimonials
-        </Typography>
-        <Typography variant="h5" align="center">
-          See what women have shared about their coliving experiences.
-        </Typography>
-        <Grid container pt={10}>
-          <Grid item xs={6}>
-            <Stack alignItems="center" spacing={2}>
-              <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-                Kathleen & Laura
-              </Typography>
-              <Box component="img" src={KathleenLaura} sx={{ width: "417px", height: "517.55px" }} />
-              <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-                Calgary, AB
-              </Typography>
-            </Stack>
-          </Grid>
-          <Grid item xs={6} mt={15}>
-            <Box component="img" src={quote1} sx={{ width: "45vw" }} />
-          </Grid>
-          <Grid item xs={6} mt={15}>
-            <Box component="img" src={quote2} sx={{ width: "45vw" }} />
-            <Stack alignItems="center">
-              <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
-            </Stack>
-          </Grid>
-          <Grid item xs={6}>
-            <Stack alignItems="center" spacing={2}>
-              <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-                Kathryn
-              </Typography>
-              <Box component="img" src={Kathryn} sx={{ width: "417px", height: "517.55px" }} />
-              <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-                Toronto, ON
-              </Typography>
-            </Stack>
-          </Grid>
-        </Grid>
-      </Stack>
+      <div className="acc-section">
+        <div className="acc-container">
+          <Stack sx={{ p: 15, pb: 30 }}>
+            <Typography variant="h3" align="center" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2}>
+              Testimonials
+            </Typography>
+            <Typography variant="h5" align="center">
+              See what women have shared about their coliving experiences.
+            </Typography>
+            <Grid container pt={10}>
+              <Grid item xs={6}>
+                <Stack alignItems="center" spacing={2}>
+                  <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
+                    Kathleen & Laura
+                  </Typography>
+                  <Box component="img" src={KathleenLaura} sx={{ width: "35rem", height: "35rem" }} />
+                  <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
+                    Calgary, AB
+                  </Typography>
+                </Stack>
+              </Grid>
+              <Grid item xs={6} mt={15}>
+                <Box component="img" src={quote1} sx={{ width: "45rem" }} />
+              </Grid>
+              <Grid item xs={6} mt={15}>
+                <Box component="img" src={quote2} sx={{ width: "45vw" }} />
+                <Stack alignItems="center">
+                  <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
+                </Stack>
+              </Grid>
+              <Grid item xs={6}>
+                <Stack alignItems="center" spacing={2}>
+                  <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
+                    Kathryn
+                  </Typography>
+                  <Box component="img" src={Kathryn} sx={{ width: "417px", height: "517.55px" }} />
+                  <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
+                    Toronto, ON
+                  </Typography>
+                </Stack>
+              </Grid>
+            </Grid>
+          </Stack>
+        </div>
+      </div>
 
 
       {/*Why Aisha Comfortable Coliving?*/}
