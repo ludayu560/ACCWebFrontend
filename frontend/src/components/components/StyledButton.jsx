@@ -130,7 +130,7 @@ function StyledButton(props) {
             {text}
             {props.children}
           </Typography>
-        </Button>
+        </Button>  
       )}
     </div>
   );
