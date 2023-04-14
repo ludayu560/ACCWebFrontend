@@ -304,7 +304,6 @@ export const load_propertylistings_created = (id) => async dispatch => {
 };
 
 export const load_propertylistings_recent = () => async dispatch => {
-    console.log("pls")
     if (localStorage.getItem('access')) {
         try {
             const config = {
