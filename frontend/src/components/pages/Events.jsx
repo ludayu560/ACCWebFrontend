@@ -32,7 +32,7 @@ import axios from "axios";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { create_event } from "../../Redux/actions/event";
+import { create_event, load_events_upcoming } from "../../Redux/actions/event";
 import { connect } from "react-redux";
 import ImageUpload from "../components/ImageUploadComponent";
 import Listing from "./Listing";
@@ -51,8 +51,17 @@ const CustomCheckboxStyles = {
   },
 };
 
-function Events({ create_event, listingAccount }) {
+function Events({ create_event, listingAccount, eventsUpcoming }) {
   const navigate = useNavigate();
+  const [upcomingEventsArray, setUpcomingEventsArray] = useState([]);
+  useEffect(() => {
+    load_events_upcoming()
+    if (eventsUpcoming) {
+      setUpcomingEventsArray(eventsUpcoming);
+      console.log(eventsUpcoming)
+    }
+  }, [eventsUpcoming]);
+  
   const [image, setImage] = useState(null);
   const [form, setForm] = useState({
     event_name: "",
@@ -117,9 +126,17 @@ function Events({ create_event, listingAccount }) {
             Your Upcoming Events
           </Typography>
         </Grid>
-        {data.map((id) => (
+        {upcomingEventsArray.map((item) => (
           <Grid item xs="auto">
-            <ECard variant="event" />
+            <ECard
+              variant="event"
+              time={item.event_date_time}
+              name={item.event_name}
+              location={item.event_location}
+              interested={item.event_interested}
+              going={item.event_going}
+              image={'http://127.0.0.1:8000'+ item.event_image}
+            />
           </Grid>
         ))}
       </Grid>
@@ -535,6 +552,7 @@ function Events({ create_event, listingAccount }) {
 
 const mapStateToProps = (state) => ({
   listingAccount: state.auth.listingAccount,
+  eventsUpcoming: state.auth.eventsUpcoming,
 });
 
-export default connect(mapStateToProps, { create_event })(Events);
+export default connect(mapStateToProps, { create_event, load_events_upcoming })(Events);

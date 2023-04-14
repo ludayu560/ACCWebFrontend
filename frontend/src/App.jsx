@@ -44,6 +44,7 @@ import Blogs from "./components/pages/Blogs";
 import BlogsCategory from "./components/pages/BlogsCategory";
 import EventConfirm from "./components/pages/EventConfirm";
 import BlogsCreate from "./components/pages/BlogsCreate";
+import BlogsDisplay from "./components/pages/BlogsDisplay";
 
 function App() {
   return (
@@ -100,6 +101,7 @@ function App() {
             <Route exact path="/blogs" element={<Blogs/>} />
             <Route exact path="/blogsCategory" element={<BlogsCategory/>} />
             <Route exact path="/blogsCreate" element={<BlogsCreate/>} />
+            <Route exact path="/blogsDisplay" element={<BlogsDisplay/>} />
             
             <Route exact path="/howItWorks" element={<HowItWorks />} />
             <Route exact path="/contact" element={<Contact />} />

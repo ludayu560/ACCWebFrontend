@@ -8,6 +8,8 @@ import {
     EVENT_UPDATE_FAIL,
     EVENTS_CREATED_LOAD_SUCCESS,
     EVENTS_CREATED_LOAD_FAIL,
+    EVENTS_UPCOMING_LOAD_SUCCESS,
+    EVENTS_UPCOMING_LOAD_FAIL,
 } from './types';
 
 
@@ -145,6 +147,36 @@ export const load_event = (id) => async dispatch => {
     } else {
         dispatch({
             type: EVENT_LOAD_FAIL
+        });
+    }
+};
+
+export const load_events_upcoming = () => async dispatch => {
+    console.log("pls work")
+    if (localStorage.getItem('access')) {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            };
+
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/Events/upcoming/`, config);
+            const eventUpcoming = res.data;
+            dispatch({
+                type: EVENTS_UPCOMING_LOAD_SUCCESS,
+                payload: eventUpcoming
+            });
+        } catch (err) {
+            console.log(err)
+            dispatch({
+                type: EVENTS_UPCOMING_LOAD_FAIL
+            });
+        }
+    } else {
+        dispatch({
+            type: EVENTS_UPCOMING_LOAD_FAIL
         });
     }
 };
