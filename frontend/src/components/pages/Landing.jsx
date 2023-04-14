@@ -41,7 +41,7 @@ import img11 from "../../assets/image 11.png";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
 import { connect } from "react-redux";
 import SearchBar from "../components/SearchBar";
-import '../pageStyles/styles.css'
+import "../pageStyles/styles.css";
 
 function Landing({ isAuthenticated }) {
   return (
@@ -49,40 +49,36 @@ function Landing({ isAuthenticated }) {
       <Stack>
         <Grid container py={10} px={15}>
           <Grid item xs={8}>
+            <Typography variant="h1" className="headerBlue">
+              Want To <span className="h1 headerPink">Colive</span>
+            </Typography>
+            <Typography variant="h1" className="headerBlue">
+              With Other
+            </Typography>
+            <Typography variant="h1" className="headerPink">
+              Women?
+            </Typography>
+            <Divider style={{ marginBottom: "2rem" }} width="50%" />
 
-            <div>
-              <h1 className="headerBlue">
-                Want To <span className="h1 headerPink">Colive</span>
-              </h1>
-              <h1 className="headerBlue">With Other</h1>
-              <h1 className="headerPink">
-                Women?
-              </h1>
-              <Divider style={{ marginBottom: '2rem' }} width="50%" />
-              <div className="textBox" style={{ marginBottom: '2rem' }}>
-                <h6 className="accText">
-                  Aisha Comfortable Coliving is a platform that works to empower women by matching like-minded women to
-                  colive in a safe and enjoyable space. We strive to build an inclusive, supportive, and fun community for
-                  all women.
-                </h6>
-              </div>
-              
-              <Stack direction="row" spacing={20} alignItems="center">
-                {isAuthenticated ? (
-                  <>
-                    <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/listings" />
-                    <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/RLF" />
-                  </>
-                ) : (
-                  <>
-                    <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/" />
-                    <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/" />
-                  </>
-                )}
-              </Stack>
-            </div>
+            <Typography variant="h6" className="accText" pb="3rem" pr="5rem">
+              Aisha Comfortable Coliving is a platform that works to empower women by matching like-minded women to
+              colive in a safe and enjoyable space. We strive to build an inclusive, supportive, and fun community for
+              all women.
+            </Typography>
 
-
+            <Stack direction="row" spacing={20} alignItems="center">
+              {isAuthenticated ? (
+                <>
+                  <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/listings" />
+                  <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/RLF" />
+                </>
+              ) : (
+                <>
+                  <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/" />
+                  <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/" />
+                </>
+              )}
+            </Stack>
           </Grid>
           <Grid item xs={4}>
             <div>
@@ -289,7 +285,7 @@ function Landing({ isAuthenticated }) {
                 1. Find a Property
               </Typography>
               <HouseIcon style={{ fontSize: 100 }} sx={{ color: "#0045F1" }} />
-              <Typography variant="p">
+              <Typography variant="h6">
                 Browse through available listings to find a property that fits your lifestyle.
               </Typography>
             </Stack>
@@ -300,7 +296,9 @@ function Landing({ isAuthenticated }) {
                 2. Meet Housemates
               </Typography>
               <PeopleIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7DCC" }} />
-              <Typography variant="p">Attend a Zoom meeting with all housemates to get to know one another.</Typography>
+              <Typography variant="h6">
+                Attend a Zoom meeting with all housemates to get to know one another.
+              </Typography>
             </Stack>
           </Grid>
           <Grid item xs="auto">
@@ -309,7 +307,7 @@ function Landing({ isAuthenticated }) {
                 3. Finalize the Details
               </Typography>
               <ClassOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#113170" }} />
-              <Typography variant="p">Sign the lease agreement once all parties are satisfied.</Typography>
+              <Typography variant="h6">Sign the lease agreement once all parties are satisfied.</Typography>
             </Stack>
           </Grid>
         </Grid>
