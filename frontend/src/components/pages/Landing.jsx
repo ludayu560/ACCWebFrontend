@@ -58,15 +58,15 @@ function Landing({ isAuthenticated }) {
               <h1 className="headerPink">
                 Women?
               </h1>
-              <Divider style={{marginBottom: '2rem'}} width="50%" />
-              <div style={{marginBottom:'2rem'}}>
-
-              <h6 className="accText">
-                Aisha Comfortable Coliving is a platform that works to empower women by matching like-minded women to
-                colive in a safe and enjoyable space. We strive to build an inclusive, supportive, and fun community for
-                all women.
-              </h6>
+              <Divider style={{ marginBottom: '2rem' }} width="50%" />
+              <div className="textBox" style={{ marginBottom: '2rem' }}>
+                <h6 className="accText">
+                  Aisha Comfortable Coliving is a platform that works to empower women by matching like-minded women to
+                  colive in a safe and enjoyable space. We strive to build an inclusive, supportive, and fun community for
+                  all women.
+                </h6>
               </div>
+              
               <Stack direction="row" spacing={20} alignItems="center">
                 {isAuthenticated ? (
                   <>
