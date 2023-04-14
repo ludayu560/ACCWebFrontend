@@ -38,6 +38,8 @@ import {
     EVENT_UPDATE_FAIL,
     EVENTS_CREATED_LOAD_SUCCESS,
     EVENTS_CREATED_LOAD_FAIL,
+    EVENTS_UPCOMING_LOAD_SUCCESS,
+    EVENTS_UPCOMING_LOAD_FAIL,
     FAVORITE_CREATE_SUCCESS,
     FAVORITE_CREATE_FAIL,
     GET_FAVORITES_SUCCESS,
@@ -194,6 +196,11 @@ export default function (state = initialState, action) {
                 ...state,
                 event: payload
             }
+        case EVENTS_UPCOMING_LOAD_SUCCESS:
+            return {
+                ...state,
+                event: payload
+            }
         case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
@@ -282,6 +289,7 @@ export default function (state = initialState, action) {
         case EVENT_CREATE_FAIL:
         case EVENT_UPDATE_FAIL:
         case EVENTS_CREATED_LOAD_FAIL:
+        case EVENTS_UPCOMING_LOAD_FAIL:
         case FAVORITE_CREATE_SUCCESS:
         case FAVORITE_CREATE_FAIL:
         case GET_FAVORITES_FAIL:
