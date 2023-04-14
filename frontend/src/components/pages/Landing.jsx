@@ -105,11 +105,11 @@ function Landing({ isAuthenticated }) {
             </Typography>
             <Grid container spacing={6} justifyContent="center">
               <Grid item>
-                <Card sx={{ width: "300px", borderRadius: 5, height: '420px' }} raised>
-                  <Box bgcolor="#F83E7D" sx={{ width: "300px", height: "20px" }} />
+                <Card sx={{ width: "320px", borderRadius: 5, height: '420px' }} raised>
+                  <Box bgcolor="#F83E7D" sx={{ width: "320px", height: "20px" }} />
                   <Stack p={5} align="center" spacing={4} alignItems="center">
                     <FavoriteBorderIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7DCC" }} />
-                    <Typography variant="h5" sx={{ color: "#F83E7DCC" }}>
+                    <Typography variant="h5" sx={{ color: "#F83E7DCC", fontWeight: "bold" }}>
                       Social Support
                     </Typography>
                     <Typography className="accTextcolor" variant="p" fontSize={'1rem'}>
@@ -120,14 +120,14 @@ function Landing({ isAuthenticated }) {
                 </Card>
               </Grid>
               <Grid item>
-                <Card sx={{ width: "300px", borderRadius: 5, height: '420px' }} raised>
-                  <Box bgcolor="#113170" sx={{ width: "300px", height: "20px" }} />
+                <Card sx={{ width: "320px", borderRadius: 5, height: '420px' }} raised>
+                  <Box bgcolor="#113170" sx={{ width: "320px", height: "20px" }} />
                   <Stack p={5} align="center" spacing={4} alignItems="center">
                     <PaidOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#113170" }} />
-                    <Typography variant="h6" sx={{ color: "#113170" }}>
+                    <Typography variant="h5" sx={{ color: "#113170", fontWeight: "bold" }}>
                       Money Saving
                     </Typography>
-                    <Typography className="accTextcolor" variant="p" fontSize={'1 rem'}>
+                    <Typography className="accTextcolor" variant="p" fontSize={'1rem'}>
                       Coliving enables you to have more economic security, time, and freedom to enjoy all the good things
                       that life has to offer.
                     </Typography>
@@ -135,14 +135,14 @@ function Landing({ isAuthenticated }) {
                 </Card>
               </Grid>
               <Grid item>
-                <Card sx={{ width: "294px", borderRadius: 5, height: '420px' }} raised>
-                  <Box bgcolor="#0045F1" sx={{ width: "294px", height: "20px" }} />
+                <Card sx={{ width: "320px", borderRadius: 5, height: '420px' }} raised>
+                  <Box bgcolor="#0045F1" sx={{ width: "320px", height: "20px" }} />
                   <Stack p={5} align="center" spacing={4} alignItems="center">
                     <ForestOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#0045F1" }} />
-                    <Typography variant="h6" sx={{ color: "#0045F1" }}>
+                    <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: 'bold' }}>
                       Sustainable Living
                     </Typography>
-                    <Typography className="accTextcolor" variant="p" fontSize={'1 rem'}>
+                    <Typography className="accTextcolor" variant="p" fontSize={'1rem'}>
                       Sharing resources reduces consumption and carbon emissions. Coliving provides socially responsible
                       and sustainable development.
                     </Typography>
@@ -150,14 +150,14 @@ function Landing({ isAuthenticated }) {
                 </Card>
               </Grid>
               <Grid item>
-                <Card sx={{ width: "300px", borderRadius: 5, height: '420px' }} raised>
-                  <Box bgcolor="#0094FF" sx={{ width: "300px", height: "20px" }} />
+                <Card sx={{ width: "320px", borderRadius: 5, height: '420px' }} raised>
+                  <Box bgcolor="#0094FF" sx={{ width: "320px", height: "20px" }} />
                   <Stack p={5} align="center" spacing={4} alignItems="center">
                     <AccountCircleOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#0094FF" }} />
-                    <Typography variant="h6" sx={{ color: "#0094FF" }}>
+                    <Typography variant="h5" sx={{ color: "#0094FF", fontWeight: "bold" }}>
                       Network Building
                     </Typography>
-                    <Typography className="accTextcolor" variant="p" fontSize={'1 rem'}>
+                    <Typography className="accTextcolor" variant="p" fontSize={'1rem'}>
                       Community is at the heart of coliving. Coliving helps you make new friends, network, and establish
                       connections that help you grow.
                     </Typography>

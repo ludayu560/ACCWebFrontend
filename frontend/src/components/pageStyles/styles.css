@@ -20,7 +20,7 @@ img{
 .btn-wrapper{
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    padding: 2rem;
 }
 .blue-grad-bg{
     background: linear-gradient(white, #D7F3FF)
