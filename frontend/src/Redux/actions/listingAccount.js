@@ -107,13 +107,17 @@ export const update_listing_account = (listingAccount) => async dispatch => {
             formData.append('occupation', listingAccount.occupation);
             formData.append('news_consent', listingAccount.news_consent);
             formData.append('tell_us_about_yourself', listingAccount.tell_us_about_yourself);
-            if (listingAccount.profile_picture) {
+
+            // we ignore the profile picture if it is a string as it is a url and not a file
+            // this happens when we are updating the listing account and the profile picture is not changed
+            // the backend returns the url of the profile picture and we don't want to send that to the backend
+            if (listingAccount.profile_picture && typeof listingAccount.profile_picture !== 'string') {
                 formData.append('profile_picture', listingAccount.profile_picture);
             }
-            if (listingAccount.banner_picture) {
+            if (listingAccount.banner_picture && typeof listingAccount.banner_picture !== 'string') {
                 formData.append('banner_picture', listingAccount.banner_picture);
             }
-            if (listingAccount.display_picture) {
+            if (listingAccount.display_picture && typeof listingAccount.display_picture !== 'string') {
                 formData.append('display_picture', listingAccount.display_picture);
             }
             formData.append('preferences', listingAccount.preferences);
