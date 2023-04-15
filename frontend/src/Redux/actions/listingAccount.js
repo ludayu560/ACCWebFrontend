@@ -118,7 +118,7 @@ export const update_listing_account = (listingAccount) => async dispatch => {
             }
             formData.append('preferences', listingAccount.preferences);
             formData.append('price_range_max', listingAccount.price_range_max);
-            formData.append('price_range_min', listingAccount.price_range_max);
+            formData.append('price_range_min', listingAccount.price_range_min);
             formData.append('user', listingAccount.user);
             const res = await axios.put(`${process.env.REACT_APP_API_URL}/ListingAccount/${listingAccount.user}/`, formData, config);
             const PTDeleteRES = await axios.delete(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.user}/`, config);
