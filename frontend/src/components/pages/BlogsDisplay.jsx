@@ -45,7 +45,11 @@ import ECard from "../components/ECard";
 function BlogsDisplay({ props, isAuthenticated }) {
 
   return (
-    <div>Paste your code here</div>
+    <div>
+
+
+      
+    </div>
   );
 }
 
