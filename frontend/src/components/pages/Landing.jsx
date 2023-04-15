@@ -39,6 +39,7 @@ import img13 from "../../assets/image 13.png";
 import img12 from "../../assets/image 12.png";
 import img11 from "../../assets/image 11.png";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
+import Vector from "../../assets/Vector.png";
 import { connect } from "react-redux";
 import SearchBar from "../components/SearchBar";
 import "../pageStyles/styles.css";
@@ -124,7 +125,7 @@ function Landing({ isAuthenticated }) {
                   <Box bgcolor="#113170" sx={{ width: "320px", height: "20px" }} />
                   <Stack p={5} align="center" spacing={4} alignItems="center">
                     <PaidOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#113170" }} />
-                    <Typography variant="h5" sx={{ color: "#113170", fontWeight: "bold" }}>
+                    <Typography variant="h5" className="accTextcolor accBold">
                       Money Saving
                     </Typography>
                     <Typography className="accTextcolor" variant="p" fontSize={'1rem'}>
@@ -166,7 +167,7 @@ function Landing({ isAuthenticated }) {
               </Grid>
             </Grid>
             <Typography className="accTextcolor" variant="h5" align="center" py={10} px={35}>
-              Watch this short video to hear Wendy and Innes talk about how they began coliving and how their lives have
+              Watch this short video to hear <span className="accBlue mui-h5">Wendy and Innes</span> talk about how they began <span className="accBlue mui-h5">coliving</span> and how their lives have
               changed since.
             </Typography>
             <Box sx={{ width: "739px", height: "418px", bgcolor: "gray", borderRadius: 5, p: 4 }}>video</Box>
@@ -179,7 +180,7 @@ function Landing({ isAuthenticated }) {
       {/*Testimonials*/}
       <div className="acc-section">
         <div className="acc-container">
-          <Stack sx={{ p: 15, pb: 30 }}>
+          <Stack sx={{ p: 5 }}>
             <Typography variant="h3" align="center" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2}>
               Testimonials
             </Typography>
@@ -192,7 +193,7 @@ function Landing({ isAuthenticated }) {
                   <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
                     Kathleen & Laura
                   </Typography>
-                  <Box component="img" src={KathleenLaura} sx={{ width: "35rem", height: "35rem" }} />
+                  <Box component="img" src={KathleenLaura} sx={{ width: "25rem", height: "25rem" }} />
                   <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
                     Calgary, AB
                   </Typography>
@@ -203,259 +204,290 @@ function Landing({ isAuthenticated }) {
               </Grid>
               <Grid item xs={6} mt={15}>
                 <Box component="img" src={quote2} sx={{ width: "45vw" }} />
-                <Stack alignItems="center">
-                  <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
-                </Stack>
               </Grid>
               <Grid item xs={6}>
                 <Stack alignItems="center" spacing={2}>
                   <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
                     Kathryn
                   </Typography>
-                  <Box component="img" src={Kathryn} sx={{ width: "417px", height: "517.55px" }} />
+                  <Box component="img" src={Kathryn} sx={{ width: "25rem", height: "25rem" }} />
                   <Typography variant="h4" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
                     Toronto, ON
                   </Typography>
+
                 </Stack>
               </Grid>
             </Grid>
           </Stack>
+          <div className="acc-section  acc-mb">
+            <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
+          </div>
         </div>
       </div>
 
 
       {/*Why Aisha Comfortable Coliving?*/}
-      <Stack style={{ background: "linear-gradient(#D7F3FF, white)" }} sx={{ p: 15 }} alignItems="center">
-        <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2}>
-          Why Aisha Comfortable Coliving?
-        </Typography>
-        <Typography variant="h5" align="center">
-          Our services & priorities.
-        </Typography>
-        <Grid container spacing={6} mt={5} pb={10} justifyContent="center">
-          <Grid item>
-            <Card sx={{ width: "294px", height: "501px", borderRadius: 5 }} raised>
-              <Box bgcolor="#0045F1" sx={{ width: "294px", height: "20px" }} />
-              <Stack p={5} align="center" spacing={4} alignItems="center">
-                <HouseIcon style={{ fontSize: 100 }} sx={{ color: "#0045F1" }} />
-                <Typography variant="h6" sx={{ color: "#0045F1", height: "60px", fontWeight: "bold" }}>
-                  Personalized Housing Service
-                </Typography>
-                <Typography variant="p" fontSize={13}>
-                  We are a digital platform that matches tenants and women homeowners, based on shared lifestyles and
-                  needs. Our platform allows compatible women to connect in a comfortable, shared living space.
-                  Property owners are also welcome to use our services to find women tenants.
-                </Typography>
-              </Stack>
-            </Card>
-          </Grid>
-          <Grid item>
-            <Card sx={{ width: "294px", height: "501px", borderRadius: 5 }} raised>
-              <Box bgcolor="#F83E7D" sx={{ width: "294px", height: "20px" }} />
-              <Stack p={5} align="center" spacing={4} alignItems="center">
-                <PeopleIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7DCC" }} />
-                <Typography variant="h6" sx={{ color: "#F83E7DCC", height: "60px", fontWeight: "bold" }}>
-                  Community Driven
-                </Typography>
-                <Typography variant="p" fontSize={13}>
-                  We host regular online community-building events designed around health, fitness, culture, and fun.
-                  By joining our platform, you can enjoy positive bonding experiences with Aisha Community members. We
-                  believe every woman should feel included and welcome.
-                </Typography>
-              </Stack>
-            </Card>
-          </Grid>
-          <Grid item>
-            <Card sx={{ width: "294px", height: "501px", borderRadius: 5 }} raised>
-              <Box bgcolor="#113170" sx={{ width: "294px", height: "20px" }} />
-              <Stack p={5} align="center" spacing={4} alignItems="center">
-                <GppGoodIcon style={{ fontSize: 100 }} sx={{ color: "#113170" }} />
-                <Typography variant="h6" sx={{ color: "#113170", height: "60px", fontWeight: "bold" }}>
-                  Your Safety is Our Top Priority
-                </Typography>
-                <Typography variant="p" fontSize={13}>
-                  We perform thorough background checks on all housemates to ensure a safe living environment. We also
-                  aim to increase community spirit and belongingness through events, activities, and meetups. While
-                  doing so, we prioritize safety in the homes and community.
-                </Typography>
-              </Stack>
-            </Card>
-          </Grid>
-        </Grid>
-        <StyledButton variant="pinkBtn" text="Get Started" bgcolor="#0045F1" />
-      </Stack>
-
+      <div className="acc-section blue-grad2-bg">
+        <div className="acc-container">
+          <Stack sx={{ p: 15 }} alignItems="center">
+            <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2}>
+              Why Aisha Comfortable Coliving?
+            </Typography>
+            <Typography variant="h5" align="center">
+              Our services & priorities.
+            </Typography>
+            <Grid container spacing={6} mt={5} pb={10} justifyContent="center">
+              <Grid item>
+                <Card sx={{ width: "350px", height: "501px", borderRadius: 5 }} raised>
+                  <Box bgcolor="#0045F1" sx={{ width: "350px", height: "20px" }} />
+                  <Stack p={'1.8rem'} align="center" spacing={1} alignItems="center">
+                    <HouseIcon style={{ fontSize: 100 }} sx={{ color: "#0045F1" }} />
+                    <Typography variant="h6" sx={{ color: "#0045F1", height: "60px", fontWeight: "bold" }}>
+                      Personalized Housing Service
+                    </Typography>
+                    <Typography padding={2} className="accTextcolor accFontsize" variant="p">
+                      We are a digital platform that matches tenants and women homeowners, based on shared lifestyles and
+                      needs. Our platform allows compatible women to connect in a comfortable, shared living space.
+                      Property owners are also welcome to use our services to find women tenants.
+                    </Typography>
+                  </Stack>
+                </Card>
+              </Grid>
+              <Grid item>
+                <Card sx={{ width: "350px", height: "501px", borderRadius: 5 }} raised>
+                  <Box bgcolor="#F83E7D" sx={{ width: "350px", height: "20px" }} />
+                  <Stack p={'1.8rem'} align="center" spacing={1} alignItems="center">
+                    <PeopleIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7DCC" }} />
+                    <Typography variant="h6" sx={{ color: "#F83E7DCC", height: "60px", fontWeight: "bold" }}>
+                      Community Driven
+                    </Typography>
+                    <Typography padding={2} className="accTextcolor accFontsize" variant="p">
+                      We host regular online community-building events designed around health, fitness, culture, and fun.
+                      By joining our platform, you can enjoy positive bonding experiences with Aisha Community members. We
+                      believe every woman should feel included and welcome.
+                    </Typography>
+                  </Stack>
+                </Card>
+              </Grid>
+              <Grid item>
+                <Card sx={{ width: "350px", height: "501px", borderRadius: 5 }} raised>
+                  <Box bgcolor="#113170" sx={{ width: "350px", height: "20px" }} />
+                  <Stack p={'1.8rem'} align="center" spacing={1} alignItems="center">
+                    <GppGoodIcon style={{ fontSize: 100 }} sx={{ color: "#113170" }} />
+                    <Typography variant="h6" sx={{ color: "#113170", height: "60px", fontWeight: "bold" }}>
+                      Your Safety is Our Top Priority
+                    </Typography>
+                    <Typography padding={2} className="accTextcolor accFontsize" variant="p" >
+                      We perform thorough background checks on all housemates to ensure a safe living environment. We also
+                      aim to increase community spirit and belongingness through events, activities, and meetups. While
+                      doing so, we prioritize safety in the homes and community.
+                    </Typography>
+                  </Stack>
+                </Card>
+              </Grid>
+            </Grid>
+            <StyledButton variant="pinkBtn" text="Get Started" bgcolor="#0045F1" />
+          </Stack>
+        </div>
+      </div>
 
       {/*How it Works*/}
-      <Stack style={{ background: "white" }} alignItems="center" pb={5}>
-        <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2}>
-          How it Works
-        </Typography>
-        <Typography variant="h5" align="center">
-          Just a few steps to get started.
-        </Typography>
-      </Stack>
-      <Grid container justifyContent="center" spacing={15} pb={15}>
-        <Grid item xs="auto">
-          <Stack sx={{ width: "294px" }} p={5} align="center" spacing={4} alignItems="center">
-            <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
-              1. Find a Property
+      <div className="acc-section">
+        <div className="acc-container">
+          <Stack style={{ background: "white" }} alignItems="center" pb={6}>
+            <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2}>
+              How it Works
             </Typography>
-            <HouseIcon style={{ fontSize: 100 }} sx={{ color: "#0045F1" }} />
-            <Typography variant="p">
-              Browse through available listings to find a property that fits your lifestyle.
+            <Typography className="accTextcolor" variant="h5" align="center">
+              Just a few steps to get started.
             </Typography>
           </Stack>
-        </Grid>
-        <Grid item xs="auto">
-          <Stack sx={{ width: "294px" }} p={5} align="center" spacing={4} alignItems="center">
-            <Typography variant="h5" sx={{ color: "#F83E7DCC", fontWeight: "bold" }}>
-              2. Meet Housemates
-            </Typography>
-            <PeopleIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7DCC" }} />
-            <Typography variant="p">Attend a Zoom meeting with all housemates to get to know one another.</Typography>
-          </Stack>
-        </Grid>
-        <Grid item xs="auto">
-          <Stack sx={{ width: "294px" }} p={5} align="center" spacing={4} alignItems="center">
-            <Typography variant="h5" sx={{ color: "#113170", fontWeight: "bold" }}>
-              3. Finalize the Details
-            </Typography>
-            <ClassOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#113170" }} />
-            <Typography variant="p">Sign the lease agreement once all parties are satisfied.</Typography>
-          </Stack>
-        </Grid>
-      </Grid>
+          <Grid container justifyContent="center" spacing={15} pb={5}>
+            <Grid item xs="auto">
+              <Stack sx={{ width: "294px" }} p={5} align="center" spacing={4} alignItems="center">
+                <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
+                  1. Find a Property
+                </Typography>
+                <HouseIcon style={{ fontSize: 100 }} sx={{ color: "#0045F1" }} />
+                <Typography className="accTextcolor" variant="p">
+                  Browse through available listings to find a property that fits your lifestyle.
+                </Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs="auto">
+              <Stack sx={{ width: "294px" }} p={5} align="center" spacing={4} alignItems="center">
+                <Typography variant="h5" sx={{ color: "#F83E7DCC", fontWeight: "bold" }}>
+                  2. Meet Housemates
+                </Typography>
+                <PeopleIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7DCC" }} />
+                <Typography className="accTextcolor" variant="p">Attend a Zoom meeting with all housemates to get to know one another.</Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs="auto">
+              <Stack sx={{ width: "294px" }} p={5} align="center" spacing={4} alignItems="center">
+                <Typography variant="h5" sx={{ color: "#113170", fontWeight: "bold" }}>
+                  3. Finalize the Details
+                </Typography>
+                <ClassOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#113170" }} />
+                <Typography className="accTextcolor" variant="p">Sign the lease agreement once all parties are satisfied.</Typography>
+              </Stack>
+            </Grid>
+          </Grid>
 
-      <Stack alignItems="center">
-        <Typography variant="h5" align="center" sx={{ fontWeight: "bold" }} p={2} pb={6} px={10}>
-          For a more in-depth explanation of how Aisha Comfortable Coliving works as a tenant, woman homeowner, or
-          property owner:
-        </Typography>
-        <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
-      </Stack>
+          <Stack alignItems="center">
+            <Typography className="accTextcolor" variant="h5" align="center" sx={{ fontWeight: "bold" }} p={2} pb={6} px={10}>
+              For a more in-depth explanation of how Aisha Comfortable Coliving works as a tenant, woman homeowner, or
+              property owner:
+            </Typography>
+            <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
+          </Stack>
+        </div>
+      </div>
 
 
       {/*Partner with Us*/}
-      <Stack>
-        <Box component="img" src={Partner} mt={15} />
-        <Typography variant="h2" align="center" sx={{ color: "white", fontWeight: "bold" }} mt={-25}>
-          Partner with Us
-        </Typography>
-        <Typography variant="h5" align="center" sx={{ color: "white" }}>
-          Become an Aisha partner to take advantage of our unique rental services.
-        </Typography>
-      </Stack>
-      <Grid container mt={20} p={4} justifyContent="center">
-        <Grid item xs={6}>
-          <Stack spacing={3} px={10}>
-            <Typography variant="h6">
-              Are you a management company of a multi-unit property or commercial building? At Aisha Comfortable
-              Coliving, we know how stressful the process of finding the right tenants for your space can be. Partner
-              with us today to take full advantage of the services we offer our clients, to make the rental journey
-              much smoother for everyone involved.
-            </Typography>
-            <Typography variant="h6" fontWeight="bold">
-              If you would like to know more, have questions about our partnership process, or are ready to become a
-              partner:
-            </Typography>
-            <Typography variant="h6" fontWeight="bold">
-              Contact us at aisha@comfortablecoliving.com
-            </Typography>
-            <Box component="img" src={AishaSignaturePink} sx={{ width: "15vw" }} />
-          </Stack>
-        </Grid>
-        <Grid item xs={6}>
-          <Box component="img" src={Hands} maxWidth="45vw" />
-        </Grid>
-      </Grid>
+      <div className="acc-section">
+        <div className="acc-container">
+          <div className="partner-flex">
+            <Stack sx={{ mb: "10rem" }}>
+              <Box component="img" src={Partner} mt={15} />
+              <Typography variant="h2" align="center" sx={{ color: "white", fontWeight: "bold" }} mt={-30}>
+                Partner with Us
+              </Typography>
+              <Typography variant="h5" align="center" sx={{ color: "white" }}>
+                Become an Aisha partner to take advantage of our unique rental services.
+              </Typography>
+            </Stack>
+            <div className="partner-grid" >
+              <div className="partner-flex">
+
+                <div className="partner-content">
+                  <Typography className="accTextcolor" variant="h6">
+                    Are you a management company of a multi-unit property or commercial building? At Aisha Comfortable
+                    Coliving, we know how stressful the process of finding the right tenants for your space can be. Partner
+                    with us today to take full advantage of the services we offer our clients, to make the rental journey
+                    much smoother for everyone involved.
+                  </Typography>
+                  <Typography className="accTextcolor" variant="h6" fontWeight="bold">
+                    If you would like to know more, have questions about our partnership process, or are ready to become a
+                    partner:
+                  </Typography>
+                  <Typography className="accTextcolor" variant="h6" fontWeight="bold">
+                    Contact us at aisha@comfortablecoliving.com
+                  </Typography>
+                  <Box component="img" src={AishaSignaturePink} sx={{ width: "10vw" }} />
+                </div>
+
+              </div>
+              <Grid item xs={6}>
+                <Box component="img" src={Hands} maxWidth="40vw" />
+              </Grid>
+            </div>
+
+            {/*Tenants Content*/}
+            <div className="partner-grid">
+              <div className="partner-flex">
+                <Grid item xs={6}>
+                  <Box component="img" src={img20} sx={{ width: "40vw" }} />
+                </Grid>
+              </div>
+              <div className="partner-flex">
+                <div className="parter-content">
+
+                  <div className="partner-content">
+                    <Typography variant="h3" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
+                      Tenants
+                    </Typography>
+                    <Typography className="accTextcolor" variant="h5">Independence with companionship</Typography>
+                    <Typography className="accTextcolor" variant="h6" sx={{}}>
+                      To all women looking for safe and affordable living, we have you covered! Share a modern coliving space
+                      with a compatible individual matched to you.
+                    </Typography>
+                    <Typography className="accTextcolor" variant="h6" sx={{}}>
+                      Coliving provides the ideal wellness living opportunity to enjoy life in the company of like-minded
+                      women in addition to the benefits of a peer group that takes you places.
+                    </Typography>
+                    <Typography className="accTextcolor" variant="h6" sx={{ align: "left" }}>
+                      Being independent does not mean being alone.
+                    </Typography>
+                    <Stack alignItems="center">
+                      <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
+                    </Stack>
+                  </div>
+                </div>
+
+              </div>
+            </div>
 
 
-      {/*Signature */}
+            <div className="partner-grid">
+              <div className="partner-flex">
+                <div className="partner-content">
+                  <Typography variant="h3" sx={{ color: "#0045F1", fontWeight: "bold" }} mb={-4}>
+                    Woman Homeowner
+                  </Typography>
+                  <Typography className="accTextcolor" variant="h5">
+                    Are you a woman homeowner interested in coliving?
+                  </Typography>
+                  <Typography className="accTextcolor" variant="h6">
+                    Women have proven to be the best renters. They ensure reliable payments and take care of your residence
+                    as if you were living there.
+                  </Typography>
+                  <Typography className="accTextcolor" variant="h6" sx={{ align: "left" }}>
+                    We are here to help your investment grow by providing carefully selected renters that you can count on
+                    to maintain your property.
+                  </Typography>
+                  <Stack alignItems="center">
+                    <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#0045F1" />
+                  </Stack>
+                </div>
+              </div>
+              <Grid item xs={6}>
+                <Box component="img" src={img12} sx={{ width: "40vw" }} />
+              </Grid>
+            </div>
+
+            <div className="partner-grid">
+              <div className="partner-flex">
+                <Grid item xs={6}>
+                  <Box component="img" src={img11} sx={{ width: "40vw" }} />
+                </Grid>
+              </div>
+              <div className="partner-flex">
+                <div className="partner-content">
+
+                  <Typography variant="h3" sx={{ color: "#113170", fontWeight: "bold" }} >
+                    Property Owner
+                  </Typography>
+                  <Typography className="accTextcolor" variant="h5" sx={{}}>
+                    Are you looking to rent an income property to women?
+                  </Typography>
+                  <Typography className="accTextcolor" variant="h6" sx={{}}>
+                    Sharing your dream home with a like-minded woman can become your best investment into an affordable and
+                    enjoyable life.
+                  </Typography>
+                  <Typography className="accTextcolor" variant="h6" sx={{ align: "left" }}>
+                    More women are investing in real estate and making ‘dream homes’ a reality. Coliving has encouraged this
+                    step forward
+                  </Typography>
+                  <Stack alignItems="center">
+                    <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#113170" />
+                  </Stack>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* Signature
       <Stack alignItems="center" p={6}>
         <Icon src={AishaSignaturePink} />
-      </Stack>
+      </Stack> */}
 
 
-      {/*Tenants Content*/}
-      <Grid container pb={10} px={5} justifyContent="center">
-        <Grid item xs={6}>
-          <Box component="img" src={img20} sx={{ width: "40vw", m: 6 }} />
-        </Grid>
-        <Grid item xs={6}>
-          <Stack sx={{ width: "50vw", p: 7, px: 10 }} spacing={4}>
-            <Typography variant="h3" sx={{ color: "#F83E7D", fontWeight: "bold" }} mb={-4}>
-              Tenants
-            </Typography>
-            <Typography variant="h5">Independence with companionship</Typography>
-            <Typography variant="h6" sx={{}}>
-              To all women looking for safe and affordable living, we have you covered! Share a modern coliving space
-              with a compatible individual matched to you.
-            </Typography>
-            <Typography variant="h6" sx={{}}>
-              Coliving provides the ideal wellness living opportunity to enjoy life in the company of like-minded
-              women in addition to the benefits of a peer group that takes you places.
-            </Typography>
-            <Typography variant="h6" sx={{ align: "leftm" }}>
-              Being independent does not mean being alone.
-            </Typography>
-            <Stack alignItems="center">
-              <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
-            </Stack>
-          </Stack>
-        </Grid>
 
-
-        <Grid item xs={6}>
-          <Stack sx={{ width: "50vw", p: 7, px: 10 }} spacing={4}>
-            <Typography variant="h3" sx={{ color: "#0045F1", fontWeight: "bold" }} mb={-4}>
-              Woman Homeowner
-            </Typography>
-            <Typography variant="h5" sx={{}}>
-              Are you a woman homeowner interested in coliving?
-            </Typography>
-            <Typography variant="h6" sx={{}}>
-              Women have proven to be the best renters. They ensure reliable payments and take care of your residence
-              as if you were living there.
-            </Typography>
-            <Typography variant="h6" sx={{ align: "leftm" }}>
-              We are here to help your investment grow by providing carefully selected renters that you can count on
-              to maintain your property.
-            </Typography>
-            <Stack alignItems="center">
-              <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#0045F1" />
-            </Stack>
-          </Stack>
-        </Grid>
-        <Grid item xs={6}>
-          <Box component="img" src={img12} sx={{ width: "40vw" }} />
-        </Grid>
-
-        <Grid item xs={6}>
-          <Box component="img" src={img11} sx={{ width: "40vw", m: 6 }} />
-        </Grid>
-        <Grid item xs={6}>
-          <Stack sx={{ width: "50vw", p: 7, px: 10 }} spacing={4}>
-            <Typography variant="h3" sx={{ color: "#113170", fontWeight: "bold" }} mb={-4}>
-              Property Owner
-            </Typography>
-            <Typography variant="h5" sx={{}}>
-              Are you looking to rent an income property to women?
-            </Typography>
-            <Typography variant="h6" sx={{}}>
-              Sharing your dream home with a like-minded woman can become your best investment into an affordable and
-              enjoyable life.
-            </Typography>
-            <Typography variant="h6" sx={{ align: "leftm" }}>
-              More women are investing in real estate and making ‘dream homes’ a reality. Coliving has encouraged this
-              step forward
-            </Typography>
-            <Stack alignItems="center">
-              <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#113170" />
-            </Stack>
-          </Stack>
-        </Grid>
-      </Grid>
 
       {/*Community Events*/}
       <Stack

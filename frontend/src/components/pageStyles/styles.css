@@ -1,45 +1,16 @@
-
-img{
+img {
     max-width: 100%;
     height: auto;
 }
+
 .acc-container {
-    max-width: 1700px;
+    max-width: 1500px;
 }
 
 .acc-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.btn-wrapper{
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-}
-.blue-grad-bg{
-    background: linear-gradient(white, #D7F3FF)
-}
-.pink-grad-bg{
-    background: linear-gradient(white, #FFC7DA, white);
-}
-
-h1 {
-    font-size: 6rem;
-    font-weight: 700;
-}
-
-.headerBlue {
-    font-size: 6rem;
-    color: #0045F1;
-    font-weight: 700;
-}
-
-.headerPink {
-    font-size: 6rem;
-    color: #F83E7D;
-    font-weight: 700;
 }
 
 .accPink {
@@ -54,11 +25,77 @@ h1 {
     color: #113170;
 }
 
+.accTextsize {
+    font-size: 1rem;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.blue-grad-bg {
+    background: linear-gradient(white, #D7F3FF)
+}
+
+.blue-grad2-bg {
+    background: linear-gradient(rgb(215, 243, 255), white);
+}
+
+.accBold {
+    font-weight: bold;
+}
+
+.pink-grad-bg {
+    background: linear-gradient(white, #FFC7DA, white);
+}
+
+
+.headerBlue {
+    font-size: 6rem;
+    color: #0045F1;
+    font-weight: 700;
+}
+
+.headerPink {
+    font-size: 6rem;
+    color: #F83E7D;
+    font-weight: 700;
+}
+
+.mui-h5 {
+    font-size: 1.5rem;
+}
+
+.acc-mb {
+    margin-bottom: 5rem;
+}
+
 .img-wrapper {
     width: 30rem;
-    
+
 }
-.header-txt-wrapper{
+
+.partner-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 3rem;
+}
+
+.partner-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.partner-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem;
+}
+
+.header-txt-wrapper {
     display: flex;
     flex-direction: column;
     margin: 1rem;
