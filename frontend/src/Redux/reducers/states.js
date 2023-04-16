@@ -294,6 +294,7 @@ export default function (state = initialState, action) {
         case FAVORITE_CREATE_FAIL:
         case GET_FAVORITES_FAIL:
         case CREATE_EVENT_ATTENDING_SUCCESS:
+            
         case CREATE_EVENT_ATTENDING_FAIL:
         case GET_EVENTS_ATTENDING_FAIL:
         case CREATE_EVENT_INTERESTED_SUCCESS:
