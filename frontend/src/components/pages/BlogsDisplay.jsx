@@ -102,7 +102,7 @@ function BlogsDisplay({ props, isAuthenticated }) {
             <a> The Need for Women 50+</a>
             <a> The Need for Women 50+</a>
           </div>
-          <div>
+          <div >
             <h3>Comments</h3>
             <div>
               <h3>Leave a Reply</h3>
