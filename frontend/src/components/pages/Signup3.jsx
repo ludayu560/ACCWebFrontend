@@ -206,6 +206,7 @@ function Page3({
             onClick={onClickNextButton}
             variant="signup"
             text="Next"
+            bgcolor="#F83E7D"
           />
         </Stack>
       </Stack>
