@@ -31,9 +31,18 @@ const interests =
     " "
   );
 const ageRanges = ["<18", "18-25", "26-35", "46-55", "56-65", "65+"];
+const ageOptions = [
+  { label: "<18", value: "<18" },
+  { label: "18-25", value: "18-25" },
+  { label: "26-35", value: "26-35" },
+  { label: "46-55", value: "46-55" },
+  { label: "56-65", value: "56-65" },
+  { label: "65+", value: "65+" },
+];
 
 function MyAccount(props) {
   const { listingAccount, update_listing_account } = props;
+  const [age, setAge] = useState(null);
 
   // State to track the loading status of the API call
   const [loading, setLoading] = useState(true);
@@ -48,11 +57,32 @@ function MyAccount(props) {
       setAccountType(listingAccount.account_type);
     }
 
+    const checkBoxData = {};
+    // Iterate through all interests and set default values to false
+    interests.forEach((interest) => {
+      checkBoxData[`checkbox-interests-${interest}`] = false;
+    });
+    personalityTraits.forEach((trait) => {
+      checkBoxData[`checkbox-personality-${trait}`] = false;
+    });
+    // Iterate through the array and set the value to true for existing interests
+    if (listingAccount) {
+      if (listingAccount.interests) {
+        listingAccount.interests.forEach((item) => {
+          checkBoxData[`checkbox-interests-${item.interest}`] = true;
+        });
+      }
+      if (listingAccount.traits) {
+        listingAccount.traits.forEach((item) => {
+          checkBoxData[`checkbox-personality-${item.trait}`] = true;
+        });
+      }
+    }
+
     // add default values for form fields from get request
-    // TODO: add proper default values for checkboxes. default null right now.
     reset({
       About: listingAccount ? listingAccount.tell_us_about_yourself : "",
-      Age: listingAccount ? listingAccount.age_range : undefined,
+      Age: listingAccount ? listingAccount.age_range : "",
       Location: listingAccount ? listingAccount.location : "",
       Name: listingAccount
         ? listingAccount.first_name + " " + listingAccount.last_name
@@ -61,38 +91,18 @@ function MyAccount(props) {
       Phone: listingAccount ? listingAccount.phone_number : "",
       Preferences: listingAccount ? listingAccount.preferences : "",
       Username: listingAccount ? listingAccount.username : "",
-      "checkbox-interests-Art": false,
-      "checkbox-interests-Cars": false,
-      "checkbox-interests-Cooking": false,
-      "checkbox-interests-Fitness": false,
-      "checkbox-interests-Gardening": false,
-      "checkbox-interests-Hiking": false,
-      "checkbox-interests-Music": false,
-      "checkbox-interests-Puzzles": false,
-      "checkbox-interests-Reading": false,
-      "checkbox-interests-Sports": false,
-      "checkbox-interests-Travel": false,
-      "checkbox-interests-Yoga": false,
-      "checkbox-personality-Adventurous": false,
-      "checkbox-personality-Analytical": false,
-      "checkbox-personality-Creative": false,
-      "checkbox-personality-Extroverted": false,
-      "checkbox-personality-Introverted": false,
-      "checkbox-personality-Laid-Back": false,
-      "checkbox-personality-Open": false,
-      "checkbox-personality-Outgoing": false,
-      "checkbox-personality-Private": false,
-      "checkbox-personality-Quiet": false,
+      ...checkBoxData,
       "image-banner": listingAccount ? listingAccount.banner_picture : null,
       "image-main": listingAccount ? listingAccount.display_picture : null,
       "image-profile": listingAccount ? listingAccount.profile_picture : null,
-      // not yet implemented in backend
       priceRange: [
         listingAccount ? listingAccount.price_range_min : 400,
         listingAccount ? listingAccount.price_range_max : 1200,
       ],
     });
-    console.log("listingAccount: ", listingAccount);
+    setAge(listingAccount ? listingAccount.age_range : "");
+
+    setValue("Age", listingAccount ? listingAccount.age_range : "");
   }, [listingAccount]);
 
   // react-hook-form state management
@@ -100,6 +110,8 @@ function MyAccount(props) {
     register,
     handleSubmit,
     control,
+    watch,
+    setValue,
     formState: { errors },
     reset,
   } = useForm({});
@@ -118,12 +130,12 @@ function MyAccount(props) {
       }
     }
 
-    listingAccount.About = data.About;
-    listingAccount.Age = data.Age;
+    listingAccount.tell_us_about_yourself = data.About;
+    listingAccount.age_range = data.Age;
     listingAccount.Location = data.Location;
     listingAccount.Occupation = data.Occupation;
     listingAccount.Phone = data.Phone;
-    listingAccount.Preferences = data.Preferences;
+    listingAccount.preferences = data.Preferences;
     listingAccount.profile_picture = data["image-profile"];
     listingAccount.banner_picture = data["image-banner"];
     listingAccount.display_picture = data["image-main"];
@@ -132,11 +144,9 @@ function MyAccount(props) {
     listingAccount.personalityTraits = personalityTraits;
     listingAccount.interests = interests;
 
-    console.log("listingAccount: ", listingAccount);
     setTriggerConfirmed(true);
 
     // call update_listing_account here
-    console.log("update_listing_account: ", listingAccount);
     update_listing_account(listingAccount);
   };
 
@@ -205,6 +215,13 @@ function MyAccount(props) {
               defaultValue={null}
               render={({ field }) => (
                 <ImageUpload
+                  defaultLink={
+                    listingAccount
+                      ? listingAccount.banner_picture
+                        ? `http://127.0.0.1:8000${listingAccount.banner_picture}`
+                        : null
+                      : null
+                  }
                   width="73vw"
                   height="30vh"
                   wide={true}
@@ -220,6 +237,13 @@ function MyAccount(props) {
                   defaultValue={null}
                   render={({ field }) => (
                     <ImageUpload
+                      defaultLink={
+                        listingAccount
+                          ? listingAccount.profile_picture
+                            ? `http://127.0.0.1:8000${listingAccount.profile_picture}`
+                            : null
+                          : null
+                      }
                       width="180px"
                       height="180px"
                       returnSelected={(e) => field.onChange(e)}
@@ -254,16 +278,19 @@ function MyAccount(props) {
 
             <Stack direction="row">
               <MyAccountTextfield
+
                 type="text"
                 placeholder="Name"
                 {...register("Name")}
                 error={errors.Name}
+                disabled={true}
               />
               <MyAccountTextfield
                 type="text"
                 placeholder="Username"
                 {...register("Username")}
                 error={errors.Username}
+                disabled={true}
               />
             </Stack>
             <Stack direction="row">
@@ -280,9 +307,12 @@ function MyAccount(props) {
                 />
 
                 <MyAccountDropdown
+                  name="Age"
                   placeholder="Age"
                   {...register("Age", { required: true })}
-                  items={ageRanges}
+                  items={ageOptions}
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
                 />
 
                 <MyAccountTextfield
@@ -297,7 +327,16 @@ function MyAccount(props) {
                   control={control}
                   defaultValue={null}
                   render={({ field }) => (
-                    <ImageUpload returnSelected={(e) => field.onChange(e)} />
+                    <ImageUpload
+                      defaultLink={
+                        listingAccount
+                          ? listingAccount.display_picture
+                            ? `http://127.0.0.1:8000${listingAccount.display_picture}`
+                            : null
+                          : null
+                      }
+                      returnSelected={(e) => field.onChange(e)}
+                    />
                   )}
                 />
               </Box>
@@ -458,6 +497,7 @@ const MyAccountTextfield = React.forwardRef((props, ref) => {
 
 function MyAccountDropdown(props) {
   const { value, onChange, children, placeholder, items } = props;
+
   return (
     <FormControl
       variant="outlined"
@@ -514,10 +554,10 @@ function MyAccountDropdown(props) {
           }}
           {...props}
         >
-          {items.map((child, index) => (
+          {items.map((item) => (
             <MenuItem
-              key={index}
-              value={child}
+              key={item.key}
+              value={item.value}
               sx={{
                 "&:not(:last-child)": {
                   borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
@@ -527,7 +567,7 @@ function MyAccountDropdown(props) {
                 },
               }}
             >
-              {child}
+              {item.value}
             </MenuItem>
           ))}
         </Select>
@@ -537,7 +577,7 @@ function MyAccountDropdown(props) {
 }
 
 const MyAccountMultilineField = React.forwardRef((props, ref) => {
-  const { placeholder, ...rest } = props;
+  const { placeholder, value, ...rest } = props;
   return (
     <MyAccountTextfield
       ref={ref}
@@ -686,6 +726,7 @@ function MyAccountCheckBoxes(props) {
                 control={
                   <Checkbox
                     {...field}
+                    checked={field.value}
                     icon={BpIcon}
                     checkedIcon={BpCheckedIcon}
                     // styling

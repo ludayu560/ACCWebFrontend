@@ -21,8 +21,8 @@ const ImageUpload = (props) => {
     }
   }, [selectedImage]);
 
-  const placeholderImageUrl = require("../../assets/images/missingImage.png");
-  const placeholderImageUrlWide = require("../../assets/images/missingImageWide.png");
+  const placeholderImageUrl = (defaultLink && defaultLink !== undefined)? defaultLink : require("../../assets/images/missingImage.png");
+  const placeholderImageUrlWide = (defaultLink && defaultLink !== undefined)? defaultLink : require("../../assets/images/missingImageWide.png");
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {

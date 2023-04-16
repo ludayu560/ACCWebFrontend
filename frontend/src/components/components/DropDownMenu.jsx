@@ -53,6 +53,7 @@ function DropDownMenu(props) {
   const handleClose = () => {
     hook(getSelectedStrings())
     setAnchorEl(null);
+    console.log("getselectedstrings: " + getSelectedStrings());
   };
 
   return (
