@@ -47,10 +47,12 @@ function BlogsDisplay({ props, isAuthenticated }) {
 
   return (
     <div>
-      <div className="acc-blog-section blog-hero blog-header-txt">
-        <a className="btn link-btn">Inspiring Women</a>
-        <Typography variant="h2" fontWeight={"500"}>Stacy Abrams</Typography>
-        <p>DECEMBER 13, 2022 - BY AISHA COMFORTABLE COLIVING - NO COMMENTS</p>
+      <div className="acc-blog-section blog-hero ">
+        <div className="blog-header-txt" >
+          <a className="btn link-btn">Inspiring Women</a>
+          <Typography variant="h2" fontWeight={"500"}>Stacy Abrams</Typography>
+          <p>DECEMBER 13, 2022 - BY AISHA COMFORTABLE COLIVING - NO COMMENTS</p>
+        </div>
       </div>
 
       <div className="acc-section">
@@ -71,7 +73,7 @@ function BlogsDisplay({ props, isAuthenticated }) {
               </textarea>
             </div>
           </div>
-          <div>
+          <div className="socials-wrapper">
             <Typography variant="p" fontWeight={"medium"}>Share this:</Typography>
             <div className="socials">
               <a className="btn tag-btn">Twitter</a>
@@ -86,17 +88,17 @@ function BlogsDisplay({ props, isAuthenticated }) {
           </div>
           <div className="tags">
             <Typography variant="p" fontWeight={"medium"}> Tags:</Typography>
-            <div>
-              <a>COLIVING</a>
-              <a>WOMAN HOMEOWNER</a>
-              <a>SHORT STAYS</a>
-              <a>WOMAN EMPOWERMENT</a>
-              <a>SHORT-TERM ACCOMODATION</a>
-              <a>FINANCIALS</a>
-              <a>RURAL AREAS</a>
+            <div className="tags-wrapper">
+              <a className="btn tag-btn">COLIVING</a>
+              <a className="btn tag-btn">WOMAN HOMEOWNER</a>
+              <a className="btn tag-btn">SHORT STAYS</a>
+              <a className="btn tag-btn">WOMAN EMPOWERMENT</a >
+              <a className="btn tag-btn">SHORT-TERM ACCOMODATION</a>
+              <a className="btn tag-btn">FINANCIALS</a>
+              <a className="btn tag-btn">RURAL AREAS</a>
             </div>
           </div>
-          <div>
+          <div className="prev-next-blog">
             <a> The Need for Women 50+</a>
             <a> The Need for Women 50+</a>
           </div>
