@@ -61,7 +61,6 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
   useEffect(() => {
     if (attending_events) {
       setUpcomingEventsArray(attending_events);
-      //get_events_attending(listingAccount.id)
       console.log(attending_events)
     }
   }, [attending_events]);
