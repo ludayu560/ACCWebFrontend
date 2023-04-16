@@ -23,13 +23,8 @@ import SideNav from "../components/SideNav";
 import { update_listing_account } from "../../Redux/actions/listingAccount";
 
 const personalityTraits =
-  "Extroverted Outgoing Creative Private Quiet Introverted Open Analytical Laid-Back Adventurous".split(
-    " "
-  );
-const interests =
-  "Gardening Hiking Reading Puzzles Yoga Fitness Cooking Music Art Sports Cars Travel".split(
-    " "
-  );
+  "Extroverted Outgoing Creative Private Quiet Introverted Open Analytical Laid-Back Adventurous".split(" ");
+const interests = "Gardening Hiking Reading Puzzles Yoga Fitness Cooking Music Art Sports Cars Travel".split(" ");
 const ageRanges = ["<18", "18-25", "26-35", "46-55", "56-65", "65+"];
 const ageOptions = [
   { label: "<18", value: "<18" },
@@ -84,9 +79,7 @@ function MyAccount(props) {
       About: listingAccount ? listingAccount.tell_us_about_yourself : "",
       Age: listingAccount ? listingAccount.age_range : "",
       Location: listingAccount ? listingAccount.location : "",
-      Name: listingAccount
-        ? listingAccount.first_name + " " + listingAccount.last_name
-        : "",
+      Name: listingAccount ? listingAccount.first_name + " " + listingAccount.last_name : "",
       Occupation: listingAccount ? listingAccount.occupation : "",
       Phone: listingAccount ? listingAccount.phone_number : "",
       Preferences: listingAccount ? listingAccount.preferences : "",
@@ -157,35 +150,20 @@ function MyAccount(props) {
   // }, [watchedValues]);
 
   return (
-    <>
-      <ActionConfirmed
-        trigger={triggerConfirmed}
-        onActionCompleted={() => setTriggerConfirmed(false)}
-      />
+    <div>
+      <ActionConfirmed trigger={triggerConfirmed} onActionCompleted={() => setTriggerConfirmed(false)} />
 
-      <Box
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        width="30vw"
-        margin="4vw"
-      >
-        <Typography
-          variant="h2"
-          padding="3vw"
-          paddingBottom="3px"
-          fontWeight={700}
-        >
+      <Box display="flex" flexDirection="column" alignItems="left" margin="4vw">
+        <Typography variant="h2" padding="3vw" paddingBottom="3px" fontWeight='bold'>
           My Account
         </Typography>
         <Divider
-          variant="middle"
           sx={{
-            width: "60%",
+            width: "15%",
             border: "3px solid",
             borderColor: "primary.main",
             opacity: 100,
+            ml: "5vw"
           }}
         />
       </Box>
@@ -202,8 +180,7 @@ function MyAccount(props) {
                 height: "50px",
                 marginTop: "30px",
                 borderRadius: "15px",
-              }}
-            >
+              }}>
               Get Verified
             </Button>
           </Box>
@@ -261,24 +238,16 @@ function MyAccount(props) {
               color={"primary.main"}
               fontWeight="bold"
               marginTop={"2vmin"}
-              width={"75vw"}
-            >
+              width={"75vw"}>
               {accountType.charAt(0).toUpperCase() + accountType.slice(1)}
             </Typography>
             <SectionHeader>Personal Details</SectionHeader>
-            <Typography
-              color="#737373FA"
-              fontSize="24px"
-              fontWeight="600"
-              marginLeft="20px"
-              marginTop="-40px"
-            >
+            <Typography color="#737373FA" fontSize="24px" fontWeight="600" marginLeft="20px" marginTop="-40px">
               *This information will not be visible on your public profile.
             </Typography>
 
             <Stack direction="row">
               <MyAccountTextfield
-
                 type="text"
                 placeholder="Name"
                 {...register("Name")}
@@ -295,16 +264,8 @@ function MyAccount(props) {
             </Stack>
             <Stack direction="row">
               <Box display="flex" flexDirection="column">
-                <MyAccountTextfield
-                  type="tel"
-                  placeholder="Phone"
-                  {...register("Phone", { required: true })}
-                />
-                <MyAccountTextfield
-                  type="text"
-                  placeholder="Location"
-                  {...register("Location", { required: true })}
-                />
+                <MyAccountTextfield type="tel" placeholder="Phone" {...register("Phone", { required: true })} />
+                <MyAccountTextfield type="text" placeholder="Location" {...register("Location", { required: true })} />
 
                 <MyAccountDropdown
                   name="Age"
@@ -382,21 +343,13 @@ function MyAccount(props) {
                   <Box width="50%">
                     <SectionHeader>Personality Traits</SectionHeader>
                     <Box width="100%">
-                      <MyAccountCheckBoxes
-                        MenuItems={personalityTraits}
-                        control={control}
-                        prefix="personality"
-                      />
+                      <MyAccountCheckBoxes MenuItems={personalityTraits} control={control} prefix="personality" />
                     </Box>
                   </Box>
                   <Box width="50%">
                     <SectionHeader>Interests</SectionHeader>
                     <Box width="100%">
-                      <MyAccountCheckBoxes
-                        MenuItems={interests}
-                        control={control}
-                        prefix="interests"
-                      />
+                      <MyAccountCheckBoxes MenuItems={interests} control={control} prefix="interests" />
                     </Box>
                   </Box>
                 </Stack>
@@ -404,12 +357,7 @@ function MyAccount(props) {
             ) : null}
           </Stack>
         </Stack>
-        <Box
-          display="flex"
-          justifyContent="center"
-          marginTop="10vh"
-          marginBottom="15vh"
-        >
+        <Box display="flex" justifyContent="center" marginTop="10vh" marginBottom="15vh">
           <Button
             type="submit"
             variant="contained"
@@ -417,15 +365,14 @@ function MyAccount(props) {
               width: "15vw",
               height: "75px",
               borderRadius: "30px",
-            }}
-          >
+            }}>
             <Typography fontWeight={500} fontSize={24}>
               Save
             </Typography>
           </Button>
         </Box>
       </form>
-    </>
+    </div>
   );
 }
 
@@ -505,16 +452,14 @@ function MyAccountDropdown(props) {
         marginY: "20px",
         marginRight: "100px",
         width: "25vw",
-      }}
-    >
+      }}>
       <InputLabel
         shrink={true}
         placeholder={placeholder}
         sx={{
           paddingLeft: (theme) => theme.spacing(2),
           paddingRight: (theme) => theme.spacing(2),
-        }}
-      >
+        }}>
         {placeholder}
       </InputLabel>
       <Box
@@ -522,8 +467,7 @@ function MyAccountDropdown(props) {
           background: "#E3E7EF",
           borderRadius: "30vmax",
           width: "25vw",
-        }}
-      >
+        }}>
         <Select
           value={value}
           onChange={onChange}
@@ -552,8 +496,7 @@ function MyAccountDropdown(props) {
               },
             },
           }}
-          {...props}
-        >
+          {...props}>
           {items.map((item) => (
             <MenuItem
               key={item.key}
@@ -565,8 +508,7 @@ function MyAccountDropdown(props) {
                 "&:hover": {
                   background: "rgba(0, 0, 0, 0.08)",
                 },
-              }}
-            >
+              }}>
               {item.value}
             </MenuItem>
           ))}
@@ -669,8 +611,7 @@ function MyAccountCheckBoxes(props) {
         height: boxSize,
         boxShadow: "0 0 0 1px #EFE9E5",
         backgroundColor: "#E3E7EF",
-        backgroundImage:
-          "linear-gradient(180deg,hsla(0,0%,100%,.05),hsla(0,0%,100%,0))",
+        backgroundImage: "linear-gradient(180deg,hsla(0,0%,100%,.05),hsla(0,0%,100%,0))",
         ".Mui-focusVisible &": {
           outline: "2px auto #E3E7EF",
           outlineOffset: 2,
@@ -692,8 +633,7 @@ function MyAccountCheckBoxes(props) {
         width: boxSize,
         height: boxSize,
         backgroundColor: "primary.main",
-        backgroundImage:
-          "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
+        backgroundImage: "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
         "&:before": {
           display: "block",
           width: boxSize,
