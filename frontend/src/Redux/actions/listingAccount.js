@@ -110,7 +110,7 @@ export const update_listing_account = (listingAccount) => async dispatch => {
 
             // we ignore the profile picture if it is a string as it is a url and not a file
             // this happens when we are updating the listing account and the profile picture is not changed
-            // the backend returns the url of the profile picture and we don't want to send that to the backend
+            // the backend returns the url of the profile picture and we don't want to send that back to the backend
             if (listingAccount.profile_picture && typeof listingAccount.profile_picture !== 'string') {
                 formData.append('profile_picture', listingAccount.profile_picture);
             }
@@ -128,13 +128,15 @@ export const update_listing_account = (listingAccount) => async dispatch => {
             const PTDeleteRES = await axios.delete(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.user}/`, config);
             const IDeleteRes = await axios.delete(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.user}/`, config);
 
+            console.log(listingAccount.personalityTraits)
             const PersonalTraitsformData = new FormData();
             PersonalTraitsformData.append('trait', null);
             PersonalTraitsformData.append('listing_account', listingAccount.user)
-            for (let i = 0; i < listingAccount.traits.length; i++) {
-                PersonalTraitsformData.set('trait', listingAccount.traits[i]);
+            for (let i = 0; i < listingAccount.personalityTraits.length; i++) {
+                PersonalTraitsformData.set('trait', listingAccount.personalityTraits[i]);
                 const res = axios.post(`${process.env.REACT_APP_API_URL}/PersonalTraits/`, PersonalTraitsformData, config);
             }
+            console.log(listingAccount.interests)
             const interestformData = new FormData();
             interestformData.append('interest', null);
             interestformData.append('listing_account', listingAccount.user);
@@ -173,8 +175,8 @@ export const load_listing_current = (id) => async dispatch => {
             var listingAccount = res.data;
             const interests = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.id}/`, config);
             const traits = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.id}/`, config);
-            listingAccount.traits = traits;
-            listingAccount.interests = interests;
+            listingAccount.traits = traits.data;
+            listingAccount.interests = interests.data;
 
             dispatch({
                 type: LISTINGACCOUNT_LOAD_CURRENT_SUCCESS,
@@ -209,8 +211,8 @@ export const load_listing = (id) => async dispatch => {
             var listingAccount = res.data[0];
             const interests = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/Interest/${listingAccount.user}/`, config);
             const traits = await axios.get(`${process.env.REACT_APP_API_URL}/ListingAccount/PersonalTrait/${listingAccount.user}/`, config);
-            listingAccount.traits = traits;
-            listingAccount.interests = interests;
+            listingAccount.traits = traits.data;
+            listingAccount.interests = interests.data;
             dispatch({
                 type: LISTINGACCOUNT_LOAD_SUCCESS,
                 payload: listingAccount
