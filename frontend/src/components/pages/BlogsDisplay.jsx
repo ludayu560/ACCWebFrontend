@@ -41,15 +41,76 @@ import LogoVariant2 from "../../assets/LogoVariant2.svg";
 import { connect } from "react-redux";
 import SearchBar from "../components/SearchBar";
 import ECard from "../components/ECard";
+import blogStyles from "../pageStyles/blogStyles.css";
 
 function BlogsDisplay({ props, isAuthenticated }) {
 
   return (
     <div>
+      <div className="acc-blog-section blog-hero blog-header-txt">
+        <a className="btn link-btn">Inspiring Women</a>
+        <Typography variant="h2" fontWeight={"500"}>Stacy Abrams</Typography>
+        <p>DECEMBER 13, 2022 - BY AISHA COMFORTABLE COLIVING - NO COMMENTS</p>
+      </div>
 
-
-      
+      <div className="acc-section">
+        <div className="acc-blog-container">
+          <div className="md-wrapper">
+            <textarea style={{ width: "80ch", height: "auto" }}>
+            </textarea>
+          </div>
+          <div className="enjoy-read">
+            <h3>Enjoy Your Read?</h3>
+            <h4>Check our some of our other blogs!</h4>
+            <a className="btn link-btn">LET'S GO</a>
+          </div>
+          <div className="references">
+            <Typography variant="p" fontWeight={"medium"}>References</Typography>
+            <div className="md-wrapper">
+              <textarea style={{ width: "80ch", height: "auto", paddingTop: "1rem" }}>
+              </textarea>
+            </div>
+          </div>
+          <div>
+            <Typography variant="p" fontWeight={"medium"}>Share this:</Typography>
+            <div className="socials">
+              <a className="btn tag-btn">Twitter</a>
+              <a className="btn tag-btn">Facebook</a>
+              <a className="btn tag-btn">Linkedin</a>
+              <a className="btn tag-btn">Email</a>
+            </div>
+          </div>
+          <div className="likes">
+            <Typography variant="p" fontWeight={"medium"}>Like this:</Typography>
+            <p>Be the first to like this.</p>
+          </div>
+          <div className="tags">
+            <Typography variant="p" fontWeight={"medium"}> Tags:</Typography>
+            <div>
+              <a>COLIVING</a>
+              <a>WOMAN HOMEOWNER</a>
+              <a>SHORT STAYS</a>
+              <a>WOMAN EMPOWERMENT</a>
+              <a>SHORT-TERM ACCOMODATION</a>
+              <a>FINANCIALS</a>
+              <a>RURAL AREAS</a>
+            </div>
+          </div>
+          <div>
+            <a> The Need for Women 50+</a>
+            <a> The Need for Women 50+</a>
+          </div>
+          <div>
+            <h3>Comments</h3>
+            <div>
+              <h3>Leave a Reply</h3>
+              <textarea></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
   );
 }
 

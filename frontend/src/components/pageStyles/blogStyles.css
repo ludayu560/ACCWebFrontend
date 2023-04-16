@@ -1,0 +1,57 @@
+.blog-hero {
+    background-image: url("../../assets/StaceyAbrams.png");
+    background-size: cover;
+    padding: 2rem;
+    height: 22rem;
+}
+
+.blog-header-txt {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: white;
+    justify-content: end;
+    gap: 1rem;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    width: 14rem;
+    height: auto;
+    padding: 0.8rem;
+    border-radius: 4rem;
+    text-decoration: none;
+}
+
+.btn:hover {}
+
+.link-btn {
+    background-color: rgba(197, 38, 92, 0.75);
+    color: white;
+}
+
+
+.enjoy-read {
+    background-color: #113170;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.socials{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.tag-btn {
+    padding: 1rem;
+    border: 1px solid #ACACAC;
+    border-radius: 2rem;
+    background-color: transparent;
+}
+.references {}
