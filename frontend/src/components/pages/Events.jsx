@@ -32,7 +32,8 @@ import axios from "axios";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { create_event, load_events_upcoming } from "../../Redux/actions/event";
+import { create_event } from "../../Redux/actions/event";
+import { get_events_attending } from "../../Redux/actions/events";
 import { connect } from "react-redux";
 import ImageUpload from "../components/ImageUploadComponent";
 import Listing from "./Listing";
@@ -51,16 +52,18 @@ const CustomCheckboxStyles = {
   },
 };
 
-function Events({ create_event, listingAccount, eventsUpcoming }) {
+function Events({ create_event, listingAccount, attending_events, get_events_attending }) {
   const navigate = useNavigate();
   const [upcomingEventsArray, setUpcomingEventsArray] = useState([]);
+  console.log("upcomingeventsarray: ", upcomingEventsArray)
+  console.log("attending_events: ", attending_events)
+
   useEffect(() => {
-    load_events_upcoming()
-    if (eventsUpcoming) {
-      setUpcomingEventsArray(eventsUpcoming);
-      console.log(eventsUpcoming)
+    if (attending_events) {
+      setUpcomingEventsArray(attending_events);
+      console.log(attending_events)
     }
-  }, [eventsUpcoming]);
+  }, [attending_events]);
   
   const [image, setImage] = useState(null);
   const [form, setForm] = useState({
@@ -130,12 +133,11 @@ function Events({ create_event, listingAccount, eventsUpcoming }) {
           <Grid item xs="auto">
             <ECard
               variant="event"
-              time={item.event_date_time}
               name={item.event_name}
               location={item.event_location}
-              interested={item.event_interested}
-              going={item.event_going}
-              image={'http://127.0.0.1:8000'+ item.event_image}
+              description={item.event_description}
+              time={item.event_date_time}
+              image={item.event_image}
             />
           </Grid>
         ))}
@@ -552,7 +554,7 @@ function Events({ create_event, listingAccount, eventsUpcoming }) {
 
 const mapStateToProps = (state) => ({
   listingAccount: state.auth.listingAccount,
-  eventsUpcoming: state.auth.eventsUpcoming,
+  attending_events: state.auth.attending_events,
 });
 
-export default connect(mapStateToProps, { create_event, load_events_upcoming })(Events);
+export default connect(mapStateToProps, { create_event, get_events_attending })(Events);

@@ -152,7 +152,6 @@ export const load_event = (id) => async dispatch => {
 };
 
 export const load_events_upcoming = () => async dispatch => {
-    console.log("pls work")
     if (localStorage.getItem('access')) {
         try {
             const config = {
