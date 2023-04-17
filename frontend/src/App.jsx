@@ -104,6 +104,9 @@ function App() {
             <Route exact path="/blogsCategory" element={<BlogsCategory/>} />
             <Route exact path="/blogsCreate" element={<BlogsCreate/>} />
             <Route exact path="/blogsDisplay" element={<BlogsDisplay/>} />
+
+            <Route exact path="/privateEventPage" element={<PrivateEventPage/>} />
+
             
             <Route exact path="/howItWorks" element={<HowItWorks />} />
             <Route exact path="/contact" element={<Contact />} />

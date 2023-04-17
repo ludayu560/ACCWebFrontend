@@ -17,8 +17,11 @@ import ImageUpload from "../components/ImageUploadComponent";
 
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import { connect } from "react-redux";
+import { create_private_event } from "../../Redux/actions/privateEvent";
 
-const PrivateEventPage = () => {
+const PrivateEventPage = (props) => {
+  const { listingAccount, create_private_event } = props;
   const [guests, setGuests] = useState([{ id: 0 }]);
 
   const addGuest = () => {
@@ -37,21 +40,23 @@ const PrivateEventPage = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    var create_private_event = {
-      event_name: data.eventTItle,
-      event_data_time: data.timeDate,
+    var newEvent = {
+      event_name: data.eventTitle,
+      event_date_time: data.timeDate,
       event_location: data.location,
       event_description: data.eventDescription,
       event_what_to_bring: data.whatToBring,
       event_image: null,
-      invited: data.guests
-    }
+      event_invited: data.guests,
+      creator_listing_account: listingAccount.id,
+    };
+    create_private_event(newEvent);
   };
   // debug console.log for watched values
-  const watchedValues = watch();
-  useEffect(() => {
-    console.log("Current form values:", watchedValues);
-  }, [watchedValues]);
+  // const watchedValues = watch();
+  // useEffect(() => {
+  //   console.log("Current form values:", watchedValues);
+  // }, [watchedValues]);
 
   return (
     <Box marginX={"10vw"} marginBottom={"10vh"}>
@@ -353,4 +358,11 @@ const MultilineField = React.forwardRef((props, ref) => {
   );
 });
 
-export default PrivateEventPage;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  listingAccount: state.auth.listingAccount,
+});
+
+export default connect(mapStateToProps, { create_private_event })(
+  PrivateEventPage
+);

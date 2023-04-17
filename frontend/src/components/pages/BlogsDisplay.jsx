@@ -5,13 +5,14 @@ import "../pageStyles/blogStyles.css";
 
 function BlogsDisplay(props) {
   const { currentBlog } = props
+  console.log(currentBlog)
   return currentBlog ? (
     <div>
       <div className="acc-blog-section blog-hero ">
         <div className="blog-header-txt">
           <a className="btn link-btn">Inspiring Women</a>
           <Typography variant="h2" fontWeight={"500"}>
-            {currentBlog.Title}
+            {currentBlog.title}
           </Typography>
           <p>
             {currentBlog.created}- {currentBlog.author} - NO COMMENTS
@@ -62,13 +63,18 @@ function BlogsDisplay(props) {
               Tags:
             </Typography>
             <div className="tags-wrapper">
-              <a className="btn tag-btn">{currentBlog.tags}</a>
+              {
+                currentBlog.tags.map((tag) => {
+                  return <a className="btn tag-btn">{tag}</a>
+                })
+              }
+              {/* <a className="btn tag-btn">{currentBlog.tags}</a>
               <a className="btn tag-btn">WOMAN HOMEOWNER</a>
               <a className="btn tag-btn">SHORT STAYS</a>
               <a className="btn tag-btn">WOMAN EMPOWERMENT</a>
               <a className="btn tag-btn">SHORT-TERM ACCOMODATION</a>
               <a className="btn tag-btn">FINANCIALS</a>
-              <a className="btn tag-btn">RURAL AREAS</a>
+              <a className="btn tag-btn">RURAL AREAS</a> */}
             </div>
           </div>
           <div className="prev-next-blog">
