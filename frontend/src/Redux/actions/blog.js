@@ -26,6 +26,9 @@ export const create_blog = (blog) => async dispatch => {
             }
         };
         const formData = new FormData();
+        formData.append('title', blog.title);
+        formData.append('subtitle', blog.subtitle);
+        formData.append('background_image', blog.background_image);
         formData.append('category_type', blog.category_type);
         formData.append('markdown_content', blog.markdown_content);
         formData.append('created', blog.created);
@@ -60,6 +63,9 @@ export const update_blog = (blog) => async dispatch => {
             }
         };
         const formData = new FormData();
+        formData.append('title', blog.title);
+        formData.append('subtitle', blog.subtitle);
+        formData.append('background_image', blog.background_image);
         formData.append('category_type', blog.category_type);
         formData.append('markdown_content', blog.markdown_content);
         formData.append('created', blog.created);
