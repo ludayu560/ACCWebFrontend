@@ -270,6 +270,8 @@ function Blogs({ props, isAuthenticated, load_blog_current }) {
               />
             </Grid>
           ))}
+
+        
         </Grid>
         <Footer></Footer>
       </Stack>

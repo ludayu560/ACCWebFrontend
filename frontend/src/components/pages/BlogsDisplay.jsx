@@ -1,6 +1,7 @@
 import { Box, Stack } from "@mui/system";
 import { Typography } from "@mui/material";
 import { connect } from "react-redux";
+import "../pageStyles/blogStyles.css";
 
 function BlogsDisplay({ currentBlog }) {
   return currentBlog ? (
