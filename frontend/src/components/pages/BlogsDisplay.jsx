@@ -47,18 +47,18 @@ function BlogsDisplay({ currentBlog }) {
 
   return (
     <div>
-      <div className="acc-blog-section blog-hero ">
+      <div  className="acc-blog-section blog-hero ">
         <div className="blog-header-txt" >
           <a className="btn link-btn">Inspiring Women</a>
-          <Typography variant="h2" fontWeight={"500"}>Stacy Abrams</Typography>
-          <p>DECEMBER 13, 2022 - BY AISHA COMFORTABLE COLIVING - NO COMMENTS</p>
+          <Typography variant="h2" fontWeight={"500"}>{currentBlog.Title}</Typography>
+          <p>{currentBlog.created}- {currentBlog.author} - NO COMMENTS</p>
         </div>
       </div>
 
       <div className="acc-section">
         <div className="acc-blog-container">
           <div className="md-wrapper">
-            <textarea style={{ width: "80ch", height: "auto" }}>
+            <textarea value={currentBlog.markdown_content} style={{ width: "80ch", height: "auto" }}>
             </textarea>
           </div>
           <div className="enjoy-read">
@@ -66,13 +66,13 @@ function BlogsDisplay({ currentBlog }) {
             <h4>Check our some of our other blogs!</h4>
             <a className="btn link-btn">LET'S GO</a>
           </div>
-          <div className="references">
+          {/* <div className="references">
             <Typography variant="p" fontWeight={"medium"}>References</Typography>
             <div className="md-wrapper">
               <textarea style={{ width: "80ch", height: "auto", paddingTop: "1rem" }}>
               </textarea>
             </div>
-          </div>
+          </div> */}
           <div className="socials-wrapper">
             <Typography variant="p" fontWeight={"medium"}>Share this:</Typography>
             <div className="socials">
@@ -89,7 +89,7 @@ function BlogsDisplay({ currentBlog }) {
           <div className="tags">
             <Typography variant="p" fontWeight={"medium"}> Tags:</Typography>
             <div className="tags-wrapper">
-              <a className="btn tag-btn">COLIVING</a>
+              <a className="btn tag-btn">{currentBlog.tags}</a>
               <a className="btn tag-btn">WOMAN HOMEOWNER</a>
               <a className="btn tag-btn">SHORT STAYS</a>
               <a className="btn tag-btn">WOMAN EMPOWERMENT</a >
