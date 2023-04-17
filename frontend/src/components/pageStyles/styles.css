@@ -49,6 +49,9 @@ img {
     border-radius: 100px 100px 0px 0px;
 
 }
+.acc-mb {
+    margin-bottom: 5rem;
+}
 
 .btn-wrapper {
     display: flex;
@@ -99,6 +102,13 @@ img {
     font-weight: 500;
 }
 
+.flex{
+ display: flex;   
+}
+.flex-c{
+    display: flex;
+    flex-direction: column;
+}
 .header {
     font-size: 6rem;
     color: black;
@@ -118,10 +128,9 @@ img {
 }
 
 
-.pink-grad-bg {
-    background: linear-gradient(white, #FFC7DA, white);
+.img-wrapper {
+    width: 30rem;
 }
-
 .mui-h1 {
     font-size: 6rem;
 }
@@ -146,12 +155,14 @@ img {
     font-size: 1.25rem;
 }
 
-.acc-mb {
-    margin-bottom: 5rem;
-}
 
-.img-wrapper {
-    width: 30rem;
+
+
+.pad-5{
+    padding: 5rem;
+}
+.pink-grad-bg {
+    background: linear-gradient(white, #FFC7DA, white);
 }
 
 .partner-grid {

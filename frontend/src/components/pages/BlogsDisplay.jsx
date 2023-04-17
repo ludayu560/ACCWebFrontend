@@ -43,22 +43,22 @@ import SearchBar from "../components/SearchBar";
 import ECard from "../components/ECard";
 import blogStyles from "../pageStyles/blogStyles.css";
 
-function BlogsDisplay({ props, isAuthenticated }) {
+function BlogsDisplay({ currentBlog }) {
 
   return (
     <div>
-      <div className="acc-blog-section blog-hero">
+      <div  className="acc-blog-section blog-hero ">
         <div className="blog-header-txt" >
           <a className="btn link-btn">Inspiring Women</a>
-          <Typography variant="h2" fontWeight={"500"}>Stacy Abrams</Typography>
-          <p>DECEMBER 13, 2022 - BY AISHA COMFORTABLE COLIVING - NO COMMENTS</p>
+          <Typography variant="h2" fontWeight={"500"}>{currentBlog.Title}</Typography>
+          <p>{currentBlog.created}- {currentBlog.author} - NO COMMENTS</p>
         </div>
       </div>
 
       <div className="acc-section">
         <div className="acc-blog-container">
           <div className="md-wrapper">
-            <textarea style={{ width: "80ch", height: "auto" }}>
+            <textarea value={currentBlog.markdown_content} style={{ width: "80ch", height: "auto" }}>
             </textarea>
           </div>
           <div className="enjoy-read">
@@ -66,13 +66,13 @@ function BlogsDisplay({ props, isAuthenticated }) {
             <h4>Check our some of our other blogs!</h4>
             <a className="btn link-btn">LET'S GO</a>
           </div>
-          <div className="references">
+          {/* <div className="references">
             <Typography variant="p" fontWeight={"medium"}>References</Typography>
             <div className="md-wrapper">
               <textarea style={{ width: "80ch", height: "auto", paddingTop: "1rem" }}>
               </textarea>
             </div>
-          </div>
+          </div> */}
           <div className="socials-wrapper">
             <Typography variant="p" fontWeight={"medium"}>Share this:</Typography>
             <div className="socials">
@@ -89,7 +89,7 @@ function BlogsDisplay({ props, isAuthenticated }) {
           <div className="tags">
             <Typography variant="p" fontWeight={"medium"}> Tags:</Typography>
             <div className="tags-wrapper">
-              <a className="btn tag-btn">COLIVING</a>
+              <a className="btn tag-btn">{currentBlog.tags}</a>
               <a className="btn tag-btn">WOMAN HOMEOWNER</a>
               <a className="btn tag-btn">SHORT STAYS</a>
               <a className="btn tag-btn">WOMAN EMPOWERMENT</a >
@@ -99,14 +99,16 @@ function BlogsDisplay({ props, isAuthenticated }) {
             </div>
           </div>
           <div className="prev-next-blog">
-            <a> The Need for Women 50+</a>
-            <a> The Need for Women 50+</a>
+            <a className="btn prev-next-btn">&lt;  The Need for Women 50+</a>
+            <a className="btn btn prev-next-btn"> The Need for Women 50+ &gt;</a>
           </div>
-          <div>
-            <h3>Comments</h3>
-            <div>
-              <h3>Leave a Reply</h3>
-              <textarea></textarea>
+          <Typography variant="h4" mb={6} fontWeight={"medium"}> Comments</Typography>
+          <div style={{display: "flex", justifyContent: "center"}}>
+            <div className="comments-wrapper" >
+              <div className="comments">
+                <h6>Leave a Reply</h6>
+                <textarea defaultValue={"Enter your comment here..."} style={{ width: "54ch", height: "8rem", padding: "1rem" }}></textarea>
+              </div>
             </div>
           </div>
         </div>
@@ -118,6 +120,7 @@ function BlogsDisplay({ props, isAuthenticated }) {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  currentBlog: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(BlogsDisplay);
