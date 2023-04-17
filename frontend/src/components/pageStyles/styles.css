@@ -86,6 +86,12 @@ img {
     font-weight: 500;
 }
 
+.header {
+    font-size: 6rem;
+    color: black;
+    font-weight: 700;
+}
+
 .headerBlue {
     font-size: 6rem;
     color: #0045F1;
@@ -97,6 +103,7 @@ img {
     color: #F83E7D;
     font-weight: 700;
 }
+
 
 .pink-grad-bg {
     background: linear-gradient(white, #FFC7DA, white);
