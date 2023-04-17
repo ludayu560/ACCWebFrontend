@@ -145,6 +145,7 @@ export const get_recent_blog = () => async (dispatch) => {
 };
 
 export const get_category_blog = (category_type) => async (dispatch) => {
+  
   if (localStorage.getItem("access")) {
     try {
       const config = {
@@ -160,12 +161,12 @@ export const get_category_blog = (category_type) => async (dispatch) => {
         config
       );
       const blogs = res.data;
+
       dispatch({
         type: GET_CATEGORY_BLOGS_SUCCESS,
-        payload: blogs,
+        payload: blogs, 
       });
     } catch (err) {
-      console.log(err);
       dispatch({
         type: GET_CATEGORY_BLOGS_FAIL,
       });

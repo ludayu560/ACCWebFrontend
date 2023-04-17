@@ -14,10 +14,11 @@ import { connect } from "react-redux";
 import ECard from "../components/ECard";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { load_blog_current } from "../../Redux/actions/blog";
+import { load_blog_current, get_category_blog } from "../../Redux/actions/blog";
 
 
-function Blogs({ props, isAuthenticated, load_blog_current }) {
+function Blogs(props) {
+  const { load_blog_current, get_category_blog } = props;
   const navigate = useNavigate();
   const [recentBlogs, setRecentBlogs] = useState([]);
   const [usernames, setUsernames] = useState({});
@@ -48,6 +49,11 @@ function Blogs({ props, isAuthenticated, load_blog_current }) {
     load_blog_current(id);
     navigate("/blogsDisplay");
   };
+  
+  const handleEvent = (category) => {
+    get_category_blog(category);
+    navigate("/blogsCategory");
+  }
 
   useEffect(() => {
     const fetchAndSetUsernames = async () => {
@@ -121,7 +127,7 @@ function Blogs({ props, isAuthenticated, load_blog_current }) {
               sx={{ width: "377px", height: "348px", borderRadius: 5 }}
               raised
             >
-              <CardActionArea href="/blogsCategory">
+              <CardActionArea onClick={() => handleEvent("lifestyle_and_wellness")}>
                 <CardMedia
                   component="img"
                   image={require("../../assets/image 14.png")}
@@ -141,7 +147,7 @@ function Blogs({ props, isAuthenticated, load_blog_current }) {
               sx={{ width: "377px", height: "348px", borderRadius: 5 }}
               raised
             >
-              <CardActionArea href="/blogsCategory">
+              <CardActionArea onClick={() => handleEvent("inspiring_women")}>
                 <CardMedia
                   component="img"
                   image={require("../../assets/image 15.png")}
@@ -161,7 +167,7 @@ function Blogs({ props, isAuthenticated, load_blog_current }) {
               sx={{ width: "377px", height: "348px", borderRadius: 5 }}
               raised
             >
-              <CardActionArea href="/blogsCategory">
+              <CardActionArea onClick={() => handleEvent("real_estate")}>
                 <CardMedia
                   component="img"
                   image={require("../../assets/image 16.png")}
@@ -181,7 +187,7 @@ function Blogs({ props, isAuthenticated, load_blog_current }) {
               sx={{ width: "377px", height: "348px", borderRadius: 5 }}
               raised
             >
-              <CardActionArea href="/blogsCategory">
+              <CardActionArea onClick={() => handleEvent("food")}>
                 <CardMedia
                   component="img"
                   image={require("../../assets/image 17.png")}
@@ -201,7 +207,7 @@ function Blogs({ props, isAuthenticated, load_blog_current }) {
               sx={{ width: "377px", height: "348px", borderRadius: 5 }}
               raised
             >
-              <CardActionArea href="/blogsCategory">
+              <CardActionArea onClick={() => handleEvent("entertainment")}>
                 <CardMedia
                   component="img"
                   image={require("../../assets/image 18.png")}
@@ -221,7 +227,7 @@ function Blogs({ props, isAuthenticated, load_blog_current }) {
               sx={{ width: "377px", height: "348px", borderRadius: 5 }}
               raised
             >
-              <CardActionArea href="/blogsCategory">
+              <CardActionArea onClick={() => handleEvent("coliving")}>
                 <CardMedia
                   component="img"
                   image={require("../../assets/image 19 (1).png")}
@@ -283,4 +289,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { load_blog_current })(Blogs);
+export default connect(mapStateToProps, { load_blog_current, get_category_blog })(Blogs);
