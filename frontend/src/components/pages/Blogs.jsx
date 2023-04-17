@@ -1,49 +1,24 @@
 import { Box, Stack } from "@mui/system";
 import {
-  Button,
   Card,
   CardActionArea,
   CardContent,
   CardMedia,
   Grid,
-  Icon,
-  Paper,
-  TextField,
   Typography,
 } from "@mui/material";
-import HomePhoto from "../../assets/HomePhoto.png";
-import NavBar from "../components/NavBar";
 import StyledButton from "../components/StyledButton";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
-import ForestOutlinedIcon from "@mui/icons-material/ForestOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import HouseIcon from "@mui/icons-material/House";
-import PeopleIcon from "@mui/icons-material/People";
-import GppGoodIcon from "@mui/icons-material/GppGood";
-import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
-import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
-import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import Footer from "../components/Footer";
-import Mainbar from "../components/MainBar";
-import KathleenLaura from "../../assets/KathleenLaura.png";
-import Kathryn from "../../assets/Kathryn.png";
-import Partner from "../../assets/Partner.png";
-import AishaSignaturePink from "../../assets/AishaSignaturePink.svg";
-import Hands from "../../assets/Hands.png";
-import quote1 from "../../assets/Quote 1.svg";
-import quote2 from "../../assets/quote2.png";
-import img20 from "../../assets/image 20.png";
-import img13 from "../../assets/image 13.png";
-import img12 from "../../assets/image 12.png";
-import img11 from "../../assets/image 11.png";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
 import { connect } from "react-redux";
-import SearchBar from "../components/SearchBar";
 import ECard from "../components/ECard";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
+import { load_blog_current } from "../../Redux/actions/blog";
 
-function Blogs({ props, isAuthenticated }) {
+
+function Blogs({ props, isAuthenticated, load_blog_current }) {
+  const navigate = useNavigate();
   const [recentBlogs, setRecentBlogs] = useState([]);
   const [usernames, setUsernames] = useState({});
 
@@ -67,6 +42,11 @@ function Blogs({ props, isAuthenticated }) {
     );
     const userData = await response.json();
     return userData.username;
+  };
+
+  const handleOnClick = (id) => {
+    load_blog_current(id);
+    navigate("/blogsDisplay");
   };
 
   useEffect(() => {
@@ -282,7 +262,7 @@ function Blogs({ props, isAuthenticated }) {
           pb={20}
         >
           {recentBlogs.map((blog) => (
-            <Grid item xs="auto" key={blog.id}>
+            <Grid item xs="auto" onClick={() => handleOnClick(blog.id)}>
               <ECard
                 variant="blog"
                 author={usernames[blog.author]}
@@ -290,22 +270,6 @@ function Blogs({ props, isAuthenticated }) {
               />
             </Grid>
           ))}
-
-          {recentBlogs
-            ? recentBlogs.map((item) => (
-                <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
-                  <ECard
-                    variant="listing"
-                    location={item.listing_city + ", " + item.listing_province}
-                    bedrooms={item.listing_total_bedrooms}
-                    bathrooms={item.listing_bathrooms}
-                    roomsAvailable={item.listing_available_bedrooms}
-                    price={item.listing_rate}
-                    image={item.listing_image_one}
-                  />
-                </Grid>
-              ))
-            : null}
         </Grid>
         <Footer></Footer>
       </Stack>
@@ -317,4 +281,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps)(Blogs);
+export default connect(mapStateToProps, { load_blog_current })(Blogs);
