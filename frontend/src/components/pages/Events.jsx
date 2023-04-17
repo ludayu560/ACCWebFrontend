@@ -32,12 +32,15 @@ import axios from "axios";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { create_event } from "../../AuthComponents/actions/auth";
+import { create_event } from "../../Redux/actions/event";
+import { get_events_attending } from "../../Redux/actions/events";
 import { connect } from "react-redux";
 import ImageUpload from "../components/ImageUploadComponent";
 import Listing from "./Listing";
 import { useNavigate } from "react-router";
 import EventConfirm from "./EventConfirm";
+import "../pageStyles/styles.css";
+
 const CustomCheckboxStyles = {
   // the box color when unchecked
   color: "#B9B9B9",
@@ -51,8 +54,19 @@ const CustomCheckboxStyles = {
   },
 };
 
-function Events({ create_event, listingAccount }) {
+function Events({ create_event, listingAccount, attending_events, get_events_attending }) {
   const navigate = useNavigate();
+  const [upcomingEventsArray, setUpcomingEventsArray] = useState([]);
+  console.log("upcomingeventsarray: ", upcomingEventsArray);
+  console.log("attending_events: ", attending_events);
+
+  useEffect(() => {
+    if (attending_events) {
+      setUpcomingEventsArray(attending_events);
+      console.log(attending_events);
+    }
+  }, [attending_events]);
+
   const [image, setImage] = useState(null);
   const [form, setForm] = useState({
     event_name: "",
@@ -86,29 +100,38 @@ function Events({ create_event, listingAccount }) {
 
   return listingAccount !== null ? (
     <div style={{ overflowX: "hidden" }}>
-      
-      <Box component="img" src={require("../../assets/image 31.png")} />
-      <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw" mt={-80}>
-        <Stack pr={20} pt={10} pb={10}>
-          <Typography variant="h3" sx={{ color: "white", pb: 3, fontWeight: "bold" }}>
-            Events
-          </Typography>
-          <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
-            Behind Coliving,
-          </Typography>
-          <Typography variant="h1" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-            Lives Community.
-          </Typography>
-          <Grid container spacing={10} pt={5}>
-            <Grid item>
-              <StyledButton variant="pinkBtn" text="Browse Events" width="15vw" bgcolor="white" textColor="#F83E7D" />
-            </Grid>
-            <Grid item>
-              <StyledButton variant="pinkBtn" text="+ Host Event" width="15vw" />
-            </Grid>
-          </Grid>
-        </Stack>
-      </Stack>
+      <div className="acc-section">
+        <div className="acc-container">
+          <Box component="img" src={require("../../assets/image 31.png")} />
+          <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw" mt={-80}>
+            <Stack pr={20} pt={10} pb={10}>
+              <Typography variant="h3" sx={{ color: "white", pb: 3, fontWeight: "bold" }}>
+                Events
+              </Typography>
+              <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
+                Behind Coliving,
+              </Typography>
+              <Typography variant="h1" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
+                Lives Community.
+              </Typography>
+              <Grid container spacing={10} pt={5}>
+                <Grid item>
+                  <StyledButton
+                    variant="pinkBtn"
+                    text="Browse Events"
+                    width="15vw"
+                    bgcolor="white"
+                    textColor="#F83E7D"
+                  />
+                </Grid>
+                <Grid item>
+                  <StyledButton variant="pinkBtn" text="+ Host Event" width="15vw" />
+                </Grid>
+              </Grid>
+            </Stack>
+          </Stack>
+        </div>
+      </div>
 
       {/*Events Grid */}
       <Grid container spacing={10} alignContent="center" justifyContent="center" pt={10} px={10} pb={20}>
@@ -117,9 +140,16 @@ function Events({ create_event, listingAccount }) {
             Your Upcoming Events
           </Typography>
         </Grid>
-        {data.map((id) => (
+        {upcomingEventsArray.map((item) => (
           <Grid item xs="auto">
-            <ECard variant="event" />
+            <ECard
+              variant="event"
+              name={item.event_name}
+              location={item.event_location}
+              description={item.event_description}
+              time={item.event_date_time}
+              image={item.event_image}
+            />
           </Grid>
         ))}
       </Grid>
@@ -137,182 +167,203 @@ function Events({ create_event, listingAccount }) {
     </div>
   ) : (
     <div style={{ overflowX: "hidden" }}>
-      <Stack direction="row" pl={10} bgcolor="#FFE7EF" width="100vw">
-        <Stack pr={20} pt={10} pb={10}>
-          <Typography variant="h4" sx={{ color: "#F83E7D", pb: 3, fontWeight: "bold" }}>
-            Events
-          </Typography>
-          <Typography variant="h2" sx={{ fontWeight: "bold", color: "#0045F1" }}>
-            Behind Coliving,
-          </Typography>
-          <Typography variant="h2" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-            Lives Community.
-          </Typography>
+      <div className="acc-section pink-light-bg">
+        <div className="acc-container">
+          <Grid container>
+            <Grid item xs={7}>
+              <Stack py={10}>
+                <Typography variant="h4" sx={{ color: "#F83E7D", pb: 3, fontWeight: "bold" }}>
+                  Events
+                </Typography>
 
-          <Typography variant="h6" sx={{ color: "#323232", fontWeight: "bold" }} pb={10} pt={4}>
-            Join the Aisha Comfortable Coliving Community
-          </Typography>
-          <Grid container spacing={10} justifyContent="center">
-            <Grid item>
-              <StyledButton variant="pinkBtn" text="Login" width="15vw" bgcolor="white" textColor="#F83E7D" />
+                <Typography className="headerBlue" variant="h2" fontWeight="bold">
+                  Behind <span className="mui-h2 headerPink">Coliving,</span>
+                </Typography>
+                <Typography className="headerBlue" variant="h2" fontWeight="bold">
+                  Lives <span className="mui-h2 headerPink">Community.</span>
+                </Typography>
+
+                <Typography variant="h6" className="accTextcolor" fontWeight="bold" pt={4}>
+                  Join the Aisha Comfortable Coliving Community now!
+                </Typography>
+
+                <Grid container spacing={10} pt={5}>
+                  <Grid item xs="auto">
+                    <StyledButton variant="pinkBtn" text="Login" width="15rem" bgcolor="white" textColor="#F83E7D" />
+                  </Grid>
+                  <Grid item xs="auto">
+                    <StyledButton variant="pinkBtn" text="Sign Up" width="15rem" bgcolor="#F83E7D" />
+                  </Grid>
+                </Grid>
+              </Stack>
             </Grid>
-            <Grid item>
-              <StyledButton variant="pinkBtn" text="Sign Up" width="15vw" />
+            <Grid item xs={5}>
+              <Box component="img" src={require("../../assets/unsplash_gYdjZzXNWlg.png")} height="558px" />
             </Grid>
           </Grid>
-        </Stack>
-        <Box sx={{ flexGrow: 1 }} />
-        <Box component="img" src={require("../../assets/unsplash_gYdjZzXNWlg.png")} sx={{ width: "45vw" }} />
-      </Stack>
+        </div>
+      </div>
 
       {/*Pink Area*/}
-      <Stack p={8} pb={15} spacing={3} alignItems="center">
-        <Divider sx={{ width: "40%", color: "#323232" }} />
-        <Typography variant="h3" sx={{ textAlign: "center", fontWeight: "bold", color: "#0045F1", pt: 3 }}>
-          Welcome to Our Community
-        </Typography>
+      <div className="acc-section">
+        <div className="acc-container">
+          <Stack p={8} pb={15} spacing={3} alignItems="center">
+            <Divider sx={{ width: "40%", color: "#323232" }} />
+            <Typography variant="h3" sx={{ textAlign: "center", fontWeight: "bold", color: "#0045F1", pt: 3 }}>
+              Welcome to Our Community
+            </Typography>
 
-        <Typography variant="h5" sx={{ textAlign: "center", px: 25 }}>
-          We organize events so that you can meet women in your community. Our community is open to all women and those
-          who identify as woman, whether you colive or not.
-        </Typography>
-        <Typography
-          variant="h3"
-          sx={{
-            textAlign: "center",
-            color: "#F83E7D",
-            pt: 10,
-            fontWeight: "bold",
-          }}>
-          Why Join the Aisha Community?
-        </Typography>
-        <Grid container spacing={4} pt={10} justifyContent="center">
-          <Grid item>
-            <Card
+            <Typography variant="h5" sx={{ textAlign: "center", px: 25 }}>
+              We organize events so that you can meet women in your community. Our community is open to all women and
+              those who identify as woman, whether you colive or not.
+            </Typography>
+            <Typography
+              variant="h3"
               sx={{
-                width: "294px",
-                height: "511px",
-                borderRadius: 5,
-                border: 5,
-                borderColor: "#F83E7D",
-              }}
-              raised="true">
-              <Stack p={5} align="center" spacing={4} alignItems="center">
-                <PeopleOutlineIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D" }} />
-                <Typography variant="h5" sx={{ color: "#F83E7D", height: "60px" }}>
-                  Make Friends
-                </Typography>
-                <Typography variant="p">
-                  By joining the Aisha Community, you will meet other local women and make new firends. Your best friend
-                  could be just a block away!
-                </Typography>
-              </Stack>
-            </Card>
-          </Grid>
+                textAlign: "center",
+                color: "#F83E7D",
+                pt: 10,
+                fontWeight: "bold",
+              }}>
+              Why Join the Aisha Community?
+            </Typography>
+            <Grid container spacing={4} pt={10} justifyContent="center">
+              <Grid item>
+                <Card
+                  sx={{
+                    width: "294px",
+                    height: "511px",
+                    borderRadius: 5,
+                    border: 5,
+                    borderColor: "#F83E7D",
+                  }}
+                  raised="true">
+                  <Stack p={5} align="center" spacing={4} alignItems="center">
+                    <PeopleOutlineIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D" }} />
+                    <Typography variant="h5" sx={{ color: "#F83E7D", height: "60px" }}>
+                      Make Friends
+                    </Typography>
+                    <Typography variant="p">
+                      By joining the Aisha Community, you will meet other local women and make new firends. Your best
+                      friend could be just a block away!
+                    </Typography>
+                  </Stack>
+                </Card>
+              </Grid>
 
-          <Grid item>
-            <Card
-              sx={{
-                width: "294px",
-                height: "511px",
-                borderRadius: 5,
-                border: 5,
-                borderColor: "#F83E7D",
-              }}
-              raised="true">
-              <Stack p={5} align="center" spacing={4} alignItems="center">
-                <ShareOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D" }} />
-                <Typography variant="h5" sx={{ color: "#F83E7D", height: "60px" }}>
-                  Grow Your Network
-                </Typography>
-                <Typography variant="p">
-                  As a member of the Aisha Community, you will get the opportunity to build connections and plant roots
-                  in your community. No one should feel lonely.
-                </Typography>
-              </Stack>
-            </Card>
-          </Grid>
+              <Grid item>
+                <Card
+                  sx={{
+                    width: "294px",
+                    height: "511px",
+                    borderRadius: 5,
+                    border: 5,
+                    borderColor: "#F83E7D",
+                  }}
+                  raised="true">
+                  <Stack p={5} align="center" spacing={4} alignItems="center">
+                    <ShareOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D" }} />
+                    <Typography variant="h5" sx={{ color: "#F83E7D", height: "60px" }}>
+                      Grow Your Network
+                    </Typography>
+                    <Typography variant="p">
+                      As a member of the Aisha Community, you will get the opportunity to build connections and plant
+                      roots in your community. No one should feel lonely.
+                    </Typography>
+                  </Stack>
+                </Card>
+              </Grid>
 
-          <Grid item>
-            <Card
-              sx={{
-                width: "294px",
-                height: "511px",
-                borderRadius: 5,
-                border: 5,
-                borderColor: "#F83E7D",
-              }}
-              raised="true">
-              <Stack p={5} align="center" spacing={4} alignItems="center">
-                <PsychologyOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D" }} />
-                <Typography variant="h5" sx={{ color: "#F83E7D", height: "60px" }}>
-                  Reduce Stress
-                </Typography>
-                <Typography variant="p">
-                  Through our community, you will be in a supportive environment, surrounded by women who can understand
-                  and relate to you. Sharing with those who care is a great stress reliver.
-                </Typography>
-              </Stack>
-            </Card>
-          </Grid>
+              <Grid item>
+                <Card
+                  sx={{
+                    width: "294px",
+                    height: "511px",
+                    borderRadius: 5,
+                    border: 5,
+                    borderColor: "#F83E7D",
+                  }}
+                  raised="true">
+                  <Stack p={5} align="center" spacing={4} alignItems="center">
+                    <PsychologyOutlinedIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D" }} />
+                    <Typography variant="h5" sx={{ color: "#F83E7D", height: "60px" }}>
+                      Reduce Stress
+                    </Typography>
+                    <Typography variant="p">
+                      Through our community, you will be in a supportive environment, surrounded by women who can
+                      understand and relate to you. Sharing with those who care is a great stress reliver.
+                    </Typography>
+                  </Stack>
+                </Card>
+              </Grid>
 
-          <Grid item>
-            <Card
-              sx={{
-                width: "294px",
-                height: "511px",
-                borderRadius: 5,
-                border: 5,
-                borderColor: "#F83E7D",
-              }}
-              raised="true">
-              <Stack p={5} align="center" spacing={4} alignItems="center">
-                <WbTwilightIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D" }} />
-                <Typography variant="h5" sx={{ color: "#F83E7D", height: "60px" }}>
-                  Expand Your Horizons
-                </Typography>
-                <Typography variant="p">
-                  Finally through Aisha Community, you will meet a variety of women, with different skills, experiences,
-                  and personalities that can contribute to your personal growth.
-                </Typography>
-              </Stack>
-            </Card>
-          </Grid>
-        </Grid>
-      </Stack>
+              <Grid item>
+                <Card
+                  sx={{
+                    width: "294px",
+                    height: "511px",
+                    borderRadius: 5,
+                    border: 5,
+                    borderColor: "#F83E7D",
+                  }}
+                  raised="true">
+                  <Stack p={5} align="center" spacing={4} alignItems="center">
+                    <WbTwilightIcon style={{ fontSize: 100 }} sx={{ color: "#F83E7D" }} />
+                    <Typography variant="h5" sx={{ color: "#F83E7D", height: "60px" }}>
+                      Expand Your Horizons
+                    </Typography>
+                    <Typography variant="p">
+                      Finally through Aisha Community, you will meet a variety of women, with different skills,
+                      experiences, and personalities that can contribute to your personal growth.
+                    </Typography>
+                  </Stack>
+                </Card>
+              </Grid>
+            </Grid>
+          </Stack>
+        </div>
+      </div>
 
       {/*Events Square thingy*/}
-      <Stack style={{ background: "#FFF6F6" }} sx={{ p: 10, pb: 20 }}>
-        <Typography variant="h2" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2} mr="30vw">
-          See what our event attendees have to say!
-        </Typography>
-        <Grid container justifyContent="center">
-          <Grid item xs={7} mt={15}>
-            <Box component="img" src={require("../../assets/Component 2.png")} />
-          </Grid>
-          <Grid item xs={5} mt={10}>
-            <Box component="img" src={require("../../assets/image 32 (1).png")} />
-          </Grid>
-        </Grid>
-      </Stack>
+      <div className="acc-section pink-light-bg">
+        <div className="acc-container">
+          <Stack sx={{ p: 10, pb: 20 }}>
+            <Typography variant="h2" sx={{ color: "#F83E7D", fontWeight: "bold" }} p={2} mr="30vw">
+              See what our event attendees have to say!
+            </Typography>
+            <Grid container justifyContent="center">
+              <Grid item xs={7} mt={15}>
+                <Box component="img" src={require("../../assets/Component 2.png")} />
+              </Grid>
+              <Grid item xs={5} mt={10}>
+                <Box component="img" src={require("../../assets/image 32 (1).png")} />
+              </Grid>
+            </Grid>
+          </Stack>
+        </div>
+      </div>
 
       {/*Blue Stack */}
-      <Stack style={{ background: "#0045F1" }} sx={{ px: 15, py: 10 }} alignItems="center">
-        <Typography variant="h4" color="white" pb={10}>
-          Interested in planning a private event for you and your friends? Aisha Comfortable Coliving makes organizing
-          an event quick and easy, so you can just focus on having fun.
-        </Typography>
-        <StyledButton
-          variant="pinkBtn"
-          text="Host your private event"
-          width="15vw"
-          bgcolor="white"
-          textColor="#0045F1"
-        />
-      </Stack>
+      <div className="acc-section blue-bg">
+        <div className="acc-container">
+          <Stack sx={{ px: 15, py: 10 }} alignItems="center">
+            <Typography variant="h4" color="white" pb={10}>
+              Interested in planning a private event for you and your friends? Aisha Comfortable Coliving makes
+              organizing an event quick and easy, so you can just focus on having fun.
+            </Typography>
+            <StyledButton
+              variant="pinkBtn"
+              text="Host your private event"
+              width="15vw"
+              bgcolor="white"
+              textColor="#0045F1"
+            />
+          </Stack>
+        </div>
+      </div>
 
       {/*Upcoming Events*/}
-      <Stack style={{ background: " white" }} sx={{ pt: 10, pb: 40 }} alignItems="center" width="100vw">
+      <Stack style={{ background: " white" }} sx={{ pt: 10 }} alignItems="center" width="100vw">
         <Typography variant="h1" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2}>
           Upcoming Events
         </Typography>
@@ -357,53 +408,58 @@ function Events({ create_event, listingAccount }) {
       {/*Events Grid */}
       {onlineSelected && (
         <>
-          <Box component="img" src={require("../../assets/image 31 (1).png")} width="100%" mt={-45} />
+          <Box component="img" src={require("../../assets/image 31 (1).png")} width="100%" mt={-5} />
           <Typography variant="h1" align="center" fontWeight="bold" sx={{ color: "white" }} mt={-30}>
             Coming Soon!
           </Typography>
-
-          <Grid container spacing={10} alignContent="center" justifyContent="center" pt={10} bgcolor="#DEECF5" px={10}>
-            <Grid item xs={12}>
-              <Typography variant="h4" align="center" fontWeight="bold" sx={{ color: "#0045F1" }} pt={25}>
-                New things are coming… check out our in-person events.
-              </Typography>
-            </Grid>
-            {data.map((id) => (
-              <Grid item xs="auto">
-                <ECard variant="event" />
+          <div className="acc-section gray-bg">
+            <div className="acc-container">
+              <Grid container spacing={10} alignContent="center" justifyContent="center" pt={10} px={10}>
+                <Grid item xs={12}>
+                  <Typography variant="h4" align="center" fontWeight="bold" sx={{ color: "#0045F1" }} pt={25}>
+                    New things are coming… check out our in-person events.
+                  </Typography>
+                </Grid>
+                {data.map((id) => (
+                  <Grid item xs="auto">
+                    <ECard variant="event" />
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
+            </div>
+          </div>
         </>
       )}
       {inpersonSelected && (
-        <Grid
-          container
-          spacing={10}
-          alignContent="center"
-          justifyContent="center"
-          mt={-45}
-          pt={10}
-          bgcolor="#DEECF5"
-          px={10}>
-          {data.map((id) => (
-            <Grid item xs="auto">
-              <ECard variant="event" />
+        <div className="acc-section gray-bg">
+          <div className="acc-container">
+            <Grid
+              container
+              spacing={10}
+              alignContent="center"
+              justifyContent="center"
+              pt={10}
+              px={10}>
+              {data.map((id) => (
+                <Grid item xs="auto">
+                  <ECard variant="event" />
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
+          </div>
+        </div>
       )}
 
       {/*Don’t see what you’re looking for? Create your own event!*/}
-      <Stack style={{ background: "linear-gradient(#DEECF5, white)" }} sx={{ p: 15, pb: 40 }} alignItems="center">
-        <StyledButton variant="pinkBtn" text="Find More" bgcolor="#0045F1" width="20vw" />
+      <Stack style={{ background: "white" }} sx={{ p: 15, pb: 40 }} alignItems="center">
+        <StyledButton variant="pinkBtn" text="Find More" bgcolor="#0045F1" width="20rem" />
         <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2} pt={20}>
           Interested in hosting your own event?
         </Typography>
         <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2} pb={10}>
           Login to get started
         </Typography>
-        <StyledButton variant="pinkBtn" text="Login" bgcolor="#0045F1" width="20vw" />
+        <StyledButton variant="pinkBtn" text="Login" bgcolor="#0045F1" width="20rem" />
       </Stack>
 
       {/*Events Schedule
@@ -535,6 +591,7 @@ function Events({ create_event, listingAccount }) {
 
 const mapStateToProps = (state) => ({
   listingAccount: state.auth.listingAccount,
+  attending_events: state.auth.attending_events,
 });
 
-export default connect(mapStateToProps, { create_event })(Events);
+export default connect(mapStateToProps, { create_event, get_events_attending })(Events);

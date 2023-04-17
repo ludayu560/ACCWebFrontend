@@ -41,10 +41,47 @@ import LogoVariant2 from "../../assets/LogoVariant2.svg";
 import { connect } from "react-redux";
 import SearchBar from "../components/SearchBar";
 import ECard from "../components/ECard";
+import React, { useState, useEffect } from "react";
 
 function Blogs({ props, isAuthenticated }) {
-  const data = ["1", "2", "3", "4", "5", "6"];
+  const [recentBlogs, setRecentBlogs] = useState([]);
+  const [usernames, setUsernames] = useState({});
 
+  useEffect(() => {
+    const fetchRecentBlogs = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/Blogs/recent/");
+        const data = await response.json();
+        setRecentBlogs(data);
+      } catch (error) {
+        console.error("Error fetching recent blogs:", error);
+      }
+    };
+  
+    fetchRecentBlogs();
+  }, []);
+
+  const fetchUsernameById = async (authorId) => {
+    const response = await fetch(`http://127.0.0.1:8000/ListingAccount/${authorId}/`);
+    const userData = await response.json();
+    return userData.username;
+  };
+
+  useEffect(() => {
+    const fetchAndSetUsernames = async () => {
+      const uniqueAuthorIds = Array.from(new Set(recentBlogs.map((blog) => blog.author)));
+      const fetchedUsernames = await Promise.all(uniqueAuthorIds.map(fetchUsernameById));
+      const authorIdToUsername = uniqueAuthorIds.reduce((acc, id, index) => {
+        acc[id] = fetchedUsernames[index];
+        return acc;
+      }, {});
+
+      setUsernames(authorIdToUsername);
+    };
+
+    fetchAndSetUsernames();
+  }, [recentBlogs]);
+  
   return (
     <div style={{ overflowX: "hidden" }}>
       <Stack>
@@ -168,9 +205,9 @@ function Blogs({ props, isAuthenticated }) {
           </Typography>
         </Stack>
         <Grid container spacing={10} alignContent="center" justifyContent="center" pt={10} px={10} pb={20}>
-          {data.map((id) => (
-            <Grid item xs="auto">
-              <ECard variant="blog" />
+          {recentBlogs.map((blog) => (
+            <Grid item xs="auto" key={blog.id}>
+              <ECard variant="blog" author={usernames[blog.author]} blog={blog} />
             </Grid>
           ))}
         </Grid>

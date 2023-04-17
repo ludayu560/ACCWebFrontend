@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { logout } from "../../AuthComponents/actions/auth";
+import { logout } from "../../Redux/actions/auth";
 import { connect } from 'react-redux';
 import {
   AppBar,
@@ -63,7 +63,7 @@ function Mainbar({logout, setNav}) {
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/about">
               About
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/">
+            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/blogs">
               Blogs
             </Button>
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/contact">

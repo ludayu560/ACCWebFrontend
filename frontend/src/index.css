@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=OpenSans&display=swap');
-
-* {
-    font-family: 'OpenSans', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap');* {
+  font-size: 16px;
+  font-family: 'Montserrat';
+}
+h1 {
+  font-size: 6rem;
+  font-weight: 700;
 }
 
+
 body {
-  margin: 0;
-  font-family: 'OpenSans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

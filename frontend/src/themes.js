@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { connect } from "react-redux";
+import "@fontsource/montserrat";
 
 const baseTheme = createTheme({
   typography: {
-    fontFamily: `"Open Sans", sans-serif`,
+    fontFamily: "Montserrat, sans-serif",
+    body1: {
+      fontFamily: "Montserrat, sans-serif", // Use Montserrat for body text
+    },
+    body2: {
+      fontFamily: "Montserrat, sans-serif", // Use Montserrat for body text
+    },
+  },
+  box: {
+    fontFamily: "Montserrat, sans-serif",
   },
 });
 

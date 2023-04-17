@@ -45,14 +45,13 @@ function MyAccountBilling(props) {
   const [palSelected, setPalSelected] = useState();
   const [visaSelected, setVisaSelected] = useState();
 
-  
   return (
     <>
-      <Grid container spacing={8}>
+      <Grid container spacing={8} className="acc-container">
         <Grid item xs={12}>
-          <Typography variant="h2" padding={"3vw"} fontWeight={700}>
-            <b>My Account</b>
-            <Divider variant="middle" sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }} />
+          <Typography className="header" variant="h2" padding={"3vw"} fontWeight="bold">
+            My Account
+            <Divider variant="middle" sx={{ width: "15vw", border: "2px solid", borderColor: "primary.main", opacity: 100 }} />
           </Typography>
         </Grid>
         <Grid item xs={3}>
@@ -68,7 +67,8 @@ function MyAccountBilling(props) {
                   sx={{
                     m: 2,
                     width: "10vw",
-                    border: "2px solid #F83E7D",
+                    border: "2px solid",
+                    borderColor: "primary.main",
                     opacity: 100,
                   }}
                 />
@@ -207,7 +207,7 @@ function MyAccountBilling(props) {
             </Grid>
             <Grid item pb={10}>
               <Box textAlign="center">
-                <StyledButton variant='signup' text='Next' link={`/account-billsummary`}/>
+                <StyledButton variant="signup" text="Next" link={`/account-billsummary`} />
               </Box>
             </Grid>
           </Grid>

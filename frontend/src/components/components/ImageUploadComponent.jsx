@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 
 const ImageUpload = (props) => {
-  const { wide = false, returnSelected, defaultLink } = props;
+  const { wide = false, returnSelected, defaultLink, borderRadius, border} = props;
 
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -21,8 +21,8 @@ const ImageUpload = (props) => {
     }
   }, [selectedImage]);
 
-  const placeholderImageUrl = require("../../assets/images/missingImage.png");
-  const placeholderImageUrlWide = require("../../assets/images/missingImageWide.png");
+  const placeholderImageUrl = (defaultLink && defaultLink !== undefined)? defaultLink : require("../../assets/images/missingImage.png");
+  const placeholderImageUrlWide = (defaultLink && defaultLink !== undefined)? defaultLink : require("../../assets/images/missingImageWide.png");
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -52,7 +52,8 @@ const ImageUpload = (props) => {
               : `calc(${props.width ? props.width : "500px"} * 0.64)`
           }
           overflow="hidden"
-          borderRadius="30px"
+          borderRadius={borderRadius? borderRadius : "30px"}
+          border={border? border : ""}
           position="relative"
         >
           <img

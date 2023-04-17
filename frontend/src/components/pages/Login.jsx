@@ -12,8 +12,8 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
 //auth
-import { load_listing, login } from "../../AuthComponents/actions/auth";
-
+import { login } from "../../Redux/actions/auth";
+import { load_listing } from "../../Redux/actions/listingAccount";
 import StyledTextField from "../components/StyledTextField";
 import StyledButton from "../components/StyledButton";
 
@@ -45,13 +45,12 @@ const Login = ({ login, isAuthenticated, user, listingAccount }) => {
 
   const { email, password } = formData;
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
     login(email, password);
-    console.log(email,password);
+    console.log(email, password);
   };
 
   // dialog handler
@@ -74,12 +73,7 @@ const Login = ({ login, isAuthenticated, user, listingAccount }) => {
 
   return (
     <div>
-      <Button
-        onClick={handleClickOpen}
-        color="inherit"
-        size="large"
-        sx={{ color: "#F83E7D" }}
-      >
+      <Button onClick={handleClickOpen} color="inherit" size="large" sx={{ color: "#F83E7D" }}>
         Login
       </Button>
 
@@ -92,25 +86,13 @@ const Login = ({ login, isAuthenticated, user, listingAccount }) => {
             minHeight: "90vh",
             borderRadius: "30px 10vmin 10vmin 30px",
           },
-        }}
-      >
+        }}>
         <Stack direction={"row"}>
           <Box position={"relative"}>
             <Login1 height={"90vh"} padding={"0px"}></Login1>
 
-            <Stack
-              alignItems={"center"}
-              width={"100%"}
-              position={"absolute"}
-              left={"0px"}
-              top={"0px"}
-            >
-              <Stack
-                width={"80%"}
-                alignItems={"center"}
-                marginTop={"90%"}
-                spacing={2}
-              >
+            <Stack alignItems={"center"} width={"100%"} position={"absolute"} left={"0px"} top={"0px"}>
+              <Stack width={"80%"} alignItems={"center"} marginTop={"90%"} spacing={2}>
                 <LoginText1 />
                 <LoginText2 />
               </Stack>
@@ -150,26 +132,14 @@ const Login = ({ login, isAuthenticated, user, listingAccount }) => {
                     minLength="6"
                     borderRadius="100vmax"
                   />
-                  <Box width="20vw">
-                    <StyledButton
-                      variant="signup"
-                      type="submit"
-                      sx={{ width: "100%", height: "60px" }}
-                    >
-                      {" "}
-                      Login{" "}
-                    </StyledButton>
-                  </Box>
+                  <StyledButton variant="signup" type="submit" bgcolor="#F83E7D" width="25vw">
+                    Login
+                  </StyledButton>
                 </Stack>
 
-                <Stack
-                  direction={"column"}
-                  textAlign={"center"}
-                  spacing={"15px"}
-                >
+                <Stack direction={"column"} textAlign={"center"} spacing={"15px"}>
                   <Typography fontWeight={700} variant="p">
-                    Not registered yet?{" "}
-                    <Link to="/signup"> Create an Account </Link>
+                    Not registered yet? <Link to="/signup"> Create an Account </Link>
                   </Typography>
                   <Typography fontWeight={700} variant="p">
                     Forgot your Password{" "}

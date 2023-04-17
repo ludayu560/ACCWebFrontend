@@ -4,10 +4,10 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 // login set up
 import { Provider } from "react-redux";
-import Activate from "./AuthComponents/Activate";
-import ResetPassword from "./AuthComponents/ResetPassword";
-import ResetPasswordConfirm from "./AuthComponents/ResetPasswordConfirm";
-import Layout from "./AuthComponents/Layout";
+import Activate from "./Redux/Activate";
+import ResetPassword from "./Redux/ResetPassword";
+import ResetPasswordConfirm from "./Redux/ResetPasswordConfirm";
+import Layout from "./Redux/Layout";
 
 import MyAccount from "./components/pages/MyAccount";
 import MyAccountBilling from "./components/pages/MyAccountBilling";
@@ -46,6 +46,7 @@ import EventConfirm from "./components/pages/EventConfirm";
 import BlogsCreate from "./components/pages/BlogsCreate";
 import PrivateEventPage from "./components/pages/PrivateEvent";
 import { Divider, Typography } from "@mui/material";
+import BlogsDisplay from "./components/pages/BlogsDisplay";
 
 function App() {
   return (
@@ -102,6 +103,7 @@ function App() {
             <Route exact path="/blogs" element={<Blogs/>} />
             <Route exact path="/blogsCategory" element={<BlogsCategory/>} />
             <Route exact path="/blogsCreate" element={<BlogsCreate/>} />
+            <Route exact path="/blogsDisplay" element={<BlogsDisplay/>} />
             
             <Route exact path="/howItWorks" element={<HowItWorks />} />
             <Route exact path="/contact" element={<Contact />} />

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ECard from "../components/ECard";
 import SideNav from "../components/SideNav";
 import { connect } from "react-redux";
-import { load_property_listing } from "../../AuthComponents/actions/auth";
+import { load_property_listing } from "../../Redux/actions/propertyListing";
 
 function MyAccountEvents({
   eventCreated,

@@ -10,13 +10,16 @@ import {
   Typography,
   Box,
   Stack,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import StyledButton from "../components/StyledButton";
-import { ReactComponent as MissingImage } from "../../assets/Icons/missingImage.svg";
-import React, { useState } from "react";
+
+import React, { useCallback, useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
 import axios from "axios";
-import { create_property_listing } from "../../AuthComponents/actions/auth";
-import { LOGIN_SUCCESS } from "../../AuthComponents/actions/types";
+import { create_property_listing } from "../../Redux/actions/propertyListing";
+import { LOGIN_SUCCESS } from "../../Redux/actions/types";
 import ImageUpload from "../components/ImageUploadComponent";
 import CustomTextField from "../components/CustomTextField";
 import { connect } from "react-redux";
@@ -67,13 +70,15 @@ function RentalListingForm({ create_property_listing }) {
   const [listing_city, setListing_city] = useState("");
   const [listing_postal, setListing_postal] = useState("");
   const [listing_province, setListing_province] = useState("");
-  const [listing_availability_date, setListing_availability_date] = useState(null);
+  const [listing_availability_date, setListing_availability_date] =
+    useState(null);
   const [listing_type, setListing_type] = useState("");
   const [listing_total_bedrooms, setListing_total_bedrooms] = useState(null);
   const [listing_den, setListing_den] = useState(false);
   const [listing_rate, setListing_rate] = useState(null);
   const [listing_women_homeowner, setListing_women_homeowner] = useState(false);
-  const [listing_available_bedrooms, setListing_available_bedrooms] = useState(1);
+  const [listing_available_bedrooms, setListing_available_bedrooms] =
+    useState(1);
   const [listing_bathrooms, setListing_bathrooms] = useState(null);
   const [listing_housemates, setListing_housemates] = useState(null);
   const [listing_description, setListing_description] = useState("");
@@ -85,10 +90,7 @@ function RentalListingForm({ create_property_listing }) {
   const [parking, setParking] = useState("no preference");
 
   //////////////////////////////////////////////////////////////
-  const [image_1, setimage_1] = useState(null);
-  const [image_2, setimage_2] = useState(null);
-  const [image_3, setimage_3] = useState(null);
-  const [image_4, setimage_4] = useState(null);
+  const [imageArray, setImageArray] = useState([]);
 
   const HandleSubmit = async (event) => {
     event.preventDefault();
@@ -113,38 +115,18 @@ function RentalListingForm({ create_property_listing }) {
       listing_pets: pets,
       listing_ac: airCon,
       listing_description: listing_description,
-      listing_image_one: image_1,
-      listing_image_two: image_2,
-      listing_image_three: image_3,
+      listing_image_one: imageArray[0],
+      listing_image_two: imageArray[1],
+      listing_image_three: imageArray[2],
+      listing_image_four: imageArray[3],
+      listing_image_five: imageArray[4],
+      listing_image_six: imageArray[5],
+      listing_image_seven: imageArray[6],
+      listing_image_eight: imageArray[7],
+      listing_image_nine: imageArray[8],
       listing_utilities: utilities,
     };
     create_property_listing(PropertyListing);
-    // formData.append("listing_city", listing_city);
-    // formData.append("listing_postal", listing_postal);
-    // formData.append("listing_province", listing_province);
-    // formData.append("listing_availability_date", listing_availability_date);
-    // formData.append("listing_type", listing_type);
-    // formData.append("listing_total_bedrooms", listing_total_bedrooms);
-    // formData.append("listing_den", listing_den);
-    // formData.append("listing_rate", listing_rate);
-    // formData.append("listing_women_homeowner", listing_women_homeowner);
-    // formData.append("listing_available_bedrooms", listing_available_bedrooms);
-    // formData.append("listing_bathrooms", listing_bathrooms);
-    // formData.append("listing_housemates", listing_housemates);
-    // formData.append("listing_parking", parking);
-    // formData.append("listing_furnished", furnished);
-    // formData.append("listing_smoking", smoking);
-    // formData.append("listing_pets", pets);
-    // formData.append("listing_ac", airCon);
-    // formData.append("listing_description", "");
-    // formData.append("listing_image_one", image_1);
-    // formData.append("listing_image_two", image_2);
-    // formData.append("listing_image_three", image_3);
-    // formData.append("listing_image_four", image_4);
-    // formData.append("listing_utilities", utilities);
-    // for (const [key, value] of formData.entries()) {
-    //   console.log(`${key}: ${value}`);
-    // }
   };
   ///////////////////////////////////////////////////////////////////
 
@@ -159,7 +141,7 @@ function RentalListingForm({ create_property_listing }) {
 
       <Divider sx={{ p: 0.1, mx: 10 }} />
 
-      <Grid container p={4} px={10} mt={5} pb={10}>
+      <Grid container p={4} px={10} mt={5} pb={20}>
         <Grid item xs={6}>
           <Stack>
             <Typography variant="h4" sx={{ fontWeight: "bold" }}>
@@ -179,38 +161,8 @@ function RentalListingForm({ create_property_listing }) {
             <Typography variant="h6">Living Room</Typography>
           </Stack>
         </Grid>
-        <Grid item xs={6}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <ImageUpload
-                height="30vw"
-                width="45vw"
-                returnSelected={setimage_1}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <ImageUpload
-                height="10vw"
-                width="13vw"
-                returnSelected={setimage_2}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <ImageUpload
-                height="10vw"
-                width="13vw"
-                returnSelected={setimage_3}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <ImageUpload
-                height="10vw"
-                width="13vw"
-                returnSelected={setimage_4}
-              />
-            </Grid>
-          </Grid>
-        </Grid>
+        {/* Image upload carousel */}
+        <DragImageUpload setImageArray={setImageArray}></DragImageUpload>
       </Grid>
 
       {/*Add details container */}
@@ -519,4 +471,122 @@ function RentalListingForm({ create_property_listing }) {
   );
 }
 
+function DragImageUpload(props) {
+  const { setImageArray } = props;
+  const [images, setImages] = useState([]);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      if (images.length + acceptedFiles.length > 9) {
+        setOpenSnackbar(true);
+        return;
+      }
+      setImages((prevImages) =>
+        prevImages.concat(
+          acceptedFiles.map((file) =>
+            Object.assign(file, { preview: URL.createObjectURL(file) })
+          )
+        )
+      );
+      setImageArray((prevImages) =>
+        prevImages.concat(
+          acceptedFiles.map((file) =>
+            Object.assign(file, { preview: URL.createObjectURL(file) })
+          )
+        )
+      );
+    },
+    [images]
+  );
+
+  const handleRemoveImage = (imageToRemove) => {
+    setImages((prevImages) =>
+      prevImages.filter((image) => image !== imageToRemove)
+    );
+    setImageArray((prevImages) =>
+      prevImages.filter((image) => image !== imageToRemove)
+    );
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: "image/*",
+  });
+
+  return (
+    <Box>
+      <Box
+        {...getRootProps()}
+        style={{
+          border: "2px dashed #E3E6EF",
+          borderRadius: "30px",
+        }}
+        width={"30vw"}
+        marginX={"30vw"}
+        paddingY={"10vh"}
+      >
+        <input {...getInputProps()} />
+        {isDragActive ? (
+          <p>Drop images here</p>
+        ) : (
+          <Typography fontWeight={600} fontSize={16} textAlign={"center"}>
+            Drag & Drop or choose photos to upload (Max 9 photos)
+          </Typography>
+        )}
+      </Box>
+      <Box display="flex" flexWrap="wrap" mt={2} paddingX={"10vw"}>
+        {images.map((image) => (
+          <Box key={image.name} onClick={() => handleRemoveImage(image)}>
+            <label htmlFor={image.name}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                width="177px"
+                height="100px"
+                overflow="hidden"
+                position="relative"
+                marginX={"15px"}
+              >
+                <img
+                  src={image.preview}
+                  alt={image.name}
+                  style={{
+                    cursor: "pointer",
+                    borderRadius: "10px",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </Box>
+            </label>
+          </Box>
+        ))}
+      </Box>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          You can only upload a maximum of 9 images.
+        </Alert>
+      </Snackbar>
+    </Box>
+  );
+}
 export default connect(null, { create_property_listing })(RentalListingForm);

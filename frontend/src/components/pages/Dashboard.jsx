@@ -14,19 +14,25 @@ import DashboardTenantBG from "../../assets/DashboardTenantBG.png";
 import DashboardWHBG from "../../assets/DashboardWHBG.png";
 import DashboardPOBG from "../../assets/DashboardPOBG.png";
 import DashboardOtherBG from "../../assets/DashboardOtherBG.png";
-import { load_propertylistings_created } from "../../AuthComponents/actions/auth";
+import { load_propertylistings_created, load_propertylistings_recent} from "../../Redux/actions/propertyListing";
 import { handleOnClick } from "./MyAccountFavourites";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
 
-function Dashboard({ variant, isAuthenticated, listingAccount, propertyListingCreated, load_propertylistings_created }) {
+function Dashboard({ variant, isAuthenticated, listingAccount, propertyListingCreated, propertyListingRecent, load_propertylistings_created, load_propertylistings_recent }) {
   const data = ["1", "2", "3", "4"];
   const navigate = useNavigate();
   const [createdPropertyArray, setPropertyArray] = useState([]);
+  const [propertyRecentArray, setPropertyRecent] = useState([]);
   useEffect(() => {
+    load_propertylistings_recent()
     if (propertyListingCreated) {
       setPropertyArray(propertyListingCreated);
       console.log(propertyListingCreated)
+    }
+    if (propertyListingRecent) {
+      setPropertyRecent(propertyListingRecent);
+      console.log(propertyListingRecent)
     }
   }, [propertyListingCreated]);
 
@@ -158,11 +164,19 @@ function Dashboard({ variant, isAuthenticated, listingAccount, propertyListingCr
         {/*Housemate Card Area*/}
         {listingAccount.account_type === "tenant" && (
           <Grid container px={10} py={2} spacing={10} mb={20}>
-            {data.map((id) => (
-              <Grid item xs="auto">
-                <ECard variant="listing" />
-              </Grid>
-            ))}
+            {propertyRecentArray.map((item) => (
+                <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
+                  <ECard
+                    variant="listing"
+                    location={item.listing_city + ", " + item.listing_province}
+                    bedrooms={item.listing_total_bedrooms}
+                    bathrooms={item.listing_bathrooms}
+                    roomsAvailable={item.listing_available_bedrooms}
+                    price={item.listing_rate}
+                    image={'http://127.0.0.1:8000'+ item.listing_image_one}
+                  />
+                </Grid>
+              ))}
           </Grid>
         )}
         {listingAccount.account_type === "homeowner" && (
@@ -224,9 +238,10 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   listingAccount: state.auth.listingAccount,
   propertyListingCreated: state.auth.propertyListingCreated,
+  propertyListingRecent: state.auth.propertyListingRecent
 });
 
-export default connect(mapStateToProps, {load_propertylistings_created})(Dashboard);
+export default connect(mapStateToProps, {load_propertylistings_created, load_propertylistings_recent})(Dashboard);
 
 // const [curImage, setCurImage] = useState(DashboardOtherBG);
 // const [curColor, setColor] = useState("#C5265C");

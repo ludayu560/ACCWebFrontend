@@ -28,6 +28,8 @@ import {
     PROPERTYLISTING_UPDATE_FAIL,
     PROPERTYLISTING_CREATED_LOAD_SUCCESS,
     PROPERTYLISTING_CREATED_LOAD_FAIL,
+    PROPERTYLISTING_RECENT_SUCCESS,
+    PROPERTYLISTING_RECENT_FAIL,
     EVENT_LOAD_SUCCESS,
     EVENT_LOAD_FAIL,
     EVENT_CREATE_SUCCESS,
@@ -36,6 +38,8 @@ import {
     EVENT_UPDATE_FAIL,
     EVENTS_CREATED_LOAD_SUCCESS,
     EVENTS_CREATED_LOAD_FAIL,
+    EVENTS_UPCOMING_LOAD_SUCCESS,
+    EVENTS_UPCOMING_LOAD_FAIL,
     FAVORITE_CREATE_SUCCESS,
     FAVORITE_CREATE_FAIL,
     GET_FAVORITES_SUCCESS,
@@ -56,8 +60,20 @@ import {
     CREATE_HOUSEMATE_FAIL,
     GET_HOUSEMATE_SUCCESS,
     GET_HOUSEMATE_FAIL,
-    // GET_EVENTS_INTERESTED_NUMBER_SUCCESS,
-    // GET_EVENTS_INTERESTED_NUMBER_FAIL,
+    CREATE_EVENT_PRIVATE_SUCCESS,
+    CREATE_EVENT_PRIVATE_FAIL,
+    UPDATE_EVENT_PRIVATE_SUCCESS,
+    UPDATE_EVENT_PRIVATE_FAIL,
+    BLOG_CREATE_FAIL,
+    BLOG_CREATE_SUCCESS,
+    GET_RECENT_BLOGS_SUCCESS,
+    GET_RECENT_BLOGS_FAIL,
+    GET_CATEGORY_BLOGS_SUCCESS,
+    GET_CATEGORY_BLOGS_FAIL,
+    BLOG_UPDATE_SUCCESS,
+    BLOG_UPDATE_FAIL,
+    BLOG_SET_CURRENT_SUCCESS,
+    BLOG_SET_CURRENT_FAIL,
     LOGOUT
 } from '../actions/types';
 
@@ -76,6 +92,9 @@ const initialState = {
     interested_events: null,
     favorites: null,
     housemates: null,
+    currentBlog: null,
+    recentBlogs: null,
+    categoryBlogs: null,
     currentListingAccount: null,
     currentPropertyListingExtra: null, // might be redundant stuff Shonn created, if remove, please remove PROPERTYLISTING_LOAD_CURRENT_SUCCESS and load property listing current in auth action
 };
@@ -83,12 +102,26 @@ const initialState = {
 export default function (state = initialState, action) {
     const { type, payload } = action
     switch (type) {
+        case BLOG_SET_CURRENT_SUCCESS:
+            return {
+                ...state,
+                currentBlog: payload
+            };
+        case GET_CATEGORY_BLOGS_SUCCESS:
+            return {
+                ...state,
+                categoryBlogs: payload
+            };
+        case GET_RECENT_BLOGS_SUCCESS:
+            return {
+                ...state,
+                recentBlogs: payload
+            };
         case GET_HOUSEMATE_SUCCESS:
             return {
                 ...state,
                 housemates: payload
             };
-
         case PROPERTYLISTING_LOAD_CURRENT_SUCCESS:
             return {
                 ...state,
@@ -148,12 +181,22 @@ export default function (state = initialState, action) {
                 ...state,
                 propertyListingCreated: payload
             }
+        case PROPERTYLISTING_RECENT_SUCCESS:
+            return {
+                ...state,
+                propertyListingRecent: payload
+            }
         case EVENT_LOAD_SUCCESS:
             return {
                 ...state,
                 event: payload
             }
         case EVENT_UPDATE_SUCCESS:
+            return {
+                ...state,
+                event: payload
+            }
+        case EVENTS_UPCOMING_LOAD_SUCCESS:
             return {
                 ...state,
                 event: payload
@@ -219,6 +262,9 @@ export default function (state = initialState, action) {
                 eventsCreated: null,
                 attending_events: null,
                 interested_events: null,
+                currentBlog: null,
+                recentBlogs: null,
+                categoryBlogs: null,
                 favorites: null,
                 housemates: null,
                 account_type: null
@@ -237,15 +283,18 @@ export default function (state = initialState, action) {
         case PROPERTYLISTING_CREATE_FAIL:
         case PROPERTYLISTING_UPDATE_FAIL:
         case PROPERTYLISTING_CREATED_LOAD_FAIL:
+        case PROPERTYLISTING_RECENT_FAIL:
         case EVENT_LOAD_FAIL:
         case EVENT_CREATE_SUCCESS:
         case EVENT_CREATE_FAIL:
         case EVENT_UPDATE_FAIL:
         case EVENTS_CREATED_LOAD_FAIL:
+        case EVENTS_UPCOMING_LOAD_FAIL:
         case FAVORITE_CREATE_SUCCESS:
         case FAVORITE_CREATE_FAIL:
         case GET_FAVORITES_FAIL:
         case CREATE_EVENT_ATTENDING_SUCCESS:
+            
         case CREATE_EVENT_ATTENDING_FAIL:
         case GET_EVENTS_ATTENDING_FAIL:
         case CREATE_EVENT_INTERESTED_SUCCESS:
@@ -255,7 +304,18 @@ export default function (state = initialState, action) {
         case PROPERTYLISTING_LOAD_CURRENT_FAIL:
         case CREATE_HOUSEMATE_SUCCESS:
         case CREATE_HOUSEMATE_FAIL:
-            case GET_HOUSEMATE_FAIL:
+        case CREATE_EVENT_PRIVATE_SUCCESS:
+        case CREATE_EVENT_PRIVATE_FAIL:
+        case UPDATE_EVENT_PRIVATE_SUCCESS:
+        case UPDATE_EVENT_PRIVATE_FAIL:
+        case GET_HOUSEMATE_FAIL:
+        case BLOG_CREATE_FAIL:
+        case BLOG_CREATE_SUCCESS:
+        case BLOG_UPDATE_FAIL:
+        case BLOG_UPDATE_SUCCESS:
+        case GET_RECENT_BLOGS_FAIL:
+        case GET_CATEGORY_BLOGS_FAIL:
+        case BLOG_SET_CURRENT_FAIL:
         case ACTIVATION_FAIL:
             return {
                 ...state

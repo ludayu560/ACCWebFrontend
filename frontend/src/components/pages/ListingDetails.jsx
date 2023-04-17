@@ -11,7 +11,7 @@ import HousemateComponent from "../components/PropDetailHousemateComponent";
 import ImageCarousel from "../components/ImageCarousel";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { create_favorite } from "../../AuthComponents/actions/auth";
+import { create_favorite } from "../../Redux/actions/favorites";
 
 function ListingDetails({ create_favorite, currentPropertyListing, listingAccount }) {
   const [listing, setListing] = useState({
@@ -38,6 +38,11 @@ function ListingDetails({ create_favorite, currentPropertyListing, listingAccoun
     listing_image_two: "",
     listing_image_three: "",
     listing_image_four: "",
+    listing_image_five: "",
+    listing_image_six: "",
+    listing_image_seven: "",
+    listing_image_eight: "",
+    listing_image_nine: "",
     creator_listing_account: null,
   });
   const [carouselImages, setCarouselImages] = useState([]);
@@ -59,6 +64,21 @@ function ListingDetails({ create_favorite, currentPropertyListing, listingAccoun
       }
       if (currentPropertyListing.listing_image_four) {
         tempCarouselImages.push(currentPropertyListing.listing_image_four);
+      }
+      if (currentPropertyListing.listing_image_five) {
+        tempCarouselImages.push(currentPropertyListing.listing_image_five);
+      }
+      if (currentPropertyListing.listing_image_six) {
+        tempCarouselImages.push(currentPropertyListing.listing_image_six);
+      }
+      if (currentPropertyListing.listing_image_seven) {
+        tempCarouselImages.push(currentPropertyListing.listing_image_seven);
+      }
+      if (currentPropertyListing.listing_image_eight) {
+        tempCarouselImages.push(currentPropertyListing.listing_image_eight);
+      }
+      if (currentPropertyListing.listing_image_nine) {
+        tempCarouselImages.push(currentPropertyListing.listing_image_nine);
       }
 
       setCarouselImages(tempCarouselImages);
