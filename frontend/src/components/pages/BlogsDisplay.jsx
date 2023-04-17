@@ -47,7 +47,7 @@ function BlogsDisplay({ props, isAuthenticated }) {
 
   return (
     <div>
-      <div className="acc-blog-section blog-hero ">
+      <div className="acc-blog-section blog-hero">
         <div className="blog-header-txt" >
           <a className="btn link-btn">Inspiring Women</a>
           <Typography variant="h2" fontWeight={"500"}>Stacy Abrams</Typography>
