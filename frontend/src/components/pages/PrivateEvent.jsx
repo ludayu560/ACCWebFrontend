@@ -37,7 +37,15 @@ const PrivateEventPage = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    var create_private_event = {
+      event_name: data.eventTItle,
+      event_data_time: data.timeDate,
+      event_location: data.location,
+      event_description: data.eventDescription,
+      event_what_to_bring: data.whatToBring,
+      event_image: null,
+      invited: data.guests
+    }
   };
   // debug console.log for watched values
   const watchedValues = watch();
