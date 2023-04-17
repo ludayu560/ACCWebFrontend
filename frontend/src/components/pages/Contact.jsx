@@ -30,22 +30,22 @@ import ECard from "../components/ECard";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import TenantHomePageBG from "../../assets/TenantHomePageBG.png";
 import AboutBG from "../../assets/AboutBG.png";
+import "../pageStyles/styles.css";
+
+
 
 function Contact(props) {
   return (
     <>
       <div className="acc-section">
-        <div className="acc-containers">
-
+        <div className="acc-container">
           <Stack>
             {/*First Title Section*/}
             <Box component="img" src={AboutBG} height="666px"></Box>
-            <Stack sx={{ mt: -75, pb: 33 }} alignItems="center">
-              <Stack pt={10} spacing={5}>
-                <Typography variant="h1" align="center" sx={{ fontWeight: "bold", color: "white" }}>
-                  Contact Us
-                </Typography>
-              </Stack>
+            <Stack pt={10} spacing={5}>
+              <Typography variant="h1" align="center" sx={{ fontWeight: "bold", color: "white" }}>
+                Contact Us
+              </Typography>
             </Stack>
 
             {/*Our Story*/}
