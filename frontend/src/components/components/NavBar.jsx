@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
@@ -10,10 +9,11 @@ import Box from "@mui/material/Box";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 
-import AishaLogo from "../../assets/Final Logo Transparent 3.svg";
 import SignupManager from "../pages/SignupManager";
 import Login from "../pages/Login";
-import { Avatar, FormControl, IconButton, InputLabel, Menu, MenuItem, Select } from "@mui/material";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+
 import { connect } from "react-redux";
 import Logo from "../../assets/Aisha Logo.svg";
 import { useNavigate } from "react-router";

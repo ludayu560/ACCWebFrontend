@@ -9,7 +9,6 @@ import Box from "@mui/material/Box";
 
 import StyledButton from "./StyledButton";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { useUtils } from "@mui/x-date-pickers/internals";
 
 const CustomToggleButtonStyles = {
   "&.MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected":

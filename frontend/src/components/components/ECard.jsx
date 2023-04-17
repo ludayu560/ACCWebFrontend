@@ -1,19 +1,17 @@
 import React from "react";
-import {
-  Card,
-  CardMedia,
-  Box,
-  CardContent,
-  Typography,
-  Avatar,
-  Stack,
-  IconButton,
-  Grid,
-  Checkbox,
-  Button,
-  CardActionArea,
-  Divider,
-} from "@mui/material";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Box from "@mui/material/Box";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
+import IconButton from "@mui/material/IconButton";
+import Grid from "@mui/material/Grid";
+import Checkbox from "@mui/material/Checkbox";
+import Button from "@mui/material/Button";
+import CardActionArea from "@mui/material/CardActionArea";
+import Divider from "@mui/material/Divider";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import bbq from "../../assets/bbq.png";
 import livingSpace from "../../assets/livingspace.png";

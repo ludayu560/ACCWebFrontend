@@ -1,9 +1,6 @@
-import Mainbar from "../components/MainBar"
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import Container from "@mui/material/Container";
 import React from "react";
 
 import StyledButton from "./StyledButton";

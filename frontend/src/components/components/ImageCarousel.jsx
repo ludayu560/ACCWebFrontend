@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button, Stack, Box, Hidden } from "@mui/material";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+import Hidden from "@mui/material/Hidden";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 

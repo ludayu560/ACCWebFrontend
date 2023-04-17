@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { logout } from "../../Redux/actions/auth";
 import { connect } from "react-redux";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Stack,
-  Button,
-  Link,
-  Box,
-  Slide,
-  useScrollTrigger,
-  Avatar,
-  IconButton,
-  MenuItem,
-  Menu,
-} from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
+import Box from "@mui/material/Box";
+import Slide from "@mui/material/Slide";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
 import Logo from "../../assets/Aisha Logo.svg";
 import { useNavigate } from "react-router";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";

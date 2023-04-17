@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import Box from "@mui/material/Box";
 
 const ImageUpload = (props) => {
   const { wide = false, returnSelected, defaultLink, borderRadius, border} = props;

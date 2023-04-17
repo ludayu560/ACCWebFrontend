@@ -1,9 +1,6 @@
 import { Box, Stack } from "@mui/system";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import Footer from "../components/Footer";
