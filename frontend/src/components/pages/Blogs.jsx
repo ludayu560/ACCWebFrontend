@@ -57,20 +57,26 @@ function Blogs({ props, isAuthenticated }) {
         console.error("Error fetching recent blogs:", error);
       }
     };
-  
+
     fetchRecentBlogs();
   }, []);
 
   const fetchUsernameById = async (authorId) => {
-    const response = await fetch(`http://127.0.0.1:8000/ListingAccount/${authorId}/`);
+    const response = await fetch(
+      `http://127.0.0.1:8000/ListingAccount/${authorId}/`
+    );
     const userData = await response.json();
     return userData.username;
   };
 
   useEffect(() => {
     const fetchAndSetUsernames = async () => {
-      const uniqueAuthorIds = Array.from(new Set(recentBlogs.map((blog) => blog.author)));
-      const fetchedUsernames = await Promise.all(uniqueAuthorIds.map(fetchUsernameById));
+      const uniqueAuthorIds = Array.from(
+        new Set(recentBlogs.map((blog) => blog.author))
+      );
+      const fetchedUsernames = await Promise.all(
+        uniqueAuthorIds.map(fetchUsernameById)
+      );
       const authorIdToUsername = uniqueAuthorIds.reduce((acc, id, index) => {
         acc[id] = fetchedUsernames[index];
         return acc;
@@ -81,7 +87,7 @@ function Blogs({ props, isAuthenticated }) {
 
     fetchAndSetUsernames();
   }, [recentBlogs]);
-  
+
   return (
     <div style={{ overflowX: "hidden" }}>
       <Stack>
@@ -89,7 +95,10 @@ function Blogs({ props, isAuthenticated }) {
         <Box component="img" src={require("../../assets/image 58.png")} />
         <Grid container sx={{ p: 10, pb: 30, mt: -80 }}>
           <Grid item xs={5.5} pb={5}>
-            <Typography variant="h3" sx={{ color: "#C5265C", fontWeight: "bold" }}>
+            <Typography
+              variant="h3"
+              sx={{ color: "#C5265C", fontWeight: "bold" }}
+            >
               Blog Corner
             </Typography>
           </Grid>
@@ -101,21 +110,42 @@ function Blogs({ props, isAuthenticated }) {
             <Typography variant="h3" sx={{ color: "white" }} pb={5}>
               See what’s happening in the Aisha Community by checking our Blog
             </Typography>
-            <Typography variant="h6" sx={{ color: "#C5265C", fontWeight: "bold" }}>
+            <Typography
+              variant="h6"
+              sx={{ color: "#C5265C", fontWeight: "bold" }}
+            >
               Click the box below to see a category of blog.
             </Typography>
           </Grid>
           <Grid item xs={9} />
           <Grid item xs={3} mt={-5}>
-            <StyledButton variant="pinkBtn" text="Create new blog" bgcolor="#0045F1" href="/blogscreate"/>
+            <StyledButton
+              variant="pinkBtn"
+              text="Create new blog"
+              bgcolor="#0045F1"
+              href="/blogscreate"
+            />
           </Grid>
         </Grid>
         {/*Blog Grid*/}
-        <Grid container spacing={10} alignContent="center" justifyContent="center" mt={-30} pb={20}>
+        <Grid
+          container
+          spacing={10}
+          alignContent="center"
+          justifyContent="center"
+          mt={-30}
+          pb={20}
+        >
           <Grid item xs="auto">
-            <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
+            <Card
+              sx={{ width: "377px", height: "348px", borderRadius: 5 }}
+              raised
+            >
               <CardActionArea href="/blogsCategory">
-                <CardMedia component="img" image={require("../../assets/image 14.png")}></CardMedia>
+                <CardMedia
+                  component="img"
+                  image={require("../../assets/image 14.png")}
+                ></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
                     <Typography variant="h4" mt={-10} sx={{ color: "white" }}>
@@ -127,9 +157,15 @@ function Blogs({ props, isAuthenticated }) {
             </Card>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
+            <Card
+              sx={{ width: "377px", height: "348px", borderRadius: 5 }}
+              raised
+            >
               <CardActionArea href="/blogsCategory">
-                <CardMedia component="img" image={require("../../assets/image 15.png")}></CardMedia>
+                <CardMedia
+                  component="img"
+                  image={require("../../assets/image 15.png")}
+                ></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
                     <Typography variant="h4" mt={-12} sx={{ color: "white" }}>
@@ -141,9 +177,15 @@ function Blogs({ props, isAuthenticated }) {
             </Card>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
+            <Card
+              sx={{ width: "377px", height: "348px", borderRadius: 5 }}
+              raised
+            >
               <CardActionArea href="/blogsCategory">
-                <CardMedia component="img" image={require("../../assets/image 16.png")}></CardMedia>
+                <CardMedia
+                  component="img"
+                  image={require("../../assets/image 16.png")}
+                ></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
                     <Typography variant="h4" mt={-10} sx={{ color: "white" }}>
@@ -155,9 +197,15 @@ function Blogs({ props, isAuthenticated }) {
             </Card>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
+            <Card
+              sx={{ width: "377px", height: "348px", borderRadius: 5 }}
+              raised
+            >
               <CardActionArea href="/blogsCategory">
-                <CardMedia component="img" image={require("../../assets/image 17.png")}></CardMedia>
+                <CardMedia
+                  component="img"
+                  image={require("../../assets/image 17.png")}
+                ></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
                     <Typography variant="h4" mt={-10} sx={{ color: "white" }}>
@@ -169,9 +217,15 @@ function Blogs({ props, isAuthenticated }) {
             </Card>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
+            <Card
+              sx={{ width: "377px", height: "348px", borderRadius: 5 }}
+              raised
+            >
               <CardActionArea href="/blogsCategory">
-                <CardMedia component="img" image={require("../../assets/image 18.png")}></CardMedia>
+                <CardMedia
+                  component="img"
+                  image={require("../../assets/image 18.png")}
+                ></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
                     <Typography variant="h4" mt={-10} sx={{ color: "white" }}>
@@ -183,9 +237,15 @@ function Blogs({ props, isAuthenticated }) {
             </Card>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
+            <Card
+              sx={{ width: "377px", height: "348px", borderRadius: 5 }}
+              raised
+            >
               <CardActionArea href="/blogsCategory">
-                <CardMedia component="img" image={require("../../assets/image 19 (1).png")}></CardMedia>
+                <CardMedia
+                  component="img"
+                  image={require("../../assets/image 19 (1).png")}
+                ></CardMedia>
                 <CardContent>
                   <Stack alignItems="center">
                     <Typography variant="h4" mt={-10} sx={{ color: "white" }}>
@@ -199,17 +259,53 @@ function Blogs({ props, isAuthenticated }) {
         </Grid>
 
         {/*Our Latest Blogs */}
-        <Stack style={{ background: "#F293B4B0" }} p={10} spacing={3} alignItems="center">
-          <Typography variant="h3" sx={{ textAlign: "center", color: "#F83E7D", fontWeight: "bold" }}>
+        <Stack
+          style={{ background: "#F293B4B0" }}
+          p={10}
+          spacing={3}
+          alignItems="center"
+        >
+          <Typography
+            variant="h3"
+            sx={{ textAlign: "center", color: "#F83E7D", fontWeight: "bold" }}
+          >
             Our Latest Blogs
           </Typography>
         </Stack>
-        <Grid container spacing={10} alignContent="center" justifyContent="center" pt={10} px={10} pb={20}>
+        <Grid
+          container
+          spacing={10}
+          alignContent="center"
+          justifyContent="center"
+          pt={10}
+          px={10}
+          pb={20}
+        >
           {recentBlogs.map((blog) => (
             <Grid item xs="auto" key={blog.id}>
-              <ECard variant="blog" author={usernames[blog.author]} blog={blog} />
+              <ECard
+                variant="blog"
+                author={usernames[blog.author]}
+                blog={blog}
+              />
             </Grid>
           ))}
+
+          {recentBlogs
+            ? recentBlogs.map((item) => (
+                <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
+                  <ECard
+                    variant="listing"
+                    location={item.listing_city + ", " + item.listing_province}
+                    bedrooms={item.listing_total_bedrooms}
+                    bathrooms={item.listing_bathrooms}
+                    roomsAvailable={item.listing_available_bedrooms}
+                    price={item.listing_rate}
+                    image={item.listing_image_one}
+                  />
+                </Grid>
+              ))
+            : null}
         </Grid>
         <Footer></Footer>
       </Stack>
