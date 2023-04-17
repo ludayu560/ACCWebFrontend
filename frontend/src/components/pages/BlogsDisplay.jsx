@@ -43,7 +43,7 @@ import SearchBar from "../components/SearchBar";
 import ECard from "../components/ECard";
 import blogStyles from "../pageStyles/blogStyles.css";
 
-function BlogsDisplay({ props, isAuthenticated }) {
+function BlogsDisplay({ currentBlog }) {
 
   return (
     <div>
@@ -118,6 +118,7 @@ function BlogsDisplay({ props, isAuthenticated }) {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  currentBlog: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(BlogsDisplay);
