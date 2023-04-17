@@ -117,7 +117,7 @@ function StyledButton(props) {
 
       {variant === "pinkBtn" && (
         <Button variant="contained" sx={{backgroundColor: "primary.main"}} style={signupStyle} href={link} {...props}>
-          <Typography variant="h5" sx={{ typography: { xs: "h6", sm: "h6", lg: "h5" } }}>
+          <Typography variant="h5">
             {text}
             {props.children}
           </Typography>

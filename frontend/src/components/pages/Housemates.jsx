@@ -160,7 +160,7 @@ function Housemates({ load_listing_current, listingAccount }) {
         <Footer></Footer>
       </Stack>
     </>
-  ) : null;
+  ) : (<>Loading</>);
 }
 const mapStateToProps = (state) => ({
   listingAccount: state.auth.listingAccount,

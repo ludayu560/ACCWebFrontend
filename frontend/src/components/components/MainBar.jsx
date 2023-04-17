@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { logout } from "../../Redux/actions/auth";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import {
   AppBar,
   Toolbar,
@@ -13,30 +13,52 @@ import {
   useScrollTrigger,
   Avatar,
   IconButton,
+  MenuItem,
+  Menu,
 } from "@mui/material";
 import Logo from "../../assets/Aisha Logo.svg";
 import { useNavigate } from "react-router";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-function Mainbar({logout, setNav}) {
-  const navigate = useNavigate()
+function Mainbar({ logout, setNav }) {
+  const navigate = useNavigate();
 
   const trigger = useScrollTrigger();
   const logout_user = () => {
     logout();
-    setNav(false)
-    navigate("/")
-};
+    setNav(false);
+    navigate("/");
+  };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleOnClickT = (id) => {
+    navigate("/tenanthome");
+    handleMenuClose();
+  };
+  const handleOnClickH = (id) => {
+    navigate("/housemates");
+    handleMenuClose();
+  };
+  const handleOnClickL = (id) => {
+    navigate("/listings");
+    handleMenuClose();
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleMouseEnter = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   return (
     <Slide appear={false} direction="down" in={!trigger}>
-      <AppBar positon="static" >
-        <Toolbar sx={{ height: '168px', background: "white"}}>
+      <AppBar positon="static">
+        <Toolbar sx={{ height: "168px", background: "white" }}>
           <Link href="/">
-            <Box
-              component="img"
-              sx={{ height: 40, top: -37, left: 30 }}
-              alt="Logo"
-              src={Logo}
-            />
+            <Box component="img" alt="Logo" src={Logo} />
           </Link>
 
           <Box sx={{ flexGrow: 1 }} />
@@ -48,15 +70,20 @@ function Mainbar({logout, setNav}) {
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/events">
               Events
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/tenanthome">
+            <Button onClick={handleMouseEnter} endIcon={<ArrowDropDownIcon />}>
               Tenants
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/housemates">
-              Housemates
-            </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} href="/listings">
-              Listings
-            </Button>
+            <Menu
+              anchorEl={anchorEl}
+              open={anchorEl}
+              onClose={handleMenuClose}
+              MenuListProps={{ onMouseLeave: handleMenuClose }}
+              keepMounted>
+              <MenuItem onClick={handleOnClickT}>Tenants</MenuItem>
+              <MenuItem onClick={handleOnClickH}>Housemates</MenuItem>
+              <MenuItem onClick={handleOnClickL}>Listings</MenuItem>
+            </Menu>
+
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/homeowners">
               Homeowners
             </Button>
@@ -69,9 +96,7 @@ function Mainbar({logout, setNav}) {
             <Button color="inherit" size="large" sx={{ color: "#000" }} href="/contact">
               Contact
             </Button>
-            <Button color="inherit" size="large" sx={{ color: "#000" }} onClick={
-              logout_user
-              }>
+            <Button color="inherit" size="large" sx={{ color: "#000" }} onClick={logout_user}>
               Logout
             </Button>
             <IconButton href="/account">
@@ -84,4 +109,4 @@ function Mainbar({logout, setNav}) {
   );
 }
 
-export default connect(null, {logout}) (Mainbar);
+export default connect(null, { logout })(Mainbar);
