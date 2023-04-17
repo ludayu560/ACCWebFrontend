@@ -99,14 +99,16 @@ function BlogsDisplay({ props, isAuthenticated }) {
             </div>
           </div>
           <div className="prev-next-blog">
-            <a> The Need for Women 50+</a>
-            <a> The Need for Women 50+</a>
+            <a className="btn prev-next-btn">&lt;  The Need for Women 50+</a>
+            <a className="btn btn prev-next-btn"> The Need for Women 50+ &gt;</a>
           </div>
-          <div >
-            <h3>Comments</h3>
-            <div>
-              <h3>Leave a Reply</h3>
-              <textarea></textarea>
+          <Typography variant="h4" mb={6} fontWeight={"medium"}> Comments</Typography>
+          <div style={{display: "flex", justifyContent: "center"}}>
+            <div className="comments-wrapper" >
+              <div className="comments">
+                <h6>Leave a Reply</h6>
+                <textarea defaultValue={"Enter your comment here..."} style={{ width: "54ch", height: "8rem", padding: "1rem" }}></textarea>
+              </div>
             </div>
           </div>
         </div>
