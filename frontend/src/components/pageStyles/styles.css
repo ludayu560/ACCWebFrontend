@@ -57,10 +57,19 @@ img {
 }
 
 .pink-bg{
-    background-color:  #FF87B0;;
+    background-color:  #FF87B0;
 }
+
+.pink-light-bg{
+    background-color: #FFE7EF;
+}
+
 .pink-grad-bg{
     background: linear-gradient(0deg, hsla(0, 0%, 100%, 1) 53%, hsla(340, 100%, 76%, 1) 100%);
+}
+
+.blue-bg{
+    background: #0045F1;
 }
 
 .blue-grad-bg {
@@ -73,6 +82,10 @@ img {
 
 .blue-grad3-bg {
     background: linear-gradient(178.23deg, #0094FF -55.06%, rgba(0, 148, 255, 0) 16.23%);
+}
+
+.gray-bg {
+    background: linear-gradient(#DEECF5, white) ;
 }
 
 .blog-btn{
@@ -107,6 +120,22 @@ img {
 
 .pink-grad-bg {
     background: linear-gradient(white, #FFC7DA, white);
+}
+
+.mui-h1 {
+    font-size: 6rem;
+}
+
+.mui-h2 {
+    font-size: 3.75rem;
+}
+
+.mui-h3 {
+    font-size: 3rem;
+}
+
+.mui-h4 {
+    font-size: 2.125rem;
 }
 
 .mui-h5 {
