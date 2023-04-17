@@ -291,21 +291,7 @@ function Blogs({ props, isAuthenticated }) {
             </Grid>
           ))}
 
-          {recentBlogs
-            ? recentBlogs.map((item) => (
-                <Grid item xs="auto" onClick={() => handleOnClick(item.id)}>
-                  <ECard
-                    variant="listing"
-                    location={item.listing_city + ", " + item.listing_province}
-                    bedrooms={item.listing_total_bedrooms}
-                    bathrooms={item.listing_bathrooms}
-                    roomsAvailable={item.listing_available_bedrooms}
-                    price={item.listing_rate}
-                    image={item.listing_image_one}
-                  />
-                </Grid>
-              ))
-            : null}
+        
         </Grid>
         <Footer></Footer>
       </Stack>
