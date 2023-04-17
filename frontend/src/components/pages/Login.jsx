@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import Stack from "@mui/material/Stack";
@@ -14,7 +12,6 @@ import Box from "@mui/material/Box";
 //auth
 import { login } from "../../Redux/actions/auth";
 import { load_listing } from "../../Redux/actions/listingAccount";
-import StyledTextField from "../components/StyledTextField";
 import StyledButton from "../components/StyledButton";
 
 import { ReactComponent as Login1 } from "../../assets/Login1.svg";
@@ -23,7 +20,6 @@ import { ReactComponent as LoginText1 } from "../../assets/LoginText1.svg";
 import { ReactComponent as LoginText2 } from "../../assets/LoginText2.svg";
 import { ReactComponent as AishaSignaturePink } from "../../assets/AishaSignatureWhite.svg";
 import { TextField } from "@mui/material";
-import CustomTextField from "../components/CustomTextField";
 
 const TextFieldStyle = {
   "& .MuiOutlinedInput-root": {

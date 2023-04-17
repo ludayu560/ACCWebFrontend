@@ -1,20 +1,22 @@
-import { Box, Stack } from "@mui/system";
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from "@mui/material";
+import Box from "@mui/system/Box";
+import Stack from "@mui/system/Stack";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+
 import StyledButton from "../components/StyledButton";
 import Footer from "../components/Footer";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
+
 import { connect } from "react-redux";
-import ECard from "../components/ECard";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { load_blog_current, get_category_blog } from "../../Redux/actions/blog";
+
+import ECard from "../components/ECard";
 
 
 function Blogs(props) {

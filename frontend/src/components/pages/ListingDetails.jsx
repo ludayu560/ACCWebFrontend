@@ -1,13 +1,10 @@
-import Mainbar from "../components/MainBar";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import { Checkbox } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ReviewComponent from "../components/PropDetailReviewComponent";
-import HousemateComponent from "../components/PropDetailHousemateComponent";
 import ImageCarousel from "../components/ImageCarousel";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";

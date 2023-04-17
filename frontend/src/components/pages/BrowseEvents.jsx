@@ -11,7 +11,6 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import HousemateFilterPanel from "../components/HousemateFilterPanel";
 import StyledButton from "../components/StyledButton";
 import SearchBar from "../components/SearchBar";
-import Mainbar from "../components/MainBar";
 import Footer from "../components/Footer";
 import ECard from "../components/ECard";
 import Tags from "../components/Tags";
@@ -21,6 +20,7 @@ import { connect } from "react-redux";
 
 import { load_listing_current } from "../../Redux/actions/listingAccount";
 import { useNavigate } from "react-router";
+
 
 const traitList = [
   "Extroverted",

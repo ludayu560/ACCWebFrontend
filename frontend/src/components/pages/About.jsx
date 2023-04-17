@@ -1,19 +1,12 @@
-import { Box, Stack } from "@mui/system";
-import { Grid, Typography } from "@mui/material";
-import Footer from "../components/Footer";
-import Mainbar from "../components/MainBar";
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
-import WbTwilightIcon from "@mui/icons-material/WbTwilight";
-import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
-import ECard from "../components/ECard";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import TenantHomePageBG from "../../assets/TenantHomePageBG.png";
-import AboutBG from "../../assets/AboutBG.png";
-import MainLogo from "../../assets/Icons/IconHouseLogoWhite.svg";
-import "../pageStyles/aboutStyles.css";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 
+import Footer from "../components/Footer";
+import MainLogo from "../../assets/Icons/IconHouseLogoWhite.svg";
+
+import "../pageStyles/aboutStyles.css";
 
 
 function About(props) {

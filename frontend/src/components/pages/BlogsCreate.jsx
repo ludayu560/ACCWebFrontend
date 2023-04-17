@@ -1,56 +1,25 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Box, Stack } from "@mui/system";
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Container,
-  Divider,
-  Grid,
-  Icon,
-  IconButton,
-  Paper,
-  TextField,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from "@mui/material";
-import HomePhoto from "../../assets/HomePhoto.png";
-import NavBar from "../components/NavBar";
-import StyledButton from "../components/StyledButton";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
-import ForestOutlinedIcon from "@mui/icons-material/ForestOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import HouseIcon from "@mui/icons-material/House";
-import PeopleIcon from "@mui/icons-material/People";
-import GppGoodIcon from "@mui/icons-material/GppGood";
-import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
-import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
-import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
-import Footer from "../components/Footer";
-import Mainbar from "../components/MainBar";
-import KathleenLaura from "../../assets/KathleenLaura.png";
-import Kathryn from "../../assets/Kathryn.png";
-import Partner from "../../assets/Partner.png";
-import AishaSignaturePink from "../../assets/AishaSignaturePink.svg";
-import Hands from "../../assets/Hands.png";
-import quote1 from "../../assets/Quote 1.svg";
-import quote2 from "../../assets/quote2.png";
-import img20 from "../../assets/image 20.png";
-import img13 from "../../assets/image 13.png";
-import img12 from "../../assets/image 12.png";
-import img11 from "../../assets/image 11.png";
-import LogoVariant2 from "../../assets/LogoVariant2.svg";
-import { connect } from "react-redux";
-import SearchBar from "../components/SearchBar";
-import ECard from "../components/ECard";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { connect } from "react-redux";
 import { Controller, useForm } from "react-hook-form";
 import { create_blog } from "../../Redux/actions/blog";
+
+import Box from "@mui/system/Box";
+import Stack from "@mui/system/Stack";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import TextField from "@mui/material/TextField";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import Typography from "@mui/material/Typography";
+
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+import Footer from "../components/Footer";
+
 
 const CustomToggleButtonStyles = {
   "&.MuiToggleButtonGroup-grouped.Mui-selected+.MuiToggleButtonGroup-grouped.Mui-selected":

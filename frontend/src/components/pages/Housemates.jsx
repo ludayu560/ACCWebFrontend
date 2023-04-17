@@ -5,13 +5,13 @@ import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 import HousemateFilterPanel from "../components/HousemateFilterPanel";
 import StyledButton from "../components/StyledButton";
 import SearchBar from "../components/SearchBar";
-import Mainbar from "../components/MainBar";
 import Footer from "../components/Footer";
 import ECard from "../components/ECard";
 import Tags from "../components/Tags";

@@ -1,8 +1,10 @@
 import { Box, Stack } from "@mui/system";
-import { Button, Card, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import Typography from "@mui/material/Typography";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import HomePhoto from "../../assets/HomePhoto.png";
-import NavBar from "../components/NavBar";
+
 
 function Home(props) {
 	

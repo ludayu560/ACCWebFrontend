@@ -1,39 +1,12 @@
-import {
-  Container,
-  Button,
-  IconButton,
-  Grid,
-  Box,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  MenuItem,
-  Typography,
-  Stack,
-  Paper,
-  TextField,
-  ImageListItem,
-  Divider,
-  Switch,
-  Card,
-  CardActionArea,
-  CardContent,
-  Avatar,
-  CardMedia,
-  ToggleButton,
-} from "@mui/material";
-import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import Divider from "@mui/material/Divider";
+import Avatar from "@mui/material/Avatar";
 import React, { useState } from "react";
-import RectangleOne from "../../assets/Rectangle1.svg";
-import AccountContent from "../../assets/AccountContent.svg";
-import NavBar from "../components/NavBar";
-import axios from "axios";
-import { borderRadius } from "@mui/system";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import Mainbar from "../components/MainBar";
-import ECard from "../components/ECard";
-import { styled } from "@mui/material/styles";
 import SideNav from "../components/SideNav";
 import MasterCardLogo from "../../assets/MasterCardLogo.png";
 import PayPalLogo from "../../assets/PayPalLogo.png";

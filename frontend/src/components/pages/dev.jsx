@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { connect } from "react-redux";
 
-import Box from "@mui/material/Box";
+import Box from "@mui/system/Box";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";

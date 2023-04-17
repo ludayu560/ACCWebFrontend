@@ -1,24 +1,15 @@
 import { Box, Stack } from "@mui/system";
-import { Button, Card, Divider, Grid, Paper, Typography } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import HomePhoto from "../../assets/HomePhoto.png";
-import NavBar from "../components/NavBar";
-import StyledButton from "../components/StyledButton";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
-import ForestOutlinedIcon from "@mui/icons-material/ForestOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import HouseIcon from "@mui/icons-material/House";
-import PeopleIcon from "@mui/icons-material/People";
-import GppGoodIcon from "@mui/icons-material/GppGood";
-import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
-import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
-import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
-import Footer from "../components/Footer";
-import SearchBar from "../components/SearchBar";
-import homeownersbg from "../../assets/homeownerbg.png";
-import Mainbar from "../components/MainBar";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import Footer from "../components/Footer";
+import homeownersbg from "../../assets/homeownerbg.png";
+import StyledButton from "../components/StyledButton";
+
 
 function Homeowners(props) {
   return (

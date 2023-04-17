@@ -1,26 +1,20 @@
-import {
-  Checkbox,
-  Container,
-  Divider,
-  FormControlLabel,
-  Grid,
-  TextField,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-  Box,
-  Stack,
-  Snackbar,
-  Alert,
-} from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
+import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Grid from "@mui/material/Grid";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 import StyledButton from "../components/StyledButton";
 
 import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import axios from "axios";
 import { create_property_listing } from "../../Redux/actions/propertyListing";
-import { LOGIN_SUCCESS } from "../../Redux/actions/types";
-import ImageUpload from "../components/ImageUploadComponent";
 import CustomTextField from "../components/CustomTextField";
 import { connect } from "react-redux";
 const CustomToggleButtonStyles = {

@@ -1,7 +1,9 @@
-import { Box, Stack } from "@mui/system";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+
 import { connect } from "react-redux";
+
 import "../pageStyles/blogStyles.css";
+
 
 function BlogsDisplay(props) {
   const { currentBlog } = props

@@ -1,8 +1,8 @@
-import { Box, Stack } from "@mui/system";
-import { Button, Card, Grid, IconButton, Paper, Typography } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import HomePhoto from "../../assets/HomePhoto.png";
-import NavBar from "../components/NavBar";
+import Box from "@mui/system/Box";
+import Stack from "@mui/system/Stack";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import StyledButton from "../components/StyledButton";
 import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
@@ -14,10 +14,11 @@ import DashboardTenantBG from "../../assets/DashboardTenantBG.png";
 import DashboardWHBG from "../../assets/DashboardWHBG.png";
 import DashboardPOBG from "../../assets/DashboardPOBG.png";
 import DashboardOtherBG from "../../assets/DashboardOtherBG.png";
-import { load_propertylistings_created, load_propertylistings_recent} from "../../Redux/actions/propertyListing";
-import { handleOnClick } from "./MyAccountFavourites";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
+import { load_propertylistings_created, load_propertylistings_recent } from "../../Redux/actions/propertyListing";
+import { handleOnClick } from "./MyAccountFavourites";
+
 
 function Dashboard({ variant, isAuthenticated, listingAccount, propertyListingCreated, propertyListingRecent, load_propertylistings_created, load_propertylistings_recent }) {
   const data = ["1", "2", "3", "4"];

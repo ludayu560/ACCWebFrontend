@@ -1,8 +1,6 @@
-import {
-  Grid,
-  Typography,
-  Divider,
-} from "@mui/material";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import ECard from "../components/ECard";
 import SideNav from "../components/SideNav";

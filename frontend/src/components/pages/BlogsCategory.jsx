@@ -1,14 +1,16 @@
-import { Box } from "@mui/system";
-import {
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
-import Footer from "../components/Footer";
-import ECard from "../components/ECard";
+import Box from "@mui/system/Box";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 import { useNavigate } from "react-router";
 import { connect } from "react-redux";
+
+import Footer from "../components/Footer";
+import ECard from "../components/ECard";
+
 
 function BlogsCategory(props) {
   const { categoryBlogs } = props;

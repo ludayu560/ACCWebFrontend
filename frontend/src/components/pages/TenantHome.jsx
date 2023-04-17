@@ -1,41 +1,20 @@
 import { Box, Stack } from "@mui/system";
-import { Button, Card, CardActionArea, Grid, Paper, Typography } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import HomePhoto from "../../assets/HomePhoto.png";
-import NavBar from "../components/NavBar";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import StyledButton from "../components/StyledButton";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
-import ForestOutlinedIcon from "@mui/icons-material/ForestOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import HouseIcon from "@mui/icons-material/House";
 import PeopleIcon from "@mui/icons-material/People";
-import GppGoodIcon from "@mui/icons-material/GppGood";
-import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
-import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
-import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import Footer from "../components/Footer";
-import StyledPhoto from "../components/StyledPhoto";
-import SearchBar from "../components/SearchBar";
-import MyCalendar from "../components/Calendar";
-import StyledTextField from "../components/StyledTextField";
-import { TextField } from "@mui/material";
-import Mainbar from "../components/MainBar";
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
-import WbTwilightIcon from "@mui/icons-material/WbTwilight";
-import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
-import ECard from "../components/ECard";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import TenantHomePageBG from "../../assets/TenantHomePageBG.png";
 import MainLogo from "../../assets/Icons/MainLogo.svg";
 
 function TenantHome(props) {
   return (
     <div style={{ overflowX: "hidden" }} className="acc-section">
       {/*First Title Section*/}
-      <Box component="img" src={require("../../assets/image 2 (1).png")} />
+      <Box component="img" src={require("../../assets/image 2 (1).png")} /> 
       <div className="acc-container">
         <Stack sx={{ mt: -72 }} pb={10}>
           <Stack pl={15} spr={"50vw"} pt={10}>

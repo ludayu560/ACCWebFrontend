@@ -1,19 +1,12 @@
 import { Box, Stack } from "@mui/system";
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Divider,
-  Grid,
-  Icon,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
-import HomePhoto from "../../assets/HomePhoto.png";
-import NavBar from "../components/NavBar";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import StyledButton from "../components/StyledButton";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
@@ -26,10 +19,8 @@ import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
 import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import Footer from "../components/Footer";
-import Mainbar from "../components/MainBar";
 import KathleenLaura from "../../assets/KathleenLaura.png";
 import Kathryn from "../../assets/Kathryn.png";
-import Partner from "../../assets/Partner.png";
 import AishaSignaturePink from "../../assets/AishaSignaturePink.svg";
 import Hands from "../../assets/Hands.png";
 import quote1 from "../../assets/Quote 1.svg";
@@ -39,9 +30,7 @@ import img13 from "../../assets/image 13.png";
 import img12 from "../../assets/image 12.png";
 import img11 from "../../assets/image 11.png";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
-import Vector from "../../assets/Vector.png";
 import { connect } from "react-redux";
-import SearchBar from "../components/SearchBar";
 import "../pageStyles/styles.css";
 
 function Landing({ isAuthenticated }) {

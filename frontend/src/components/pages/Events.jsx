@@ -1,45 +1,25 @@
-import { Box, Stack } from "@mui/system";
-import { Button, Card, Checkbox, Divider, FormControlLabel, Grid, Paper, Typography } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import HomePhoto from "../../assets/HomePhoto.png";
-import NavBar from "../components/NavBar";
+import React, { useEffect, useState } from "react";
+import { create_event } from "../../Redux/actions/event";
+import { get_events_attending } from "../../Redux/actions/events";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router";
+
+import Box from "@mui/system/Box";
+import Stack from "@mui/system/Stack";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import ECard from "../components/ECard";
 import StyledButton from "../components/StyledButton";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
-import ForestOutlinedIcon from "@mui/icons-material/ForestOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import HouseIcon from "@mui/icons-material/House";
-import PeopleIcon from "@mui/icons-material/People";
-import GppGoodIcon from "@mui/icons-material/GppGood";
-import ClassOutlinedIcon from "@mui/icons-material/ClassOutlined";
-import PhoneInTalkIcon from "@mui/icons-material/PhoneInTalk";
-import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import Footer from "../components/Footer";
-import StyledPhoto from "../components/StyledPhoto";
-import SearchBar from "../components/SearchBar";
-import MyCalendar from "../components/Calendar";
-import StyledTextField from "../components/StyledTextField";
-import { TextField } from "@mui/material";
-import Mainbar from "../components/MainBar";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import WbTwilightIcon from "@mui/icons-material/WbTwilight";
-import SentimentVerySatisfiedOutlinedIcon from "@mui/icons-material/SentimentVerySatisfiedOutlined";
-import ECard from "../components/ECard";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { create_event } from "../../Redux/actions/event";
-import { get_events_attending } from "../../Redux/actions/events";
-import { connect } from "react-redux";
-import ImageUpload from "../components/ImageUploadComponent";
-import Listing from "./Listing";
-import { useNavigate } from "react-router";
-import EventConfirm from "./EventConfirm";
 import "../pageStyles/styles.css";
+
 
 const CustomCheckboxStyles = {
   // the box color when unchecked
