@@ -3,7 +3,8 @@ import { Typography } from "@mui/material";
 import { connect } from "react-redux";
 import "../pageStyles/blogStyles.css";
 
-function BlogsDisplay({ currentBlog }) {
+function BlogsDisplay(props) {
+  const { currentBlog } = props
   return currentBlog ? (
     <div>
       <div className="acc-blog-section blog-hero ">
@@ -100,7 +101,7 @@ function BlogsDisplay({ currentBlog }) {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  currentBlog: state.auth.isAuthenticated,
+  currentBlog: state.auth.currentBlog,
 });
 
 export default connect(mapStateToProps)(BlogsDisplay);
