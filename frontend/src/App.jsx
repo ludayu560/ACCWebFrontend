@@ -44,6 +44,8 @@ import Blogs from "./components/pages/Blogs";
 import BlogsCategory from "./components/pages/BlogsCategory";
 import EventConfirm from "./components/pages/EventConfirm";
 import BlogsCreate from "./components/pages/BlogsCreate";
+import PrivateEventPage from "./components/pages/PrivateEvent";
+import { Divider, Typography } from "@mui/material";
 import BlogsDisplay from "./components/pages/BlogsDisplay";
 
 function App() {
@@ -133,7 +135,7 @@ function App() {
               path="/dev"
               element={
                 <>
-                  <ImageGallery />
+                  <PrivateEventPage/>
                 </>
               }
             />
@@ -141,6 +143,28 @@ function App() {
         </Layout>
       </BrowserRouter>
     </ConnectedThemeProvider>
+  );
+}
+
+
+// Renders section headers
+function SectionHeader(props) {
+  const { children } = props;
+  return (
+    <Typography fontWeight={600} fontSize={40} marginY={"50px"}>
+      {children}
+      <Divider
+        variant="left"
+        sx={{
+          width: "15%",
+          border: "2px solid",
+          color: "primary.main",
+          opacity: 100,
+          marginY: "3px",
+        }}
+      />
+    </Typography>
+    
   );
 }
 
