@@ -4,10 +4,21 @@ import { connect } from "react-redux";
 import "@fontsource/montserrat";
 
 const baseTheme = createTheme({
+  components: {
+    MuiTypography: {
+      styleOverrides: {
+        h6: {
+          color: "#113170", // Set color for h1 typography element
+        },
+      },
+    },
+  },
   typography: {
     fontFamily: "Montserrat, sans-serif",
+    color: "#fff",
     body1: {
-      fontFamily: "Montserrat, sans-serif", // Use Montserrat for body text
+      fontFamily: "Montserrat, sans-serif",
+      // Use Montserrat for body text
     },
     body2: {
       fontFamily: "Montserrat, sans-serif", // Use Montserrat for body text

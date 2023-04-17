@@ -33,10 +33,10 @@ import MainLogo from "../../assets/Icons/MainLogo.svg";
 
 function TenantHome(props) {
   return (
-    <div style={{ overflowX: "hidden" }}>
-      <Stack>
-        {/*First Title Section*/}
-        <Box component="img" src={require("../../assets/image 2 (1).png")} />
+    <div style={{ overflowX: "hidden" }} className="acc-section">
+      {/*First Title Section*/}
+      <Box component="img" src={require("../../assets/image 2 (1).png")} />
+      <div className="acc-container">
         <Stack sx={{ mt: -72 }} pb={10}>
           <Stack pl={15} spr={"50vw"} pt={10}>
             <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
@@ -145,7 +145,7 @@ function TenantHome(props) {
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   Starting A New Semester
                 </Typography>
-                <Box component="img" src={require("../../assets/image 4.png")} bgcolor="gray" width="100%"/>
+                <Box component="img" src={require("../../assets/image 4.png")} bgcolor="gray" width="100%" />
                 <Typography sx={{ px: "2vw" }}>
                   At Aisha Comfortable Coliving, we understand the stress and difficulties of starting school. We are
                   here to help you find the best rental experience away from home. Join our community and embark on a
@@ -158,7 +158,7 @@ function TenantHome(props) {
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   Starting A New Job
                 </Typography>
-                <Box component="img" src={require("../../assets/image 5.png")} bgcolor="gray" width="100%"/>
+                <Box component="img" src={require("../../assets/image 5.png")} bgcolor="gray" width="100%" />
                 <Typography sx={{ px: "2vw" }}>
                   The growing demand for affordable housing makes it even more challenging to find a comfortable place
                   to live nowadays. Let Aisha Comfortable Coliving take care of finding a financially affordable,
@@ -179,7 +179,7 @@ function TenantHome(props) {
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   It Takes a Village
                 </Typography>
-                <Box component="img" src={require("../../assets/image 8.png")} bgcolor="gray" width="100%"/>
+                <Box component="img" src={require("../../assets/image 8.png")} bgcolor="gray" width="100%" />
                 <Typography sx={{ px: "2vw" }}>
                   We understand that as a mother you have a lot on your plate. Let us lend an extra hand and help create
                   a safe space for you and your child. Through coliving, you can receive extra support from another
@@ -192,7 +192,7 @@ function TenantHome(props) {
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   Fun Senior Years
                 </Typography>
-                <Box component="img" src={require("../../assets/image 9.png")} bgcolor="gray" width="100%"/>
+                <Box component="img" src={require("../../assets/image 9.png")} bgcolor="gray" width="100%" />
                 <Typography sx={{ px: "2vw" }}>
                   The fun doesn’t stop as you get older. Reduce expenses and enjoy having a new friend at home. Coliving
                   ensures a safe and secure space, with someone by your side that you can rely on. We work to foster a
@@ -213,7 +213,7 @@ function TenantHome(props) {
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   School Abroad
                 </Typography>
-                <Box component="img" src={require("../../assets/image 19.png")} bgcolor="gray" width="100%"/>
+                <Box component="img" src={require("../../assets/image 19.png")} bgcolor="gray" width="100%" />
                 <Typography sx={{ px: "2vw" }}>
                   We understand the challenge of moving to a new country to start school and trying to find safe and
                   affordable accommodation. At Aisha Comfortable Coliving, we will match you with secure rental homes
@@ -228,7 +228,7 @@ function TenantHome(props) {
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: "#C5265C" }}>
                   Short Stays
                 </Typography>
-                <Box component="img" src={require("../../assets/image 20 (1).png")} bgcolor="gray" width="100%"/>
+                <Box component="img" src={require("../../assets/image 20 (1).png")} bgcolor="gray" width="100%" />
                 <Typography sx={{ px: "2vw" }}>
                   Whether for a short-term vacation or temporary relocation, we have got you covered. With coliving, you
                   get the opportunity to explore different parts across Canada. Experience the country’s subcultures
@@ -300,25 +300,23 @@ function TenantHome(props) {
             </Stack>
           </Grid>
         </Grid>
-
-        {/*Here’s What It’s Going to Cost You title*/}
-        <Stack direction="row" style={{ background: "#42ACF980" }} py={10} pb={20} alignItems="center">
-          <AttachMoneyIcon style={{ fontSize: 300 }} sx={{ color: "#0045F1", ml: 20 }} />
-          <Stack spacing={3} ml={-40}>
-            <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "white", fontWeight: "bold" }}>
-              Here's What It's Going to Cost You
-            </Typography>
-            <Typography
-              variant="h4"
-              color="primary"
-              sx={{ textAlign: "center", color: "white", fontWeight: "bold", px: "25vw" }}>
-              All tenants will be charged a fee of one week of rent and 3% of the monthly rent.
-            </Typography>
-          </Stack>
+      </div>
+      {/*Here’s What It’s Going to Cost You title*/}
+      <Stack direction="row" style={{ background: "#42ACF980" }} py={10} pb={20} alignItems="center">
+        <AttachMoneyIcon style={{ fontSize: 300 }} sx={{ color: "#0045F1", ml: 20 }} />
+        <Stack spacing={3} ml={-30}>
+          <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "white", fontWeight: "bold" }}>
+            Here's What It's Going to Cost You
+          </Typography>
+          <Typography
+            variant="h4"
+            color="primary"
+            sx={{ textAlign: "center", color: "white", fontWeight: "bold", px: "25vw" }}>
+            All tenants will be charged a fee of one week of rent and 3% of the monthly rent.
+          </Typography>
         </Stack>
-
-        <Footer></Footer>
       </Stack>
+      <Footer></Footer>
     </div>
   );
 }
