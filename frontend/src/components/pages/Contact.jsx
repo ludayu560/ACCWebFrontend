@@ -14,33 +14,37 @@ import MainLogo from "../../assets/Icons/IconHouseLogoWhite.svg";
 import Footer from "../components/Footer";
 
 import "../pageStyles/styles.css";
+import "../pageStyles/contactStyles.css";
+
 
 
 function Contact(props) {
   return (
     <>
-      <div className="acc-section">
+      <div className="acc-section hero">
         <div className="acc-container">
           {/*First Title Section*/}
-          <Box component="img" src={AboutBG} width="100%"></Box>
-          <Stack sx={{ mt: -60, pb: "22rem" }} alignItems="center">
+          <div className="logo-container">
             <Box component="img" src={MainLogo} width="10vw" />
-            <Typography variant="h1" align="center" sx={{ fontWeight: "bold", color: "white" }}>
-              Contact Us
-            </Typography>
-          </Stack>
+          </div>
+          <Typography variant="h1" align="center" sx={{ fontWeight: "bold", color: "white" }}>
+            Contact Us
+          </Typography>
+        </div>
+      </div>
 
+      <div className="acc-section pink-header">
+        <div className="acc-container">
           {/*Our Story*/}
-          <Stack
-            style={{ background: "#F83E7D" }}
-            sx={{ borderTopRightRadius: 200, borderTopLeftRadius: 200 }}
-            p={6}
-            spacing={3}
-            alignItems="center">
-            <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "white", fontWeight: "bold" }}>
-              Let the Conversation Start
-            </Typography>
-          </Stack>
+          <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "white", fontWeight: "bold" }}>
+            Let the Conversation Start
+          </Typography>
+        </div>
+      </div>
+
+
+      <div className="acc-section">
+        <div className="acc-container">
 
           {/*our mission + vision + value portion */}
           <Grid container p={10} justifyContent="center">
@@ -89,25 +93,20 @@ function Contact(props) {
               </Stack>
             </Grid>
           </Grid>
-
+        </div>
+      </div>
+      <div className="acc-section blue-header">
+        <div className="acc-container">
           {/*Learn More About Aisha Comfortable Coliving*/}
-          <Stack
-            style={{ background: "linear-gradient(#D7F3FF, white)" }}
-            p={10}
-            spacing={3}
-            alignItems="center"
-            sx={{ borderTopRightRadius: 200, borderTopLeftRadius: 200 }}>
-            <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "#0045F1", fontWeight: "bold" }}>
-              Learn More About Aisha Comfortable Coliving
-            </Typography>
-            <Typography className="accTextcolor" variant="h5" align="center" px={20}>
-              Discover how Aisha Comfortable Coliving can best serve you individually. Have all your questions answered
-              and let us help you live your dream.
-            </Typography>
-          </Stack>
-
+          <Typography variant="h3" color="primary" sx={{ textAlign: "center", color: "#0045F1", fontWeight: "bold" }}>
+            Learn More About Aisha Comfortable Coliving
+          </Typography>
+          <Typography className="accTextcolor" variant="h5" align="center" px={20}>
+            Discover how Aisha Comfortable Coliving can best serve you individually. Have all your questions answered
+            and let us help you live your dream.
+          </Typography>
           <Stack alignItems="center" spacing={10} mb={20}>
-            <Stack direction="row" spacing={20}>
+            <Stack style={{padding:"3rem"}} direction="row" spacing={20}>
               <VideocamOutlinedIcon style={{ fontSize: 150 }} sx={{ color: "#0045F1" }} />
               <PhoneInTalkIcon style={{ fontSize: 150 }} sx={{ color: "#0045F1" }} />
             </Stack>
@@ -119,6 +118,10 @@ function Contact(props) {
           </Stack>
         </div>
       </div>
+
+
+
+
       <Footer></Footer>
     </>
   );
