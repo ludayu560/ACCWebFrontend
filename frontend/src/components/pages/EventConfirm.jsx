@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import Stack from "@mui/material/Stack";
-
+import { change_private_event_attendee_invited_status } from "../../Redux/actions/privateEvent";
 const TextFieldStyle = {
   "& .MuiOutlinedInput-root": {
     borderRadius: "100vmax",
@@ -14,17 +14,13 @@ const TextFieldStyle = {
   },
 };
 
-const EventConfirm = ({ login, isAuthenticated, user, listingAccount }) => {
-  // login handlers
+const EventConfirm = ({ change_private_event_attendee_invited_status }) => {
+  // const [sent, setVerified] = useState(false);
+  const {id} = useParams();
 
-  // const [firstName, setFirstName] = useState('');
-
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const { email, password } = formData;
+  useEffect(() => {
+    change_private_event_attendee_invited_status(id);
+  }, []);
 
   return (
     <div>
@@ -41,14 +37,15 @@ const EventConfirm = ({ login, isAuthenticated, user, listingAccount }) => {
             CONFIRMED
           </Typography>
           <Typography variant="h5" align="center">
-            We have sent a confirmation email that you’ve accepted the invite from the host! If you have any questions
-            or concerns, please contact the host via email:
+            You have accepted the invite. We have notified the host via email that you are attending!
+            {/* If you have any questions
+            or concerns, please contact the host via email: */}
           </Typography>
-          <Button>
+          {/* <Button>
             <Typography variant="h5" align="center">
               example_email@gmail.com
             </Typography>
-          </Button>
+          </Button> */}
         </Stack>
       </Dialog>
     </div>
@@ -61,4 +58,4 @@ const mapStateToProps = (state) => ({
   listingAccount: state.auth.listingAccount,
 });
 
-export default connect(mapStateToProps, { EventConfirm })(EventConfirm);
+export default connect(mapStateToProps, { change_private_event_attendee_invited_status })(EventConfirm);
