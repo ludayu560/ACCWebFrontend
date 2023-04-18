@@ -57,7 +57,7 @@ function Homeowners(props) {
                   take care of the entire renting process from finding the right tenants to rent collection. Equity
                   building is made easy with Aisha Comfortable Coliving.
                 </Typography>
-                <StyledButton variant="pinkBtn" text="List Rental" bgcolor="#113170" />
+                <StyledButton variant="pinkBtn" text="List Rental" bgcolor="#113170" link="/RLF" />
               </Stack>
             </Grid>
             <Grid item xs={6}>
@@ -101,7 +101,7 @@ function Homeowners(props) {
                   generate a higher income for your rental property. We will take care of the whole renting process from
                   the start to rent collection.
                 </Typography>
-                <StyledButton variant="pinkBtn" text="List Rental" bgcolor="#113170" />
+                <StyledButton variant="pinkBtn" text="List Rental" bgcolor="#113170" link="/RLF"/>
               </Stack>
             </Grid>
             <Grid item xs={6}>
@@ -123,7 +123,7 @@ function Homeowners(props) {
                   rental opportunity for you. Help women from across the globe experience a new culture and community
                   while making an income and fun memories.
                 </Typography>
-                <StyledButton variant="pinkBtn" text="List Rental" bgcolor="#113170" />
+                <StyledButton variant="pinkBtn" text="List Rental" bgcolor="#113170" link="/RLF"/>
               </Stack>
             </Grid>
           </Grid>
@@ -160,7 +160,7 @@ function Homeowners(props) {
                   so enjoy companionship with more financial freedom.
                 </Typography>
 
-                <StyledButton variant="pinkBtn" text="List Rental" bgcolor="#0045F1" />
+                <StyledButton variant="pinkBtn" text="List Rental" bgcolor="#0045F1" link="/RLF"/>
               </Stack>
             </Grid>
             <Grid item xs={6}>
@@ -223,7 +223,7 @@ function Homeowners(props) {
               </Grid>
               <Grid item xs={12}>
                 <Stack alignItems="center" p={4}>
-                  <StyledButton variant="pinkBtn" text="Search Rentals" bgcolor="#0045F1" />
+                  <StyledButton variant="pinkBtn" text="Search Rentals" bgcolor="#0045F1" link="/listings"/>
                 </Stack>
               </Grid>
             </Grid>

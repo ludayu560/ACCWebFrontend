@@ -36,6 +36,7 @@ import { connect } from "react-redux";
 import "../pageStyles/styles.css";
 import SignupManager from "./SignupManager";
 import { get_category_blog } from "../../Redux/actions/blog";
+import Login from "./Login";
 
 function Landing(props) {
   const { isAuthenticated, get_category_blog } = props;
@@ -75,12 +76,12 @@ function Landing(props) {
                       </>
                     ) : (
                       <>
-                        <SignupManager>
+                        <Login>
                           <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" />
-                        </SignupManager>
-                        <SignupManager>
+                        </Login>
+                        <Login>
                           <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" />
-                        </SignupManager>
+                        </Login>
                       </>
                     )}
                   </Stack>

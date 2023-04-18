@@ -48,41 +48,37 @@ function TenantHome(props) {
             <Grid container spacing={2} p={10} justifyContent="center">
               <Grid item xs="auto">
                 <Card raised>
-                  <CardActionArea>
-                    <Stack
-                      sx={{ width: "582px" }}
-                      p={5}
-                      align="center"
-                      spacing={4}
-                      alignItems="center"
-                      style={{ background: "#0045F10F" }}>
-                      <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
-                        Are you looking to get matched by listings?
-                      </Typography>
-                      <HouseIcon style={{ fontSize: 200 }} sx={{ color: "#0045F1" }} />
-                      <StyledButton variant="pinkBtn" text="Listings" bgcolor="#0045F1" />
-                    </Stack>
-                  </CardActionArea>
+                  <Stack
+                    sx={{ width: "582px" }}
+                    p={5}
+                    align="center"
+                    spacing={4}
+                    alignItems="center"
+                    style={{ background: "#0045F10F" }}>
+                    <Typography variant="h5" sx={{ color: "#0045F1", fontWeight: "bold" }}>
+                      Are you looking to get matched by listings?
+                    </Typography>
+                    <HouseIcon style={{ fontSize: 200 }} sx={{ color: "#0045F1" }} />
+                    <StyledButton variant="pinkBtn" text="Listings" bgcolor="#0045F1" link="/listings" />
+                  </Stack>
                 </Card>
               </Grid>
 
               <Grid item xs="auto">
                 <Card raised>
-                  <CardActionArea>
-                    <Stack
-                      sx={{ width: "582px" }}
-                      p={5}
-                      align="center"
-                      spacing={4}
-                      alignItems="center"
-                      style={{ background: "#F83E7D0F" }}>
-                      <Typography variant="h5" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-                        Are you looking to get matched by housemates?
-                      </Typography>
-                      <PeopleIcon style={{ fontSize: 200 }} sx={{ color: "#F83E7D" }} />
-                      <StyledButton variant="pinkBtn" text="Housemates"></StyledButton>
-                    </Stack>
-                  </CardActionArea>
+                  <Stack
+                    sx={{ width: "582px" }}
+                    p={5}
+                    align="center"
+                    spacing={4}
+                    alignItems="center"
+                    style={{ background: "#F83E7D0F" }}>
+                    <Typography variant="h5" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
+                      Are you looking to get matched by housemates?
+                    </Typography>
+                    <PeopleIcon style={{ fontSize: 200 }} sx={{ color: "#F83E7D" }} />
+                    <StyledButton variant="pinkBtn" text="Housemates" link="housemates" />
+                  </Stack>
                 </Card>
               </Grid>
             </Grid>
@@ -148,7 +144,7 @@ function TenantHome(props) {
               </Grid>
               <Grid item xs={12}>
                 <Stack alignItems="center" p={4}>
-                  <StyledButton variant="pinkBtn" text="Search Rentals" />
+                  <StyledButton variant="pinkBtn" text="Search Rentals" link="listings"/>
                 </Stack>
               </Grid>
             </Grid>
@@ -183,7 +179,7 @@ function TenantHome(props) {
               </Grid>
               <Grid item xs={12}>
                 <Stack alignItems="center" p={4}>
-                  <StyledButton variant="pinkBtn" text="Search Rentals" />
+                  <StyledButton variant="pinkBtn" text="Search Rentals" link="listings"/>
                 </Stack>
               </Grid>
             </Grid>
@@ -221,7 +217,7 @@ function TenantHome(props) {
               </Grid>
               <Grid item xs={12}>
                 <Stack alignItems="center" p={4}>
-                  <StyledButton variant="pinkBtn" text="Search Rentals" />
+                  <StyledButton variant="pinkBtn" text="Search Rentals" link="listings"/>
                 </Stack>
               </Grid>
             </Grid>
