@@ -1,0 +1,23 @@
+.hero {
+    background-image: url("../../assets/AboutBG.png");
+    background-size: cover;
+    padding: 5rem;
+    display: flex;
+    position: center;
+    margin-bottom: 8rem;
+}
+.blue-header{
+    background: linear-gradient(#D7F3FF, white);
+    border-radius: 5rem 5rem 0rem 0rem;
+    padding: 5rem;
+
+}
+.pink-header {
+    background-color:  #F83E7D;
+    border-radius: 5rem 5rem 0rem 0rem;
+    padding: 8rem;
+}
+.logo-container{
+    display: flex;
+    justify-content: center;
+}
