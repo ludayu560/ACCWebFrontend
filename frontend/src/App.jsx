@@ -123,7 +123,7 @@ function App() {
             <Route exact path="/tenanthome" element={<TenantHome />} />
             <Route exact path="/events" element={<Events />} />
             <Route exact path="/browseevents" element={<BrowseEvents />} />
-            <Route exact path="/eventconfirm" element={<EventConfirm />} />
+            <Route exact path="/eventconfirm/:id" element={<EventConfirm />} />
             <Route exact path="/" element={<Landing />} />
             <Route exact path="/activate/:uid/:token" element={<Activate />} />
             <Route exact path="/reset-password" element={<ResetPassword />} />
