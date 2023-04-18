@@ -19,7 +19,8 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import WbTwilightIcon from "@mui/icons-material/WbTwilight";
 import "../pageStyles/styles.css";
-
+import SignupManager from "./SignupManager";
+import Login from "./Login";
 
 const CustomCheckboxStyles = {
   // the box color when unchecked
@@ -102,10 +103,11 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
                     width="15vw"
                     bgcolor="white"
                     textColor="#F83E7D"
+                    link="/browseevents"
                   />
                 </Grid>
                 <Grid item>
-                  <StyledButton variant="pinkBtn" text="+ Host Event" width="15vw" />
+                  <StyledButton variant="pinkBtn" text="+ Host Event" width="15vw" link="/privateEventPage" />
                 </Grid>
               </Grid>
             </Stack>
@@ -141,7 +143,7 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
           Interested in hosting your own event? Let us help!
         </Typography>
 
-        <StyledButton variant="pinkBtn" text="Host Event" width="20vw" />
+        <StyledButton variant="pinkBtn" text="Host Event" width="20vw" link="/privateEventPage" />
       </Stack>
       <Footer />
     </div>
@@ -169,10 +171,14 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
 
                 <Grid container spacing={10} pt={5}>
                   <Grid item xs="auto">
-                    <StyledButton variant="pinkBtn" text="Login" width="15rem" bgcolor="white" textColor="#F83E7D" />
+                    <Login>
+                      <StyledButton variant="pinkBtn" text="Login" width="15rem" bgcolor="white" textColor="#F83E7D" />
+                    </Login>
                   </Grid>
                   <Grid item xs="auto">
-                    <StyledButton variant="pinkBtn" text="Sign Up" width="15rem" bgcolor="#F83E7D" />
+                    <SignupManager>
+                      <StyledButton variant="pinkBtn" text="Sign Up" width="15rem" bgcolor="#F83E7D" />
+                    </SignupManager>
                   </Grid>
                 </Grid>
               </Stack>
@@ -337,6 +343,7 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
               width="15vw"
               bgcolor="white"
               textColor="#0045F1"
+              link="/privateEventPage"
             />
           </Stack>
         </div>
@@ -413,13 +420,7 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
       {inpersonSelected && (
         <div className="acc-section gray-bg">
           <div className="acc-container">
-            <Grid
-              container
-              spacing={10}
-              alignContent="center"
-              justifyContent="center"
-              pt={10}
-              px={10}>
+            <Grid container spacing={10} alignContent="center" justifyContent="center" pt={10} px={10}>
               {data.map((id) => (
                 <Grid item xs="auto">
                   <ECard variant="event" />
@@ -432,138 +433,17 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
 
       {/*Don’t see what you’re looking for? Create your own event!*/}
       <Stack style={{ background: "white" }} sx={{ p: 15, pb: 40 }} alignItems="center">
-        <StyledButton variant="pinkBtn" text="Find More" bgcolor="#0045F1" width="20rem" />
+        <StyledButton variant="pinkBtn" text="Find More" bgcolor="#0045F1" width="20rem" link="/browseevents" />
         <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2} pt={20}>
           Interested in hosting your own event?
         </Typography>
         <Typography variant="h3" align="center" sx={{ color: "#0045F1", fontWeight: "bold" }} p={2} pb={10}>
           Login to get started
         </Typography>
-        <StyledButton variant="pinkBtn" text="Login" bgcolor="#0045F1" width="20rem" />
+        <Login>
+          <StyledButton variant="pinkBtn" text="Login" bgcolor="#0045F1" width="20rem" />
+        </Login>
       </Stack>
-
-      {/*Events Schedule
-      <Typography variant="h1" align="center" sx={{ color: "#F83E7D", fontWeight: "bold", mt: -15, pb: 10 }}>
-        Events Schedule
-      </Typography>
-    
-      <Stack
-        alignItems="left"
-        style={{
-          background: "linear-gradient(#FFE7EF, white)",
-          overflowY: "auto",
-        }}
-        sx={{ p: 10 }}
-        maxHeight="80vw">
-        <Grid container justifyContent="center" spacing={10}>
-          {data.map((id) => (
-            <Grid item xs="auto">
-              <ECard variant="eventSchedule" />
-            </Grid>
-          ))}
-        </Grid>
-      </Stack>
-      <Stack
-        alignItems="left"
-        style={{
-          background: "linear-gradient(#FFE7EF, white)",
-          overflowY: "auto",
-        }}
-        sx={{ p: 10 }}
-        maxHeight="100vw">
-        <Typography variant="h2" align="center" sx={{ color: "#C5265C", fontWeight: "bold", pt: 20 }}>
-          Interested in Hosting Your Own Event?
-        </Typography>
-
-        <Typography variant="h1" align="center" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-          Host Your Event
-        </Typography>
-      </Stack>
-      */}
-      {/*Events Creation 
-      <Grid container pb={20} px={20} spacing={5} justifyContent="center">
-        <Grid item xs={12}></Grid>
-        <Grid item xs={12}>
-          <Typography variant="h6">Thumbnail</Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <ImageUpload width="580px" returnSelected={setImage} />
-        </Grid>
-        <Grid item xs={6}>
-          <Stack spacing={10}>
-            <TextField
-              value={form.event_name}
-              onChange={onChange}
-              name={"event_name"}
-              variant="filled"
-              label="Event Title"
-              style={{ backgroundColor: "white" }}
-              required
-              fullWidth
-            />
-            <TextField
-              value={form.event_date_time}
-              onChange={onChange}
-              name={"event_date_time"}
-              variant="filled"
-              label="Time & Date"
-              style={{ backgroundColor: "white" }}
-              type="datetime-local"
-              required
-              InputLabelProps={{ shrink: true }}
-              fullWidth
-            />
-            <TextField
-              value={form.event_location}
-              onChange={onChange}
-              name={"event_location"}
-              variant="filled"
-              label="Location"
-              style={{ backgroundColor: "white" }}
-              required
-              fullWidth
-            />
-          </Stack>
-        </Grid>
-        <Grid item xs={4}>
-          <Stack spacing={10}>
-            <TextField variant="filled" label="First Name" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Last Name" style={{ backgroundColor: "white" }} required fullWidth />
-            <TextField variant="filled" label="Email" style={{ backgroundColor: "white" }} required fullWidth />
-          </Stack>
-        </Grid>
-        <Grid item xs={8}>
-          <TextField
-            value={form.event_description}
-            name={"event_description"}
-            onChange={onChange}
-            id="filled-multiline-static"
-            label="Description"
-            multiline
-            rows={11}
-            defaultValue=""
-            variant="filled"
-            sx={{ width: "50vw", mt: 4 }}
-          />
-        </Grid>
-
-        <Grid item xs={12}>
-          <Stack alignItems="center" mt={10}>
-            <FormControlLabel
-              control={<Checkbox defaultChecked sx={CustomCheckboxStyles} />}
-              label="Make this a reoccurring event"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked sx={CustomCheckboxStyles} />}
-              label="I agree to the Aisha Community Terms & Conditions"
-              sx={{ mb: "2vw" }}
-            />
-            <StyledButton variant="pinkBtn" text="Submit" onClick={handleSubmit} />
-          </Stack>
-        </Grid>
-        
-      </Grid>
-    */}
       <Footer></Footer>
     </div>
   );

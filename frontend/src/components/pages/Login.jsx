@@ -29,7 +29,8 @@ const TextFieldStyle = {
   },
 };
 
-const Login = ({ login, isAuthenticated, user, listingAccount }) => {
+const Login = (props) => {
+  const { login, isAuthenticated, user, listingAccount, children } = props;
   // login handlers
 
   // const [firstName, setFirstName] = useState('');
@@ -69,10 +70,9 @@ const Login = ({ login, isAuthenticated, user, listingAccount }) => {
 
   return (
     <div>
-      <Button onClick={handleClickOpen} color="inherit" size="large" sx={{ color: "#F83E7D" }}>
-        Login
+      <Button onClick={handleClickOpen} color="inherit" size="large" style={{ backgroundColor: "transparent" }}>
+        {children}
       </Button>
-
       <Dialog
         onClose={handleClose}
         open={open}

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import Stack from "@mui/material/Stack";
 import { change_private_event_attendee_invited_status } from "../../Redux/actions/privateEvent";
+import {useParams} from "react-router-dom";
 const TextFieldStyle = {
   "& .MuiOutlinedInput-root": {
     borderRadius: "100vmax",

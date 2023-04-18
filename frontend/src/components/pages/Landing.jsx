@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import { Box, Stack } from "@mui/system";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
@@ -32,8 +34,18 @@ import img11 from "../../assets/image 11.png";
 import LogoVariant2 from "../../assets/LogoVariant2.svg";
 import { connect } from "react-redux";
 import "../pageStyles/styles.css";
+import SignupManager from "./SignupManager";
+import { get_category_blog } from "../../Redux/actions/blog";
 
-function Landing({ isAuthenticated }) {
+function Landing(props) {
+  const { isAuthenticated, get_category_blog } = props;
+  const navigate = useNavigate();
+
+  const handleEvent = (category) => {
+    get_category_blog(category);
+    navigate("/blogsCategory");
+  };
+
   return (
     <div style={{ overflowX: "hidden" }}>
       <div className="acc-section">
@@ -63,8 +75,12 @@ function Landing({ isAuthenticated }) {
                       </>
                     ) : (
                       <>
-                        <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" link="/" />
-                        <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" link="/" />
+                        <SignupManager>
+                          <StyledButton variant="pinkBtn" text="Find Rental" bgcolor="#F83E7D" />
+                        </SignupManager>
+                        <SignupManager>
+                          <StyledButton variant="pinkBtn" text="List Property" bgcolor="#0045F1" />
+                        </SignupManager>
                       </>
                     )}
                   </Stack>
@@ -209,7 +225,12 @@ function Landing({ isAuthenticated }) {
             </Grid>
           </Stack>
           <div className="acc-section  acc-mb">
-            <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
+            <StyledButton
+              variant="pinkBtn"
+              text="Learn More"
+              bgcolor="#F83E7D"
+              href="https://comfortablecoliving.com/category/testimonials/"
+            />
           </div>
         </div>
       </div>
@@ -286,7 +307,9 @@ function Landing({ isAuthenticated }) {
                 </Card>
               </Grid>
             </Grid>
-            <StyledButton variant="pinkBtn" text="Get Started" bgcolor="#0045F1" />
+            <SignupManager>
+              <StyledButton variant="pinkBtn" text="Get Started" bgcolor="#0045F1" />
+            </SignupManager>
           </Stack>
         </div>
       </div>
@@ -351,7 +374,7 @@ function Landing({ isAuthenticated }) {
               property owner:
             </Typography>
             <div className="acc-mb">
-              <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
+              <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" link="howItWorks" />
             </div>
           </Stack>
         </div>
@@ -423,7 +446,7 @@ function Landing({ isAuthenticated }) {
                       Being independent does not mean being alone.
                     </Typography>
                     <Stack alignItems="center">
-                      <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" />
+                      <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#F83E7D" link="/tenanthome" />
                     </Stack>
                   </div>
                 </div>
@@ -448,7 +471,7 @@ function Landing({ isAuthenticated }) {
                     on to maintain your property.
                   </Typography>
                   <Stack alignItems="center">
-                    <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#0045F1" />
+                    <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#0045F1" link="/homeowners" />
                   </Stack>
                 </div>
               </div>
@@ -479,9 +502,6 @@ function Landing({ isAuthenticated }) {
                     More women are investing in real estate and making ‘dream homes’ a reality. Coliving has encouraged
                     this step forward
                   </Typography>
-                  <Stack alignItems="center">
-                    <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#113170" />
-                  </Stack>
                 </div>
               </div>
             </div>
@@ -514,7 +534,7 @@ function Landing({ isAuthenticated }) {
                   organize activities and provide a space to foster friendships and enjoy life together.
                 </Typography>
                 <Stack alignItems="center">
-                  <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#0094FF" />
+                  <StyledButton variant="pinkBtn" text="Learn More" bgcolor="#0094FF" link="/events" />
                 </Stack>
               </Stack>
             </Grid>
@@ -562,7 +582,7 @@ function Landing({ isAuthenticated }) {
           <Grid container spacing={10} alignContent="center" justifyContent="center" mt={-40} pb={20}>
             <Grid item xs="auto">
               <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-                <CardActionArea>
+                <CardActionArea onClick={() => handleEvent("lifestyle_and_wellness")}>
                   <CardMedia component="img" image={require("../../assets/image 14.png")}></CardMedia>
                   <CardContent>
                     <Stack alignItems="center">
@@ -576,7 +596,7 @@ function Landing({ isAuthenticated }) {
             </Grid>
             <Grid item xs="auto">
               <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-                <CardActionArea>
+                <CardActionArea onClick={() => handleEvent("inspiring_women")}>
                   <CardMedia component="img" image={require("../../assets/image 15.png")}></CardMedia>
                   <CardContent>
                     <Stack alignItems="center">
@@ -590,7 +610,7 @@ function Landing({ isAuthenticated }) {
             </Grid>
             <Grid item xs="auto">
               <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-                <CardActionArea>
+                <CardActionArea onClick={() => handleEvent("real_estate")}>
                   <CardMedia component="img" image={require("../../assets/image 16.png")}></CardMedia>
                   <CardContent>
                     <Stack alignItems="center">
@@ -604,7 +624,7 @@ function Landing({ isAuthenticated }) {
             </Grid>
             <Grid item xs="auto">
               <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-                <CardActionArea>
+                <CardActionArea onClick={() => handleEvent("food")}>
                   <CardMedia component="img" image={require("../../assets/image 17.png")}></CardMedia>
                   <CardContent>
                     <Stack alignItems="center">
@@ -618,7 +638,7 @@ function Landing({ isAuthenticated }) {
             </Grid>
             <Grid item xs="auto">
               <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-                <CardActionArea>
+                <CardActionArea onClick={() => handleEvent("entertainment")}>
                   <CardMedia component="img" image={require("../../assets/image 18.png")}></CardMedia>
                   <CardContent>
                     <Stack alignItems="center">
@@ -632,7 +652,7 @@ function Landing({ isAuthenticated }) {
             </Grid>
             <Grid item xs="auto">
               <Card sx={{ width: "377px", height: "348px", borderRadius: 5 }} raised>
-                <CardActionArea>
+                <CardActionArea onClick={() => handleEvent("coliving")}>
                   <CardMedia component="img" image={require("../../assets/image 19 (1).png")}></CardMedia>
                   <CardContent>
                     <Stack alignItems="center">
@@ -649,7 +669,6 @@ function Landing({ isAuthenticated }) {
       </div>
 
       {/*Learn More*/}
-
       <div className="acc-section blue-grad2-bg">
         <div className="acc-container">
           <div className="partner-content">
@@ -683,4 +702,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps, { get_category_blog })(Landing);

@@ -7,7 +7,8 @@ import Page1 from "./Signup1";
 import Page2 from "./Signup2";
 import Page3 from "./Signup3";
     
-export default function SignupManager() {
+export default function SignupManager(props) {
+    const {children} = props;
     const [open, setOpen] = useState(false);
 
 
@@ -29,8 +30,8 @@ export default function SignupManager() {
 
     return (
     <div>
-        <Button onClick={handleClickOpen} color="inherit" size="large" sx={{ color: "#F83E7D", background: "#F83E7D4A" }}>
-            Get Started 
+        <Button onClick={handleClickOpen} color="inherit" size="large" style={{ backgroundColor: 'transparent' }} >
+            {children}
         </Button>
         <Dialog onClose={handleClose} open={open}
             PaperProps={{sx: {minWidth: "80vw", minHeight: "90vh", borderRadius: "100px"}}}>

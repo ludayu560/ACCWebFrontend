@@ -100,8 +100,8 @@ function Dashboard({ variant, isAuthenticated, listingAccount, propertyListingCr
               Browse through your saved matches and connect with them.
             </Typography>
             <Stack direction="row" spacing={20} py={5}>
-              <StyledButton variant="pinkBtn" text="Housemates" />
-              {variant === "tenant" && <StyledButton variant="pinkBtn" text="Listings" bgcolor="#0094FF" />}
+              <StyledButton variant="pinkBtn" text="Housemates" link="/housemates"/>
+              {listingAccount.account_type === "tenant" && <StyledButton variant="pinkBtn" text="Listings" bgcolor="#0094FF" link="/listings"/>}
             </Stack>
           </Stack>
         )}
