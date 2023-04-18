@@ -1,13 +1,8 @@
-import Mainbar from "../components/MainBar"
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import React from "react";
-
-import StyledButton from "./StyledButton";
 
 function ReviewComponent(props) {
   const { username, comment, age, rating} = props;

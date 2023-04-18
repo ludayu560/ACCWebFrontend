@@ -1,12 +1,10 @@
-import {
-  Button,
-  Grid,
-  Box,
-  Typography,
-  Stack,
-  Avatar,
-  Slider,
-} from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Slider from "@mui/material/Slider";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import background from "../../assets/background1.png";
 import GppGoodIcon from "@mui/icons-material/GppGood";

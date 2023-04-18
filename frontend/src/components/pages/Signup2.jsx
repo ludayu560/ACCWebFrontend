@@ -142,7 +142,7 @@ function Page2(props) {
                 I am looking for a place to share and pay rent on a monthly basis.
             </Typography>
 
-            <StyledButton item onClick={onClickNextButton} variant='signup' text='Next'/>
+            <StyledButton item onClick={onClickNextButton} variant='signup' text='Next' bgcolor="#F83E7D"/>
         </Stack>
         </>
     

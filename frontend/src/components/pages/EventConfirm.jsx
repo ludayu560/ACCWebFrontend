@@ -1,30 +1,11 @@
-import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-
-//auth
-import { load_listing, login } from "../../AuthComponents/actions/auth";
-
-import StyledTextField from "../components/StyledTextField";
-import StyledButton from "../components/StyledButton";
-
-import { ReactComponent as Login1 } from "../../assets/Login1.svg";
-import { ReactComponent as Logo } from "../../assets/HouseLogoPink.svg";
-import { ReactComponent as LoginText1 } from "../../assets/LoginText1.svg";
-import { ReactComponent as LoginText2 } from "../../assets/LoginText2.svg";
-import { ReactComponent as AishaSignaturePink } from "../../assets/AishaSignatureWhite.svg";
-import { TextField } from "@mui/material";
-import CustomTextField from "../components/CustomTextField";
-
+import { change_private_event_attendee_invited_status } from "../../Redux/actions/privateEvent";
+import {useParams} from "react-router-dom";
 const TextFieldStyle = {
   "& .MuiOutlinedInput-root": {
     borderRadius: "100vmax",
@@ -33,17 +14,13 @@ const TextFieldStyle = {
   },
 };
 
-const EventConfirm = ({ login, isAuthenticated, user, listingAccount }) => {
-  // login handlers
+const EventConfirm = ({ change_private_event_attendee_invited_status }) => {
+  // const [sent, setVerified] = useState(false);
+  const {id} = useParams();
 
-  // const [firstName, setFirstName] = useState('');
-
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const { email, password } = formData;
+  useEffect(() => {
+    change_private_event_attendee_invited_status(id);
+  }, []);
 
   return (
     <div>
@@ -60,14 +37,15 @@ const EventConfirm = ({ login, isAuthenticated, user, listingAccount }) => {
             CONFIRMED
           </Typography>
           <Typography variant="h5" align="center">
-            We have sent a confirmation email that you’ve accepted the invite from the host! If you have any questions
-            or concerns, please contact the host via email:
+            You have accepted the invite. We have notified the host via email that you are attending!
+            {/* If you have any questions
+            or concerns, please contact the host via email: */}
           </Typography>
-          <Button>
+          {/* <Button>
             <Typography variant="h5" align="center">
               example_email@gmail.com
             </Typography>
-          </Button>
+          </Button> */}
         </Stack>
       </Dialog>
     </div>
@@ -80,4 +58,4 @@ const mapStateToProps = (state) => ({
   listingAccount: state.auth.listingAccount,
 });
 
-export default connect(mapStateToProps, { EventConfirm })(EventConfirm);
+export default connect(mapStateToProps, { change_private_event_attendee_invited_status })(EventConfirm);

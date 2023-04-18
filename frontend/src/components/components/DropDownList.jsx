@@ -4,8 +4,6 @@ import { Grid, Typography, Menu, TextField} from "@mui/material";
 import MenuItem from '@mui/material/MenuItem';
 import {List} from "@mui/material";
 import {ListItem} from "@mui/material";
-import {ListItemText} from "@mui/material";
-import StyledTextField from "./StyledTextField";
 import CustomTextField from "./CustomTextField";
 
 const LoginStyle = {

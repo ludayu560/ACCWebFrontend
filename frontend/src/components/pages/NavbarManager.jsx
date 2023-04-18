@@ -1,9 +1,7 @@
-import axios from "axios";
 import Navbar from "../components/NavBar";
 import Mainbar from "../components/MainBar";
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
 import { Toolbar } from "@mui/material";
 const NavbarManager = ({isAuthenticated, user}) => {
     const [pageNavigate, setPageNavigate] = useState(false);

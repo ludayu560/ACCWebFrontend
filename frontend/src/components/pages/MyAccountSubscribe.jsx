@@ -1,46 +1,16 @@
-import {
-  Container,
-  Button,
-  IconButton,
-  Grid,
-  Box,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  MenuItem,
-  Typography,
-  Stack,
-  Paper,
-  TextField,
-  ImageListItem,
-  Divider,
-  Switch,
-  Card,
-  CardActionArea,
-  CardContent,
-  Avatar,
-  CardMedia,
-  ToggleButton,
-} from "@mui/material";
-import { Link } from "react-router-dom";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Checkbox from "@mui/material/Checkbox";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-import RectangleOne from "../../assets/Rectangle1.svg";
-import AccountContent from "../../assets/AccountContent.svg";
-import NavBar from "../components/NavBar";
-import axios from "axios";
-import { borderRadius } from "@mui/system";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import Mainbar from "../components/MainBar";
-import ECard from "../components/ECard";
-import { styled } from "@mui/material/styles";
 import SideNav from "../components/SideNav";
-import MasterCardLogo from "../../assets/MasterCardLogo.png";
-import PayPalLogo from "../../assets/PayPalLogo.png";
-import VisaLogo from "../../assets/VisaLogo.png";
 import StyledButton from "../components/StyledButton";
 import AddIcon from "../components/AddIcon";
-import flameIcon from "../../assets/Icons/Group 4.svg";
 import { connect } from "react-redux";
 
 function MyAccountSubscribe({

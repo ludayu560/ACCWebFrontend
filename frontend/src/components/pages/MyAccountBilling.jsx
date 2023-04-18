@@ -1,39 +1,12 @@
-import {
-  Container,
-  Button,
-  IconButton,
-  Grid,
-  Box,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  MenuItem,
-  Typography,
-  Stack,
-  Paper,
-  TextField,
-  ImageListItem,
-  Divider,
-  Switch,
-  Card,
-  CardActionArea,
-  CardContent,
-  Avatar,
-  CardMedia,
-  ToggleButton,
-} from "@mui/material";
-import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import Divider from "@mui/material/Divider";
+import Avatar from "@mui/material/Avatar";
 import React, { useState } from "react";
-import RectangleOne from "../../assets/Rectangle1.svg";
-import AccountContent from "../../assets/AccountContent.svg";
-import NavBar from "../components/NavBar";
-import axios from "axios";
-import { borderRadius } from "@mui/system";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-import Mainbar from "../components/MainBar";
-import ECard from "../components/ECard";
-import { styled } from "@mui/material/styles";
 import SideNav from "../components/SideNav";
 import MasterCardLogo from "../../assets/MasterCardLogo.png";
 import PayPalLogo from "../../assets/PayPalLogo.png";
@@ -45,14 +18,13 @@ function MyAccountBilling(props) {
   const [palSelected, setPalSelected] = useState();
   const [visaSelected, setVisaSelected] = useState();
 
-  
   return (
     <>
-      <Grid container spacing={8}>
+      <Grid container spacing={8} className="acc-container">
         <Grid item xs={12}>
-          <Typography variant="h2" padding={"3vw"} fontWeight={700}>
-            <b>My Account</b>
-            <Divider variant="middle" sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }} />
+          <Typography className="header" variant="h2" padding={"3vw"} fontWeight="bold">
+            My Account
+            <Divider variant="middle" sx={{ width: "15vw", border: "2px solid", borderColor: "primary.main", opacity: 100 }} />
           </Typography>
         </Grid>
         <Grid item xs={3}>
@@ -68,7 +40,8 @@ function MyAccountBilling(props) {
                   sx={{
                     m: 2,
                     width: "10vw",
-                    border: "2px solid #F83E7D",
+                    border: "2px solid",
+                    borderColor: "primary.main",
                     opacity: 100,
                   }}
                 />
@@ -207,7 +180,7 @@ function MyAccountBilling(props) {
             </Grid>
             <Grid item pb={10}>
               <Box textAlign="center">
-                <StyledButton variant='signup' text='Next' link={`/account-billsummary`}/>
+                <StyledButton variant="signup" text="Next" link={`/account-billsummary`} />
               </Box>
             </Grid>
           </Grid>

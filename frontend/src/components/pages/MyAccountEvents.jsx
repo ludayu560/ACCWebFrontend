@@ -1,9 +1,11 @@
-import { Grid, Typography, Divider } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
 import ECard from "../components/ECard";
 import SideNav from "../components/SideNav";
 import { connect } from "react-redux";
-import { load_property_listing } from "../../AuthComponents/actions/auth";
+import { load_property_listing } from "../../Redux/actions/propertyListing";
 
 function MyAccountEvents({
   eventCreated,

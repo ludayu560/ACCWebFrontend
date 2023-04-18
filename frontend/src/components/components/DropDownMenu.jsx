@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Typography,
-  Menu,
-  FormControlLabel,
-  Checkbox,
-  List,
-  ListItem,
-  TextField,
-} from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Menu from "@mui/material/Menu";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 import CustomTextField from "./CustomTextField";
 
 // A Function which renders an empty textbox with dropdown functionality.
@@ -53,6 +50,7 @@ function DropDownMenu(props) {
   const handleClose = () => {
     hook(getSelectedStrings())
     setAnchorEl(null);
+    console.log("getselectedstrings: " + getSelectedStrings());
   };
 
   return (

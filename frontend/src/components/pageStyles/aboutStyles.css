@@ -1,0 +1,21 @@
+.hero {
+    background-image: url("../../assets/AboutBG.png");
+    background-size: cover;
+    padding: 2rem;
+    display: flex;
+    position: center;
+    margin-bottom: 5rem;
+
+}
+
+.hero-content {
+    height: 72vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.txt-wrapper{
+    margin: 7rem;
+}

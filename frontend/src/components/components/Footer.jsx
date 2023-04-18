@@ -1,20 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Stack,
-  Button,
-  Link,
-  Box,
-  Slide,
-  useScrollTrigger,
-  Grid,
-  TextField,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
-import StyledTextField from "./StyledTextField";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import Link from "@mui/material/Link";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 import StyledButton from "./StyledButton";
 import AishaSignature from "../../assets/AishaSignatureVariant2.svg";
 import HomeLogo from "../../assets/LogoVariant5.svg";

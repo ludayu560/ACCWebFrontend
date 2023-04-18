@@ -2,19 +2,16 @@ import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
 //auth
-import { load_listing, login } from "../../AuthComponents/actions/auth";
-
-import StyledTextField from "../components/StyledTextField";
+import { login } from "../../Redux/actions/auth";
+import { load_listing } from "../../Redux/actions/listingAccount";
 import StyledButton from "../components/StyledButton";
 
 import { ReactComponent as Login1 } from "../../assets/Login1.svg";
@@ -23,7 +20,6 @@ import { ReactComponent as LoginText1 } from "../../assets/LoginText1.svg";
 import { ReactComponent as LoginText2 } from "../../assets/LoginText2.svg";
 import { ReactComponent as AishaSignaturePink } from "../../assets/AishaSignatureWhite.svg";
 import { TextField } from "@mui/material";
-import CustomTextField from "../components/CustomTextField";
 
 const TextFieldStyle = {
   "& .MuiOutlinedInput-root": {
@@ -33,7 +29,8 @@ const TextFieldStyle = {
   },
 };
 
-const Login = ({ login, isAuthenticated, user, listingAccount }) => {
+const Login = (props) => {
+  const { login, isAuthenticated, user, listingAccount, children } = props;
   // login handlers
 
   // const [firstName, setFirstName] = useState('');
@@ -45,13 +42,12 @@ const Login = ({ login, isAuthenticated, user, listingAccount }) => {
 
   const { email, password } = formData;
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
     login(email, password);
-    console.log(email,password);
+    console.log(email, password);
   };
 
   // dialog handler
@@ -74,15 +70,9 @@ const Login = ({ login, isAuthenticated, user, listingAccount }) => {
 
   return (
     <div>
-      <Button
-        onClick={handleClickOpen}
-        color="inherit"
-        size="large"
-        sx={{ color: "#F83E7D" }}
-      >
-        Login
+      <Button onClick={handleClickOpen} color="inherit" size="large" style={{ backgroundColor: "transparent" }}>
+        {children}
       </Button>
-
       <Dialog
         onClose={handleClose}
         open={open}
@@ -92,25 +82,13 @@ const Login = ({ login, isAuthenticated, user, listingAccount }) => {
             minHeight: "90vh",
             borderRadius: "30px 10vmin 10vmin 30px",
           },
-        }}
-      >
+        }}>
         <Stack direction={"row"}>
           <Box position={"relative"}>
             <Login1 height={"90vh"} padding={"0px"}></Login1>
 
-            <Stack
-              alignItems={"center"}
-              width={"100%"}
-              position={"absolute"}
-              left={"0px"}
-              top={"0px"}
-            >
-              <Stack
-                width={"80%"}
-                alignItems={"center"}
-                marginTop={"90%"}
-                spacing={2}
-              >
+            <Stack alignItems={"center"} width={"100%"} position={"absolute"} left={"0px"} top={"0px"}>
+              <Stack width={"80%"} alignItems={"center"} marginTop={"90%"} spacing={2}>
                 <LoginText1 />
                 <LoginText2 />
               </Stack>
@@ -150,26 +128,14 @@ const Login = ({ login, isAuthenticated, user, listingAccount }) => {
                     minLength="6"
                     borderRadius="100vmax"
                   />
-                  <Box width="20vw">
-                    <StyledButton
-                      variant="signup"
-                      type="submit"
-                      sx={{ width: "100%", height: "60px" }}
-                    >
-                      {" "}
-                      Login{" "}
-                    </StyledButton>
-                  </Box>
+                  <StyledButton variant="signup" type="submit" bgcolor="#F83E7D" width="25vw">
+                    Login
+                  </StyledButton>
                 </Stack>
 
-                <Stack
-                  direction={"column"}
-                  textAlign={"center"}
-                  spacing={"15px"}
-                >
+                <Stack direction={"column"} textAlign={"center"} spacing={"15px"}>
                   <Typography fontWeight={700} variant="p">
-                    Not registered yet?{" "}
-                    <Link to="/signup"> Create an Account </Link>
+                    Not registered yet? <Link to="/signup"> Create an Account </Link>
                   </Typography>
                   <Typography fontWeight={700} variant="p">
                     Forgot your Password{" "}

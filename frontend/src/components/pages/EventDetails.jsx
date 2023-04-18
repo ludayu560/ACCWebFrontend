@@ -1,22 +1,20 @@
-import Mainbar from "../components/MainBar";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import { Checkbox, Grid } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ReviewComponent from "../components/PropDetailReviewComponent";
-import HousemateComponent from "../components/PropDetailHousemateComponent";
-import ImageCarousel from "../components/ImageCarousel";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { create_favorite } from "../../AuthComponents/actions/auth";
 import homeownersbg from "../../assets/homeownerbg.png";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ECard from "../components/ECard";
 import StyledButton from "../components/StyledButton";
+import { create_favorite } from "../../Redux/actions/favorites";
+
 
 function EventDetails({ create_favorite, currentPropertyListing, listingAccount }, props) {
   const {

@@ -4,10 +4,10 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 // login set up
 import { Provider } from "react-redux";
-import Activate from "./AuthComponents/Activate";
-import ResetPassword from "./AuthComponents/ResetPassword";
-import ResetPasswordConfirm from "./AuthComponents/ResetPasswordConfirm";
-import Layout from "./AuthComponents/Layout";
+import Activate from "./Redux/Activate";
+import ResetPassword from "./Redux/ResetPassword";
+import ResetPasswordConfirm from "./Redux/ResetPasswordConfirm";
+import Layout from "./Redux/Layout";
 
 import MyAccount from "./components/pages/MyAccount";
 import MyAccountBilling from "./components/pages/MyAccountBilling";
@@ -44,6 +44,9 @@ import Blogs from "./components/pages/Blogs";
 import BlogsCategory from "./components/pages/BlogsCategory";
 import EventConfirm from "./components/pages/EventConfirm";
 import BlogsCreate from "./components/pages/BlogsCreate";
+import PrivateEventPage from "./components/pages/PrivateEvent";
+import { Divider, Typography } from "@mui/material";
+import BlogsDisplay from "./components/pages/BlogsDisplay";
 
 function App() {
   return (
@@ -100,6 +103,10 @@ function App() {
             <Route exact path="/blogs" element={<Blogs/>} />
             <Route exact path="/blogsCategory" element={<BlogsCategory/>} />
             <Route exact path="/blogsCreate" element={<BlogsCreate/>} />
+            <Route exact path="/blogsDisplay" element={<BlogsDisplay/>} />
+
+            <Route exact path="/privateEventPage" element={<PrivateEventPage/>} />
+
             
             <Route exact path="/howItWorks" element={<HowItWorks />} />
             <Route exact path="/contact" element={<Contact />} />
@@ -116,7 +123,7 @@ function App() {
             <Route exact path="/tenanthome" element={<TenantHome />} />
             <Route exact path="/events" element={<Events />} />
             <Route exact path="/browseevents" element={<BrowseEvents />} />
-            <Route exact path="/eventconfirm" element={<EventConfirm />} />
+            <Route exact path="/eventconfirm/:id" element={<EventConfirm />} />
             <Route exact path="/" element={<Landing />} />
             <Route exact path="/activate/:uid/:token" element={<Activate />} />
             <Route exact path="/reset-password" element={<ResetPassword />} />
@@ -131,7 +138,7 @@ function App() {
               path="/dev"
               element={
                 <>
-                  <ImageGallery />
+                  <EventConfirm/>
                 </>
               }
             />
@@ -139,6 +146,28 @@ function App() {
         </Layout>
       </BrowserRouter>
     </ConnectedThemeProvider>
+  );
+}
+
+
+// Renders section headers
+function SectionHeader(props) {
+  const { children } = props;
+  return (
+    <Typography fontWeight={600} fontSize={40} marginY={"50px"}>
+      {children}
+      <Divider
+        variant="left"
+        sx={{
+          width: "15%",
+          border: "2px solid",
+          color: "primary.main",
+          opacity: 100,
+          marginY: "3px",
+        }}
+      />
+    </Typography>
+    
   );
 }
 

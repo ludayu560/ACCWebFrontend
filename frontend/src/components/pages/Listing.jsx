@@ -1,5 +1,10 @@
 import { Box, Stack } from "@mui/system";
-import { Divider, Grid, IconButton, Paper, Typography } from "@mui/material";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+
 import StyledButton from "../components/StyledButton";
 import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
@@ -7,16 +12,20 @@ import ECard from "../components/ECard";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Tags from "../components/Tags";
 import ListingFilterPanel from "../components/ListingFilterPanel";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 
-import { load_property_listing, get_housemates } from "../../AuthComponents/actions/auth";
+import { load_property_listing } from "../../Redux/actions/propertyListing";
+import { get_housemates } from "../../Redux/actions/housemate";
 import { useNavigate } from "react-router";
+
 
 function Listing({load_property_listing, get_housemates}) {
   const navigate = useNavigate();
   const [newQuery, setNewQuery] = useState(true);
+
   const [query, setQuery] = useState();
   // If number of bedrooms, bathrooms, or housemates === 0 => no preference
   // If number of bedrooms === 5, bathrooms === 4, housemates === 4 => that number or more.
@@ -78,6 +87,8 @@ function Listing({load_property_listing, get_housemates}) {
       (filterParams.listing_smoking === "unknown")? '' : "&listing_smoking=" + filterParams.listing_smoking +
       (filterParams.utilities === "unknown")? '' : "&utilities=" + filterParams.utilities;
       setQuery(query)
+  console.log(query)
+
   }
 
   useEffect(()=>{

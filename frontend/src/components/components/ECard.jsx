@@ -1,19 +1,17 @@
 import React from "react";
-import {
-  Card,
-  CardMedia,
-  Box,
-  CardContent,
-  Typography,
-  Avatar,
-  Stack,
-  IconButton,
-  Grid,
-  Checkbox,
-  Button,
-  CardActionArea,
-  Divider,
-} from "@mui/material";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Box from "@mui/material/Box";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
+import IconButton from "@mui/material/IconButton";
+import Grid from "@mui/material/Grid";
+import Checkbox from "@mui/material/Checkbox";
+import Button from "@mui/material/Button";
+import CardActionArea from "@mui/material/CardActionArea";
+import Divider from "@mui/material/Divider";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import bbq from "../../assets/bbq.png";
 import livingSpace from "../../assets/livingspace.png";
@@ -36,6 +34,7 @@ function capitalizeFirstLetter(str) {
 function ECard(props) {
   const {
     variant,
+    blog,
     themeColor,
     date,
     time,
@@ -52,37 +51,45 @@ function ECard(props) {
     roomsAvailable = "N/A",
     price = "N/A",
     commentCount = 0,
-    author = "By ACC",
+    author,
     category="LIFESTYLE & WELLNESS"
   } = props;
 
   return (
     <>
-      {variant === "blog" && (
+      {variant === "blog" && blog && (
         <Card raised sx={{ borderRadius: 4, width: "350px" }}>
           <CardActionArea>
-            <CardMedia component="img" height="250px" src={image ? "http://127.0.0.1:8000/" + image : blogsDefault} />
+            <Box sx={{ width: "100%", height: "250px", overflow: "hidden" }}>
+              <CardMedia
+                component="img"
+                sx={{ width: "100%", height: "100%", objectFit: "cover" }}
+                src={blog.background_image ? "http://127.0.0.1:8000/" + blog.background_image : blogsDefault}
+              />
+            </Box>
             <CardContent>
+              {/*Category Tag */}
               <Box mt={-9} pb={5}>
-                <StyledButton variant="tag" text={category}></StyledButton>
+                <StyledButton variant="tag" text={blog.category_type.toUpperCase().replace('_', ' ')}></StyledButton>
               </Box>
+              {/*Rest of Card Content */}
               <Grid container spacing={3} px={2}>
                 <Grid item xs={12}>
                   <Typography variant="h5" align="center" pb={2}>
-                    {name}
+                    {blog.title}
                   </Typography>
                   <Divider />
                 </Grid>
                 <Grid item xs={8}>
-                  <Typography variant="h6">{time ? time.substring(0, 10) : "Date: N/A"}</Typography>
+                  <Typography variant="h6">{blog.created ? blog.created.substring(0, 10) : "Date: N/A"}</Typography>
                 </Grid>
                 <Grid item xs={4}>
                   <Typography variant="h6" align="right">
-                    {author}
+                    By {author ? author : "ACC"}
                   </Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography variant="h6">{commentCount} comments</Typography>
+                  <Typography variant="h6">{blog.commentCount ? blog.commentCount : 0} comments</Typography>
                 </Grid>
               </Grid>
             </CardContent>

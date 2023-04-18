@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import { Grid, Typography, Box } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
-import DropDownMenu from "../components/DropDownMenu";
-import DropDownList from "../components/DropDownList";
-import StyledButton from "../components/StyledButton";
-import CustomTextField from "../components/CustomTextField";
-import SignupProgressionIcon from "../components/SignupProgressIcon";
-import HouseLogoPink from "../components/HouseLogoPink";
 import axios from "axios";
-import { signup, create_listing_account } from "../../AuthComponents/actions/auth";
+import React, { useState } from "react";
 import { connect } from "react-redux";
+import { signup } from "../../Redux/actions/auth";
+import { create_listing_account } from "../../Redux/actions/listingAccount";
+import CustomTextField from "../components/CustomTextField";
+import DropDownList from "../components/DropDownList";
+import DropDownMenu from "../components/DropDownMenu";
+import HouseLogoPink from "../components/HouseLogoPink";
+import SignupProgressionIcon from "../components/SignupProgressIcon";
+import StyledButton from "../components/StyledButton";
 function Page3({
   setPage,
   pageValueOne,
@@ -17,7 +18,7 @@ function Page3({
   signup,
   user,
   signedup,
-  create_listing_account
+  create_listing_account,
 }) {
   const api = axios.create({
     baseURL: `http://127.0.0.1:8000/ListingAccount/`,
@@ -56,18 +57,14 @@ function Page3({
   const [interests, setInterests] = useState();
 
   const onClickNextButton = () => {
-    if (pageValueOne.password === pageValueOne.passwordConfirm) {
-      signup(
-        pageValueOne.firstName + " " + pageValueOne.lastName,
-        pageValueOne.email,
-        pageValueOne.password,
-        pageValueOne.passwordConfirm
-      );
-    }
+    signup(
+      pageValueOne.firstName + " " + pageValueOne.lastName,
+      pageValueOne.email,
+      pageValueOne.password,
+      pageValueOne.passwordConfirm
+    );
   };
   if (signedup) {
-    console.log(interests, traits)
-    // new Date().toISOString().split('T')[0]
     const listingAccount = {
       username: pageValueOne.username,
       account_type: pageValueTwo,
@@ -83,21 +80,41 @@ function Page3({
       tell_us_about_yourself: "",
       profile_picture: null,
       banner_picture: null,
-      display_picture_one: null,
-      display_picture_two: null,
-      display_picture_three: null,
-      display_picture_four: null,
+      display_picture: null,
+      preferences: "",
+      price_range_min: 0,
+      price_range_max: 700,
       traits: traits,
       interests: interests,
-      traits: ['Quiet'],
-      interests: ['Cooking'],
-      notifications: [],
       user: user.id,
-    }
-    create_listing_account(listingAccount)
+    };
+    const tempdata = {
+      id: 3,
+      username: "geoorgge",
+      account_type: "tenant",
+      first_name: "George",
+      last_name: "Li",
+      email: "georgeli293@gmail.com",
+      phone_number: "6476790885",
+      date_of_birth: "2002-09-26",
+      location: "Toronto",
+      age_range: "18-22",
+      occupation: "Doctor",
+      news_consent: true,
+      tell_us_about_yourself: "blehhhh",
+      profile_picture: null,
+      banner_picture: null,
+      display_picture: null,
+      preferences: "",
+      price_range_min: "1300.00",
+      price_range_max: "2000.00",
+      subscription_type: "none",
+      user: 1,
+    };
+    create_listing_account(listingAccount);
+
     setPage(1);
   }
-  // console.log(new Date(dob).toISOString().split('T')[0])
 
   return (
     <>
@@ -125,7 +142,7 @@ function Page3({
               variant="signup"
               onClick={(e) => setLocation(e.target.value)}
               label="Location"
-              style={{ width: '23vw' }}
+              style={{ width: "23vw" }}
             >
               {" "}
             </CustomTextField>
@@ -140,7 +157,7 @@ function Page3({
               variant="signup"
               onClick={(e) => setOccupation(e.target.value)}
               label="Occupation*"
-              style={{ width: '23vw' }}
+              style={{ width: "23vw" }}
             >
               {" "}
             </CustomTextField>
@@ -150,7 +167,7 @@ function Page3({
               onChange={(e) => setDOB(e.target.value)}
               label="Date of Birth"
               type="date"
-              style={{ width: '25vw' }}
+              style={{ width: "25vw" }}
             >
               {" "}
             </CustomTextField>
@@ -184,6 +201,7 @@ function Page3({
             onClick={onClickNextButton}
             variant="signup"
             text="Next"
+            bgcolor="#F83E7D"
           />
         </Stack>
       </Stack>
@@ -196,4 +214,6 @@ const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { signup, create_listing_account })(Page3);
+export default connect(mapStateToProps, { signup, create_listing_account })(
+  Page3
+);
