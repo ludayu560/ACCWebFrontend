@@ -57,6 +57,7 @@ export const change_private_event_attendee_invited_status =
 
 export const create_private_event = (private_event) => async (dispatch) => {
   const access = localStorage.getItem("access");
+  console.log("create_private_event");
 
   if (access) {
     try {
@@ -75,13 +76,14 @@ export const create_private_event = (private_event) => async (dispatch) => {
       if (private_event.event_image) {
         formData.append("event_image", private_event.event_image);
       }
-      formData.append("private_event", private_event.creator_listing_account);
+      formData.append("creator_listing_account", private_event.creator_listing_account);
 
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/EventPrivate/`,
         formData,
         config
       );
+      console.log(res);
 
       const PrivateEventInvitedformData = new FormData();
       PrivateEventInvitedformData.append("event_id", res.data.id);
@@ -103,28 +105,10 @@ export const create_private_event = (private_event) => async (dispatch) => {
           PrivateEventInvitedformData,
           config
         );
-      }
+      // console.log("privateeventinvited",res);
+      // for some reason this res is a failed promise. the request succeds but the promise fails 
+      // which throws an error. I don't know why this is happening.
 
-      const PrivateEventAttendingformData = new FormData();
-      PrivateEventAttendingformData.append("event_id", res.data.id);
-      for (let i = 0; i < private_event.attending.length; i++) {
-        PrivateEventAttendingformData.set(
-          "first_name",
-          private_event.invited[i].first_name
-        );
-        PrivateEventAttendingformData.set(
-          "last_name",
-          private_event.invited[i].last_name
-        );
-        PrivateEventAttendingformData.set(
-          "email",
-          private_event.invited[i].email
-        );
-        const res = axios.post(
-          `${process.env.REACT_APP_API_URL}/EventPrivateAttending/`,
-          PrivateEventAttendingformData,
-          config
-        );
       }
 
       dispatch({

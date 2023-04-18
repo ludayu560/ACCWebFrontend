@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -37,8 +37,9 @@ const PrivateEventPage = (props) => {
     watch,
     formState: { errors },
   } = useForm();
-
+  
   const onSubmit = (data) => {
+    // console.log("listing account: ", listingAccount.id);
     var newEvent = {
       event_name: data.eventTitle,
       event_date_time: data.timeDate,
@@ -46,16 +47,18 @@ const PrivateEventPage = (props) => {
       event_description: data.eventDescription,
       event_what_to_bring: data.whatToBring,
       event_image: null,
-      event_invited: data.guests,
+      invited: data.guests,
       creator_listing_account: listingAccount.id,
     };
+    // console.log("creating new event: ", newEvent);
     create_private_event(newEvent);
   };
   // debug console.log for watched values
-  // const watchedValues = watch();
-  // useEffect(() => {
-  //   console.log("Current form values:", watchedValues);
-  // }, [watchedValues]);
+  const watchedValues = watch();
+  useEffect(() => {
+    console.log("Current form values:", watchedValues);
+    console.log("Current form errors:", errors);
+  }, [watchedValues]);
 
   return (
     <Box marginX={"10vw"} marginBottom={"10vh"}>
@@ -151,7 +154,7 @@ const PrivateEventPage = (props) => {
               <Grid item xs={4}>
                 <MyAccountTextfield
                   type="text"
-                  {...register(`guests.${index}.firstName`, { required: true })}
+                  {...register(`guests.${index}.first_name`, { required: true })}
                   key={guest.id + "-first"}
                   placeholder="First Name"
                 />
@@ -159,7 +162,7 @@ const PrivateEventPage = (props) => {
               <Grid item xs={4}>
                 <MyAccountTextfield
                   type="text"
-                  {...register(`guests.${index}.lastName`, { required: true })}
+                  {...register(`guests.${index}.last_name`, { required: true })}
                   key={guest.id + "-last"}
                   placeholder="Last Name"
                 />

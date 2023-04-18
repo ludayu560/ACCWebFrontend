@@ -138,7 +138,7 @@ function App() {
               path="/dev"
               element={
                 <>
-                  <PrivateEventPage/>
+                  <EventConfirm/>
                 </>
               }
             />
