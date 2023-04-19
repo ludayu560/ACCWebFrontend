@@ -47,6 +47,8 @@ import BlogsCreate from "./components/pages/BlogsCreate";
 import PrivateEventPage from "./components/pages/PrivateEvent";
 import { Divider, Typography } from "@mui/material";
 import BlogsDisplay from "./components/pages/BlogsDisplay";
+import CommunityEvent from "./components/pages/CommunityEvent";
+import EventSignup from "./components/pages/EventSignup";
 
 function App() {
   return (
@@ -105,6 +107,7 @@ function App() {
             <Route exact path="/blogsCreate" element={<BlogsCreate/>} />
             <Route exact path="/blogsDisplay" element={<BlogsDisplay/>} />
 
+            <Route exact path="/communityEventPage" element={<CommunityEvent/>} />
             <Route exact path="/privateEventPage" element={<PrivateEventPage/>} />
 
             
@@ -122,6 +125,7 @@ function App() {
             <Route exact path="/homeowners" element={<Homeowners />} />
             <Route exact path="/tenanthome" element={<TenantHome />} />
             <Route exact path="/events" element={<Events />} />
+            <Route exact path="/eventsignup" element={<EventSignup/>} />
             <Route exact path="/browseevents" element={<BrowseEvents />} />
             <Route exact path="/eventconfirm/:id" element={<EventConfirm />} />
             <Route exact path="/" element={<Landing />} />

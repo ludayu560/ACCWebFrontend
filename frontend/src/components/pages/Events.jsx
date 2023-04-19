@@ -79,7 +79,7 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
   const [onlineSelected, setOnlineSelected] = useState(true);
   const [inpersonSelected, setInpersonSelected] = useState(false);
 
-  return listingAccount !== null ? (
+  return listingAccount === null ? (
     <div style={{ overflowX: "hidden" }}>
       <div className="acc-section">
         <div className="acc-container">
@@ -90,12 +90,13 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
                 Events
               </Typography>
               <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
-                Behind Coliving,
+                Behind <span className="h1 headerPink">Coliving,</span>
               </Typography>
-              <Typography variant="h1" sx={{ color: "#F83E7D", fontWeight: "bold" }}>
-                Lives Community.
+              <Typography variant="h1" sx={{ fontWeight: "bold", color: "white" }}>
+                Lives <span className="h1 headerPink">Community.</span>
               </Typography>
-              <Grid container spacing={10} pt={5}>
+
+              <Grid container spacing={5} pt={5}>
                 <Grid item>
                   <StyledButton
                     variant="pinkBtn"
@@ -107,7 +108,24 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
                   />
                 </Grid>
                 <Grid item>
-                  <StyledButton variant="pinkBtn" text="+ Host Event" width="15vw" link="/privateEventPage" />
+                  <StyledButton
+                    variant="pinkBtn"
+                    text="Organize a community event"
+                    width="15vw"
+                    bgcolor="white"
+                    textColor="#F83E7D"
+                    link="/communityEventPage"
+                  />
+                </Grid>
+                <Grid item>
+                  <StyledButton
+                    variant="pinkBtn"
+                    text="Host your private event"
+                    width="15vw"
+                    bgcolor="white"
+                    textColor="#F83E7D"
+                    link="/privateEventPage"
+                  />
                 </Grid>
               </Grid>
             </Stack>
@@ -138,12 +156,34 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
 
       {/* Host Event div*/}
       <Box component="img" src={require("../../assets/image 32.png")} />
-      <Stack pl={10} mt={-50} pr={20} pt={10} pb={40} alignItems="center" spacing={10}>
-        <Typography variant="h3" sx={{ fontWeight: "bold", color: "white" }}>
-          Interested in hosting your own event? Let us help!
+      <Stack pl={10} mt={-55} pr={20} pt={10} pb={40} alignItems="center" spacing={10}>
+        <Typography variant="h4" align="center" sx={{ fontWeight: "bold", color: "white" }} px="5rem">
+          Interested in organizing a community event or hosting your private event? Let's help
         </Typography>
 
-        <StyledButton variant="pinkBtn" text="Host Event" width="20vw" link="/privateEventPage" />
+        <Grid container>
+          <Grid item xs={6}>
+            <Stack alignItems="center" px="3rem" spacing={2}>
+              <Typography variant="h6" align="center" sx={{ color: "white" }}>
+                Create event listing available for public browsing.
+              </Typography>
+              <StyledButton
+                variant="pinkBtn"
+                text="Organize a community event"
+                width="20vw"
+                link="/communityEventPage"
+              />
+            </Stack>
+          </Grid>
+          <Grid item xs={6}>
+            <Stack alignItems="center" px="3rem" spacing={2}>
+              <Typography variant="h6" align="center" sx={{ color: "white" }}>
+                Create private event
+              </Typography>
+              <StyledButton variant="pinkBtn" text="Host your private event" width="20vw" link="/privateEventPage" />
+            </Stack>
+          </Grid>
+        </Grid>
       </Stack>
       <Footer />
     </div>
