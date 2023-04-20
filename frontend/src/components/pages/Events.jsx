@@ -79,7 +79,7 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
   const [onlineSelected, setOnlineSelected] = useState(true);
   const [inpersonSelected, setInpersonSelected] = useState(false);
 
-  return listingAccount === null ? (
+  return listingAccount !== null ? (
     <div style={{ overflowX: "hidden" }}>
       <div className="acc-section">
         <div className="acc-container">
@@ -346,6 +346,27 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
                 </Card>
               </Grid>
             </Grid>
+          </Stack>
+        </div>
+      </div>
+
+      {/*Pink Stack */}
+      <div className="acc-section pink-bg">
+        <div className="acc-container">
+          <Stack sx={{ px: 15, py: 10 }} alignItems="center">
+            <Typography variant="h4" color="white" pb={10}>
+              At Aisha Comfortable Coliving, we believe a great place to nurture community is in your own neighbourhood.
+              Become an Aisha Comfortable Coliving event organizer and plan a virtual or in-person event in your
+              community.
+            </Typography>
+            <StyledButton
+              variant="pinkBtn"
+              text="Organize a community event"
+              width="15vw"
+              bgcolor="white"
+              textColor="#F83E7D"
+              link="/communityEventPage"
+            />
           </Stack>
         </div>
       </div>

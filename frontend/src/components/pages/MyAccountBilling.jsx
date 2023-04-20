@@ -27,7 +27,7 @@ function MyAccountBilling(props) {
             <Divider variant="middle" sx={{ width: "15vw", border: "2px solid", borderColor: "primary.main", opacity: 100 }} />
           </Typography>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <SideNav></SideNav>
         </Grid>
         <Grid container xs={9} px={6}>

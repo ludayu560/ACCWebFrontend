@@ -52,7 +52,7 @@ function ECard(props) {
     price = "N/A",
     commentCount = 0,
     author,
-    category="LIFESTYLE & WELLNESS"
+    category = "LIFESTYLE & WELLNESS",
   } = props;
 
   return (
@@ -70,7 +70,7 @@ function ECard(props) {
             <CardContent>
               {/*Category Tag */}
               <Box mt={-9} pb={5}>
-                <StyledButton variant="tag" text={blog.category_type.toUpperCase().replace('_', ' ')}></StyledButton>
+                <StyledButton variant="tag" text={blog.category_type.toUpperCase().replace("_", " ")}></StyledButton>
               </Box>
               {/*Rest of Card Content */}
               <Grid container spacing={3} px={2}>
@@ -351,11 +351,7 @@ function ECard(props) {
                     {name}
                   </Typography>
                 </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="h5" sx={{ color: "#F83E7D", mt: -2 }} align="center">
-                    {name}
-                  </Typography>
-                </Grid>
+
                 <Grid item xs={5}>
                   <Typography variant="h6" align="center">
                     {capitalizeFirstLetter(role)}

@@ -6,13 +6,9 @@ import ECard from "../components/ECard";
 import SideNav from "../components/SideNav";
 import { connect } from "react-redux";
 import { load_property_listing } from "../../Redux/actions/propertyListing";
+import { Box } from "@mui/material";
 
-function MyAccountEvents({
-  eventCreated,
-  attending_events,
-  interested_events,
-  load_property_listing,
-}) {
+function MyAccountEvents({ eventCreated, attending_events, interested_events, load_property_listing }) {
   const [attendingEvents, setAttendingEvents] = useState([]);
   const [createdEvents, setCreatedEvents] = useState([]);
   const [interestedEvents, setInterestedEvents] = useState([]);
@@ -25,26 +21,31 @@ function MyAccountEvents({
     }
   }, [eventCreated, attending_events, interested_events]);
 
-  const handleEventClick = (id) => {
-
-  };
+  const handleEventClick = (id) => {};
 
   return (
     <>
       <Grid container spacing={8}>
         <Grid item xs={12}>
-          <Typography variant="h2" padding={"3vw"} fontWeight={700}>
-            <b>My Account</b>
+          <Box display="flex" flexDirection="column" alignItems="left" margin="4vw">
+            <Typography variant="h2" padding="3vw" paddingBottom="3px" fontWeight="bold">
+              My Account
+            </Typography>
             <Divider
-              variant="middle"
-              sx={{ width: "15vw", border: "2px solid #F83E7D", opacity: 100 }}
+              sx={{
+                width: "15%",
+                border: "3px solid",
+                borderColor: "primary.main",
+                opacity: 100,
+                ml: "5vw",
+              }}
             />
-          </Typography>
+          </Box>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <SideNav></SideNav>
         </Grid>
-        <Grid container xs={9} px={6}>
+        <Grid container xs={8} px={6}>
           <Grid item spacing={5} xs={12}>
             <Grid item xs={12} align="center">
               <Typography variant="h3" color="#000" fontWeight={700}>
@@ -54,7 +55,8 @@ function MyAccountEvents({
                   sx={{
                     m: 2,
                     width: "18vw",
-                    border: "2px solid #F83E7D",
+                    border: "2px solid",
+                    borderColor: "primary.main",
                     opacity: 100,
                   }}
                 />
@@ -69,8 +71,7 @@ function MyAccountEvents({
                     location={item.event_location}
                     description={item.event_description}
                     time={item.event_date_time}
-                    image={item.event_image}
-                  ></ECard>
+                    image={item.event_image}></ECard>
                 </Grid>
               ))}
             </Grid>
@@ -85,7 +86,8 @@ function MyAccountEvents({
                   sx={{
                     m: 2,
                     width: "18vw",
-                    border: "2px solid #F83E7D",
+                    border: "2px solid",
+                    borderColor: "primary.main",
                     opacity: 100,
                   }}
                 />
@@ -100,8 +102,7 @@ function MyAccountEvents({
                     location={item.event_location}
                     description={item.event_description}
                     time={item.event_date_time}
-                    image={item.event_image}
-                  ></ECard>
+                    image={item.event_image}></ECard>
                 </Grid>
               ))}
             </Grid>
@@ -110,13 +111,14 @@ function MyAccountEvents({
           <Grid item spacing={5} xs={12}>
             <Grid item xs={12} align="center">
               <Typography variant="h3" color="#000" fontWeight={700}>
-                Events I’m Creating
+                Community Events I’m Organizing
                 <Divider
                   variant="fullWidth"
                   sx={{
                     m: 2,
                     width: "18vw",
-                    border: "2px solid #F83E7D",
+                    border: "2px solid",
+                    borderColor: "primary.main",
                     opacity: 100,
                   }}
                 />
@@ -131,8 +133,38 @@ function MyAccountEvents({
                     location={item.event_location}
                     description={item.event_description}
                     time={item.event_date_time}
-                    image={item.event_image}
-                  ></ECard>
+                    image={item.event_image}></ECard>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+
+          <Grid item spacing={5} xs={12}>
+            <Grid item xs={12} align="center">
+              <Typography variant="h3" color="#000" fontWeight={700}>
+                Private Events I’m Hosting
+                <Divider
+                  variant="fullWidth"
+                  sx={{
+                    m: 2,
+                    width: "18vw",
+                    border: "2px solid",
+                    borderColor: "primary.main",
+                    opacity: 100,
+                  }}
+                />
+              </Typography>
+            </Grid>
+            <Grid container spacing={8} p={10}>
+              {createdEvents.map((item) => (
+                <Grid item onClick={() => handleEventClick(item.id)}>
+                  <ECard
+                    variant="event"
+                    name={item.event_name}
+                    location={item.event_location}
+                    description={item.event_description}
+                    time={item.event_date_time}
+                    image={item.event_image}></ECard>
                 </Grid>
               ))}
             </Grid>
@@ -149,6 +181,4 @@ const mapStateToProps = (state) => ({
   interested_events: state.auth.interested_events,
 });
 
-export default connect(mapStateToProps, { load_property_listing })(
-  MyAccountEvents
-);
+export default connect(mapStateToProps, { load_property_listing })(MyAccountEvents);

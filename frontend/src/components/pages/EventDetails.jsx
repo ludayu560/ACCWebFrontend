@@ -15,7 +15,6 @@ import ECard from "../components/ECard";
 import StyledButton from "../components/StyledButton";
 import { create_favorite } from "../../Redux/actions/favorites";
 
-
 function EventDetails({ create_favorite, currentPropertyListing, listingAccount }, props) {
   const {
     variant,
@@ -165,95 +164,104 @@ function EventDetails({ create_favorite, currentPropertyListing, listingAccount 
   // report listing
   return (
     <div style={{ overflowX: "hidden" }}>
-      {/* Event Picture */}
-      <Box component="img" src={homeownersbg} width="100vw" maxHeight="470px" />
-      <Stack p={"5vw"}>
-        {/* Title Component */}
-        <Grid container mb={10}>
-          <Grid item xs={10.5}>
-            <Typography fontSize="5vw" fontWeight="bold">
-              Trivia Night
-            </Typography>
-          </Grid>
-          <Grid item xs={1.5}>
-            <Checkbox
-              onClick={(event) => {
-                setIsFavourited(event.target.checked);
-              }}
-              icon={<FavoriteBorderIcon style={{ fontSize: 120 }} sx={{ color: "gray" }} />}
-              checkedIcon={<FavoriteIcon style={{ fontSize: 120 }} sx={{ color: "#F83E7D" }} />}
-            />
-          </Grid>
-          <Grid item xs={5}>
-            <Typography fontWeight="bold" fontSize="4vw" color={"#F83E7D"}>
-              {date ? date : "N/A"} {time ? time : "N/A"}
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Box
-              display="flex"
-              style={{
-                alignItems: "center",
-              }}>
-              <LocationOnIcon style={{ fontSize: 60 }} sx={{ mr: 6, color: "blue" }} />
-              <Typography variant="h6" fontWeight="bold">
-                {location ? location : "Location: N/A"}
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={4}>
-            <Box
-              display="flex"
-              style={{
-                alignItems: "center",
-              }}>
-              <Diversity3Icon style={{ fontSize: 60 }} sx={{ mr: 6, color: "#F83E7D" }} />
-              <Typography variant="h6" fontWeight="bold">
-                | {interested ? interested : "N/A"} Interested | {going ? going : "N/A"} Going
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
-
-        <Grid container pb={20} spacing={10}>
-          <Grid item xs="auto">
-            <Stack width="60vw" spacing={10}>
-              <Typography variant="h4">
-                Come join us at Balzac's coffee for an evening of coffee and chatting!
-              </Typography>
-              <Typography variant="h4">
-                <Typography variant="h4" fontWeight="bold">
-                  Cost:
+      <div className="acc-section">
+        <div className="acc-container">
+          {/* Event Picture */}
+          <Box component="img" src={homeownersbg} width="100vw" maxHeight="470px" />
+          <Stack p={"5vw"}>
+            {/* Title Component */}
+            <Grid container mb={10}>
+              <Grid item xs={10.5}>
+                <Typography fontSize="5vw" fontWeight="bold">
+                  Trivia Night
                 </Typography>
-                Free with an Aisha Comfortable Coliving community events membership. Learn more.
+              </Grid>
+              <Grid item xs={1.5}>
+                <Checkbox
+                  onClick={(event) => {
+                    setIsFavourited(event.target.checked);
+                  }}
+                  icon={<FavoriteBorderIcon style={{ fontSize: 120 }} sx={{ color: "gray" }} />}
+                  checkedIcon={<FavoriteIcon style={{ fontSize: 120 }} sx={{ color: "#F83E7D" }} />}
+                />
+              </Grid>
+              <Grid item xs={5}>
+                <Typography fontWeight="bold" fontSize="4vw" color={"#F83E7D"}>
+                  {date ? date : "N/A"} {time ? time : "N/A"}
+                </Typography>
+              </Grid>
+              <Grid item xs={3}>
+                <Box
+                  display="flex"
+                  style={{
+                    alignItems: "center",
+                  }}>
+                  <LocationOnIcon style={{ fontSize: 60 }} sx={{ mr: 6, color: "blue" }} />
+                  <Typography variant="h6" fontWeight="bold">
+                    {location ? location : "Location: N/A"}
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={4}>
+                <Box
+                  display="flex"
+                  style={{
+                    alignItems: "center",
+                  }}>
+                  <Diversity3Icon style={{ fontSize: 60 }} sx={{ mr: 6, color: "#F83E7D" }} />
+                  <Typography variant="h6" fontWeight="bold">
+                    | {interested ? interested : "N/A"} Interested | {going ? going : "N/A"} Going
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
+
+            <Grid container justifyContent="center" pb={20} spacing={10}>
+              <Grid item xs={12}>
+                <Stack spacing={10}>
+                  <Typography variant="h4">
+                    Come join us at Balzac's coffee for an evening of coffee and chatting!
+                  </Typography>
+                  <Typography variant="h4">
+                    <Typography variant="h4" fontWeight="bold">
+                      Cost:
+                    </Typography>
+                    Free with an Aisha Comfortable Coliving community events membership. Learn more.
+                  </Typography>
+                </Stack>
+              </Grid>
+              <Grid item xs="auto">
+                <Stack spacing={5} alignItems="center">
+                  <Typography variant="h6">
+                    Disclaimer: This is an event hosted by a member of the community and is not an official event hosted
+                    by ACC.
+                  </Typography>
+                  <StyledButton variant="pinkBtn" text="Sign me up" width="20vw" />
+                </Stack>
+              </Grid>
+            </Grid>
+
+            <Box>
+              <Typography fontSize="4vw" fontWeight="bold">
+                Who’s Going?
               </Typography>
-            </Stack>
-          </Grid>
-          <Grid item xs="auto">
-            <Stack spacing={5}>
-              <StyledButton variant="pinkBtn" text="Interested" bgcolor="#0045F1" width="20vw" />
-              <StyledButton variant="pinkBtn" text="See you there!" width="20vw" />
-            </Stack>
-          </Grid>
-        </Grid>
+              <Divider width="30%"></Divider>
+            </Box>
 
-        <Box>
-          <Typography fontSize="4vw">Who’s Going?</Typography>
-          <Divider width="30%"></Divider>
-        </Box>
-
-        <Grid container justifyContent="center" spacing={5} mt={5}>
-          <Grid item>
-            <ECard variant="housemate2"></ECard>
-          </Grid>
-          <Grid item>
-            <ECard variant="housemate2"></ECard>
-          </Grid>
-          <Grid item>
-            <ECard variant="housemate2"></ECard>
-          </Grid>
-        </Grid>
-      </Stack>
+            <Grid container justifyContent="center" spacing={5} mt={5}>
+              <Grid item>
+                <ECard variant="housemate2"></ECard>
+              </Grid>
+              <Grid item>
+                <ECard variant="housemate2"></ECard>
+              </Grid>
+              <Grid item>
+                <ECard variant="housemate2"></ECard>
+              </Grid>
+            </Grid>
+          </Stack>
+        </div>
+      </div>
     </div>
   );
 }
