@@ -1,29 +1,29 @@
-import React from "react";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import Box from "@mui/material/Box";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import IconButton from "@mui/material/IconButton";
-import Grid from "@mui/material/Grid";
-import Checkbox from "@mui/material/Checkbox";
-import Button from "@mui/material/Button";
-import CardActionArea from "@mui/material/CardActionArea";
-import Divider from "@mui/material/Divider";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import bbq from "../../assets/bbq.png";
-import livingSpace from "../../assets/livingspace.png";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import Diversity3Icon from "@mui/icons-material/Diversity3";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import StyledButton from "./StyledButton";
-import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
-import GppGoodIcon from "@mui/icons-material/GppGood";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
+import Diversity3Icon from "@mui/icons-material/Diversity3";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import GppGoodIcon from "@mui/icons-material/GppGood";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Checkbox from "@mui/material/Checkbox";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import React from "react";
+import bbq from "../../assets/bbq.png";
 import blogsDefault from "../../assets/image 69.png";
+import livingSpace from "../../assets/livingspace.png";
+import StyledButton from "./StyledButton";
 
 function capitalizeFirstLetter(str) {
   if (str) {
@@ -53,6 +53,7 @@ function ECard(props) {
     commentCount = 0,
     author,
     category = "LIFESTYLE & WELLNESS",
+    event,
   } = props;
 
   return (
@@ -99,52 +100,65 @@ function ECard(props) {
 
       {variant === "event" && (
         <Card raised sx={{ borderRadius: 4, width: "350px" }}>
-          <CardActionArea>
-            <CardMedia component="img" height="250px" src={image ? "http://127.0.0.1:8000/" + image : bbq} />
-            <CardContent>
-              <Grid container spacing={3}>
-                <Grid item xs={12}>
-                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                    {time ? time.substring(0, 10) : "Date: N/A"}
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="h6">{name ? name : "Name: N/A"}</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Box
-                    display="flex"
-                    style={{
-                      alignItems: "center",
-                    }}>
-                    <LocationOnIcon style={{ fontSize: 60 }} sx={{ mr: 6, color: "blue" }} />
-                    <Typography variant="h6" sx={{ fontSize: 15 }}>
-                      {location ? location : "Location: N/A"}
-                    </Typography>
-                  </Box>
-                </Grid>
-                <Grid item xs={12}>
-                  <Box
-                    display="flex"
-                    style={{
-                      alignItems: "center",
-                    }}>
-                    <Diversity3Icon style={{ fontSize: 60 }} sx={{ mr: 6, color: "#F83E7D" }} />
-                    <Typography variant="h6" sx={{ fontSize: 15 }}>
-                      | {interested ? interested : "N/A"} Interested | {going ? going : "N/A"} Going
-                    </Typography>
-                  </Box>
-                </Grid>
-                <Grid item xs={8}></Grid>
-                <Grid item xs={4}>
-                  <Checkbox
-                    icon={<FavoriteBorderIcon style={{ fontSize: 60 }} sx={{ color: "gray" }} />}
-                    checkedIcon={<FavoriteIcon style={{ fontSize: 60 }} sx={{ color: "#F83E7D" }} />}
-                  />
-                </Grid>
-              </Grid>
-            </CardContent>
+          <CardActionArea sx={{ height: "250px" }}>
+            <Box
+              sx={{
+                width: "100%",
+                height: "100%",
+                backgroundImage: `url(${
+                  event.event_image
+                    ? "http://127.0.0.1:8000/" + event.event_image
+                    : bbq
+                })`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></Box>
           </CardActionArea>
+          <CardContent>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                  {event.event_date_time ? new Date(event.event_date_time).toLocaleDateString() : "Date: N/A"}
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography variant="h6">{event.event_name ? event.event_name : "Name: N/A"}</Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Box
+                  display="flex"
+                  style={{
+                    alignItems: "center",
+                  }}>
+                  <LocationOnIcon style={{ fontSize: 60 }} sx={{ mr: 6, color: "blue" }} />
+                  <Typography variant="h6" sx={{ fontSize: 15 }}>
+                    {event.event_location ? event.event_location : "Location: N/A"}
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={12}>
+                <Box
+                  display="flex"
+                  style={{
+                    alignItems: "center",
+                  }}>
+                  <Diversity3Icon style={{ fontSize: 60 }} sx={{ mr: 6, color: "#F83E7D" }} />
+                  <Typography variant="h6" sx={{ fontSize: 15 }}>
+                    | {event.event_interested ? event.event_interested : "N/A"} Interested | {event.event_attending ? event.event_attending : "N/A"} Going
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={8}></Grid>
+              <Grid item xs={4}>
+                <Checkbox
+                  icon={<FavoriteBorderIcon style={{ fontSize: 60 }} sx={{ color: "gray" }} />}
+                  checkedIcon={<FavoriteIcon style={{ fontSize: 60 }} sx={{ color: "#F83E7D" }} />}
+                />
+              </Grid>
+            </Grid>
+          </CardContent>
         </Card>
       )}
 

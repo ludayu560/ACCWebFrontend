@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { create_event } from "../../Redux/actions/event";
-import { get_events_attending } from "../../Redux/actions/events";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
+import { create_event } from "../../Redux/actions/event";
+import { get_events_attending } from "../../Redux/actions/events";
 
-import Box from "@mui/system/Box";
-import Stack from "@mui/system/Stack";
+import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
+import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
+import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+import WbTwilightIcon from "@mui/icons-material/WbTwilight";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/system/Box";
+import Stack from "@mui/system/Stack";
 import ECard from "../components/ECard";
-import StyledButton from "../components/StyledButton";
 import Footer from "../components/Footer";
-import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
-import WbTwilightIcon from "@mui/icons-material/WbTwilight";
+import StyledButton from "../components/StyledButton";
 import "../pageStyles/styles.css";
-import SignupManager from "./SignupManager";
 import Login from "./Login";
+import SignupManager from "./SignupManager";
 
 const CustomCheckboxStyles = {
   // the box color when unchecked
@@ -77,7 +77,29 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
 
   const data = ["1", "2", "3", "4", "5", "6"];
   const [onlineSelected, setOnlineSelected] = useState(true);
+  const [onlineEvents, setOnlineEvents] = useState([]);
   const [inpersonSelected, setInpersonSelected] = useState(false);
+  const [inPersonEvents, setInPersonEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchOnlineEvents = async () => {
+      const response = await fetch('http://127.0.0.1:8000/Events/upcoming/online');
+      const data = await response.json();
+      setOnlineEvents(data);
+    };
+
+    const fetchInPersonEvents = async () => {
+      const response = await fetch('http://127.0.0.1:8000/Events/upcoming/inperson');
+      const data = await response.json();
+      setInPersonEvents(data);
+    };
+
+    if (onlineSelected) {
+      fetchOnlineEvents();
+    } else{
+      fetchInPersonEvents();
+    }
+  }, [onlineSelected]);
 
   return listingAccount !== null ? (
     <div style={{ overflowX: "hidden" }}>
@@ -468,9 +490,9 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
                     New things are coming… check out our in-person events.
                   </Typography>
                 </Grid>
-                {data.map((id) => (
+                {onlineEvents.map((event) => (
                   <Grid item xs="auto">
-                    <ECard variant="event" />
+                    <ECard variant="event" event={event}/>
                   </Grid>
                 ))}
               </Grid>
@@ -482,9 +504,9 @@ function Events({ create_event, listingAccount, attending_events, get_events_att
         <div className="acc-section gray-bg">
           <div className="acc-container">
             <Grid container spacing={10} alignContent="center" justifyContent="center" pt={10} px={10}>
-              {data.map((id) => (
+              {inPersonEvents.map((event) => (
                 <Grid item xs="auto">
-                  <ECard variant="event" />
+                  <ECard variant="event" event={event}/>
                 </Grid>
               ))}
             </Grid>
