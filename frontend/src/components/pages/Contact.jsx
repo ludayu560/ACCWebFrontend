@@ -118,10 +118,6 @@ function Contact(props) {
           </Stack>
         </div>
       </div>
-
-
-
-
       <Footer></Footer>
     </>
   );
