@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import ECard from "../components/ECard";
-import SideNav from "../components/SideNav";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { load_property_listing } from "../../Redux/actions/propertyListing";
+import ECard from "../components/ECard";
+import SideNav from "../components/SideNav";
 
 function MyAccountEvents({
-  eventCreated,
+  eventsCreated,
   attending_events,
   interested_events,
   load_property_listing,
@@ -144,7 +144,7 @@ function MyAccountEvents({
 }
 
 const mapStateToProps = (state) => ({
-  eventCreated: state.auth.eventsCreated,
+  eventsCreated: state.auth.eventsCreated,
   attending_events: state.auth.attending_events,
   interested_events: state.auth.interested_events,
 });
